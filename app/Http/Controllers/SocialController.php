@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
@@ -68,17 +69,25 @@ class SocialController extends Controller
                     'social_avatar' => $avatar_file_name
                 ]);
 
+                // Generate new profile
+                $newUser->profile()->create([
+                    'bio' => 'We want to know more about you - update your bio once and showcase your unique story.',
+                    'country' => 'ghana'
+                ]);
+
+                // Give User role as participant
+                $newUser->assignRole('participant');
+
                 Auth::login($newUser);
 
-                return redirect('privacy');
-                // // Generate new profile
-                // $newUser->profile()->create([
-                //     'bio' => 'We want to know more about you - update your bio once and showcase your unique story.',
-                //     'country' => 'ghana'
-                // ]);
+                if (auth()->check()) {
+                    // If the user is authenticated, redirect to the intended URL or home
+                    app('flasher')->addSuccess('success', 'Login successful!');
 
-                // // Give User role as participant
-                // $newUser->assignRole('participant');
+                    return Redirect::intended(route('home'))->with('success', 'Login successful!');
+                }
+
+
 
                 // login User
 

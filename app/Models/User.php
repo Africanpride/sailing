@@ -4,13 +4,17 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Carbon\Carbon;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -78,4 +82,164 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function toSearchableArray()
+    {
+        return [
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'email' => $this->email,
+        ];
+    }
+
+    public function getScoutKeyName(): mixed
+    {
+        return 'email';
+    }
+
+    public function GetUserGreetingsAttribute(): string
+    {
+        // Create a new Carbon instance using the current date and time
+        $now = Carbon::now();
+
+        // Get the hour of the day as a number (0-23)
+        $hour = $now->hour;
+
+        // Determine whether it is morning, afternoon, or evening based on the hour
+        if ($hour >= 5 && $hour < 12) {
+            $greeting = "Good morning";
+        } elseif ($hour >= 12 && $hour < 18) {
+            $greeting = "Good afternoon";
+        } else {
+            $greeting = "Good evening";
+        }
+
+        // Output the greeting
+        return $greeting;
+    }
+
+
+    public static function searchParticipants($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('participant', true)
+            ->where(function ($query) use ($search) {
+                $query->where('id', 'like', '%' . $search . '%')
+                    ->orWhere('firstName', 'like', '%' . $search . '%')
+                    ->orWhere('lastName', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+            });
+    }
+
+    // Scopes
+
+    public function scopeFaculty(Builder $query): void
+    {
+        $query->where(function ($q) {
+            $q->where('facultyMember', true)
+                ->orWhereHas('roles', function ($q) {
+                    $q->whereIn('name', ['faculty']);
+                });
+        });
+    }
+    public function scopeStaff(Builder $query): void
+    {
+        $query->where(function ($q) {
+            $q->where('staff', true)
+                ->orWhereHas('roles', function ($q) {
+                    $q->whereIn('name', ['super_admin', 'admin']);
+                });
+        });
+    }
+
+    public function scopeParticipant(Builder $query): void
+    {
+        $query->where(function ($q) {
+            $q->where('participant', true)
+                ->orWhereHas('roles', function ($q) {
+                    $q->whereIn('name', ['participant']);
+                });
+        })->where('active', 1);
+    }
+
+    // end scopes
+
+
+    public function getUserRoleAttribute()
+    {
+        return $this->getRoleNames()->implode(' | ');
+    }
+
+    public function getFullNameAttribute(): string
+    {
+        return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
+    }
+    public function getNameAttribute()
+    {
+        return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
+    }
+
+    public function isLoggedIn(): bool
+    {
+        return Auth::check();
+    }
+
+    public function isOnline()
+    {
+        $timestamp = Carbon::parse('2 minute ago');
+        return $this->last_seen > $timestamp;
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole('super_admin');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasAnyRole('admin', 'super_admin');
+    }
+
+
+    public function dashboard(): string
+    {
+        return $this->isAdmin() ? 'admin/dashboard' :  'dashboard';
+    }
+
+
+    public function getAvatarUrlAttribute()
+    {
+        $address = strtolower(trim($this->email));
+        $hash = md5($address);
+        return 'https://www.gravatar.com/avatar/' . $hash;
+    }
+
+    public function defaultProfilePhotoUrl()
+    {
+        if (empty($this->avatar) && !empty($this->social_avatar)) {
+            return asset("storage/{$this->social_avatar}");
+        }
+
+        if (!empty($this->avatar)) {
+            return $this->avatar;
+        } else {
+
+            $name = trim(collect(explode(' ', $this->full_name))->map(function ($segment) {
+                return mb_substr($segment, 0, 1);
+            })->join(' '));
+
+            return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
+        }
+    }
+
+
+    public function whois()
+    {
+        return Auth::user()->firstName;
+    }
+
+    public function institutes(): BelongsToMany
+    {
+        return $this->belongsToMany(Institute::class, 'institute_participant', 'participant_id', 'institute_id')->withTimestamps();
+    }
 }
