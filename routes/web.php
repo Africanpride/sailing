@@ -192,6 +192,6 @@ Route::get('documentation', function () {
 });
 Route::get('tabs', function () {
     $mindset = Institute::find(2)->with('editions')->get();
-    dd($mindset);
+    // dd($mindset);
     return view('tabs');
 });

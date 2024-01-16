@@ -6,7 +6,7 @@
 
     <div class="flex justify-between items-center gap-x-4 px-4">
         <x-button class="" type="button" onclick="Livewire.dispatch('openModal', { component: 'add-institute' })">
-            {{ __('Add New Institute 123') }}
+            {{ __('Add New Mother Institute ') }}
         </x-button>
         <x-button type="button">
             <a href="#" class="gap-x-3 flex items-center justify-center ">
@@ -41,7 +41,7 @@
                                 <div class="absolute top-2 right-3">
                                     <div class="flex justify-end items-center gap-4">
 
-                                        <div
+                                        <div onclick="Livewire.dispatch('openModal', { component: 'create-institute-edition' })"
                                                 class="inline-flex justify-center items-center gap-x-2 rounded-lg font-medium text-gray-800 hover:text-blue-600 text-xs sm:text-sm dark:text-gray-200 dark:hover:text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
 
                                                 <svg class="flex-shrink-0 h-4 w-4" xmlns="http://www.w3.org/2000/svg"

@@ -4,7 +4,7 @@
         <x-heroicon-o-question-mark-circle class="w-6 h-6 text-current" />
     </x-backend-page-header>
 
-
+123456
  {{-- <livewire:auth-logs /> --}}
 
 </x-app-layout>

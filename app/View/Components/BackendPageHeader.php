@@ -15,7 +15,7 @@ class BackendPageHeader extends Component
     public $description; // text describing activity on model
     public $addButton = false; // show add button or not // public String $icon = '<x-heroicon-o-ellipsis-vertical class="w-6 h-6 text-current" />';
 
-    public function __construct($modelName = 'Header', $description, $addButton)
+    public function __construct($modelName, $description, $addButton)
     {
         $this->modelName = $modelName;
         $this->description = $description;
