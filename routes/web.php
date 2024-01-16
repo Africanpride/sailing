@@ -14,6 +14,7 @@ use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DisplayInstituteController;
+use App\Http\Controllers\EditionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +91,15 @@ Route::middleware([
     // Route::get('/myInstitutes', function () {
     //     return "Hello 123";
     // });
+    // Route::get('/create-edition', function() {
+    //     // dd("hello world");
+    //     $institutes = Institute::all();
+    //     return view('admin.edition.create', compact('institutes'));
+    // })->name('create-edition');
     Route::resource('donations', DonationController::class);
+    Route::resource('editions', EditionController::class);
+
+
     Route::get('/myInstitutes', function () {
         $institutes = Institute::all();
         return view('admin.myInstitutes.index', compact('institutes'));
@@ -126,7 +135,7 @@ Route::middleware([
     Route::get('admin/publications-list', function () {
         $publications = Publication::paginate(10);
 
-        return view('admin/publications-list', compact('publications'));
+        return view('admin.publications-list', compact('publications'));
     })->name('publications-list');
 
     Route::get('/roles/manage-roles', function () {

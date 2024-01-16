@@ -137,7 +137,7 @@
                             <x-lucide-newspaper class="w-6 h-6 text-current" />
 
                         </span>
-                        <span class=" capitalize">{{ __('Publication') }}</span>
+                        <span class=" capitalize">{{ __('Publication 123') }}</span>
                     </a>
                 </li>
             </ul>
@@ -164,7 +164,7 @@
 
 
                         </span>
-                        <span class=" capitalize">Authentication Logs</span>
+                        <span class=" capitalize">Authentication Logs 45455</span>
                     </a>
                 </li>
             @endcan

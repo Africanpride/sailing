@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edition;
+use App\Models\Institute;
 use App\Http\Requests\StoreEditionRequest;
 use App\Http\Requests\UpdateEditionRequest;
-use App\Models\Edition;
 
 class EditionController extends Controller
 {
@@ -22,6 +23,9 @@ class EditionController extends Controller
     public function create()
     {
         //
+
+        $institutes = Institute::all();
+        return view('admin.edition.create', compact('institutes'));
     }
 
     /**

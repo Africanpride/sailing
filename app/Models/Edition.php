@@ -14,7 +14,7 @@ class Edition extends Model
         'institute_id',
         'title',
         'slug',
-        'name',
+        'theme',
         'acronym',
         'overview',
         'about',
@@ -41,6 +41,23 @@ class Edition extends Model
     {
         return $this->morphMany(Transaction::class, 'transactionable');
     }
+
+    public function paidAttendees()
+    {
+        return $this->belongsToMany(User::class)->whereHas('transactions', function ($query) {
+            $query->where('type', 'edition');
+        });
+    }
+
+    public function attendees()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    // Retrieve paid attendees for a specific edition
+    // $edition = Edition::find($editionId);
+    // $paidAttendees = $edition->paidAttendees;
+
 
     // Create a transaction for a specific edition of an institute
     // $institute = Institute::find(1);

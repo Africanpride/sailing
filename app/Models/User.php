@@ -300,4 +300,26 @@ class User extends Authenticatable implements MustVerifyEmail
             ]);
         });
     }
+
+
+
+    public function attendedEditions()
+    {
+        return $this->belongsToMany(Edition::class);
+    }
+
+
+    // Add attendee to an edition
+    // $edition = Edition::find($editionId);
+    // $user = User::find($userId);
+
+    // $edition->attendees()->attach($user);
+
+    // // Retrieve attendees for an edition
+    // $attendees = $edition->attendees;
+
+    // // Retrieve editions attended by a user
+    // $attendedEditions = $user->attendedEditions;
+
+
 }

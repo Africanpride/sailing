@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->string('name');
+            $table->string('theme')->nullable();
             $table->string('acronym');
             $table->text('overview')->nullable();
             $table->text('about')->nullable();

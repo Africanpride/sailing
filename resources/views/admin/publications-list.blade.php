@@ -6,7 +6,7 @@
         <div class="p-4 space-y-4">
 
             <div class="max-w-3xl mx-auto">
-                <a href="#">
+                <a href="{{ route('publications.create') }}">
                     <x-button type="button">
                         {{ __('Add News/Publication') }}
 
