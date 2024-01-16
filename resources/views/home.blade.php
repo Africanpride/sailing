@@ -1,5 +1,5 @@
 <x-front-layout>
-    {{-- <section class="max-w-8xl p-4 md:px-8   mx-auto  ">
+    <section class="max-w-8xl p-4 md:px-8   mx-auto  ">
         <div class="{{ $isMobile ? '' : 'kenburns' }} min-h-[55svh] bg-center bg-cover bg-no-repeat relative rounded-3xl md:min-h-[85svh] h-[95svh]"
             style="background-image: url('{{ asset('images/main/un2.jpg') }}');">
 
@@ -37,7 +37,7 @@
                 <!-- End Card -->
             </div>
         </div>
-    </section> --}}
+    </section>
 
 
     <section class="w-full items-center flex flex-col justify-center py-8">
@@ -147,5 +147,5 @@
 
 
 
-<x-subscribe />
+{{-- <x-subscribe /> --}}
 </x-front-layout>

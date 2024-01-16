@@ -460,5 +460,5 @@ value="{{ Auth::user()->email }}" @endauth
     <!-- End giving -->
 
 
-    <x-subscribe />
+    {{-- <x-subscribe /> --}}
 </x-front-layout>

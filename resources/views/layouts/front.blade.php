@@ -40,7 +40,7 @@
         {{ $slot }}
     </div>
 
-    <x-front-footer />
+    <x-footer />
     @livewireScripts
 </body>
 

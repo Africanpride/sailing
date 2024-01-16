@@ -68,7 +68,6 @@ class SocialController extends Controller
                     'social_avatar' => $avatar_file_name
                 ]);
 
-
                 Auth::login($newUser);
 
                 return redirect('privacy');
