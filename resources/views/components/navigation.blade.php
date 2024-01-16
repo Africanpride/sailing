@@ -75,7 +75,7 @@
                             <x-lucide-book-open-check class="w-6 h-6 text-current" />
 
                         </span>
-                        <span class=" capitalize">{{ __('Institutes') }}</span>
+                        <span class=" capitalize">{{ __('My Institutes') }}</span>
                     </a>
                 </li>
 

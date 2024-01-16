@@ -6,7 +6,7 @@
 
     <div class="flex justify-between items-center gap-x-4 px-4">
         <x-button class="" type="button" onclick="Livewire.dispatch('openModal', { component: 'add-institute' })">
-            {{ __('Add New Institute') }}
+            {{ __('Add New Institute 123') }}
         </x-button>
         <x-button type="button">
             <a href="#" class="gap-x-3 flex items-center justify-center ">
@@ -16,9 +16,6 @@
         </x-button>
     </div>
     <div class="p-4">
-
-
-
         @if ($institutes->count() > 0)
             <div class=" grid grid-cols-1 gap-4 md:grid-cols-2">
                 @foreach ($institutes as $institute)
@@ -171,11 +168,6 @@
                 @endforeach
             </div>
         @endif
-
-
-
-
     </div>
-
 
 </x-app-layout>
