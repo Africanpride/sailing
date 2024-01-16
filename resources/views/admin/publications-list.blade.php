@@ -38,7 +38,7 @@
                         </div>
                         <div class="container grid grid-cols-12 mx-auto ">
                             <a href="{{ route('publications.show', $publication ) }}" class="relative grid place-items-center bg-no-repeat bg-cover  bg-gray-700 col-span-full md:col-span-3 md:rounded-l-xl  "
-                                style="background-image: url('{{ ($publication->getFirstMediaUrl('featured_image')) ? $publication->getFirstMediaUrl('featured_image') : $publication->featured_image }}'); background-position: center center; background-blend-mode: multiply; background-size: cover;">
+                                style="background-image: url('{{ ($publication->getFirstMediaUrl('featured_image')) ? $publication->getFirstMediaUrl('featured_image') : $publication->featured_image }}'); background-position: center center; background-size: cover;">
 
                                 <span class="absolute top-3 right-3 cursor-pointer"
                                     onclick="Livewire.dispatch('openModal', {component: 'admin.publications.update-images', arguments: {{ json_encode([$publication->slug]) }} })">
@@ -47,7 +47,7 @@
                             </a>
 
                             <div
-                                class="flex flex-col justify-between p-4 pt-6 pb-4 pl-8 md:col-span-9 col-span-12 space-y-2 rounded-r-xl relative ">
+                                class="col-span-12 flex flex-col justify-between md:col-span-9 p-4 pb-4 pl-9 pt-6 rounded-r-xl space-y-2 relative">
                                 @hasanyrole(['admin', 'super_admin'])
                                     <div class="absolute top-2 right-3">
                                         <div class="flex justify-end items-center gap-2">
@@ -66,9 +66,9 @@
 
 
                                 <div
-                                    class="bg-gray-300/80 dark:bg-slate-800 rotate-180 p-2 [writing-mode:_vertical-lr] absolute left-0 bottom-0 h-full">
+                                    class="bg-gray-300/90 dark:bg-black rotate-180 p-2 [writing-mode:_vertical-lr] absolute left-0 bottom-0 h-full">
                                     <time datetime="2022-10-10"
-                                        class="flex items-center justify-between gap-4 text-xs
+                                        class="flex items-center justify-between gap-4 text-[10px]
                                                         font-bold uppercase  text-gray-900 dark:text-white">
 
                                         <span>{{ \Carbon\Carbon::parse($publication->updated_at)->format('M jS') }}</span>
@@ -77,11 +77,11 @@
                                     </time>
                                 </div>
 
-                                <h1 class="text-lg font-bold ">{{ $publication->title }}
+                                <h1 class="text-[14px] font-bold ">{{ $publication->title }}
                                 </h1>
 
                                 <div>
-                                    <p class=" text-sm line-clamp-4 text-justify">
+                                    <p class=" text-[12px] line-clamp-4 leading-3 ">
                                         {{ $publication->overview }}
                                         <a href="{{ route('publications.show', [$publication->slug]) }}" rel="noopener noreferrer"
                                             class="inline-flex justify-start items-center   text-sm text-orange-400">

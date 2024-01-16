@@ -43,9 +43,10 @@
                             @hasanyrole(['admin', 'super_admin'])
                                 <div class="absolute top-2 right-3">
                                     <div class="flex justify-end items-center gap-4">
-                                        <span>
-                                            <a href="{{ route('editions.create') }}" type="button"
+
+                                        <div
                                                 class="inline-flex justify-center items-center gap-x-2 rounded-lg font-medium text-gray-800 hover:text-blue-600 text-xs sm:text-sm dark:text-gray-200 dark:hover:text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+
                                                 <svg class="flex-shrink-0 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                     width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -53,9 +54,9 @@
                                                     <path d="M5 12h14"></path>
                                                     <path d="M12 5v14"></path>
                                                 </svg>
-                                                Add Next Edition
-                                            </a>
-                                        </span>
+                                                Add Edition
+
+                                        </div>
                                         <div class="hs-tooltip">
 
                                             <a href="{{ route('institutes.edit', [$institute->id]) }}"

@@ -5,6 +5,6 @@
     </x-backend-page-header>
 
 
- <livewire:auth-logs />
+ {{-- <livewire:auth-logs /> --}}
 
 </x-app-layout>

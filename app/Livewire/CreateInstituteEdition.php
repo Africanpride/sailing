@@ -6,8 +6,9 @@ use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
 use Livewire\WithFileUploads;
+use LivewireUI\Modal\ModalComponent;
 
-class CreateInstituteEdition extends Component
+class CreateInstituteEdition extends ModalComponent
 {
     use WithFileUploads;
     public $instituteId;
@@ -24,14 +25,14 @@ class CreateInstituteEdition extends Component
     public $seo;
     public $active;
     public $price;
-    public $institutes;
+    public $institutes = [];
     public Institute $institute;
 
-    public function mount() {
-        $this->institutes = Institute::get();
+    public function mount()
+    {
+        $this->institutes = Institute::all();
     }
-
-    public function save()
+    public function storeInstituteEdition()
     {
 
         dd($this->instituteId);
@@ -41,7 +42,6 @@ class CreateInstituteEdition extends Component
             'startDate' => 'required|date',
             'endDate' => 'required|date|after_or_equal:startDate',
             'price' => 'required|numeric',
-            // Add more validation rules as needed
         ]);
 
         // Create a new Edition
