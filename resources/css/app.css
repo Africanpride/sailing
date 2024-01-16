@@ -1,7 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@900&family=Lato:ital,wght@0,400;0,900;1,400;1,900&family=Montserrat:wght@100;400&family=Open+Sans&family=Roboto:wght@300&family=Source+Sans+Pro&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 [x-cloak] {
     display: none;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+.filepond--drop-label {
+    background-color: gray;
+    color: #fff !important;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.institute-overview p {
+    font-size: 12px !important;
+}
+
+.kenburns {
+    animation-name: ken-burns;
+    animation-duration: 59s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-iteration-count: infinite;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@keyframes ken-burns {
+    0% {
+        background-size: 117% auto;
+        background-position: 50% 50%;
+    }
+
+    12.5% {
+        background-size: 115% auto;
+        background-position: 48% 52%;
+    }
+
+    25% {
+        background-size: 112% auto;
+        background-position: 46% 54%;
+    }
+
+    37.5% {
+        background-size: 110% auto;
+        background-position: 52% 48%;
+    }
+
+    50% {
+        background-size: 108% auto;
+        background-position: 50% 50%;
+    }
+
+    62.5% {
+        background-size: 105% auto;
+        background-position: 48% 52%;
+    }
+
+    75% {
+        background-size: 110% auto;
+        background-position: 54% 46%;
+    }
+
+    87.5% {
+        background-size: 102% auto;
+        background-position: 52% 48%;
+    }
+
+    100% {
+        background-size: 100% auto;
+        background-position: 50% 50%;
+    }
+
+}
+
+.rotating {
+    animation: rotating 49s linear infinite;
+}
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.animate {
+    transform: translate3d(0px, 20px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+        rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    opacity: 0;
+}
+.prominent-titles-2 {
+    @apply bg-gradient-to-r from-[#d239f1] via-[#c96e05] to-[#8d37d8] text-transparent inline-block bg-clip-text;
+}
+.prominent-titles {
+    @apply bg-gradient-to-r from-[#f1dc39] via-[#c96e05] to-[#8d37d8] text-transparent inline-block bg-clip-text;
+}
+
+.text-gradient__teal {
+    padding-right: 0.05em;
+    background-image: linear-gradient(243deg, #3dd875 23%, #0eb3a0 87%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.text-gradient1 {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+    --tw-gradient-from: #8d37d8;
+    --tw-gradient-to: #8d37d800;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    --tw-gradient-to: #4469f300;
+    --tw-gradient-stops: var(--tw-gradient-from), #4469f3, var(--tw-gradient-to);
+    --tw-gradient-to: #4469f3;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: #fff0;
+}
+
+.hide-overflow {
+    overflow-y: hidden !important;
+}
+
+#calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+@layer base {
+    .title-gradient {
+        @apply bg-clip-text bg-gradient-to-l from-purple-400 via-green-700 to-blue-600 text-transparent text-7xl font-bold;
+    }
+    .titleEffect {
+        @apply bg-gradient-to-r from-[#49dbff] to-[#0587eb] bg-clip-text;
+    }
+    .select2-dropdown {
+        @apply rounded-b-lg shadow-md;
+    }
+    .select2-search {
+        @apply border border-gray-300 rounded;
+    }
+    .select2-results__group {
+        @apply text-lg font-bold text-gray-900;
+    }
+
+    .card-top-text {
+        @apply flex  justify-center items-center space-x-2 px-5 py-2 rounded-2xl w-auto  bg-firefly-200/50 dark:bg-firefly-900  mb-2
+        text-sm font-semibold text-firefly-900 dark:text-white;
+    }
+}
+
+.glassBg {
+    opacity: 0.2;
+    background-color: rgb(51, 65, 85);
+    background-image: radial-gradient(
+            at 69% 65%,
+            rgb(255, 255, 255) 0,
+            transparent 76%
+        ),
+        radial-gradient(at 43% 20%, rgb(209, 250, 229) 0, transparent 85%),
+        radial-gradient(at 63% 63%, rgb(243, 244, 246) 0, transparent 82%),
+        radial-gradient(at 82% 31%, rgb(221, 214, 254) 0, transparent 25%),
+        radial-gradient(at 34% 97%, rgb(167, 243, 208) 0, transparent 28%),
+        radial-gradient(at 82% 98%, rgb(34, 197, 94) 0, transparent 37%);
+}
+
+.cbutton {
+    text-decoration: none;
+    position: relative;
+    border: none;
+    font-size: 14px;
+    font-family: inherit;
+    color: #fff;
+    width: 19em;
+    height: 3em;
+    line-height: 2em;
+    text-align: center;
+    background: linear-gradient(90deg, #eab308, #f441a5, #ffeb3b, #1a608a);
+    background-size: 300%;
+    border-radius: 30px;
+    z-index: 1;
+}
+
+.cbutton:hover {
+    animation: ani 8s linear infinite;
+    border: none;
+}
+
+@keyframes ani {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 400%;
+    }
+}
+
+.cbutton:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #1a608a);
+    background-size: 400%;
+    border-radius: 35px;
+    transition: 1s;
+}
+
+.cbutton:hover::before {
+    filter: blur(20px);
+}
+
+.cbutton:active {
+    background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+}
+
+.text-gradient-copilot {
+    background: -webkit-linear-gradient(300deg, #93f5ec 20%, #a77bf3 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+}
+
+.theme-6 {
+    --color-item-bg: linear-gradient(120deg, #9c27b0, #090772);
+    --color-action: #f7d337;
+    --color-button-bg: #f7d337;
+    --color-button-text: #000000;
+    --button-padding: 1.5rem 3rem;
+    --radius-button: 40px;
+    --border-button: 0;
+}
+
+.gradient-border-badge:before {
+    border-radius: 9999px;
+    background-image: linear-gradient(#fff, #fff),
+        radial-gradient(circle at top left, #9867f0, #ed4e50);
+    background-image: linear-gradient(#fff, #fff),
+        radial-gradient(
+            circle at top left,
+            var(--mktg-accent-primary, #9867f0),
+            var(--mktg-accent-secondary, #ed4e50)
+        );
+    border: 2px double transparent;
+}
+
+.gradient-border-badge-dark:before,
+.gradient-border-badge:before {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-clip: content-box, border-box;
+    background-origin: border-box;
+}
+
+.gradient-border-badge-dark:before {
+    border-radius: 9999px;
+    background-image: linear-gradient(#0d1117, #0d1117),
+        radial-gradient(circle at top left, #efceff, #9773ff, #3d67ff);
+    border: 1px double transparent;
+}
+.bullets ul,
+.bullets li {
+  display: hidden !important;
 }
