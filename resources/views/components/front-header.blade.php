@@ -43,7 +43,7 @@
                   <x-menu url="contact">
                       Contact
                     </x-menu>
-                    <x-menu url="publications">
+                    <x-menu url="publications.index">
                         Publications
                     </x-menu>
 

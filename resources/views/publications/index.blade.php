@@ -47,7 +47,7 @@
 
                     <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
                         style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
-                    <img src="{{ $firstLatest->getFirstMediaUrl('featured_image') ? $firstLatest->getFirstMediaUrl('featured_image') : $firstLatest->featured_image }}&auto=format&fit=crop&w=900&q=60"
+                    <img src="{{ $firstLatest->getFirstMediaUrl('featured_image') ? $firstLatest->getFirstMediaUrl('featured_image') : $firstLatest->featured_image }}"
                         class="absolute left-0 top-0 w-full h-full  z-0 object-cover rounded-xl">
                     <div class="p-4 absolute bottom-0 left-0 z-20">
                         <span
@@ -56,8 +56,8 @@
                         <h2 class="text-4xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
                             {{ $firstLatest->title }}
                         </h2>
-                        <div class="flex mt-3">
-                            <img src="{{ $firstLatest->author->profile_photo_url }}"
+                        {{-- <div class="flex mt-3">
+                            <img src="{{ $firstLatest->author?->profile_photo_url ??  }}"
                                 class="h-10 w-10 rounded-full mr-2 object-cover">
                             <div>
                                 <p class="font-semibold text-gray-200 text-sm"> {{ $firstLatest->author->full_name }}
@@ -65,13 +65,13 @@
                                 <p class="font-semibold text-gray-400 text-xs">
                                     {{ $firstLatest->updated_at->format('d-M, Y') }} </p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </a>
             </div>
             <div class="w-full md:w-1/3 ">
                 <a class="relative rounded-3xl block" style="height: 24em;"
-                    href="{{ route('news.show', [$secondLatest]) }}">
+                    href="{{ route('publications.show', [$secondLatest]) }}">
                     <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
                     <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
                         style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
@@ -84,7 +84,7 @@
                         <h2 class="text-3xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
                             {{ $secondLatest->title }}
                         </h2>
-                        <div class="flex mt-3">
+                        {{-- <div class="flex mt-3">
                             <img src="{{ $secondLatest->author->profile_photo_url }}"
                                 class="h-10 w-10 rounded-full mr-2 object-cover">
                             <div>
@@ -93,7 +93,7 @@
                                 <p class="font-semibold text-gray-400 text-xs">
                                     {{ $secondLatest->updated_at->format('d-M, Y') }} </p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </a>
             </div>

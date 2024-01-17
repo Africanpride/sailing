@@ -3,7 +3,7 @@
     <span type="button"
         class=" flex items-center w-full   ">
 
-        <a href="{{ url('/institutes') }}"
+        <a href="{{ route('institutes.index') }}"
             class="font-bold uppercase dark:text-white hover:text-yellow-700
         {{ request()->is('institutes') ? 'text-yellow-500 dark:text-yellow-500 hover:dark:text-firefly-400' : 'hover:dark:text-firefly-400' }}">
            {{ __('Institutes') }}

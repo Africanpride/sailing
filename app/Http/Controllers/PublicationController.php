@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Publication;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePublicationRequest;
 use App\Http\Requests\UpdatePublicationRequest;
-use App\Models\Publication;
 
 class PublicationController extends Controller
 {
@@ -25,7 +27,6 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -33,15 +34,46 @@ class PublicationController extends Controller
      */
     public function store(StorePublicationRequest $request)
     {
-        //
+        $request->validated();
+
+        $publication = Publication::create([
+            'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('title')),
+            'overview' => $request->input('overview'),
+            'body' => $request->input('body'),
+            'active' => $request->input('active'),
+            'user_id' => Auth::user()->id
+        ]);
+
+        if (!is_null($request->input('category_id'))) {
+            $publication->forceFill([
+                'category_id' => $request->input('category_id')
+            ])->save();
+        }
+
+        if ($request->hasfile('featured_image')) {
+            $publication->addMediaFromRequest('featured_image')->toMediaCollection('featured_image');
+        }
+        return redirect(route('publications.show', ['publications' => $publication]));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Publication $publication)
+    public function show($slug)
     {
         //
+        $publication = Publication::where('slug', $slug)->firstOrFail();
+        $latestPublication = Publication::with('author')->with('media')->orderBy('created_at', 'DESC')->where('id', '!=', $publication->id)->take(3)->get();
+
+
+        return view(
+            'publications.show',
+            [
+                'publication' => $publication,
+                'latestPublication' => $latestPublication
+            ]
+        );
     }
 
     /**
