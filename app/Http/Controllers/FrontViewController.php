@@ -79,4 +79,7 @@ class FrontViewController extends Controller
     {
         return view('institutes.index');
     }
+
+
+
 }

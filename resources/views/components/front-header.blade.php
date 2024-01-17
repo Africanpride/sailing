@@ -1,7 +1,8 @@
   <!-- ========== HEADER ========== -->
   <header
-      class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-firefly-900 dark:border-gray-700">
-      <nav class="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
+      class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-firefly-900 dark:border-gray-700 h-auto">
+
+      <nav class="lg:px-8 max-w-[85rem] mx-auto px-4 py-[16px] relative sm:flex sm:items-center sm:justify-between sm:px-6 w-full"
           aria-label="Global">
           <div class="flex items-center justify-between">
               <x-branding />
@@ -41,7 +42,10 @@
                   <x-institutes-list />
                   <x-menu url="contact">
                       Contact
-                  </x-menu>
+                    </x-menu>
+                    <x-menu url="publications">
+                        Publications
+                    </x-menu>
 
                   <div class="text-firefly-700 dark:text-firefly-200 flex justify-start items-center gap-2 py-4">
 

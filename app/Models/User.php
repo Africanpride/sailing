@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Carbon\Carbon;
+use App\Models\Profile;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -24,6 +26,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasUlids;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -241,5 +244,22 @@ class User extends Authenticatable
     public function institutes(): BelongsToMany
     {
         return $this->belongsToMany(Institute::class, 'institute_participant', 'participant_id', 'institute_id')->withTimestamps();
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->profile()->create([
+                'bio' => 'We want to know more about you - update your bio once and showcase your unique story.',
+                'country' => 'null'
+            ]);
+        });
     }
 }

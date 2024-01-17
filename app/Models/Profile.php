@@ -96,6 +96,8 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
+
+
     public function getProfileCountryAttribute()
     {
         $country = Country::whereId($this->lc_country_id)->first();

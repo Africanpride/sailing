@@ -13,7 +13,11 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        //
+        $latest = Publication::latest()->take(2)->get();
+        $news = Publication::whereNotIn('id', $latest->pluck('id'))->latest()->paginate(4);
+        $firstLatest = $latest->first();
+        $secondLatest = $latest->skip(1)->first();
+        return view('publications.index', compact('news', 'latest', 'firstLatest', 'secondLatest'));
     }
 
     /**

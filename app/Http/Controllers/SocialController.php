@@ -38,7 +38,9 @@ class SocialController extends Controller
     {
         $user = Socialite::driver('google')->user();
 
-        $existingUser = User::where('google_id', $user->id || 'email', $user->email)->first();
+        $existingUser = User::where('google_id', $user->id)
+            ->orWhere('email', $user->email)
+            ->first();
 
         try {
             // Get the authenticated user from the Google OAuth provider
@@ -48,7 +50,7 @@ class SocialController extends Controller
                 Auth::login($existingUser);
                 app('flasher')->addSuccess('success', 'Login successful!');
 
-                return Redirect::intended(route('home'))->with('success', 'Login successful!');
+                return Redirect::intended(route('home'));
 
 
 
@@ -72,12 +74,6 @@ class SocialController extends Controller
                     'social_avatar' => $avatar_file_name
                 ]);
 
-                // Generate new profile
-                // $newUser->profile()->create([
-                //     'bio' => 'We want to know more about you - update your bio once and showcase your unique story.',
-                //     'country' => 'ghana'
-                // ]);
-
                 // Give User role as participant
                 $newUser->assignRole('participant');
 
@@ -87,7 +83,7 @@ class SocialController extends Controller
                     // If the user is authenticated, redirect to the intended URL or home
                     app('flasher')->addSuccess('success', 'Login successful!');
 
-                    return Redirect::intended(route('home'))->with('success', 'Login successful!');
+                    return Redirect::intended(route('home'));
                 }
 
             }

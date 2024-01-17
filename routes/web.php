@@ -8,6 +8,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\DisplayInstituteController;
 use App\Http\Controllers\InstituteController;
+use App\Http\Controllers\PublicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,7 @@ Route::get('topics', [FrontViewController::class, 'topics'])->name('topics');
 Route::get('donate', [FrontViewController::class, 'donate'])->name('donate');
 Route::get('documentation', [FrontViewController::class, 'documentation']);
 Route::get('our-process', [FrontViewController::class, 'ourProcess']);
-Route::get('news', [FrontViewController::class, 'news'])->name('news');
+
 
 Route::post('contact', ContactController::class)->name('contact-form');
 // Route::resource('newsroom', NewsroomController::class);
@@ -59,6 +60,7 @@ Route::get('auth/google/callback', [App\Http\Controllers\SocialController::class
 // display a particular institute using slug as parameter for the flrontend
 
 Route::resource('institutes', InstituteController::class);
+Route::resource('publications', PublicationController::class);
 
 // Route::get('/institutes/{slug}', DisplayInstituteController::class)->name('institute.show');
 // Route::get('/institutes/{slug}', DisplayInstituteController::class)->name('institute.show');
