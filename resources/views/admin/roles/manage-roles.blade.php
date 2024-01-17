@@ -65,8 +65,7 @@
             <div>
                 <x-table :showPagination="false">
                     <x-slot name="tableHead">
-                        <tr
-                            class="bg-gray-200 dark:border-secondary-900 dark:bg-black text-secondary-900  dark:text-secondary-400">
+                        <x-table-row>
 
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400">
@@ -84,9 +83,7 @@
                                 class="px-6 py-3 text-xs leading-4 font-medium  uppercase tracking-wider  text-left">
                                 Logged In
                             </th>
-
-
-                        </tr>
+                        </x-table-row>
                     </x-slot>
                     <x-slot name="tableBody">
 
@@ -119,7 +116,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="hidden md:table-cell px-6 py-3 text-sm leading-5 text-secondary-500 dark:text-secondary-400">
+                                <td
+                                    class="hidden md:table-cell px-6 py-3 text-sm leading-5 text-secondary-500 dark:text-secondary-400">
                                     <div class="flex items-center">
                                         <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

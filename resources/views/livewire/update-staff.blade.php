@@ -105,7 +105,7 @@
                 <label class="block text-gray-700 dark:text-firefly-500 text-sm font-bold my-3" for="role">
                     {{ __('Assign Role to staff') }}
                 </label>
-                <div class="w-full grid grid-cols-2 gap-2 text-gray-900 dark:text-gray-100">
+                <div class="w-full grid grid-cols-5 gap-2 text-gray-900 dark:text-gray-100">
                     @foreach ($roles as $key => $role)
                         <div class="flex justify-start items-center space-x-2"
                             wire:key="input-checkbox-{{ $role->id }}">
@@ -116,7 +116,7 @@
                                 name="staffRoles" value="{{ $role->id }}"
                                 @if (in_array($role->id, $staffRoles)) checked @endif>
 
-                            <label for="role-{{ $role->id }}" class=" text-sm leading-5  capitalize">
+                            <label for="role-{{ $role->id }}" class=" text-sm leading-5  uppercase">
                                 {{ $role->name }}
                             </label>
                         </div>

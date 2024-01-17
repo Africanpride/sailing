@@ -33,40 +33,40 @@
 scrollbar-thumb-firefly-800 scrollbar-track-gray-300 overflow-y-scroll ">
 
     <x-cookie />
-<div class="grid md:grid-cols-12 gap-2">
-    <div class="md:col-span-2 w-full relative">
-        <!-- Navigation -->
-        <x-navigation />
-        <!-- End Navigation -->
-    </div>
-
-    <div class="md:col-span-10 w-full overflow-x-hidden">
-
-        <!-- Content -->
-        <div class="w-full  min-h-screen ">
-            <!-- ========== HEADER ========== -->
-            <x-app-header />
-            <!-- Sidebar Toggle -->
-            <x-sidebar-toggle />
-            <!-- End Sidebar Toggle -->
-            <!-- ========== END HEADER ========== -->
-            {{ $slot }}
-            <!-- Footer -->
-            <x-footer />
-            <!-- End Footer -->
+    <div class="grid md:grid-cols-12 gap-2">
+        <div class="md:col-span-2 w-full relative">
+            <!-- Navigation -->
+            <x-navigation />
+            <!-- End Navigation -->
         </div>
-        <!-- End Content -->
+
+        <div class="md:col-span-10 w-full overflow-x-hidden">
+
+            <!-- Content -->
+            <div class="w-full  min-h-screen ">
+                <!-- ========== HEADER ========== -->
+                <x-app-header />
+                <!-- Sidebar Toggle -->
+                <x-sidebar-toggle />
+                <!-- End Sidebar Toggle -->
+                <!-- ========== END HEADER ========== -->
+                {{ $slot }}
+                <!-- Footer -->
+                <x-footer />
+                <!-- End Footer -->
+            </div>
+            <!-- End Content -->
+
+        </div>
+
 
     </div>
-
-
-</div>
 
     <x-all-modals />
     @stack('modals')
 
-    @livewireScripts
     @livewire('wire-elements-modal')
+    @livewireScripts
 </body>
 
 </html>

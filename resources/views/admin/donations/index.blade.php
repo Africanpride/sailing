@@ -15,11 +15,11 @@
             <div class=" border dark:border-0 overflow-hidden ">
                 <div class="overflow-x-auto">
                     <div class="align-middle inline-block min-w-full">
-                        <table class="min-w-full border-secondary-300 rounded-md dark:border-secondary-900">
-                            <thead>
-                                @if ($donations->count() > 0)
-                                    <tr
-                                        class=" bg-gray-200 dark:border-secondary-900 dark:bg-secondary-900 text-secondary-900  dark:text-secondary-400">
+
+                        <x-table :showPagination="false">
+                            <x-slot name="tableHead">
+                                <x-table-row>
+                                    @if ($donations->count() > 0)
                                         <th scope="col"
                                             class="px-3  py-2  text-left text-[11px] leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400">
                                             <span class="lg:pl-2">Institute</span>
@@ -33,14 +33,10 @@
                                             class="px-3  py-2   uppercase tracking-wider  hidden md:table-cell text-left text-[11px] leading-4 font-medium ">
                                             Payment Reference
                                         </th>
-
-                                    </tr>
-                                @endif
-                            </thead>
-                            <tbody
-                                class="divide-y divide-secondary-100 bg-white dark:bg-secondary-800 dark:divide-secondary-900"
-                                x-max="1">
-
+                                    @endif
+                                </x-table-row>
+                            </x-slot>
+                            <x-slot name="tableBody">
                                 @if ($donations->count() > 0)
 
                                     @foreach ($donations as $donation)
@@ -106,9 +102,9 @@
                                         <livewire:nothing-here />
                                     </div>
                                 @endif
+                            </x-slot>
 
-                            </tbody>
-                        </table>
+                        </x-table>
 
                     </div>
                     <div

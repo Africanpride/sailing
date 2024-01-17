@@ -188,7 +188,8 @@ Route::middleware([
 });
 
 Route::get('documentation', function () {
-    return view('documentation');
+    $institutes = Institute::all();
+    return view('documentation', compact('institutes'));
 });
 Route::get('tabs', function () {
     $mindset = Institute::find(2)->with('editions')->get();

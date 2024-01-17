@@ -33,6 +33,13 @@ class UpdateStaff extends ModalComponent
     {
         return false;
     }
+
+    protected static array $maxWidths = [
+
+        '5xl' => 'max-w-2xl md:max-w-xl lg:max-w-3xl xl:max-w-5xl',
+
+    ];
+
     public function mount(User $user)
     {
         $this->user         = $user;

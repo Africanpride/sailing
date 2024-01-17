@@ -28,6 +28,24 @@ class CreateInstituteEdition extends ModalComponent
     public $institutes = [];
     public Institute $institute;
 
+
+    protected static array $maxWidths = [
+
+        '5xl' => 'max-w-2xl md:max-w-xl lg:max-w-3xl xl:max-w-5xl',
+
+    ];
+
+
+    public static function closeModalOnEscape(): bool
+    {
+        return false;
+    }
+
+    public static function closeModalOnClickAway(): bool
+    {
+        return false;
+    }
+
     public function mount()
     {
         $this->institutes = Institute::all();

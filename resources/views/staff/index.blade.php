@@ -70,7 +70,7 @@
                 <!-- profile -->
                 <div
                     class=" h-fit md:col-span-3 md:my-0 my-4 px-10 py-16 rounded-2xl
-                relative bg-gray-50 border-gray-300/30 dark:border-gray-700/30 border-2 dark:bg-black dark:text-firefly-300">
+                relative bg-gray-50 border-gray-300/30 dark:border-gray-700/30 border-2 dark:bg-gray-950 dark:text-firefly-300">
 
                     <a href="#" class="absolute top-4 right-4 text-gray-400 hover:text-accent-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"

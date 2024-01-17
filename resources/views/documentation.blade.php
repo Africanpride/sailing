@@ -13,7 +13,9 @@
         </button>
 
         <div id="hs-overlay-right"
-            class="hs-overlay hs-overlay-open:translate-x-0  translate-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full w-full z-[60] bg-white border-l dark:bg-gray-800 dark:border-gray-700 hidden"
+            class="hs-overlay hs-overlay-open:translate-x-0  translate-x-full fixed
+            top-0 right-0 transition-all duration-300 transform h-full max-w-xs
+            w-full z-[60] bg-white border-l dark:bg-gray-800 dark:border-gray-700 hidden"
             tabindex="-1">
             <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
                 <h3 class="font-bold text-gray-800 dark:text-white">
@@ -49,7 +51,7 @@
         <div id="hs-scroll-inside-body-modal"
             class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
             <div
-                class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)]">
+                class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-3xl sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)]">
                 <div
                     class="max-h-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                     <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
@@ -69,60 +71,209 @@
                         </button>
                     </div>
                     <div class="p-4 overflow-y-auto">
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Be bold</h3>
-                                <p class="mt-1 text-gray-800 dark:text-gray-400">
-                                    Motivate teams to do their best work. Offer best practices to get users going in
-                                    the right direction. Be bold and offer just enough help to get the work started,
-                                    and then get out of the way. Give accurate information so users can make
-                                    educated decisions. Know your user's struggles and desired outcomes and give
-                                    just enough information to let them get where they need to go.
-                                </p>
+
+                        <!-- content -->
+                        <!-- Grid -->
+                        <div id="instituteModal" class="space-y-4 sm:space-y-6">
+
+                            <div class="flex justify-start items-center">
+                                <div class="relative flex items-start">
+                                    <div class="flex items-center h-5 ">
+                                        <input id="hs-checkbox-delete" name="active" type="checkbox"
+                                            wire:model="active"
+                                            class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                                            aria-describedby="hs-checkbox-delete-description" checked>
+                                    </div>
+                                    <label for="hs-checkbox-delete" class="ms-3">
+                                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Mark
+                                            Active</span>
+                                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">
+                                            Editions marked "Active" becomes available for Payment and Registration!
+                                        </span>
+                                    </label>
+                                </div>
+                                <x-input-error for="active" class="mt-2" />
                             </div>
 
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Be optimistic</h3>
-                                <p class="mt-1 text-gray-800 dark:text-gray-400">
-                                    Focusing on the details gives people confidence in our products. Weave a
-                                    consistent story across our fabric and be diligent about vocabulary across all
-                                    messaging by being brand conscious across products to create a seamless flow
-                                    across all the things. Let people know that they can jump in and start working
-                                    expecting to find a dependable experience across all the things. Keep teams in
-                                    the loop about what is happening by informing them of relevant features,
-                                    products and opportunities for success. Be on the journey with them and
-                                    highlight the key points that will help them the most - right now. Be in the
-                                    moment by focusing attention on the important bits first.
-                                </p>
+                            <div class="space-y-2">
+                                <label for="af-submit-app-project-name"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    Edition Title
+                                </label>
+
+                                <input id="af-submit-app-project-name" type="text" name="title"
+                                    wire:model.live="title"
+                                    class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                    placeholder="Enter Publication Title Eg . Mindset Transformation Institute 2024 Edition">
+
+                                <x-input-error for="title" class="mt-2" />
+                            </div>
+                            <div class="space-y-2">
+                                <label for="af-submit-app-project-name"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    Edition Seo Keywords
+                                </label>
+
+                                <input id="af-submit-app-project-name" type="text" name="seo" wire:model="seo"
+                                    class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                    placeholder="Enter Comma seperated keywords for Edition">
+
+                                <x-input-error for="seo" class="mt-2" />
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="af-submit-app-project-name"
+                                        class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200 capitalize">
+
+                                        Start Date
+                                    </label>
+
+                                    <input id="af-submit-app-project-startDate" type="date" name="startDate"
+                                        wire:model="startDate"
+                                        class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                        placeholder="Enter Edition startDate. ">
+
+                                    <x-input-error for="startDate" class="mt-2" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="af-submit-app-project-name"
+                                        class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200 capitalize">
+
+                                        End Date
+                                    </label>
+
+                                    <input id="af-submit-app-project-endDate" type="date" name="endDate"
+                                        wire:model="endDate"
+                                        class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                        placeholder="Enter Edition endDate. ">
+
+                                    <x-input-error for="endDate" class="mt-2" />
+                                </div>
+
                             </div>
 
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Be practical, with a
-                                    wink</h3>
-                                <p class="mt-1 text-gray-800 dark:text-gray-400">
-                                    Keep our own story short and give teams just enough to get moving. Get to the
-                                    point and be direct. Be concise - we tell the story of how we can help, but we
-                                    do it directly and with purpose. Be on the lookout for opportunities and be
-                                    quick to offer a helping hand. At the same time realize that nobody likes a nosy
-                                    neighbor. Give the user just enough to know that something awesome is around the
-                                    corner and then get out of the way. Write clear, accurate, and concise text that
-                                    makes interfaces more usable and consistent - and builds trust. We strive to
-                                    write text that is understandable by anyone, anywhere, regardless of their
-                                    culture or language so that everyone feels they are part of the team.
-                                </p>
+                            <div class="space-y-2">
+                                <label for="af-submit-app-description"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    Overview
+                                </label>
+
+                                <textarea id="af-submit-app-description" name="overview" wire:model="overview"
+                                    class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                    rows="6"
+                                    placeholder="A detailed summary will better explain your products to the audiences. Our users will see this in your dedicated product page."></textarea>
+                                <x-input-error for="overview" class="mt-2" />
+                            </div>
+                            <div class="space-y-2">
+                                <label for="af-submit-app-description"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    About This Edition
+                                </label>
+
+                                <textarea id="af-submit-app-description" name="about" wire:model="about"
+                                    class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                    rows="6"
+                                    placeholder="A detailed summary will better explain your products to the audiences. Our users will see this in your dedicated product page."></textarea>
+                                <x-input-error for="about" class="mt-2" />
+                            </div>
+
+                            <div class="space-y-2">
+                                <x-input-error for="banner" class="mt-2" />
+                                <label for="banner"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    Banner For This Edition For
+                                </label>
+
+
+                                <label for="banner"
+                                    class="group p-4 sm:p-7 block cursor-pointer text-center border-2 border-dashed border-gray-300  rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:border-gray-700">
+                                    <input id="banner" name="banner" wire:model="banner" type="file"
+                                        class="sr-only">
+                                    <svg class="w-10 h-10 mx-auto text-gray-400 dark:text-gray-600"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z" />
+                                        <path
+                                            d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+                                    </svg>
+                                    <span class="mt-2 block text-sm text-gray-800 dark:text-gray-200">
+                                        Browse your device or <span
+                                            class="group-hover:text-blue-700 text-blue-600">drag 'n
+                                            drop'</span>
+                                    </span>
+                                    <span class="mt-1 block text-xs text-gray-500">
+                                        Maximum file size is 2 MB
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="af-submit-app-category"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    Mother Institute
+                                </label>
+
+                                <select id="af-submit-app-category" name="category" wire:model="instituteId"
+                                    class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                                    <option selected>Select an Institute...</option>
+
+                                    @foreach ($institutes as $institute)
+                                        <option wire:key="{{ $institute->id }}" value="{{ $institute->id }}">
+                                            {{ $institute->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                <x-input-error for="category_id" class="mt-2" />
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="banner"
+                                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                    <div>
+                                        Add introductory Text
+                                    </div>
+                                    <div>
+                                        <ul role="list"
+                                            class="marker:text-blue-600 list-disc ps-5 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                            <li>
+                                                Answer the What, Where why etc.
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </label>
+
+                                <div>
+                                    <textarea name="body" id="bodycontent" spellcheck="true" rows="" wire:model="body"
+                                        class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm
+                                 dark:bg-firefly-900 dark:border-gray-700 dark:text-gray-400"
+                                        placeholder="{{ __('You Can copy from any word processor Content (Eg. Microsoft Word.)') }}">{{ old('body') }}</textarea>
+                                    <x-input-error for="body" class="mt-2" />
+                                </div>
+
+
                             </div>
                         </div>
+                        <!-- End Grid -->
+                        <!-- End of content -->
+
                     </div>
+
                     <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
+                        <!-- close button -->
                         <button type="button"
                             class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                             data-hs-overlay="#hs-scroll-inside-body-modal">
                             Close
                         </button>
+                        <!-- End of close button -->
                         <a class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                             href="#">
                             Save changes
                         </a>
+
                     </div>
                 </div>
             </div>
@@ -175,8 +326,8 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-12">
                 <!-- Icon Block -->
                 <div>
-                    <svg class="w-9 h-9 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" width="16"
-                        height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <svg class="w-9 h-9 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path
                             d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
                         <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
@@ -197,8 +348,8 @@
 
                 <!-- Icon Block -->
                 <div>
-                    <svg class="w-9 h-9 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" width="16"
-                        height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <svg class="w-9 h-9 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M9.465 10H12a2 2 0 1 1 0 4H9.465c.34-.588.535-1.271.535-2 0-.729-.195-1.412-.535-2z" />
                         <path
                             d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm.535-10a3.975 3.975 0 0 1-.409-1H4a1 1 0 0 1 0-2h2.126c.091-.355.23-.69.41-1H4a2 2 0 1 0 0 4h2.535z" />
@@ -305,17 +456,18 @@
                         id="basic-tabs-item-2" data-hs-tab="#basic-tabs-2" aria-controls="basic-tabs-2"
                         role="tab">
                         <x-heroicon-o-lock-closed
-                        class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
-                    <div>
+                            class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
                         <div>
-                            <h3 class="block font-bold text-gray-800 dark:text-white">Update Password</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs">Ensure your account is using a long,
-                                random
-                                password to stay secure.
+                            <div>
+                                <h3 class="block font-bold text-gray-800 dark:text-white">Update Password</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs">Ensure your account is using a
+                                    long,
+                                    random
+                                    password to stay secure.
 
-                            </p>
+                                </p>
+                            </div>
                         </div>
-                    </div>
                     </button>
                     <button type="button"
                         class="
@@ -324,16 +476,17 @@
                         id="basic-tabs-item-3" data-hs-tab="#basic-tabs-3" aria-controls="basic-tabs-3"
                         role="tab">
                         <x-heroicon-o-shield-check
-                        class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
-                    <div>
+                            class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
                         <div>
-                            <h3 class="block font-bold text-gray-800 dark:text-white">Multifactor Auth (2FA)
-                            </h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs">Add additional security to your account
-                                using
-                                two factor authentication.</p>
+                            <div>
+                                <h3 class="block font-bold text-gray-800 dark:text-white">Multifactor Auth (2FA)
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs">Add additional security to your
+                                    account
+                                    using
+                                    two factor authentication.</p>
+                            </div>
                         </div>
-                    </div>
                     </button>
                     <button type="button"
                         class="
@@ -342,15 +495,16 @@
                         id="basic-tabs-item-4" data-hs-tab="#basic-tabs-4" aria-controls="basic-tabs-4"
                         role="tab">
                         <x-heroicon-o-computer-desktop
-                        class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
-                    <div>
+                            class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
                         <div>
-                            <h3 class="block font-bold text-gray-800 dark:text-white">Manage Browser Sessions</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs">Manage and log out your active sessions
-                                on other
-                                browsers and devices.</p>
+                            <div>
+                                <h3 class="block font-bold text-gray-800 dark:text-white">Manage Browser Sessions</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs">Manage and log out your active
+                                    sessions
+                                    on other
+                                    browsers and devices.</p>
+                            </div>
                         </div>
-                    </div>
                     </button>
                     <button type="button"
                         class="
@@ -359,13 +513,14 @@
                         id="basic-tabs-item-5" data-hs-tab="#basic-tabs-5" aria-controls="basic-tabs-5"
                         role="tab">
                         <x-heroicon-o-minus-circle
-                        class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
-                    <div>
+                            class=" flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 mr-6 dark:text-gray-200" />
                         <div>
-                            <h3 class="block font-bold text-gray-800 dark:text-white">Delete Account</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs">Permanently delete your account. </p>
+                            <div>
+                                <h3 class="block font-bold text-gray-800 dark:text-white">Delete Account</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs">Permanently delete your account.
+                                </p>
+                            </div>
                         </div>
-                    </div>
                     </button>
 
 
@@ -379,54 +534,53 @@
                             <x-backend-page-header modelName="Profile " description="Profile Details"
                                 add-button="false" class="mx-4">
                                 <x-heroicon-o-user-circle class="w-5 h-5 text-current" />
-                                </x-backend-page-header>
+                            </x-backend-page-header>
 
-                                <livewire:update-profile />
-
+                            <livewire:update-profile />
                         @endif
                     </div>
                 </div>
                 <div id="basic-tabs-2" class="hidden" role="tabpanel" aria-labelledby="basic-tabs-item-2">
                     @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-                    <x-backend-page-header modelName="Password " description="Password Details"
-                        add-button="false" class="mx-4">
-                        <x-heroicon-o-lock-closed class="w-5 h-5 text-current" />
+                        <x-backend-page-header modelName="Password " description="Password Details"
+                            add-button="false" class="mx-4">
+                            <x-heroicon-o-lock-closed class="w-5 h-5 text-current" />
                         </x-backend-page-header>
 
                         <div class="mt-10 sm:mt-0">
                             @livewire('profile.update-password-form')
                         </div>
-                @endif
+                    @endif
                 </div>
                 <div id="basic-tabs-3" class="hidden" role="tabpanel" aria-labelledby="basic-tabs-item-3">
                     @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-                    <x-backend-page-header modelName="Security " description="Multifactor Authentication"
-                        add-button="false" class="mx-4">
-                        <x-heroicon-o-shield-check class="w-5 h-5 text-current" />
+                        <x-backend-page-header modelName="Security " description="Multifactor Authentication"
+                            add-button="false" class="mx-4">
+                            <x-heroicon-o-shield-check class="w-5 h-5 text-current" />
                         </x-backend-page-header>
                         <div class="mt-10 sm:mt-0">
                             @livewire('profile.two-factor-authentication-form')
                         </div>
-                @endif
+                    @endif
                 </div>
                 <div id="basic-tabs-4" class="hidden" role="tabpanel" aria-labelledby="basic-tabs-item-4">
                     <x-backend-page-header modelName="Sessions " description="Manage Sessions" add-button="false"
-                    class="mx-4">
-                    <x-heroicon-o-cpu-chip class="w-5 h-5 text-current" />
+                        class="mx-4">
+                        <x-heroicon-o-cpu-chip class="w-5 h-5 text-current" />
                     </x-backend-page-header>
                     @livewire('profile.logout-other-browser-sessions-form')
                 </div>
                 <div id="basic-tabs-5" class="hidden" role="tabpanel" aria-labelledby="basic-tabs-item-5">
                     @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                    <x-backend-page-header modelName="Account " description="Account Deletion" add-button="false"
-                        class="mx-4">
-                        <x-heroicon-o-trash class="w-5 h-5 text-current" />
+                        <x-backend-page-header modelName="Account " description="Account Deletion" add-button="false"
+                            class="mx-4">
+                            <x-heroicon-o-trash class="w-5 h-5 text-current" />
                         </x-backend-page-header>
 
                         <div class="mt-10 sm:mt-0">
                             @livewire('profile.delete-user-form')
                         </div>
-                @endif
+                    @endif
                 </div>
 
             </div>

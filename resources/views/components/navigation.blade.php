@@ -137,7 +137,7 @@
                             <x-lucide-newspaper class="w-6 h-6 text-current" />
 
                         </span>
-                        <span class=" capitalize">{{ __('Publication 123') }}</span>
+                        <span class=" capitalize">{{ __('Publication') }}</span>
                     </a>
                 </li>
             </ul>
@@ -153,7 +153,7 @@
 
 
                         </span>
-                        <span class=" capitalize">Roles & Permissions</span>
+                        <span class=" capitalize">{{  __('Roles & Permissions') }}</span>
                     </a>
                 </li>
                 <li>
@@ -164,7 +164,7 @@
 
 
                         </span>
-                        <span class=" capitalize">Authentication Logs 45455</span>
+                        <span class=" capitalize">{{  __('Authentication Logs') }}</span>
                     </a>
                 </li>
             @endcan

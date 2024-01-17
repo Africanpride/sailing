@@ -57,7 +57,7 @@
                                             </a>
                                             <span class=" text-gray-500 dark:text-white hover:text-accent-500 z-100">
                                                 <x-heroicon-o-trash class="w-4 h-4 text-red-500 cursor-pointer"
-                                                    onclick="Livewire.dispatch('openModal', {component: 'admin.publications.delete-publications', arguments: {{ json_encode([$publication->slug]) }} })" />
+                                                    onclick="Livewire.dispatch('openModal', {component: 'delete-publication', arguments: {{ json_encode([$publication->slug]) }} })" />
                                             </span>
                                         </div>
 

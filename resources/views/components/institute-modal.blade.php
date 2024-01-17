@@ -12,13 +12,17 @@
                     @csrf
             @endif
             <div class="p-4 sm:p-10 overflow-y-auto">
-                <div class="mb-6 text-center">
+
+
+
+                <div class=" text-center">
                     <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-gray-200">
                         @if (isset($title))
                             {{ $title }}
                         @endif
                     </h3>
                 </div>
+
 
                 <div class="space-y-4">
 

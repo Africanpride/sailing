@@ -98,12 +98,12 @@
 
         </div>
 
-        @if (\Spatie\Permission\Models\Role::count())
+        @if (\Spatie\Permission\Models\Role::count() > 0)
             <div class="mb-6">
                 <label class="block text-gray-700 dark:text-firefly-500 text-sm font-bold my-3" for="role">
                     {{ __('Assign Role to staff') }}
                 </label>
-                <div class="w-full grid grid-cols-2 gap-2 text-gray-900 dark:text-gray-100">
+                <div class="w-full grid grid-cols-5 gap-2 text-gray-900 dark:text-gray-100">
                     @foreach (Spatie\Permission\Models\Role::all() as $role)
                         <div class="flex justify-start items-center space-x-2">
 
@@ -112,7 +112,7 @@
                                 wire:key="{{ $role->id }}"
                                 value="{{ $role->id }}" id="role-{{ $role->id }}">
 
-                            <label for="role-{{ $role->id }}" class=" text-sm leading-5  capitalize">
+                            <label for="role-{{ $role->id }}" class=" text-sm leading-5  uppercase">
                                 {{ $role->name }}
                             </label>
                         </div>
@@ -127,10 +127,8 @@
     </x-slot>
 
     <x-slot name="buttons">
-        <button wire:click="$dispatch('closeModal')"
-            class="py-2.5 px-4 inline-flex w-full  justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-firefly-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-            Cancel
-        </button>
+        <x-reset-button type="reset" class="rounded bg-red-500" wire:click="$dispatch('closeModal')">Cancel
+        </x-reset-button>
         <button wire:click="addStaff"
             class="py-2.5 px-4 inline-flex w-full justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-firefly-500 text-white hover:bg-firefly-600 focus:outline-none focus:ring-2 focus:ring-firefly-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
             Create New Staff
