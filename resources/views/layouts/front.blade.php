@@ -33,6 +33,7 @@
 
 
     <x-cookie />
+    {{-- <x-up-next /> --}}
     <x-front-header />
 
     <div class="font-sans text-gray-900 dark:text-gray-100 antialiased dark:bg-firefly-900 overflow-x-hidden">
@@ -42,6 +43,7 @@
 
     <x-footer />
     @livewireScripts
+    @livewire('wire-elements-modal')
 </body>
 
 </html>

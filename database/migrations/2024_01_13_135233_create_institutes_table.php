@@ -24,9 +24,6 @@ return new class extends Migration
             $table->string('seo')->nullable();
             $table->boolean('active')->nullable()->default(false);
             $table->string('slug')->nullable();
-            // $table->date('startDate');
-            // $table->date('endDate');
-            // $table->decimal('price', 8, 2);
             $table->timestamps();
         });
     }

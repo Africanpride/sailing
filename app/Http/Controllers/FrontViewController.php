@@ -43,6 +43,7 @@ class FrontViewController extends Controller
 
     public function donate()
     {
+        // app('flasher')->addSuccess('Your account has been re-activated.');
         return view('donate');
     }
 

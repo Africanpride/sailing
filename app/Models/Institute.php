@@ -27,9 +27,7 @@ class Institute extends Model implements HasMedia
         'seo',
         'active',
         'slug',
-        // 'startDate',
-        // 'endDate',
-        // 'price'
+
     ];
 
     public function registerMediaConversions(Media $media = null): void
