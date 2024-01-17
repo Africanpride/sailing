@@ -32,18 +32,18 @@ Route::middleware([
 
 
 Route::get('/', [FrontViewController::class, 'home'])->name('home');
+Route::get('about', [FrontViewController::class, 'about'])->name('about');
+Route::get('contact', [FrontViewController::class, 'contact'])->name('contact');
+Route::get('institutes', [FrontViewController::class, 'institutes'])->name('MyInstitutes');
 Route::get('pdf_invoice', [FrontViewController::class, 'pdf_invoice']);
-Route::get('terms', [FrontViewController::class, 'terms']);
-Route::get('help', [FrontViewController::class, 'help']);
-Route::get('topics', [FrontViewController::class, 'topics']);
-Route::get('donate', [FrontViewController::class, 'donate']);
-Route::get('privacy', [FrontViewController::class, 'privacy']);
-Route::get('dmca', [FrontViewController::class, 'dmca']);
-Route::get('about', [FrontViewController::class, 'about']);
+Route::get('privacy', [FrontViewController::class, 'privacy'])->name('privacy');
+Route::get('dmca', [FrontViewController::class, 'dmca'])->name('dmca');
+Route::get('terms', [FrontViewController::class, 'terms'])->name('terms');
+Route::get('help', [FrontViewController::class, 'help'])->name('help');
+Route::get('topics', [FrontViewController::class, 'topics'])->name('topics');
+Route::get('donate', [FrontViewController::class, 'donate'])->name('donate');
 Route::get('documentation', [FrontViewController::class, 'documentation']);
-Route::get('contact', [FrontViewController::class, 'contact']);
 Route::get('our-process', [FrontViewController::class, 'ourProcess']);
-Route::get('institutes', [FrontViewController::class, 'institutes']);
 Route::get('news', [FrontViewController::class, 'news'])->name('news');
 
 Route::post('contact', ContactController::class)->name('contact-form');

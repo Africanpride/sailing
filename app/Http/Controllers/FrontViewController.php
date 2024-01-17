@@ -75,4 +75,8 @@ class FrontViewController extends Controller
     {
         return view('contact');
     }
+    public function institutes()
+    {
+        return view('institutes.index');
+    }
 }

@@ -1,14 +1,15 @@
 <div
     class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover] py-3 md:py-4">
     <span type="button"
-        class=" flex items-center w-full text-firefly-500 hover:text-firefly-400 text-md  dark:text-firefly-400 dark:hover:text-firefly-500">
+        class=" flex items-center w-full   ">
 
-        <div
-            class="text-firefly-700 dark:text-firefly-200 flex justify-start items-center">
-            <x-menu url="/institutes">
-                Institutes
-            </x-menu>
-        </div>
+        <a href="{{ url('/institutes') }}"
+            class="font-bold uppercase dark:text-white hover:text-yellow-700
+        {{ request()->is('institutes') ? 'text-yellow-500 dark:text-yellow-500 hover:dark:text-firefly-400' : 'hover:dark:text-firefly-400' }}">
+           {{ __('Institutes') }}
+        </a>
+        {{-- <div class="text-firefly-700 dark:text-firefly-200 flex justify-start items-center">
+        </div> --}}
         <svg class="ml-2 w-2.5 h-2.5 text-firefly-600" width="16" height="16" viewBox="0 0 16 16" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor"
@@ -30,7 +31,7 @@
                                 class="flex-shrink-0 w-14 h-14 mt-1">
                             <div class="grow">
                                 <p class="text-md  text-firefly-800 dark:text-firefly-200 capitalize">
-                                    {{ $firstFourInstitutes->name }} <br/>
+                                    {{ $firstFourInstitutes->name }} <br />
                                     <span
                                         class="text-md  text-firefly-500 group-hover:text-firefly-800 dark:group-hover:text-firefly-200 uppercase">
                                         ({{ $firstFourInstitutes->acronym }})
