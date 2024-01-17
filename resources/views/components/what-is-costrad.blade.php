@@ -114,11 +114,11 @@
     <!-- End Icon Blocks -->
 
     <div class="mx-auto py-6 text-center w-full">
-        <a href="#"> <button class="cbutton font-bold">Learn More About
-                costrad</button>
-        </a>
-        {{-- <a href="{{ route('institute.show', [$costrad->slug]) }}"> <button class="cbutton font-bold">Learn More About
+        {{-- <a href="#"> <button class="cbutton font-bold">Learn More About
                 costrad</button>
         </a> --}}
+        <a href="{{ route('institutes.show', [$costrad->slug]) }}"> <button class="cbutton font-bold">Learn More About
+                costrad</button>
+        </a>
     </div>
 </div>

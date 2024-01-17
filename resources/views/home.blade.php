@@ -1,4 +1,5 @@
 <x-front-layout>
+
     <section class="max-w-8xl p-4 md:px-8   mx-auto  ">
         <div class="{{ $isMobile ? '' : 'kenburns' }} min-h-[55svh] bg-center bg-cover bg-no-repeat relative rounded-3xl md:min-h-[85svh] h-[95svh]"
             style="background-image: url('{{ asset('images/main/un2.jpg') }}');">
@@ -146,6 +147,38 @@
     </section>
 
 
+    <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto  ">
+        <div class="{{ $isMobile ? '' : 'kenburns' }} min-h-[55vh] bg-center bg-cover bg-no-repeat relative rounded-3xl md:min-h-[85vh]"
+            style="background-image: url('{{ asset('images/main/quarterglobe.jpg') }}');">
 
-{{-- <x-subscribe /> --}}
+            <div class="bottom-0 left-0 md:left-auto md:mx-0 md:text-left mx-auto p-6 right-0 text-center">
+                <!-- Card -->
+                <div
+                    class="min-h-[35vh]  bg-center bg-cover bg-no-repeat relative  md:min-h-[85vh] h-full text-center flex justify-center items-center  ">
+                    <h1 class=" max-w-6xl md:text-3xl uppercase font-['anton'] text-3xl lg:text-4xl text-gray-100 ">
+                        We invite you to partner with us in developing leaders who have the capacity and vision to
+                        create
+                        lasting and positive change in all domains of life.
+                    </h1>
+
+                </div>
+                <!-- End Card -->
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto">
+
+        <div
+            class=" min-h-[600px] mx-auto rounded-2xl border  border-gray-300/10 text-center space-y-5
+         bg-firefly-500/10 dark:bg-black py-16 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
+         from-firefly-900 to-firefly-900/80">
+            <x-institutes-intro />
+
+        </div>
+
+    </section>
+
+
+<x-subscribe />
 </x-front-layout>

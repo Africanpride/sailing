@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            // $table->ulid('id')->primary();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('overview')->nullable();
@@ -22,8 +21,6 @@ return new class extends Migration
             $table->unsignedBigInteger('like')->default(0);
             $table->boolean('active')->default(true);
             $table->foreignUlid('user_id')->constrained()->nullable();
-            // $table->foreignId('user_id')->constrained();
-
             $table->foreignId('category_id')->default(1);
             $table->timestamps();
         });

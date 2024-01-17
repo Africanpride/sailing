@@ -30,6 +30,39 @@ class Institute extends Model implements HasMedia
 
     ];
 
+    protected $appends = [
+        'frontend_url',
+        'institute_logo',
+        'institute_banner_url',
+        'services',
+        'progress',
+        'duration',
+        'featured_image',
+        'local_currency',
+
+    ];
+
+    public function getRouteKeyName() : string
+    {
+        return 'slug';
+    }
+
+    // Fetch institute logo attribute
+    public function getInstituteLogoAttribute(): string
+    {
+        return asset("storage/{$this->logo}");
+    }
+    public function getFeaturedImageAttribute(): string
+    {
+
+        return ($this->getFirstMediaUrl('featured_image') != null) ? $this->getFirstMediaUrl('featured_image')  :  $this->getFirstMediaUrl('banner');
+    }
+
+    public function getFrontendUrlAttribute()
+    {
+        return route('institutes.show', ['slug' => $this->slug]);
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this

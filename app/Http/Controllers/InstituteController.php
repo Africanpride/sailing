@@ -13,7 +13,11 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        //
+        $institutes = Institute::get();
+        $nextInstitute = Institute::where('acronym', 'fdi')
+            ->first();
+
+        return view('institutes.index', compact('institutes', 'nextInstitute'));
     }
 
     /**
@@ -27,17 +31,18 @@ class InstituteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInstituteRequest $request)
-    {
-        //
-    }
+    // public function store(StoreInstituteRequest $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
      */
     public function show(Institute $institute)
     {
-        //
+
+        return view('institutes.show', compact('institute'));
     }
 
     /**
@@ -51,10 +56,10 @@ class InstituteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateInstituteRequest $request, Institute $institute)
-    {
-        //
-    }
+    // public function update(UpdateInstituteRequest $request, Institute $institute)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

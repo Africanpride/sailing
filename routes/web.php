@@ -1,10 +1,13 @@
 <?php
 
+use App\Models\Institute;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\FrontViewController;
+use App\Http\Controllers\DisplayInstituteController;
+use App\Http\Controllers\InstituteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +56,16 @@ Route::resource('donation', DonationController::class);
 Route::get('auth/google', [SocialController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [App\Http\Controllers\SocialController::class, 'handleGoogleCallback']);
 
+// display a particular institute using slug as parameter for the flrontend
+
+Route::resource('institutes', InstituteController::class);
+
+// Route::get('/institutes/{slug}', DisplayInstituteController::class)->name('institute.show');
+// Route::get('/institutes/{slug}', DisplayInstituteController::class)->name('institute.show');
+// Route::get('institutes', function () {
+//     $institutes = Institute::get();
+//     $nextInstitute = Institute::where('acronym','fdi')
+//         ->first();
+
+//     return view('institutes.index', compact('institutes', 'nextInstitute'));
+// })->name('institutes');

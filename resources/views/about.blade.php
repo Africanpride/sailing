@@ -17,7 +17,7 @@
                                 <x-slot name="paragraph">
 
                                     The College of Sustainable Transformation and Development (<a
-                                        href="{{ route('institute.show', [\App\Models\Institute::whereAcronym('costrad')->first()->slug]) }}"
+                                        href="{{ route('institutes.show', [\App\Models\Institute::whereAcronym('costrad')->first()->slug]) }}"
                                         class=" bg-clip-text bg-gradient-to-l from-firefly-600 to-violet-500 text-transparent dark:from-firefly-400 dark:to-violet-400 font-bold">COSTrAD</a>)
                                     is an initiative of the Logos-Rhema Foundation for Leadership Resource Development,
                                     a Non-Governmental Foundation registered in Ghana.
@@ -332,7 +332,7 @@
                                 <div
                                     class="flex md:flex-col justify-start items-center gap-2 text-center text-white space-y-2 font-extrabold font-['inter'] text-sm md:text-lg">
                                     <a class="flex flex-shrink-0 hover:-translate-y-1 items-center justify-center text-center transition"
-                                        href="{{ $institute->frontend_url }}">
+                                        href="{{ route('institutes.show',[$institute]) }}">
                                         <img class="w-16 md:w-24" src="{{ $institute->institute_logo }}"
                                             alt="{{ $institute->name }}">
                                     </a>
@@ -343,7 +343,7 @@
                             @endforeach
                         </div>
                         <div class="mx-auto text-center max-w-2xl pt-5">
-                            <a href="{{ route('institutes') }}">
+                            <a href="{{ route('institutes.index') }}">
                                 <x-button
                                     class="!mx-auto md:!w-1/3 text-center bg-firefly-800 dark:bg-firefly-900 dark:hover:bg-firefly-800 py-3 text-xl !font-extrabold ">
                                     {{ __('Institutes') }}
@@ -396,6 +396,8 @@
             </div>
             <!-- End Grid -->
         </section>
+
+
         <!-- End agenda -->
         <section class="max-w-8xl p-4 md:p-8   mx-auto">
 
@@ -404,10 +406,11 @@
             bg-slate-500/10 dark:bg-black py-16 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
              from-firefly-900 to-firefly-900/80">
 
-                {{-- <livewire:team /> --}}
+             <x-team />
 
             </div>
         </section>
+
 
 
     </div>
@@ -415,6 +418,6 @@
 
 
 
-
+<x-subscribe />
 
 </x-front-layout>

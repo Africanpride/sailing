@@ -47,7 +47,7 @@ class Publication extends Model implements HasMedia
 
     protected $appends = [
         'frontend_url',
-        'newsroom_image',
+        'publication_image',
         'estimated_read_time'
     ];
 
@@ -59,7 +59,7 @@ class Publication extends Model implements HasMedia
         return $readingTime . ' min read'; // Display estimated reading time in minutes
 
     }
-    public function getNewsroomImageAttribute(): string
+    public function getPublicationImageAttribute(): string
     {
         return asset("storage/{$this->featured_image}");
     }
