@@ -29,6 +29,7 @@ return new class extends Migration
             $table->boolean('ban')->default(false);
             $table->string('google_id')->nullable();
             $table->string('apple_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -9,14 +9,15 @@ use App\Models\Profile;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\HasProfilePhoto;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -84,7 +85,18 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'name',
+
     ];
+
+    // public function getBanAttribute(): bool
+    // {
+    //     return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
+    // }
+    public function isBanned(): bool
+    {
+        return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
+    }
 
     public function toSearchableArray()
     {
@@ -193,6 +205,7 @@ class User extends Authenticatable
         return $this->last_seen > $timestamp;
     }
 
+
     public function isSuperAdmin(): bool
     {
         return $this->hasRole('super_admin');
@@ -249,6 +262,11 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function donations(): HasMany
+    {
+        return $this->hasMany(Donation::class);
     }
 
     protected static function boot()

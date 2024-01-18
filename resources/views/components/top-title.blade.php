@@ -1,5 +1,7 @@
 <div>
+
     <div class="mx-auto  ">
+
         <div
             {{ $attributes->merge([
                 'class' => 'overflow-hidden relative bg-firefly-50 dark:bg-firefly-900 dark:text-firefly-50

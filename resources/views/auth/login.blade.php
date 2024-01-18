@@ -11,6 +11,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if (session('banned'))
+            <div class="mb-4 font-medium text-sm text-red-600 dark:text-red-500">
+                {{ session('banned') }}
+            </div>
+        @endif
 
         <x-google-sign-in instruction="Login with Google" />
 

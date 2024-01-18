@@ -6,12 +6,13 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Donation extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUlids;
 
     protected $fillable = [
 
@@ -43,7 +44,8 @@ class Donation extends Model
     }
     public static function getDonor()
     {
-        $defaultDonor = User::whereEmail(config('app.email'))->first(); // Default donor is webmaster ;-)
+        // Default donor is webmaster ;-) because we'll have to say thank you!
+        $defaultDonor = User::whereEmail(config('app.email'))->first();
         if(Auth::check()) {
            return Auth::user()->id;
         }
@@ -56,8 +58,8 @@ class Donation extends Model
         return Str::random(10) . '-' . 'donation';
     }
 
-    // public function donor()
-    // {
-    //     $this->belongsTo(User::class, 'user_id');
-    // }
+    public function donor()
+    {
+        $this->belongsTo(User::class);
+    }
 }

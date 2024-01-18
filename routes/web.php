@@ -4,11 +4,12 @@ use App\Models\Institute;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FrontViewController;
-use App\Http\Controllers\DisplayInstituteController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\DisplayInstituteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,20 @@ use App\Http\Controllers\PublicationController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])
+    ->name('pay')
+    ->middleware('auth', 'preventduplicatetransaction');
+
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])
+    ->name('payment')
+    ->middleware('verifyWebhookIP');
+
+
+
+Route::get('banned', function () {
+    return view('auth.banned');
+})->name('banned')->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

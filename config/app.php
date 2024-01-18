@@ -17,6 +17,10 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'email' => env('APP_EMAIL', 'webmaster@costrad.org'),
+    'openExchange' => env('OPEN_EXCHANGE_RATES_APP_ID'),
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -172,6 +176,8 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+
 
     ])->toArray(),
 
@@ -188,6 +194,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
         'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
