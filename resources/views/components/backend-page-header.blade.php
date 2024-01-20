@@ -38,9 +38,4 @@ inline-flex items-center gap-1.5 py-3 px-6  rounded-full  sm:text-sm bg-gray-200
         </span>
     </div>
 
-
-
-
-
-
 </div>

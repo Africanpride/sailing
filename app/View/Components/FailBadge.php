@@ -11,10 +11,13 @@ class FailBadge extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
-    }
+
+ // show add button or not // public String $icon = '<x-heroicon-o-ellipsis-vertical class="w-6 h-6 text-current" />';
+
+    public function __construct(
+        // public string $type,
+        public string $message = "Hello World" ,
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

@@ -19,6 +19,17 @@ class Publication extends Model implements HasMedia
 
     protected $fillable = ['title', 'slug', 'active', 'overview', 'body','like', 'featured_image', 'user_id'];
 
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    protected $appends = [
+        'frontend_url',
+        'publication_image',
+        'estimated_read_time',
+        'publication_image',
+
+    ];
 
     public function getRouteKeyName() : string
     {
@@ -41,15 +52,7 @@ class Publication extends Model implements HasMedia
     }
 
 
-    protected $casts = [
-        'active' => 'boolean',
-    ];
 
-    protected $appends = [
-        'frontend_url',
-        'publication_image',
-        'estimated_read_time'
-    ];
 
     public function GetEstimatedReadTimeAttribute()
     {
@@ -61,8 +64,15 @@ class Publication extends Model implements HasMedia
     }
     public function getPublicationImageAttribute(): string
     {
-        return asset("storage/{$this->featured_image}");
+        // Check if featured_image is set
+        if ($this->featured_image) {
+            return asset("storage/{$this->featured_image}");
+        } else {
+            // Return the URL of your default image
+            return asset("/public/images/main/banner2.jpg");
+        }
     }
+
 
 
 

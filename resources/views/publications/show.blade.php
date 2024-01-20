@@ -11,6 +11,7 @@
 
 
                 @foreach ($latestPublication as $latest)
+
                     <li>
                         <!-- component -->
                         <div
@@ -18,7 +19,7 @@
                             <a href="{{ route('publications.show', $latest) }}"
                                 class="h-auto w-auto aspect-video rounded-md object-cover">
                                 <img alt="{{ $latest->title }}"
-                                    src="{{ $latest->getFirstMediaUrl('featured_image') ? $latest->getFirstMediaUrl('featured_image') : $latest->featured_image }}&auto=format&fit=crop&w=1770&q=80"
+                                    src="{{ $latest->getFirstMediaUrl('featured_image') ? $latest->getFirstMediaUrl('featured_image') : $latest->publication_image }}"
                                     class="h-auto w-auto aspect-video rounded-md object-cover" />
                             </a>
                             <div class="flex flex-col justify-between p-1 sm:flex-1 space-y-2">

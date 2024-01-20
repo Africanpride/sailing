@@ -132,12 +132,12 @@
 
                 <li>
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-firefly-900 hover:bg-firefly-100 focus:ring-2 focus:ring-blue-500 dark:text-firefly-500 dark:hover:bg-firefly-700 dark:hover:text-firefly-300"
-                        href="{{ url('newsroom.index') }}">
+                        href="{{ route('publications-list') }}">
                         <span class="flex ">
                             <x-lucide-newspaper class="w-6 h-6 text-current" />
 
                         </span>
-                        <span class=" capitalize">{{ __('Newsroom') }}</span>
+                        <span class=" capitalize">{{ __('Publication') }}</span>
                     </a>
                 </li>
 
@@ -150,7 +150,7 @@
             <ul>
                 <li>
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-firefly-900 hover:bg-firefly-100 focus:ring-2 focus:ring-blue-500 dark:text-firefly-500 dark:hover:bg-firefly-700 dark:hover:text-firefly-300"
-                        href="{{ url('roles') }}">
+                        href="{{ route('roles') }}">
                         <span class="flex ">
                             <x-heroicon-o-document-check class="w-6 h-6 text-current" />
 

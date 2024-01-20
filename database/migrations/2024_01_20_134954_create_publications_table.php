@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('featured_image')->nullable();
             $table->unsignedBigInteger('like')->default(0);
             $table->boolean('active')->default(true);
+            $table->boolean('approved')->default(false);
             $table->foreignUlid('user_id')->constrained()->nullable();
             $table->foreignId('category_id')->default(1);
             $table->timestamps();

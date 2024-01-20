@@ -110,6 +110,8 @@
                                     </svg>
                                     Tweet
                                 </a>
+
+
                             </div>
                             <!-- End Button Group -->
                         </div>
@@ -126,7 +128,7 @@
                 <!-- Overview -->
                 <figure>
                     <img class=" object-cover rounded-xl w-full aspect-video"
-                        src="{{ $publication->getFirstMediaUrl('featured_image') ? $publication->getFirstMediaUrl('featured_image') : $publication->featured_image }}"
+                        src="{{ $publication->getFirstMediaUrl('featured_image') ? $publication->getFirstMediaUrl('featured_image') : $publication->publication_image }}"
                         alt="Image Description">
                     <figcaption class="mt-3 text-sm text-left text-gray-500">
                         {{ $publication->overview }}
@@ -276,7 +278,7 @@
                 @auth
                     @if (Auth::user()->isAdmin())
                         <div class="block h-3 border-r border-gray-300 mx-3 dark:border-gray-600"></div>
-                        <form action="{{ route('publication.edit', $publication) }}">
+                        <form action="{{ route('publications.edit', $publication) }}">
                             @csrf
                             <button type="submit"
                                 class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">

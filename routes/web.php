@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Institute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\DisplayInstituteController;
+use App\Models\Publication;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,11 +57,14 @@ Route::get('documentation', [FrontViewController::class, 'documentation']);
 Route::get('our-process', [FrontViewController::class, 'ourProcess']);
 
 
+Route::resource('donation', DonationController::class);
 Route::post('contact', ContactController::class)->name('contact-form');
+
 // Route::resource('newsroom', NewsroomController::class);
 // Route::get('/news/{newsroom:slug}', [NewsroomController::class, 'show'])->name('news.show');
 
-Route::resource('donation', DonationController::class);
+Route::resource('institutes', InstituteController::class);
+Route::resource('publications', PublicationController::class);
 
 // payment & Social Logins
 Route::get('auth/google', [SocialController::class, 'redirectToGoogle']);
@@ -67,8 +72,6 @@ Route::get('auth/google/callback', [App\Http\Controllers\SocialController::class
 
 // display a particular institute using slug as parameter for the flrontend
 
-Route::resource('institutes', InstituteController::class);
-Route::resource('publications', PublicationController::class);
 
 // Route::get('/institutes/{slug}', DisplayInstituteController::class)->name('institute.show');
 // Route::get('/institutes/{slug}', DisplayInstituteController::class)->name('institute.show');
@@ -83,6 +86,31 @@ Route::resource('publications', PublicationController::class);
 
 // ADMINISTRATION ROUTES
 
+Route::get('admin/publications-list', function () {
+    $publications = Publication::paginate(10);
+
+    return view('admin/publications-list', compact('publications'));
+})->name('publications-list');
+
+Route::get('/roles/manage-roles', function () {
+    $users = User::all();
+    $admins = User::role(['admin', 'super_admin'])->get();
+
+    return view('admin/roles/manage-roles', compact('users','admins'));
+})->name('roles');
+
+Route::get('logs', function () {
+    return view('admin.logs');
+})->name('logs');
+Route::get('table', function () {
+    $logs = DB::table('authentication_log')
+    ->select('authentication_log.authenticatable_id', 'ip_address', 'login_at', 'login_successful', 'users.email'
+    , 'users.firstName' , 'users.lastName', 'users.profile_photo_path')
+    ->join('users', 'users.id', '=', 'authentication_log.authenticatable_id')
+    ->paginate(7);
+
+    return view('tableModule', compact('logs'));
+})->name('table');
 
 
 
@@ -104,9 +132,6 @@ Route::middleware([
             return view('profile.show');
         });
 
-        Route::get('logs', function () {
-            return view('admin.logs');
-        })->name('logs');
 });
 
 Route::get('documentation', function() {

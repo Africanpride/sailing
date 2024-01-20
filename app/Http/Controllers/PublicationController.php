@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Publication;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,12 @@ class PublicationController extends Controller
      */
     public function create()
     {
+        // Allow to create article for approval if allowed
+        // abort_if(!Auth::user()->canCreate(), 403, __("Vous ne pouvez pas créer de publication"));
+        $categories = Category::all();
+        return view('publications.create', compact('categories'));
+
+
     }
 
     /**
@@ -81,7 +88,7 @@ class PublicationController extends Controller
      */
     public function edit(Publication $publication)
     {
-        //
+        dd("We hit Editing");
     }
 
     /**

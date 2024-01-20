@@ -53,6 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'staff',
         'active',
         'ban',
+        'timezone',
         'google_id',
         'apple_id'
     ];
@@ -91,6 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
         'name',
+        'isLoggedIn',
 
     ];
 
@@ -102,6 +104,12 @@ class User extends Authenticatable implements MustVerifyEmail
     // {
     //     return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
     // }
+
+    public function publications(): hasMany
+    {
+        return $this->hasMany(Publication::class);
+    }
+
     public function isBanned(): bool
     {
         return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
@@ -203,6 +211,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
     }
 
+    public function getisLoggedInAttribute(): bool
+    {
+        return Auth::check();
+    }
     public function isLoggedIn(): bool
     {
         return Auth::check();

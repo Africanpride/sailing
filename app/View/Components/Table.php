@@ -6,20 +6,17 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class SuccessBadge extends Component
+class Table extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $message = "Success")
-    {
-    }
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.success-badge');
+        return view('components.table');
     }
 }
