@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Institute;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ContactController;
@@ -36,15 +37,7 @@ Route::get('banned', function () {
     return view('auth.banned');
 })->name('banned')->middleware('auth');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
 
 
 Route::get('/', [FrontViewController::class, 'home'])->name('home');
@@ -86,3 +79,41 @@ Route::resource('publications', PublicationController::class);
 
 //     return view('institutes.index', compact('institutes', 'nextInstitute'));
 // })->name('institutes');
+
+
+// ADMINISTRATION ROUTES
+
+
+
+
+
+
+// REQUIRES USER AUTHENTICATION
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    config('jetstream.auth_session'),
+    'verified',
+    ])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+        // User profile
+        Route::get('/profile', function () {
+            return view('profile.show');
+        });
+
+        Route::get('logs', function () {
+            return view('admin.logs');
+        })->name('logs');
+});
+
+Route::get('documentation', function() {
+    return view('documentation');
+});
+Route::get('tabs', function() {
+return view('tabs');
+});
+
+

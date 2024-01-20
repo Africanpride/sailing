@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body class="font-sans antialiased">
-        <x-banner />
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @livewire('navigation-menu')
+    <!-- Styles -->
+    @livewireStyles
+</head>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+<body
+    class="font-sans text-gray-900 dark:text-gray-100 antialiased dark:bg-firefly-900 overflow-x-hidden scrollbar-thin
+scrollbar-thumb-firefly-800 scrollbar-track-gray-300 overflow-y-scroll ">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <x-cookie />
+<div class="grid md:grid-cols-12 gap-2">
+    <div class="md:col-span-2 w-full relative">
+        <!-- Navigation -->
+        <x-navigation />
+        <!-- End Navigation -->
+    </div>
+
+    <div class="md:col-span-10 w-full overflow-x-hidden">
+
+        <!-- Content -->
+        <div class="w-full  min-h-screen ">
+            <!-- ========== HEADER ========== -->
+            <x-app-header />
+            <!-- Sidebar Toggle -->
+            <x-sidebar-toggle />
+            <!-- End Sidebar Toggle -->
+            <!-- ========== END HEADER ========== -->
+            {{ $slot }}
+            <!-- Footer -->
+            <x-footer />
+            <!-- End Footer -->
         </div>
+        <!-- End Content -->
 
-        @stack('modals')
+    </div>
 
-        @livewireScripts
-    </body>
+
+</div>
+
+    <x-all-modals />
+    @stack('modals')
+
+    @livewireScripts
+</body>
+
 </html>

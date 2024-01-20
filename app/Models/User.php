@@ -13,13 +13,15 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -28,6 +30,8 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasUlids;
     use HasRoles;
+    use Notifiable, AuthenticationLoggable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +45,7 @@ class User extends Authenticatable
         'email_verified_at',
         'password',
         'avatar',
+        'timezone',
         'social_avatar',
         'facultyMember',
         'participant',
@@ -88,6 +93,10 @@ class User extends Authenticatable
         'name',
 
     ];
+
+    public $incrementing = false;
+    protected $primaryKey = 'id';
+    protected $keyType = 'ulid';
 
     // public function getBanAttribute(): bool
     // {
