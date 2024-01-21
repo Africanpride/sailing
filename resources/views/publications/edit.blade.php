@@ -6,8 +6,10 @@
 
     <!-- Card Section -->
     <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <form method="POST" action="{{ route('publications.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('publications.update', $publication) }}" enctype="multipart/form-data">
             @csrf
+            @method('patch')
+
             <!-- Card -->
             <div class="bg-gray-200 rounded-xl shadow dark:bg-slate-950 p-5">
 
@@ -21,7 +23,10 @@
                                 <div class="flex items-center h-5 ">
                                     <input id="hs-checkbox-delete" name="active" type="checkbox"
                                         class="border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                        aria-describedby="hs-checkbox-delete-description" checked>
+                                        aria-describedby="hs-checkbox-delete-description"
+                                        {{ $publication->active ? 'checked' : '' }}>
+
+
                                 </div>
                                 <label for="hs-checkbox-delete" class="ms-3">
                                     <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Mark
@@ -39,9 +44,11 @@
 
                             <input id="af-submit-app-project-name" type="text" name="title"
                                 class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                                placeholder="Enter Publication Title">
+                                autocomplete="{{ $publication->title }}"
+                                placeholder="{{ $publication->title ?? __('News Title.') }}"
+                                value="{{ old('title', $publication->title) }}" required />
 
-                                <x-input-error for="title" class="mt-2" />
+                            <x-input-error for="title" class="mt-2" />
                         </div>
 
                         <div class="space-y-2">
@@ -52,9 +59,8 @@
 
                             <textarea id="af-submit-app-description" name="overview"
                                 class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                                rows="6"
-                                placeholder="A detailed summary will better explain your products to the audiences. Our users will see this in your dedicated product page."></textarea>
-                                <x-input-error for="overview" class="mt-2" />
+                                rows="6" placeholder="{{ $publication->overview ?? __('Publication Overview') }}">{{ old('overview', optional($publication)->overview) }}</textarea>
+                            <x-input-error for="overview" class="mt-2" />
                         </div>
 
                         <div class="space-y-2">
@@ -94,10 +100,9 @@
 
                             <select id="af-submit-app-category" name="category"
                                 class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                                <option selected>Select a category</option>
-                                <option value="" selected disabled hidden>Select Category</option>
+                                <option >Select a category</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    <option selected value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
 
@@ -110,8 +115,8 @@
                                 <textarea name="body" id="bodycontent" spellcheck="true" rows=""
                                     class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm
                                  dark:bg-firefly-900 dark:border-gray-700 dark:text-gray-400"
-                                    placeholder="{{ __('You Can copy from any word processor Content (Eg. Microsoft Word.)') }}">{{ old('body') }}</textarea>
-                                    <x-input-error for="body" class="mt-2" />
+                                    placeholder="{{ __('You Can copy from any word processor Content (Eg. Microsoft Word.)') }}">{{ old('body', optional($publication)->body) }}</textarea>
+                                <x-input-error for="body" class="mt-2" />
                             </div>
 
 
@@ -151,5 +156,3 @@
 
     <x-tinymce-dark-mode-script-and-style />
 </x-app-layout>
-
-{{-- @livewire('tinymce-dark-mode-script-and-style') --}}

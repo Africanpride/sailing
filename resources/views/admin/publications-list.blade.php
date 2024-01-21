@@ -39,12 +39,11 @@
                         <div class="container grid grid-cols-12 mx-auto ">
                             <a href="{{ route('publications.show', $publication ) }}" class="relative grid place-items-center bg-no-repeat bg-cover  bg-gray-700 col-span-full md:col-span-3 md:rounded-l-xl  "
                                 style="background-image: url('{{ ($publication->getFirstMediaUrl('featured_image')) ? $publication->getFirstMediaUrl('featured_image') : $publication->featured_image }}'); background-position: center center; background-blend-mode: multiply; background-size: cover;">
-                                {{-- <img class="md:w-22 md:p-6 p-24 aspect-square relative rounded-full" src="{{ $publication->featured_image }}"
-                                alt="{{ $publication->title }}"> --}}
-                                {{-- <span class="absolute top-3 right-3 cursor-pointer"
+
+                                <span class="absolute top-3 right-3 cursor-pointer"
                                     onclick="Livewire.dispatch('openModal', {component: 'admin.publications.update-images', arguments: {{ json_encode([$publication->slug]) }} })">
                                     <x-lucide-image-plus class="w-4 h-4 text-firefly-500" />
-                                </span> --}}
+                                </span>
                             </a>
 
                             <div
@@ -65,7 +64,7 @@
                                     </div>
                                 @endhasrole
 
-                                {{--
+
                                 <div
                                     class="bg-gray-300/80 dark:bg-slate-800 rotate-180 p-2 [writing-mode:_vertical-lr] absolute left-0 bottom-0 h-full">
                                     <time datetime="2022-10-10"
@@ -76,7 +75,7 @@
                                         <span class="w-px flex-1 bg-gray-900/50 dark:bg-white/10"></span>
                                         <span>{{ \Carbon\Carbon::parse($publication->created_at)->format('M jS') }}</span>
                                     </time>
-                                </div> --}}
+                                </div>
 
                                 <h1 class="text-lg font-bold ">{{ $publication->title }}
                                 </h1>
@@ -101,7 +100,7 @@
                                                 class="flex items-center justify-between bg-firefly-800/80 px-3 rounded-xl  text-[10px]
                                                  text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 gap-2">
                                                 By: <span class="uppercase">
-                                                    {{-- {{ $publication->author->full_name }} --}}
+                                                    {{ $publication->author->full_name }}
                                                 </span>
 
                                             </span>

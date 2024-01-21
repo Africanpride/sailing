@@ -9,9 +9,20 @@ class UpdatePublicationRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
+
+    private function toBoolean($booleable)
+    {
+        return filter_var($booleable, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'active' => $this->toBoolean($this->active),
+        ]);
+    }
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +33,12 @@ class UpdatePublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|max:255',
+            'overview' => 'nullable',
+            'body' => 'required',
+            'featured_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'active' => 'boolean',
+            'category_id' => 'exists:categories,id',
         ];
     }
 }

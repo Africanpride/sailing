@@ -37,70 +37,72 @@
     <!-- vision -->
 
 
-    <section class="mx-auto max-w-8xl px-4">
-        <div class="flex flex-col md:flex-row gap-4 md:gap-3">
-            <div class="w-full md:w-2/3 ">
-                <a class="relative rounded-3xl block" style="height: 24em;"
-                    href="{{ route('publications.show', [$firstLatest]) }}">
+    @if ($publications->count() > 0)
+        <section class="mx-auto max-w-8xl px-4">
+            <div class="flex flex-col md:flex-row gap-4 md:gap-3">
+                <div class="w-full md:w-2/3 ">
+                    <a class="relative rounded-3xl block" style="height: 24em;"
+                        href="{{ route('publications.show', [$firstLatest]) }}">
 
-                    <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
+                        <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
 
-                    <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
-                        style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
-                    <img src="{{ $firstLatest->getFirstMediaUrl('featured_image') ? $firstLatest->getFirstMediaUrl('featured_image') : $firstLatest->featured_image }}"
-                        class="absolute left-0 top-0 w-full h-full  z-0 object-cover rounded-xl">
-                    <div class="p-4 absolute bottom-0 left-0 z-20">
-                        <span
-                            class="px-4 py-1 bg-firefly-800  text-gray-200 inline-flex items-center justify-center mb-2">{{ $firstLatest->category->title }}
-                        </span>
-                        <h2 class="text-4xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
-                            {{ $firstLatest->title }}
-                        </h2>
-                        {{-- <div class="flex mt-3">
-                            <img src="{{ $firstLatest->author?->profile_photo_url ??  }}"
-                                class="h-10 w-10 rounded-full mr-2 object-cover">
-                            <div>
-                                <p class="font-semibold text-gray-200 text-sm"> {{ $firstLatest->author->full_name }}
-                                </p>
-                                <p class="font-semibold text-gray-400 text-xs">
-                                    {{ $firstLatest->updated_at->format('d-M, Y') }} </p>
-                            </div>
-                        </div> --}}
+                        <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
+                            style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
+                        <img src="{{ $firstLatest->getFirstMediaUrl('featured_image') ? $firstLatest->getFirstMediaUrl('featured_image') : $firstLatest->featured_image }}"
+                            class="absolute left-0 top-0 w-full h-full  z-0 object-cover rounded-xl">
+                        <div class="p-4 absolute bottom-0 left-0 z-20">
+                            <span
+                                class="px-4 py-1 bg-firefly-800  text-gray-200 inline-flex items-center justify-center mb-2">{{ $firstLatest->category->title }}
+                            </span>
+                            <h2 class="text-4xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
+                                {{ $firstLatest->title }}
+                            </h2>
+                            <div class="flex mt-3">
+                        <img src="{{ $firstLatest->author?->profile_photo_url }}"
+                            class="h-10 w-10 rounded-full mr-2 object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-200 text-sm"> {{ $firstLatest->author->full_name }}
+                            </p>
+                            <p class="font-semibold text-gray-400 text-xs">
+                                {{ $firstLatest->updated_at->format('d-M, Y') }}
+                            </p>
+                        </div>
                     </div>
-                </a>
-            </div>
-            <div class="w-full md:w-1/3 ">
-                <a class="relative rounded-3xl block" style="height: 24em;"
-                    href="{{ route('publications.show', [$secondLatest]) }}">
-                    <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
-                    <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
-                        style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
-                    <img src="{{ $secondLatest->getFirstMediaUrl('featured_image') ? $secondLatest->getFirstMediaUrl('featured_image') : $secondLatest->featured_image }}&auto=format&fit=crop&w=900&q=60"
-                        class="absolute left-0 top-0 w-full h-full  z-0 object-cover rounded-xl">
-                    <div class="p-4 absolute bottom-0 left-0 z-20">
-                        <span
-                            class="px-4 py-1 bg-firefly-800  text-gray-200 inline-flex items-center justify-center mb-2">{{ $secondLatest->category->title }}
-                        </span>
-                        <h2 class="text-3xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
-                            {{ $secondLatest->title }}
-                        </h2>
-                        {{-- <div class="flex mt-3">
-                            <img src="{{ $secondLatest->author->profile_photo_url }}"
-                                class="h-10 w-10 rounded-full mr-2 object-cover">
-                            <div>
-                                <p class="font-semibold text-gray-200 text-sm"> {{ $secondLatest->author->full_name }}
-                                </p>
-                                <p class="font-semibold text-gray-400 text-xs">
-                                    {{ $secondLatest->updated_at->format('d-M, Y') }} </p>
-                            </div>
-                        </div> --}}
+                        </div>
+                    </a>
+                </div>
+                <div class="w-full md:w-1/3 ">
+                    <a class="relative rounded-3xl block" style="height: 24em;"
+                        href="{{ route('publications.show', [$secondLatest]) }}">
+                        <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
+                        <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
+                            style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
+                        <img src="{{ $secondLatest->getFirstMediaUrl('featured_image') ? $secondLatest->getFirstMediaUrl('featured_image') : $secondLatest->featured_image }}"
+                            class="absolute left-0 top-0 w-full h-full  z-0 object-cover rounded-xl">
+                        <div class="p-4 absolute bottom-0 left-0 z-20">
+                            <span
+                                class="px-4 py-1 bg-firefly-800  text-gray-200 inline-flex items-center justify-center mb-2">{{ $secondLatest->category->title }}
+                            </span>
+                            <h2 class="text-3xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
+                                {{ $secondLatest->title }}
+                            </h2>
+                            <div class="flex mt-3">
+                        <img src="{{ $secondLatest->author->profile_photo_url }}"
+                            class="h-10 w-10 rounded-full mr-2 object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-200 text-sm"> {{ $secondLatest->author->full_name }}
+                            </p>
+                            <p class="font-semibold text-gray-400 text-xs">
+                                {{ $secondLatest->updated_at->format('d-M, Y') }} </p>
+                        </div>
                     </div>
-                </a>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    {{-- <section class=" overflow-hidden p-4 relative z-20 ">
+        </section>
+    @endif
+    <section class=" overflow-hidden p-4 relative z-20 ">
 
 
 
@@ -116,13 +118,13 @@
                         from-firefly-900 to-firefly-900/80 !text-gray-600
          ">
                         <div class="flex w-full h-full flex-wrap  overflow-hidden rounded-t md:rounded-l-xl">
-                            <a href="{{ route('news.show', $article) }}" class="md:w-4/12">
+                            <a href="{{ route('publications.show', $article) }}" class="md:w-4/12">
                                 <img class="object-cover h-full w-full"
-                                    src={{ $article->getFirstMediaUrl('featured_image') ? $article->getFirstMediaUrl('featured_image') : $article->featured_image }}&auto=format&fit=crop&w=900&q=60" />
+                                    src="{{ $article->getFirstMediaUrl('featured_image') ? $article->getFirstMediaUrl('featured_image') : $article->featured_image }}" />
                             </a>
 
                             <div class="md:w-8/12 p-5 pr-10 ">
-                                <a href="{{ route('news.show', $article) }}">
+                                <a href="{{ route('publications.show', $article) }}">
                                     <h2 class="dark:text-white leading-normal font-extrabold ">{{ $article->title }}
                                     </h2>
                                 </a>
@@ -175,7 +177,7 @@
 
         </div>
 
-    </section> --}}
+    </section>
 
 
     <x-subscribe />

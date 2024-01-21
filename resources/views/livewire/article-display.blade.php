@@ -11,10 +11,10 @@
             <!-- Avatar Media -->
             <div class="flex justify-between items-center mb-6">
                 <div class="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
-                    {{-- <div class="flex-shrink-0">
+                    <div class="flex-shrink-0">
                         <img wire:click="increment" class="h-12 w-12 rounded-full cursor-pointer "
                             src="{{ $publication->author?->profile_photo_url }}" alt="{{ $publication->author->full_name }}">
-                    </div> --}}
+                    </div>
 
                     <div class="grow">
                         <div class="grid sm:flex sm:justify-between sm:items-center gap-2">
@@ -22,9 +22,9 @@
                                 <!-- Tooltip -->
                                 <div class="hs-tooltip inline-block [--trigger:hover] [--placement:bottom]">
                                     <div class="hs-tooltip-toggle sm:mb-1 block text-left cursor-pointer">
-                                        {{-- <span class="font-semibold text-gray-800 dark:text-gray-200">
+                                        <span class="font-semibold text-gray-800 dark:text-gray-200">
                                             {{ $publication->author?->full_name }}
-                                        </span> --}}
+                                        </span>
 
                                         <!-- Dropdown Card -->
                                         <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 max-w-xs cursor-default bg-gray-900 divide-y divide-gray-700 shadow-lg rounded-xl dark:bg-black"
@@ -54,8 +54,9 @@
                                             <div class="flex justify-between items-center px-4 py-3 sm:px-5">
                                                 <ul class="text-xs space-x-3">
                                                     <li class="inline-block">
-                                                        <span class="font-semibold text-gray-200">
-                                                            {{ $publication->author?->news->count() }}</span>
+                                                        {{-- <span class="font-semibold text-gray-200">
+                                                            {{ $publication->author?->news->count() }}
+                                                        </span> --}}
                                                         <span class="text-gray-400">articles</span>
                                                     </li>
                                                     {{-- <li class="inline-block">

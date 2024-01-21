@@ -11,13 +11,16 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\File;
+use Spatie\Image\Enums\Fit;
+
 
 class Publication extends Model implements HasMedia
 {
 
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['title', 'slug', 'active', 'overview', 'body','like', 'featured_image', 'user_id'];
+    protected $fillable = ['title', 'slug', 'active', 'overview', 'body', 'like', 'featured_image', 'user_id'];
 
     protected $casts = [
         'active' => 'boolean',
@@ -31,19 +34,19 @@ class Publication extends Model implements HasMedia
 
     ];
 
-    public function getRouteKeyName() : string
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
-    public function getFrontendUrlAttribute() : string
+    public function getFrontendUrlAttribute(): string
     {
         return url('/') . "/" . $this->slug;
     }
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function category(): BelongsTo
@@ -78,17 +81,16 @@ class Publication extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this
-            ->addMediaConversion('preview')
-            ->fit($this->Manipulations::FIT_CROP, 300, 300)
-            ->nonQueued();
+        $this->addMediaConversion('preview')
+            ->width(368)
+            ->height(232)
+            ->sharpen(10);
     }
     public function registerMediaCollections(): void
     {
         $this->addMediaConversion('featured_image')
             ->width(1024)
-            ->height(500)
-            ->sharpen(10);
+            ->height(500);
 
         $this->addMediaConversion('banner')
             ->width(1024)

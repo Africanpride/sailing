@@ -19,6 +19,9 @@
     },
     "dependencies": {
         "@preline/tabs": "^2.0.2",
+        "@tiptap/core": "^2.1.16",
+        "@tiptap/pm": "^2.1.16",
+        "@tiptap/starter-kit": "^2.1.16",
         "preline": "^2.0.3"
     }
 }
