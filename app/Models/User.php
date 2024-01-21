@@ -93,6 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
         'name',
         'isLoggedIn',
+        'isAdmin',
 
     ];
 
@@ -110,7 +111,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Publication::class);
     }
 
-    public function isBanned(): bool
+    public function getisBannedAttribute(): bool
     {
         return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
     }
@@ -215,10 +216,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Auth::check();
     }
-    public function isLoggedIn(): bool
-    {
-        return Auth::check();
-    }
 
     public function isOnline()
     {
@@ -232,7 +229,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasRole('super_admin');
     }
 
-    public function isAdmin(): bool
+    public function getisAdminAttribute(): bool
     {
         return $this->hasAnyRole('admin', 'super_admin');
     }
@@ -240,7 +237,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function dashboard(): string
     {
-        return $this->isAdmin() ? 'admin/dashboard' :  'dashboard';
+        return $this->isAdmin ? 'admin/dashboard' :  'dashboard';
     }
 
 

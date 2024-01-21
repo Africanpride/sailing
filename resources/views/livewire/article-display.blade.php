@@ -277,7 +277,7 @@
                 </div>
                 <!-- Button -->
                 @auth
-                    @if (Auth::user()->isAdmin())
+                    @if (Auth::user()->isAdmin)
                         <div class="block h-3 border-r border-gray-300 mx-3 dark:border-gray-600"></div>
                         <form action="{{ route('publications.edit', $publication) }}">
                             @csrf

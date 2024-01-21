@@ -20,10 +20,11 @@ class Publication extends Model implements HasMedia
 
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['title', 'slug', 'active', 'overview', 'body', 'like', 'featured_image', 'user_id'];
+    protected $fillable = ['title', 'slug', 'active','approved', 'overview', 'body', 'like', 'featured_image', 'user_id'];
 
     protected $casts = [
         'active' => 'boolean',
+        'approved' => 'boolean'
     ];
 
     protected $appends = [

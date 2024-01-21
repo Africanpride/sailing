@@ -19,7 +19,7 @@ class Banned
 
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isBanned()) {
+        if (Auth::check() && Auth::user()->isBanned) {
             Log::info('Banned user attempted access:', ['user_id' => Auth::id()]);
 
             auth()->guard('web')->logout();

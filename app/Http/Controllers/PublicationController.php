@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Publication;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -33,8 +34,14 @@ class PublicationController extends Controller
      */
     public function create()
     {
+
+        dd(Auth::user()->UserRole);
+
+        if(!Auth::check()) {
+           return redirect()->route('login');
+        }
         // Allow to create article for approval if allowed
-        // abort_if(!Auth::user()->canCreate(), 403, __("Vous ne pouvez pas créer de publication"));
+        abort_if(!Auth::user()->isAdmin, 403, __("You cannot create a publication."));
         $categories = Category::all();
         return view('publications.create', compact('categories'));
     }
@@ -105,17 +112,23 @@ class PublicationController extends Controller
      */
     public function update(UpdatePublicationRequest $request, Publication $publication): RedirectResponse
     {
-        //
         $validated = $request->validated();
 
+        // Update publication fields
         $publication->update($validated);
 
-        if ($request->hasfile('featured_image')) {
+        // Handle featured_image update
+        if ($request->hasFile('featured_image')) {
+            // Remove existing media
+            $publication->clearMediaCollection('featured_image');
+
+            // Add new media
             $publication->addMediaFromRequest('featured_image')->toMediaCollection('featured_image');
         }
 
         return redirect()->route('publications.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
