@@ -66,6 +66,7 @@ scrollbar-thumb-firefly-800 scrollbar-track-gray-300 overflow-y-scroll ">
     @stack('modals')
 
     @livewireScripts
+    @livewire('wire-elements-modal')
 </body>
 
 </html>

@@ -35,7 +35,7 @@ class PublicationController extends Controller
     public function create()
     {
 
-        dd(Auth::user()->UserRole);
+        // dd(Auth::user()->UserRole);
 
         if(!Auth::check()) {
            return redirect()->route('login');

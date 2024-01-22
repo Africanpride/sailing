@@ -1,7 +1,9 @@
 <div>
-    <div class="w-full flex flex-col  justify-center items-center space-y-4 p-8  bg-gray-200/50 dark:bg-gray-950 rounded-3xl">
+    <div class="w-full flex flex-col  justify-center items-center space-y-4 p-8
+     bg-gray-200/50 dark:bg-gray-950 rounded-3xl"
+     >
 
-        <div>
+        <div class="w-full flex items-center justify-center min-h-16 py-16">
             <svg class="currentColor w-20" viewBox="0 -1 385.27478 385" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="m71.558594 122.113281-62.46875-14.914062 19.019531-79.679688 62.472656 14.914063c9.503907 2.265625 15.367188 11.808594 13.101563 21.316406l-10.808594 45.265625c-2.269531 9.5-11.8125 15.367187-21.316406 13.097656zm0 0"

@@ -32,7 +32,9 @@ class AuthServiceProvider extends ServiceProvider
         // });
 
         Gate::define('isParticipant', function ($user) {
-            return $user->participant === 1 ||  $user->participant === true;
+            return $user->participant === 1 ||
+            $user->participant === true ||
+             $user->hasAnyRole(['participant']);
         });
 
         Gate::define('isAdmin', function ($user) {
