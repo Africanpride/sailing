@@ -42,13 +42,13 @@
                                 </div>
                             </div>
 
-                            <span class="block text-[10px] !pb-3 text-gray-500 dark:text-white line-clamp-1">
+                            <span class="font-bold block text-[14px] !pb-3 text-gray-800 dark:text-white line-clamp-1">
                                 {{ substr($announcement->title, 0, 35) . (strlen($announcement->title) > 35 ? '...' : '') }}
                             </span>
 
                             <a href="#" class="mt-4">
                                 <span
-                                    class="mt-0.5 !leading-tight !pb-4 text-[14px] text-gray-900 dark:text-gray-400 line-clamp-2">
+                                    class="mt-0.5 !leading-tight !pb-4 text-[13px] text-gray-900 dark:text-gray-400 line-clamp-2">
                                     {{ $announcement->body }}
                                 </span>
                             </a>

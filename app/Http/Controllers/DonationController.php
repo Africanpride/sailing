@@ -20,7 +20,9 @@ class DonationController extends Controller
     public function index()
     {
         if (Gate::denies('isAdmin')) {
-            return view('donate'); // Return a 403 Forbidden error if the user is not authorized
+            // Return a 403 Forbidden error if the user is not authorized
+            abort(403, 'You are not authorized to view this page');
+            // return view('donate');
         }
 
         $donations = Donation::paginate(10);
@@ -40,7 +42,6 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-
         $rules = [
             'amount' => 'required|numeric',
         ];

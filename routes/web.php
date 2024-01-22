@@ -66,6 +66,7 @@ Route::post('contact', ContactController::class)->name('contact-form');
 // Route::resource('newsroom', NewsroomController::class);
 // Route::get('/news/{newsroom:slug}', [NewsroomController::class, 'show'])->name('news.show');
 
+// display a particular institute using slug as parameter for the flrontend
 Route::resource('institutes', InstituteController::class);
 Route::resource('publications', PublicationController::class);
 
@@ -73,7 +74,34 @@ Route::resource('publications', PublicationController::class);
 Route::get('auth/google', [SocialController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [App\Http\Controllers\SocialController::class, 'handleGoogleCallback']);
 
-// display a particular institute using slug as parameter for the flrontend
+
+
+
+// ADMINISTRATION ROUTES WITH "ADMIN" PREFIX
+
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    config('jetstream.auth_session'),
+    'verified',
+    'mustBeAdmin',
+])->prefix('admin')->group(function () {
+
+    // Route::get('/myInstitutes', function () {
+    //     return "Hello 123";
+    // });
+    Route::resource('donations', DonationController::class);
+    Route::get('/myInstitutes', function () {
+        $institutes = Institute::all();
+        return view('admin.myInstitutes.index', compact('institutes'));
+    })->name('myInstitutes');
+
+    Route::get('/analytics', function() {
+        return view('admin.analytics');
+    })->name('analytics');
+
+});
+
 
 
 // ADMINISTRATION ROUTES
@@ -84,6 +112,7 @@ Route::middleware([
     'verified',
     // 'mustBeAdmin',
 ])->group(function () {
+
 
     Route::get('staff', function () {
         $users = User::staff()->paginate(8);

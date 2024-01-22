@@ -25,18 +25,19 @@ class Donation extends Model
     ];
 
     public $incrementing = false;
-    protected $keyType = 'string';
-    public function getRouteKeyName()
-    {
-        return 'id';
-    }
+    protected $primaryKey = 'id';
+    protected $keyType = 'ulid';
+    // public function getRouteKeyName()
+    // {
+    //     return 'id';
+    // }
     public static function getEmail($email)
     {
-        if(Auth::check()) {
-           return Auth::user()->email;
+        if (Auth::check()) {
+            return Auth::user()->email;
         }
 
-        if(!is_null($email)) {
+        if (!is_null($email)) {
             return $email;
         }
 
@@ -46,8 +47,8 @@ class Donation extends Model
     {
         // Default donor is webmaster ;-) because we'll have to say thank you!
         $defaultDonor = User::whereEmail(config('app.email'))->first();
-        if(Auth::check()) {
-           return Auth::user()->id;
+        if (Auth::check()) {
+            return Auth::user()->id;
         }
 
         return $defaultDonor->id;
@@ -61,5 +62,10 @@ class Donation extends Model
     public function donor()
     {
         $this->belongsTo(User::class);
+    }
+
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
     }
 }

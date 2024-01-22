@@ -5,16 +5,16 @@
 
 
         <div class="flex justify-between items-center gap-x-4 px-4">
-            <x-jet-button class="" type="button"
+            <x-button class="" type="button"
                 onclick="Livewire.dispatch('openModal', { component: 'add-institute' })">
                 {{ __('Add New Institute') }}
-            </x-jet-button>
-            <x-jet-button type="button">
-                <a href="{{ route('institute.prep') }}" class="gap-x-3 flex items-center justify-center ">
+            </x-button>
+            <x-button type="button">
+                <a href="#" class="gap-x-3 flex items-center justify-center ">
                     <x-lucide-film class="w-4 h-4 text-current" />
                     {{ __('Institute Prep Videos') }}
                 </a>
-            </x-jet-button>
+            </x-button>
         </div>
         <div class="p-4">
 
@@ -32,21 +32,26 @@
                                 <img class="md:w-22 md:p-6 p-24 aspect-square relative"
                                     src="{{ $institute->institute_logo }}" alt="{{ $institute->name }}">
                                 <span class="absolute top-3 right-3 cursor-pointer hidden"
+
                                     onclick="Livewire.dispatch('openModal', {component: 'admin.institute.update-images', arguments: {{ json_encode([$institute->slug]) }} })">
+
                                     <x-lucide-image-plus class="w-4 h-4 text-firefly-500" />
                                 </span>
                             </div>
 
                             <div
                                 class="flex flex-col justify-between p-4 pt-8 pb-6 pl-12 md:col-span-8 col-span-12 space-y-3 rounded-r-xl relative ">
+
                                 @hasanyrole(['admin', 'super_admin'])
                                     <div class="absolute top-2 right-3">
                                         <div class="flex justify-end items-center gap-4">
                                             <div class="hs-tooltip">
+
                                                 <a href="{{ route('institutes.edit', [$institute->id]) }}"
                                                     class=" text-gray-500 dark:text-white hover:text-accent-500 z-100">
                                                     <x-lucide-video class="w-5 h-5 text-gray-500 cursor-pointer" />
                                                 </a>
+
                                                 <span
                                                     class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-black whitespace-no-wrap "
                                                     role="tooltip">
@@ -99,7 +104,7 @@
                                 <div class="institute-overview">
                                     <div class=" text-[10px] line-clamp-4 text-left">
                                         {!! $institute->overview !!}
-                                        <a href="{{ route('institute.show', [$institute->slug]) }}"
+                                        <a href="{{ route('institutes.show', [$institute->slug]) }}"
                                             rel="noopener noreferrer"
                                             class="inline-flex justify-start items-center   text-sm text-orange-400">
                                             <span class="pr-2">... Read more</span>
@@ -111,7 +116,7 @@
                                     <div class="flex justify-between items-center">
 
                                         <a rel="noopener noreferrer"
-                                            href="{{ route('institute.show', [$institute->slug]) }}"
+                                            href="{{ route('institutes.show', [$institute->slug]) }}"
                                             class="inline-flex items-center  space-x-4 text-sm ">
 
                                             <span

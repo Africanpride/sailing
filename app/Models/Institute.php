@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Edition;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\Conversions\Manipulations;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 // use Spatie\Image\Manipulations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Institute extends Model implements HasMedia
@@ -87,5 +88,10 @@ class Institute extends Model implements HasMedia
             ->width(300)
             ->height(300)
             ->sharpen(10);
+    }
+
+    public function editions()
+    {
+        return $this->hasMany(Edition::class);
     }
 }
