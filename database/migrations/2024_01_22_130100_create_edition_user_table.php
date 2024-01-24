@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('edition_user', function (Blueprint $table) {
-            Schema::create('edition_user', function (Blueprint $table) {
-                $table->ulid()->primary();
-                $table->ulid('edition_id');
-                $table->ulid('user_id');
-                $table->timestamps();
-                $table->unique(['edition_id', 'user_id']);
-
-                $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            });
+            $table->ulid()->primary();
+            $table->ulid('edition_id');
+            $table->ulid('user_id');
+            $table->timestamps();
+            $table->unique(['edition_id', 'user_id']);
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

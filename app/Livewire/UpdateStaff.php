@@ -47,7 +47,8 @@ class UpdateStaff extends ModalComponent
         $this->lastName     = $user->lastName;
         $this->email        = $user->email;
         $this->avatar       = $user->avatar_url;
-        $this->staffRoles   = $user->roles->pluck('id')->toArray();
+        // $this->staffRoles   = $user->roles->pluck('id')->toArray();
+        $this->staffRoles = $user->roles->pluck('id')->map(fn($roleId) => (string) $roleId)->toArray();
         $this->active       = $user->active;
         $this->roles = Role::all(); // we shall check against this
     }
@@ -75,8 +76,9 @@ class UpdateStaff extends ModalComponent
         // because of ULID and UUID, the role id's need to be converted to integers else it would
         // see it as string
 
-        $roles = collect($this->staffRoles)->map(fn ($roleId) => (int) $roleId)->toArray();
-        $this->user->syncRoles($roles);
+        $updatedRoles = collect($this->staffRoles)->map(fn ($roleId) => (int) $roleId)->toArray();
+
+        $this->user->syncRoles([...$updatedRoles]);
 
         // send reset password
         if ($this->resetPassword) {

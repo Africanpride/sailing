@@ -178,7 +178,53 @@
         </div>
 
     </section>
+    <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto">
+        <div
+            class=" min-h-[600px] mx-auto rounded-2xl border  border-gray-300/10 text-center space-y-5 p-4
+         bg-firefly-500/10 dark:bg-black py-16 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
+         from-firefly-900 to-firefly-900/80">
+            <div class="lg:px-8 max-w-8xl md:my-16 mx-auto px-4 space-y-5 text-center">
+                <h2
+                    class="  text-firefly-900 text-3xl sm:text-5xl tracking-tight font-bold  font-['inter'] uppercase prominent-titles">
+                    News & Publications</h2>
+                <p class="my-2 md:text-2xl font-bold
+                text-firefly-800 md:px-5 dark:text-white">
+                    Providing valuable resources for researchers and analysts keen on staying up-to-date with the latest
+                    developments in the 8-spheres of society.
+                </p>
+                <p class="text-lg leading-6 font-semibold text-sky-500 "><span>
+                        <a href="{{ route('publications.index') }}">More News & Publications</a></span> </p>
+            </div>
 
+            <div class="grid gap-4 md:grid-cols-3 sm:mx-auto md:max-w-full md:px-8">
+                @if ($latestPublications->count() > 0)
+
+                    @foreach ($latestPublications as $article)
+                        <!-- Card -->
+                        <a class="group block" href="{{ route('publications.show', [$article]) }}">
+                            <div
+                                class="flex-shrink-0 relative w-full rounded-xl overflow-hidden h-[200px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
+                                <img class="group-hover:scale-105 transition-transform duration-500 ease-in-out w-full h-full absolute top-0 left-0 object-cover rounded-xl"
+                                    src="{{ $article->getFirstMediaUrl('featured_image') ? $article->getFirstMediaUrl('featured_image') : $article->featured_image }}"
+                                    alt="{{ $article->title }}">
+                            </div>
+
+                            <h3
+                                class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+                                {{ $article->title }}
+                            </h3>
+                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                {{ $article->created_at->format('d M Y') }}
+                            </p>
+                        </a>
+                        <!-- End Card -->
+                    @endforeach
+
+                @endif
+
+            </div>
+        </div>
+    </section>
 
 <x-subscribe />
 </x-front-layout>

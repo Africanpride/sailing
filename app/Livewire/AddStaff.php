@@ -71,7 +71,7 @@ class AddStaff extends ModalComponent
         // because of ULID and UUID, the role id's need to be converted to integers else it would
         // see it as string. :-)
         $roles = collect($this->roles)->map(fn($roleId) => (int) $roleId)->toArray();
-        $user->syncRoles($roles); // Use $user here
+        $user->syncRoles([...$roles]);
 
         app('flasher')->addSuccess('success', 'Staff Account Created!');
         return redirect()->to('staff');

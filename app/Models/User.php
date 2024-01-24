@@ -179,13 +179,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function scopeStaff(Builder $query): void
     {
-        $query->where(function ($q) {
-            $q->where('staff', true)
-                ->orWhereHas('roles', function ($q) {
-                    $q->whereIn('name', ['super_admin', 'admin']);
-                });
+        $query->whereHas('roles', function ($q) {
+            $q->whereIn('name', ['super_admin', 'admin']);
         });
     }
+
 
     public function scopeParticipant(Builder $query): void
     {

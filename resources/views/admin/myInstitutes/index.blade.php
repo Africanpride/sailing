@@ -5,13 +5,20 @@
 
 
     <div class="flex justify-between items-center gap-x-4 px-4">
-        <x-button class="" type="button" onclick="Livewire.dispatch('openModal', { component: 'add-institute' })">
+        <x-button class="w-full" type="button" onclick="Livewire.dispatch('openModal', { component: 'add-institute' })">
             {{ __('Add New Mother Institute ') }}
         </x-button>
-        <x-button type="button">
+        <x-button class="w-full" type="button">
+            <div onclick="Livewire.dispatch('openModal', { component: 'create-institute-edition' })"
+                class="gap-x-3 flex items-center justify-center ">
+                <x-lucide-book-open-check class="w-6 h-6 text-current" />
+                {{ __('Add New Edition For an Institute') }}
+            </div>
+        </x-button>
+        <x-button class="w-full" type="button">
             <a href="#" class="gap-x-3 flex items-center justify-center ">
                 <x-lucide-film class="w-4 h-4 text-current" />
-                {{ __('Institute Prep Videos') }}
+                {{ __('Add Prep-Video for Mother Institute') }}
             </a>
         </x-button>
     </div>
@@ -21,9 +28,9 @@
                 @foreach ($institutes as $institute)
                     <!-- End Card Section -->
                     <div
-                        class="container grid grid-cols-12 bg-gray-200 dark:bg-firefly-900 dark:text-gray-100
+                        class="container grid grid-cols-12 bg-gray-200 dark:bg-slate-950 dark:text-gray-100
                             max-w-full mx-auto !rounded-xl  ">
-                        <div class="relative grid place-items-center bg-no-repeat bg-cover  bg-gray-700 col-span-full md:col-span-4 md:rounded-l-xl  "
+                        <div class="relative grid place-items-center bg-no-repeat bg-cover  bg-gray-700 col-span-full md:col-span-4 md:rounded-l-xl"
                             style="background-image: url(' {{ asset('storage/images/logos/ghana.jpg') }}'); background-position: center center; background-blend-mode: multiply; background-size: cover;">
                             <img class="md:w-22 md:p-6 p-24 aspect-square relative"
                                 src="{{ $institute->institute_logo }}" alt="{{ $institute->name }}">
@@ -38,20 +45,14 @@
                             class="flex flex-col justify-between p-4 pt-8 pb-6 pl-12 md:col-span-8 col-span-12 space-y-3 rounded-r-xl relative ">
 
                             @hasanyrole(['admin', 'super_admin'])
-                                <div class="absolute top-2 right-3">
-                                    <div class="flex justify-end items-center gap-4">
+                                <div class="absolute top-2">
+                                    <div class="flex justify-center items-center gap-4">
 
                                         <div onclick="Livewire.dispatch('openModal', { component: 'create-institute-edition' })"
-                                                class="inline-flex justify-center items-center gap-x-2 rounded-lg font-medium text-gray-800 hover:text-blue-600 text-xs sm:text-sm dark:text-gray-200 dark:hover:text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 cursor-pointer  ">
-
-                                                <svg class="flex-shrink-0 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                                    width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path d="M5 12h14"></path>
-                                                    <path d="M12 5v14"></path>
-                                                </svg>
-                                                Add Edition
+                                            class="inline-flex justify-center items-center gap-x-2 rounded-lg font-medium text-gray-800 hover:text-blue-600 text-xs sm:text-sm dark:text-gray-200 dark:hover:text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 cursor-pointer  ">
+                                            <p class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-xs font-semibold uppercase">
+                                                <span class="uppercase font-bold">{{ $institute->acronym }}</span> Editions
+                                              </p>
 
                                         </div>
                                         <div class="hs-tooltip">
@@ -80,8 +81,7 @@
                                         </div>
                                         <div class="hs-tooltip">
                                             <div class=" text-gray-500 dark:text-white hover:text-accent-500 z-100">
-                                                <x-heroicon-o-trash class="w-5 h-5 text-red-500 cursor-pointer"
-                                                    onclick="Livewire.dispatch('openModal', {component: 'admin.institute.delete-institute', arguments: {{ json_encode([$institute->slug]) }} })" />
+                                                <x-heroicon-o-trash class="w-5 h-5 text-red-500 cursor-pointer" />
                                             </div>
                                             <span
                                                 class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-black"

@@ -8,7 +8,7 @@
                 <x-heroicon-o-x-circle class="w-6 h-6 text-red-500" wire:click="$dispatch('closeModal')" />
             </div>
         </div>
-        <div class=" text-md ">Add New Announcement </div>
+        <div class=" text-md ">Add Institute Edition </div>
     </x-slot>
 
     <x-slot name="content">
@@ -26,14 +26,31 @@
                     <label for="hs-checkbox-delete" class="ms-3">
                         <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Mark
                             Active</span>
-                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">
+                        <span class="block text-sm font-thin text-gray-800 dark:text-gray-300">
                             Editions marked "Active" becomes available for Payment and Registration!
                         </span>
                     </label>
                 </div>
                 <x-input-error for="active" class="mt-2" />
             </div>
+            <div class="space-y-2">
+                <label for="af-submit-app-category"
+                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                    Mother Institute
+                </label>
 
+                <select id="af-submit-app-category" name="category" wire:model="instituteId"
+                    class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                    <option selected>Select an Institute...</option>
+
+                    @foreach ($institutes as $institute)
+                        <option wire:key="{{ $institute->id }}" value="{{ $institute->id }}">{{ $institute->name }}
+                        </option>
+                    @endforeach
+                </select>
+
+                <x-input-error for="category_id" class="mt-2" />
+            </div>
             <div class="space-y-2">
                 <label for="af-submit-app-project-name"
                     class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
@@ -42,7 +59,7 @@
 
                 <input id="af-submit-app-project-name" type="text" name="title" wire:model.live="title"
                     class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    placeholder="Enter Publication Title Eg . Mindset Transformation Institute 2024 Edition">
+                    placeholder="Enter Edition Title Eg . Mindset Transformation Institute 2024 Edition">
 
                 <x-input-error for="title" class="mt-2" />
             </div>
@@ -54,7 +71,7 @@
 
                 <input id="af-submit-app-project-name" type="text" name="seo" wire:model="seo"
                     class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    placeholder="Enter Comma seperated keywords for Edition">
+                    placeholder="Enter Comma seperated keywords for Edition SEO">
 
                 <x-input-error for="seo" class="mt-2" />
             </div>
@@ -97,7 +114,7 @@
                 <textarea id="af-submit-app-description" name="overview" wire:model="overview"
                     class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     rows="6"
-                    placeholder="A detailed summary will better explain your products to the audiences. Our users will see this in your dedicated product page."></textarea>
+                    placeholder="A summary of Institute Edition."></textarea>
                 <x-input-error for="overview" class="mt-2" />
             </div>
             <div class="space-y-2">
@@ -109,7 +126,7 @@
                 <textarea id="af-submit-app-description" name="about" wire:model="about"
                     class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     rows="6"
-                    placeholder="A detailed summary will better explain your products to the audiences. Our users will see this in your dedicated product page."></textarea>
+                    placeholder="Explain Why anyone should attend this Edition?"></textarea>
                 <x-input-error for="about" class="mt-2" />
             </div>
 
@@ -140,24 +157,7 @@
                 </label>
             </div>
 
-            <div class="space-y-2">
-                <label for="af-submit-app-category"
-                    class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
-                    Mother Institute
-                </label>
 
-                <select id="af-submit-app-category" name="category" wire:model="instituteId"
-                    class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                    <option selected>Select an Institute...</option>
-
-                    @foreach ($institutes as $institute)
-                        <option wire:key="{{ $institute->id }}" value="{{ $institute->id }}">{{ $institute->name }}
-                        </option>
-                    @endforeach
-                </select>
-
-                <x-input-error for="category_id" class="mt-2" />
-            </div>
 
             <div class="space-y-2">
                 <label for="banner"
@@ -198,17 +198,8 @@
 
 
         <x-submit-button class="rounded">{{ __('Save Institute Edition') }}</x-submit-button>
-        {{-- <button type="submit"
-            class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-            {{ __('Save Institute Edition') }}
-        </button> --}}
+
 
     </x-slot>
 
-    <style>
-        #instituteModal {
-            width: 700px !important;
-
-        }
-    </style>
 </x-institute-modal>
