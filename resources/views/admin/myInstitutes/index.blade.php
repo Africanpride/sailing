@@ -11,7 +11,7 @@
         <x-button class="w-full" type="button">
             <div onclick="Livewire.dispatch('openModal', { component: 'create-institute-edition' })"
                 class="gap-x-3 flex items-center justify-center ">
-                <x-lucide-book-open-check class="w-6 h-6 text-current" />
+                <x-lucide-book-open-check class="w-4 h-4 text-current" />
                 {{ __('Add New Edition For an Institute') }}
             </div>
         </x-button>

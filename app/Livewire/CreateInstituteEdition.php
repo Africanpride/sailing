@@ -11,22 +11,24 @@ use LivewireUI\Modal\ModalComponent;
 class CreateInstituteEdition extends ModalComponent
 {
     use WithFileUploads;
-    public $instituteId;
+    public $institute_id;
     public $title;
     public $slug;
     public $theme;
     public $acronym;
     public $overview;
     public $about;
+    public $body;
     public $introduction;
     public $banner;
     public $startDate;
     public $endDate;
     public $seo;
     public $active;
-    public $price;
+    public $price = " ";
     public $institutes = [];
-    public Institute $institute;
+    public $institute;
+    public $selectedInstituteName;
 
 
     protected static array $maxWidths = [
@@ -50,40 +52,50 @@ class CreateInstituteEdition extends ModalComponent
     {
         $this->institutes = Institute::all();
     }
+
+
     public function storeInstituteEdition()
     {
 
-        dd($this->instituteId);
         // Validation logic (customize as needed)
-        $this->validate([
-            'title' => 'required|min:2|max:255',
-            'startDate' => 'required|date',
-            'endDate' => 'required|date|after_or_equal:startDate',
-            'price' => 'required|numeric',
+        $validatedData = $this->validate([
+
+            'institute_id' => ['required', 'exists:institutes,id'],
+            'title' => ['required', 'unique:editions', 'string', 'min:2', 'max:255'],
+            'theme' => ['nullable', 'string', 'min:2', 'max:255'],
+            'acronym' => ['nullable', 'string', 'min:2', 'max:255'],
+            'overview' => ['nullable', 'string', 'min:2'],
+            'about' => ['nullable', 'string', 'min:2'],
+            'introduction' => ['nullable', 'string', 'min:2'],
+            'banner' => ['nullable', 'image', 'max:2048', 'mimes:jpeg,png,jpg'],
+            'startDate' => ['required', 'date'],
+            'endDate' => ['required', 'date'],
+            'seo' => ['nullable', 'string', 'min:2', 'max:255'],
+            'active' => ['nullable', 'boolean'],
+            'price' => ['required', 'numeric']
+
         ]);
 
-        // Create a new Edition
-        Edition::create([
-            'institute_id' => $this->instituteId,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'theme' => $this->theme,
-            'acronym' => $this->acronym,
-            'overview' => $this->overview,
-            'about' => $this->about,
-            'introduction' => $this->introduction,
-            'banner' => $this->banner,
-            'startDate' => $this->startDate,
-            'endDate' => $this->endDate,
-            'seo' => $this->seo,
-            'active' => $this->active,
-            'price' => $this->price,
-        ]);
+        $edition = Edition::create($validatedData);
 
-        // Optionally, you can add a flash message or redirect to another page
-        session()->flash('success', 'Edition created successfully!');
-        return redirect()->route('your.route.name'); // Replace with your actual route name
+        // dd($this->banner);
+        if ($this->banner) {
+
+            // dd($this->banner->getRealPath());
+            // $this->edition->clearMediaCollection('banner');
+
+            $edition->addMedia($this->banner->getRealPath())
+                ->usingFileName($this->banner->getClientOriginalName())
+                ->toMediaCollection('banner');
+        }
+
+
+
+        app('flasher')->addSuccess('success', $this->title . ' Created');
+        return redirect()->route('myInstitutes'); // Replace with your actual route name
     }
+
+
 
     public function render()
     {

@@ -50,7 +50,7 @@ class InstituteController extends Controller
      */
     public function edit(Institute $institute)
     {
-        //
+        dd("Edit Institute");
     }
 
     /**

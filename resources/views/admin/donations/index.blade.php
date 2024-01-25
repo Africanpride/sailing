@@ -18,24 +18,26 @@
 
                         <x-table :showPagination="false">
                             <x-slot name="tableHead">
-                                <x-table-row>
-                                    @if ($donations->count() > 0)
-                                        <th scope="col"
-                                            class="px-3  py-2  text-left text-[11px] leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400">
-                                            <span class="lg:pl-2">Institute</span>
-                                        </th>
-                                        <th scope="col"
-                                            class="py-2  text-left text-[11px] leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400 ">
-                                            <span class="lg:pl-2">Participant</span>
+                                <tr
+                                    class="bg-gray-200 dark:border-secondary-900 dark:bg-black text-secondary-900  dark:text-secondary-400">
 
-                                        </th>
-                                        <th scope="col"
-                                            class="px-3  py-2   uppercase tracking-wider  hidden md:table-cell text-left text-[11px] leading-4 font-medium ">
-                                            Payment Reference
-                                        </th>
-                                    @endif
-                                </x-table-row>
+
+                                    <th scope="col"
+                                        class="px-3  py-2  text-left text-[11px] leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400">
+                                        <span class="lg:pl-2">Institute</span>
+                                    </th>
+                                    <th scope="col"
+                                        class="py-2  text-left text-[11px] leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400 ">
+                                        <span class="lg:pl-2">Participant</span>
+
+                                    </th>
+                                    <th scope="col"
+                                        class="px-3  py-2   uppercase tracking-wider  hidden md:table-cell text-left text-[11px] leading-4 font-medium ">
+                                        Payment Reference
+                                    </th>
+                                </tr>
                             </x-slot>
+
                             <x-slot name="tableBody">
                                 @if ($donations->count() > 0)
 

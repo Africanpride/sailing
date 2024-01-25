@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('theme')->nullable();
-            $table->string('acronym');
+            $table->string('acronym')->nullable();
             $table->text('overview')->nullable();
             $table->text('about')->nullable();
             $table->text('introduction')->nullable();

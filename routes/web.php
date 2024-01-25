@@ -1,12 +1,14 @@
 <?php
 
 use App\Models\User;
+use App\Models\Edition;
 use App\Models\Institute;
 use App\Models\Publication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EditionController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FrontViewController;
@@ -14,7 +16,6 @@ use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DisplayInstituteController;
-use App\Http\Controllers\EditionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,11 @@ Route::middleware([
         return view('admin.myInstitutes.index', compact('institutes'));
     })->name('myInstitutes');
 
+    Route::get('/editions', function () {
+
+        return view('admin.myInstitutes.editions');
+    })->name('editions');
+
     Route::get('/analytics', function() {
         return view('admin.analytics');
     })->name('analytics');
@@ -148,6 +154,8 @@ Route::middleware([
     Route::get('logs', function () {
         return view('admin.logs');
     })->name('logs');
+
+
     Route::get('table', function () {
         $logs = DB::table('authentication_log')
             ->select(

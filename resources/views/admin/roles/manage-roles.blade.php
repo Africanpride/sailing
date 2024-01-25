@@ -65,7 +65,8 @@
             <div>
                 <x-table :showPagination="false">
                     <x-slot name="tableHead">
-                        <x-table-row>
+                        <tr class="bg-gray-200 dark:border-secondary-900 dark:bg-black text-secondary-900  dark:text-secondary-400">
+
 
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400">
@@ -83,7 +84,7 @@
                                 class="px-6 py-3 text-xs leading-4 font-medium  uppercase tracking-wider  text-left">
                                 Logged In
                             </th>
-                        </x-table-row>
+                        </tr>
                     </x-slot>
                     <x-slot name="tableBody">
 

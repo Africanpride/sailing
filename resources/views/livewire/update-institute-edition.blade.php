@@ -1,4 +1,4 @@
-<x-institute-modal formAction="storeInstituteEdition">
+<x-institute-modal formAction="updateInstituteEdition">
 
     <x-slot name="title">
 
@@ -8,14 +8,14 @@
                 <x-heroicon-o-x-circle class="w-6 h-6 text-red-500" wire:click="$dispatch('closeModal')" />
             </div>
         </div>
-        <div class=" text-md ">Add Institute Edition </div>
+        <div class=" text-md capitalize ">Update {{ $edition->title }} </div>
         {{-- <div class="font-thin text-[12px] ">{{ $selectedInstituteName }}</div> --}}
     </x-slot>
 
     <x-slot name="content">
 
         <!-- Grid -->
-        <div id="instituteModal" class="space-y-4 sm:space-y-6">
+        <div class="space-y-4 sm:space-y-6">
 
             <div class="flex justify-start items-center">
                 <div class="relative flex items-start">
@@ -115,7 +115,7 @@
                         Start Date
                     </label>
 
-                    <input data-picker type="date" name="startDate" wire:model.lazy="startDate"
+                    <input data-picker type="date" name="startDate" wire:model.live="startDate"
                         class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                         placeholder="Enter Edition startDate. " autocomplete="off">
 

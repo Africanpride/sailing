@@ -36,7 +36,7 @@ class UpdatePublicationRequest extends FormRequest
             'title' => 'required|max:255',
             'overview' => 'nullable',
             'body' => 'required',
-            'featured_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'featured_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
             'active' => 'boolean',
             'category_id' => 'exists:categories,id',
         ];

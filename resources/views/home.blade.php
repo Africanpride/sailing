@@ -196,7 +196,8 @@
                         <a href="{{ route('publications.index') }}">More News & Publications</a></span> </p>
             </div>
 
-            <div class="grid gap-4 md:grid-cols-3 sm:mx-auto md:max-w-full md:px-8">
+            <div class="grid gap-4 md:grid-cols-{{ $latestPublications->count() > 3 ? 4 : 3 }} sm:mx-auto md:max-w-full md:px-8">
+
                 @if ($latestPublications->count() > 0)
 
                     @foreach ($latestPublications as $article)
