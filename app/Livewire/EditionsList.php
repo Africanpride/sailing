@@ -12,7 +12,7 @@ class EditionsList extends Component
     public function render()
     {
         $institutes = Institute::all();
-        $editions = Edition::paginate(2);
+        $editions = Edition::paginate(9);
         return view('livewire.editions-list', compact('institutes', 'editions'));
     }
 }

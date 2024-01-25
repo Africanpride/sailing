@@ -92,7 +92,7 @@ class CreateInstituteEdition extends ModalComponent
 
 
         app('flasher')->addSuccess('success', $this->title . ' Created');
-        return redirect()->route('myInstitutes'); // Replace with your actual route name
+        return redirect()->back(); // Replace with your actual route name
     }
 
 

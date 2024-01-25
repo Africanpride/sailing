@@ -20,8 +20,8 @@ class EditionFactory extends Factory
     {
         return [
             'institute_id' => Institute::pluck('id')->random(),
-            'title' => fake()->sentence(),
-            'slug' => Str::slug(fake()->sentence()),
+            'title' => fake()->title(),
+            'slug' => Str::slug(fake()->title()),
             'theme' => 'Edition ' . rand(1, 100),
             'acronym' => "ABC",
             'overview' => fake()->paragraph(),

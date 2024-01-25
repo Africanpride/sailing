@@ -77,12 +77,10 @@ class UpdateInstituteEdition extends ModalComponent
 
     public function updateInstituteEdition()
     {
-
         // Validation logic (customize as needed)
         $validatedData = $this->validate([
-
             'institute_id' => ['required', 'exists:institutes,id'],
-            'edition.title' => ['required', 'unique:editions', 'string', 'min:2', 'max:255'],
+            'title' => ['required', 'unique:editions', 'string', 'min:2', 'max:255'],
             'theme' => ['nullable', 'string', 'min:2', 'max:255'],
             'acronym' => ['nullable', 'string', 'min:2', 'max:255'],
             'overview' => ['nullable', 'string', 'min:2'],
@@ -95,31 +93,28 @@ class UpdateInstituteEdition extends ModalComponent
             'seo' => ['nullable', 'string', 'min:2', 'max:255'],
             'active' => ['nullable', 'boolean'],
             'price' => ['required', 'numeric']
-
         ]);
-
-        $validatedData = $this->validate();
 
         try {
             $this->edition->update($validatedData);
 
-            // dd($this->banner);
             if ($this->banner) {
-
                 $this->edition->clearMediaCollection('banner');
 
                 $this->edition->addMedia($this->banner->getRealPath())
                     ->usingFileName($this->banner->getClientOriginalName())
                     ->toMediaCollection('banner');
-
-
-                app('flasher')->addSuccess('success', $this->title . ' Updated');
-                return redirect()->route('myInstitutes');
             }
+
+            app('flasher')->addSuccess('success', $this->title . ' Updated');
+
+            return redirect()->route('editions');
+
         } catch (\Exception $e) {
             $this->notify('Error Updating Edition: ' . $e->getMessage(), 'error');
         }
     }
+
 
 
     public function render()
