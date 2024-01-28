@@ -6,6 +6,7 @@ use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 use LivewireUI\Modal\ModalComponent;
 
 class UpdateInstituteEdition extends ModalComponent
@@ -80,7 +81,13 @@ class UpdateInstituteEdition extends ModalComponent
         // Validation logic (customize as needed)
         $validatedData = $this->validate([
             'institute_id' => ['required', 'exists:institutes,id'],
-            'title' => ['required', 'unique:editions', 'string', 'min:2', 'max:255'],
+            'title' => [
+                'required',
+                Rule::unique('editions')->ignore($this->edition->id), // Ignore current edition
+                'string',
+                'min:2',
+                'max:255'
+            ],
             'theme' => ['nullable', 'string', 'min:2', 'max:255'],
             'acronym' => ['nullable', 'string', 'min:2', 'max:255'],
             'overview' => ['nullable', 'string', 'min:2'],
@@ -109,7 +116,6 @@ class UpdateInstituteEdition extends ModalComponent
             app('flasher')->addSuccess('success', $this->title . ' Updated');
 
             return redirect()->route('editions');
-
         } catch (\Exception $e) {
             $this->notify('Error Updating Edition: ' . $e->getMessage(), 'error');
         }

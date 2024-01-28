@@ -15,7 +15,6 @@ return new class extends Migration
             $table->ulid()->primary();
             $table->ulid('edition_id');
             $table->ulid('user_id');
-            $table->timestamps();
             $table->unique(['edition_id', 'user_id']);
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

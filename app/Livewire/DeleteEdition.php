@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Edition;
 use Livewire\Component;
+use Illuminate\Support\Facades\Gate;
 use LivewireUI\Modal\ModalComponent;
 
 class DeleteEdition extends ModalComponent
@@ -22,6 +23,10 @@ class DeleteEdition extends ModalComponent
 
     public function deleteEdition()
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(403);
+        }
+
         $this->edition->delete();
         app('flasher')->addSuccess('success', 'Edition ' .  $this->edition->title  . ' Deleted successcully!');
 

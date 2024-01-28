@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-backend-page-header model-name="editions " description="COSTrAD & editions" add-button="false" class="mx-4">
+    <x-backend-page-header model-name="Editions " description="Institute Editions List" add-button="false" class="mx-4">
         <x-heroicon-o-user-group class="w-5 h-5 text-current" />
     </x-backend-page-header>
 

@@ -1,4 +1,4 @@
-@props(['showPagination'])
+@props(["showPagination"])
 
 <div class="pt-6">
     <div class=" border dark:border-0 overflow-hidden ">

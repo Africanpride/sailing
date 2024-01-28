@@ -32,7 +32,18 @@ class Transaction extends Model
         return $this->morphTo();
     }
 
+    protected function latestFormattedAmount() {
+        {
+            $latest = self::latest()->first();
 
+            if ($latest) {
+                return 'GHS ' . number_format($latest->amount / 100, 2, '.', ',');
+            }
+
+            // Handle the case where no records are available
+            return 'No records found';
+        }
+    }
     //     // Create a transaction for a donation
     // $donation = Donation::find(1);
     // $transaction = $donation->transactions()->create(['amount' => 100.00]);

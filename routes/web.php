@@ -89,9 +89,11 @@ Route::middleware([
     'mustBeAdmin',
 ])->prefix('admin')->group(function () {
 
-    // Route::get('/myInstitutes', function () {
-    //     return "Hello 123";
-    // });
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+
+
     // Route::get('/create-edition', function() {
     //     // dd("hello world");
     //     $institutes = Institute::all();

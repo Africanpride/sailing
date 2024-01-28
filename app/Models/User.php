@@ -306,6 +306,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Edition::class);
     }
 
+    public function ratings() {
+        return $this->morphMany(Rating::class, 'rateable');
+    }
+
 
     // Add attendee to an edition
     // $edition = Edition::find($editionId);

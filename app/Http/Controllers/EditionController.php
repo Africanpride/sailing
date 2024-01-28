@@ -41,7 +41,7 @@ class EditionController extends Controller
      */
     public function show(Edition $edition)
     {
-        //
+        return view('editions.show', compact('edition'));
     }
 
     /**

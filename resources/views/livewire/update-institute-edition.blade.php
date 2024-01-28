@@ -232,5 +232,5 @@
 
 
     </x-slot>
-
 </x-institute-modal>
+

@@ -129,6 +129,12 @@ class Edition extends Model implements HasMedia
 
         return 0;
     }
+
+    public function ratings()
+    {
+        return $this->morphMany(Rating::class, 'rateable');
+    }
+
     // Retrieve paid attendees for a specific edition
     // $edition = Edition::find($editionId);
     // $paidAttendees = $edition->paidAttendees;
