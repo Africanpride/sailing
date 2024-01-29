@@ -166,7 +166,15 @@
                     class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                     Banner For This Edition
                 </label>
-
+                <div class="flex justify-center items-center">
+                    <img src="{{ $edition->getFirstMediaUrl('banner') }}"
+                        class="object-cover h-48 w-auto rounded-2xl py-2">
+                    {{-- @if (!$banner)
+                        @else
+                        <img src="{{ is_object($banner) ? $banner->temporaryUrl() : $banner }}" alt=""
+                            class="object-cover h-48 w-auto rounded-2xl py-2">
+                    @endif --}}
+                </div>
 
                 <label for="banner"
                     class="group p-4 sm:p-7 block cursor-pointer text-center border-2 border-dashed border-gray-300  rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:border-gray-700">
@@ -233,4 +241,3 @@
 
     </x-slot>
 </x-institute-modal>
-

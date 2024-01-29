@@ -8,7 +8,7 @@
                 <th scope="col" class="px-4 py-3 text-start">
                     <div class="flex items-center gap-x-2">
                         <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                           Edition Details
+                            Edition Details
                         </span>
                     </div>
                 </th>
@@ -85,7 +85,19 @@
 
                     </td>
                     <td class="whitespace-nowrap">
-                        <x-images-block />
+
+                        <div class="flex justify-start items-center gap-x-1">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $edition->rating)
+                                <x-heroicon-m-star class="w-4 h-4 text-yellow-500" />
+                                @else
+                                <x-lucide-star class="w-4 h-4 text-gray-500" />
+                                @endif
+                            @endfor
+                        </div>
+
+
+
 
                     </td>
                     <td class="h-px w-px whitespace-nowrap">

@@ -28,7 +28,7 @@ class EditionRatings extends Component
             ->where('user_id', Auth::id())
             ->first();
 
-        if ($this->rating) {
+        if ($this->rating  && $this->rating->user_id == Auth::id()) {
             $this->ratingValue = $this->rating->ratingValue;
             $this->hideForm = true;
         }

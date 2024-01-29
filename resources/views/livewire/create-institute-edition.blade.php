@@ -167,6 +167,11 @@
                     Banner For This Edition
                 </label>
 
+                <div class="flex justify-center items-center">
+                    @if ($banner)
+                        <img src="{{ $banner->temporaryUrl() }}" class="object-cover h-48 w-auto rounded-2xl py-2">
+                    @endif
+                </div>
 
                 <label for="banner"
                     class="group p-4 sm:p-7 block cursor-pointer text-center border-2 border-dashed border-gray-300  rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:border-gray-700">

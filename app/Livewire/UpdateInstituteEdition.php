@@ -102,8 +102,12 @@ class UpdateInstituteEdition extends ModalComponent
             'price' => ['required', 'numeric']
         ]);
 
+
         try {
-            $this->edition->update($validatedData);
+            // Exclude 'banner' from the validated data
+            $editionData = collect($validatedData)->except('banner')->toArray();
+
+            $this->edition->update($editionData);
 
             if ($this->banner) {
                 $this->edition->clearMediaCollection('banner');

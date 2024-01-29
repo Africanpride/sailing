@@ -76,13 +76,14 @@ class CreateInstituteEdition extends ModalComponent
 
         ]);
 
-        $edition = Edition::create($validatedData);
+        // Exclude 'banner' from the validated data
+        $editionData = collect($validatedData)->except('banner')->toArray();
+
+        // Create the Edition model
+        $edition = Edition::create($editionData);
 
         // dd($this->banner);
         if ($this->banner) {
-
-            // dd($this->banner->getRealPath());
-            // $this->edition->clearMediaCollection('banner');
 
             $edition->addMedia($this->banner->getRealPath())
                 ->usingFileName($this->banner->getClientOriginalName())

@@ -134,6 +134,44 @@ class Edition extends Model implements HasMedia
     {
         return $this->morphMany(Rating::class, 'rateable');
     }
+    public function getRatingAttribute()
+    {
+        $totalReviews = $this->ratings->count();
+
+        if($totalReviews)
+        {
+            $totalRating = $this->ratings->sum('ratingValue');
+
+            return number_format($totalRating / $totalReviews, 1);
+        }
+
+        return 0;
+    }
+    public function getAverageRatingsAttribute()
+    {
+        $averageRating = Rating::where('rateable_id', $this->id)
+            ->selectRaw('SUM(ratingValue)/COUNT(user_id) AS avg_rating')
+            ->first()->avg_rating;
+
+        return (float)number_format($averageRating, 2);
+    }
+
+
+    // public function getAverageRatingsAttribute()
+    // {
+    //     $averageRating = Rating::where('rateable_id', $this->id)
+    //         ->selectRaw('SUM(ratingValue)/COUNT(user_id) AS avg_rating')
+    //         ->first()->avg_rating;
+
+    //     return intval($averageRating);
+    // }
+
+
+
+    public function avgRating()
+    {
+        return $this->ratings->avg('ratingValue');
+    }
 
     // Retrieve paid attendees for a specific edition
     // $edition = Edition::find($editionId);
