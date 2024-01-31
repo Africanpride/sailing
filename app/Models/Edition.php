@@ -11,6 +11,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\File;
+
 
 class Edition extends Model implements HasMedia
 {
@@ -53,6 +55,7 @@ class Edition extends Model implements HasMedia
 
     protected $appends = [
         'progress',
+        'banner'
 
     ];
 
@@ -77,6 +80,17 @@ class Edition extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function getBannerAttribute()
+    {
+
+        if ($this->hasMedia('banner')) {
+            return $this->getFirstMediaUrl('banner');
+        } else {
+
+            return asset('/images/main/shark.jpg');
+        }
+   }
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -138,8 +152,7 @@ class Edition extends Model implements HasMedia
     {
         $totalReviews = $this->ratings->count();
 
-        if($totalReviews)
-        {
+        if ($totalReviews) {
             $totalRating = $this->ratings->sum('ratingValue');
 
             return number_format($totalRating / $totalReviews, 1);

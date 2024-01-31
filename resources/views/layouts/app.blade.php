@@ -25,7 +25,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
-    @livewireStyles
+    {{-- @livewireStyles --}}
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
 </head>
 
 <body
@@ -66,7 +69,12 @@ scrollbar-thumb-firefly-800 scrollbar-track-gray-300 overflow-y-scroll ">
     @stack('modals')
 
     @livewire('wire-elements-modal')
-    @livewireScripts
+    {{-- @livewireScripts --}}
+
+
+
+    @stack('scripts')
+
 </body>
 
 </html>

@@ -83,7 +83,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'participant' => 'boolean',
         'must_create_password' => 'boolean',
         'staff' => 'boolean',
-        'active' => 'boolean'
+        'active' => 'boolean',
+        'ban' => 'boolean'
     ];
 
     /**
@@ -117,6 +118,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
     }
+
 
     public function toSearchableArray()
     {

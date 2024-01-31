@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html> --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -36,7 +36,7 @@ overflow-y-scroll overflow-x-hidden">
 
 
     <x-cookie />
-    {{-- <x-up-next /> --}}
+    <x-up-next />
     <x-front-header />
 
     <div

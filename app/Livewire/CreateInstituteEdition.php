@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Institute;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
+use Livewire\Attributes\Renderless;
 
 class CreateInstituteEdition extends ModalComponent
 {
@@ -67,7 +68,7 @@ class CreateInstituteEdition extends ModalComponent
             'overview' => ['nullable', 'string', 'min:2'],
             'about' => ['nullable', 'string', 'min:2'],
             'introduction' => ['nullable', 'string', 'min:2'],
-            'banner' => ['nullable', 'image', 'max:2048', 'mimes:jpeg,png,jpg'],
+            'banner' => ['nullable', 'image', 'max:2048', 'mimes:jpeg,png,jpg, webp'],
             'startDate' => ['required', 'date'],
             'endDate' => ['required', 'date'],
             'seo' => ['nullable', 'string', 'min:2', 'max:255'],
@@ -82,7 +83,6 @@ class CreateInstituteEdition extends ModalComponent
         // Create the Edition model
         $edition = Edition::create($editionData);
 
-        // dd($this->banner);
         if ($this->banner) {
 
             $edition->addMedia($this->banner->getRealPath())
@@ -93,7 +93,7 @@ class CreateInstituteEdition extends ModalComponent
 
 
         app('flasher')->addSuccess('success', $this->title . ' Created');
-        return redirect()->back(); // Replace with your actual route name
+        return redirect()->route('editions');
     }
 
 

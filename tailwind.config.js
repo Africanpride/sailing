@@ -52,8 +52,8 @@ export default {
         require('preline/plugin'),
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
-        require('tailwind-scrollbar')({ nocompatible: true }),
         require("tailwindcss-animate"),
+        require('tailwind-scrollbar')({ nocompatible: true }),
 
     ],
 

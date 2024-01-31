@@ -17,7 +17,7 @@
 
             @if ($showPagination)
                 <div
-                    class="bg-white border-secondary-200  dark:bg-gray-950 border-t dark:bg-secondary-800 dark:border-gray-900 items-center justify-between px-4 py-3 rounded-b-lg sm:px-6">
+                    class=" border-secondary-200  dark:bg-gray-950 border-t dark:bg-secondary-800 dark:border-gray-900 items-center justify-between px-4 py-3 rounded-b-lg sm:px-6">
 
                     <div class="text-sm leading-5 text-secondary-900 dark:text-secondary-400">
 

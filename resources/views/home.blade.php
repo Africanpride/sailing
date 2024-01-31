@@ -40,32 +40,23 @@
         </div>
     </section>
 
-
     <section class="w-full items-center flex flex-col justify-center py-8">
         <div class="hidden md:block">
             <svg width="317" height="120" viewBox="0 0 317 120" fill="none">
-                <path transform="tranfirefly(-36,0)" d="m197.32283 25.03412l-0 100.48032" stroke="gray"
-                    stroke-opacity="0.2">
-                </path>
-                <path transform="tranfirefly(-36,0)" d="m197.32283 25.03412l-0 100.48032" stroke="url(#pulse-1)"
-                    stroke-linecap="round" stroke-width="2"></path>
-                <path d="m197.32283 25.03412-0 20" stroke="gray"
-                    style="transform: tranfireflyX(-36px) tranfireflyY(118.724px); transform-origin: 197.323px 35.0341px;"
-                    transform-origin="197.3228302001953px 35.034119606018066px"></path>
+                <path transform="translate(0, -36)" d="M197.32283 25.03412l-0 100.48032" stroke="gray" stroke-opacity="0.2"></path>
+                <path transform="translate(-36, 0)" d="M197.32283 25.03412l-0 100.48032" stroke="url(#pulse-1)" stroke-linecap="round" stroke-width="2"></path>
+                <path d="M197.32283 25.03412-0 20" stroke="gray" style="transform: translate(-36px, 118.724px); transform-origin: 197.323px 35.0341px;" transform-origin="197.3228302001953px 35.034119606018066px"></path>
             </svg>
+
         </div>
-        <h2
-            class="mt-4 max-w-6xl text-firefly-900 text-lg md:text-5xl tracking-tight  font-bold  font-['inter'] uppercase prominent-titles">
+        <h2 class="mt-4 max-w-6xl text-firefly-900 text-lg md:text-5xl tracking-tight font-bold font-inter uppercase prominent-titles">
             ... doing the seemingly impossible
         </h2>
-        {{-- <h2
-            class="  px-5 text-gradient1 inline-block mt-5 text-3xl md:text-4xl font-extrabold  bg-clip-text bg-gradient-to-l from-firefly-600 to-violet-500 text-transparent dark:from-firefly-400 dark:to-violet-400 uppercase">
-            ...doing the seemingly impossible.
-        </h2> --}}
         <span class="md:text-lg font-bold uppercase text-gray-400 dark:text-white text-center mt-2 px-6 sm:px-0">
             Explore what COSTrAD can help you achieve.
         </span>
     </section>
+
 
 
     <section class="max-w-auto  mx-auto h-auto pt-16">

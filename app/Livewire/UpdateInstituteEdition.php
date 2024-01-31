@@ -6,8 +6,11 @@ use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use LivewireUI\Modal\ModalComponent;
+use Livewire\Attributes\Renderless;
+
 
 class UpdateInstituteEdition extends ModalComponent
 {
@@ -61,7 +64,6 @@ class UpdateInstituteEdition extends ModalComponent
         $this->about = $edition->about;
         $this->body = $edition->body;
         $this->introduction = $edition->introduction;
-        $this->banner = $edition->banner;
         $this->startDate = $edition->startDate;
         $this->endDate = $edition->endDate;
         $this->seo = $edition->seo;
@@ -75,9 +77,30 @@ class UpdateInstituteEdition extends ModalComponent
         $this->selectedInstituteName = Institute::find($this->institute_id)->name;
     }
 
+    public function resetBanner() {
+        $this->reset('banner');
+
+    }
+
+    public function getFormattedStartDateProperty()
+    {
+        return $this->startDate ? Carbon::parse($this->startDate)->toDateString() : null;
+    }
+
+    public function getFormattedEndDateProperty()
+    {
+        return $this->endDate ? Carbon::parse($this->endDate)->toDateString() : null;
+    }
+
+    // protected function generateSlug($title)
+    // {
+    //     return \Illuminate\Support\Str::slug($title);
+    // }
 
     public function updateInstituteEdition()
     {
+
+
         // Validation logic (customize as needed)
         $validatedData = $this->validate([
             'institute_id' => ['required', 'exists:institutes,id'],
@@ -94,9 +117,9 @@ class UpdateInstituteEdition extends ModalComponent
             'about' => ['nullable', 'string', 'min:2'],
             'body' => ['nullable', 'string', 'min:2'],
             'introduction' => ['nullable', 'string', 'min:2'],
-            'banner' => ['nullable', 'image', 'max:4048', 'mimes:jpeg,png,jpg,webp'],
-            'startDate' => ['required', 'date'],
-            'endDate' => ['required', 'date'],
+            'banner' => ['nullable','image','max:4048', 'mimes:jpeg,png,jpg,webp'],
+            'startDate' => ['required','date'],
+            'endDate' => ['required','date'],
             'seo' => ['nullable', 'string', 'min:2', 'max:255'],
             'active' => ['nullable', 'boolean'],
             'price' => ['required', 'numeric']
@@ -109,7 +132,9 @@ class UpdateInstituteEdition extends ModalComponent
 
             $this->edition->update($editionData);
 
+
             if ($this->banner) {
+
                 $this->edition->clearMediaCollection('banner');
 
                 $this->edition->addMedia($this->banner->getRealPath())

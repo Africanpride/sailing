@@ -20,7 +20,7 @@ class Publication extends Model implements HasMedia
 
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['title', 'slug', 'active','approved', 'overview', 'body', 'like', 'featured_image', 'user_id'];
+    protected $fillable = ['title', 'slug', 'active', 'approved', 'overview', 'body', 'like', 'featured_image', 'user_id'];
 
     protected $casts = [
         'active' => 'boolean',
@@ -32,6 +32,7 @@ class Publication extends Model implements HasMedia
         'publication_image',
         'estimated_read_time',
         'publication_image',
+        'banner'
 
     ];
 
@@ -56,7 +57,16 @@ class Publication extends Model implements HasMedia
     }
 
 
+    public function getBannerAttribute()
+    {
 
+        if ($this->hasMedia('featured_image')) {
+            return $this->getFirstMediaUrl('featured_image');
+        } else {
+
+            return asset('/images/main/dome-1-1024x684.jpg');
+        }
+    }
 
     public function GetEstimatedReadTimeAttribute()
     {

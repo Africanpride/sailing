@@ -130,7 +130,9 @@ Route::middleware([
     // 'mustBeAdmin',
 ])->group(function () {
 
-
+Route::get('participants', function() {
+    return view('admin.participants.index');
+})->name('participants');
     Route::get('staff', function () {
         $users = User::staff()->paginate(8);
         return view('staff.index');
@@ -202,7 +204,8 @@ Route::get('documentation', function () {
     return view('documentation', compact('institutes'));
 });
 Route::get('tabs', function () {
-    $mindset = Institute::find(2)->with('editions')->get();
-    // dd($mindset);
-    return view('tabs');
+    // $mindset = Institute::find(2)->with('editions')->get();
+    $fdi = Edition::first();
+    // dd($fdi->banner);
+    return view('tabs', compact('fdi'));
 });

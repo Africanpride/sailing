@@ -325,7 +325,7 @@
                 <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
 
                     <div id="payment-invoice"
-                        class="hs-overlay hs-overlay-open:tranfirefly-x-0 hidden tranfirefly-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-md w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
+                        class="hs-overlay hs-overlay-open:translate-x-0 hidden translate-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-md w-full z-[60] bg-white border-r dark:bg-gray-800 dark:border-gray-700"
                         tabindex="-1">
                         <div style="background-image: url('{{ asset('images/main/abstract-bg-1.svg') }}');  background-repeat: no-repeat;
               background-size: auto 300px; "

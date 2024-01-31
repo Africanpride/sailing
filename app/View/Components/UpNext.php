@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use Closure;
-use App\Models\Institute;
+use App\Models\Edition;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
@@ -13,27 +13,27 @@ class UpNext extends Component
      * Create a new component instance.
      */
 
-     public $upcomingInstitute;
-     public $today;
+    public $upcomingEdition;
+    public $today;
 
 
     public function __construct()
     {
         // Get the current date
         // $this->today = date('Y-m-d');
-        // Find the first instance of an institute where startDate is greater than today's date
-        // $this->upcomingInstitute = Institute::where('startDate', '>', $this->today)
+        // Find the first instance of an Edition where startDate is greater than today's date
+        // $this->upcomingEdition = Edition::where('startDate', '>', $this->today)
         //     ->orderBy('startDate', 'asc')
         //     ->first();
 
-        // Find the first instance of an institute where startDate is greater than today's date
-        // $this->upcomingInstitute = Institute::where('startDate', '>', $this->today)
+        // Find the first instance of an Edition where startDate is greater than today's date
+        // $this->upcomingEdition = Edition::where('startDate', '>', $this->today)
         //     ->orderBy('startDate', 'asc')
         //     ->first();
 
-        $this->upcomingInstitute = Institute::where('startDate', '>', now())
+        $this->upcomingEdition= Edition::where('startDate', '>', now())
         ->orWhere('acronym','fdi')
-            ->first();
+        ->first();
     }
 
     public $editionTitle = array(
@@ -55,7 +55,7 @@ class UpNext extends Component
     public function render()
     {
         return view('components.up-next', [
-            'upcomingInstitute' => $this->upcomingInstitute,
+            'upcomingEdition' => $this->upcomingEdition,
             'editionTitle' => $this->editionTitle,
         ]);
     }

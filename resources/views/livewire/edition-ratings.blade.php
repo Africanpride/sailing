@@ -16,7 +16,7 @@
                     <div class="flex flex-row-reverse justify-end items-center">
                         <div class="px-5 py-4 uppercase text-sm gap-x-4 ">
                             <span
-                                class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-{{ $ratingValue > 2 ? 'yellow' : 'red' }}-500 text-white">
+                                class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-yellow-500 dark:bg-gray-500 bg-{{ $ratingValue > 2 ? 'yellow' : 'red' }}-500 dark:text-white ">
                                 {{ $ratingValue ?? 0 }}</span>
 
 
@@ -28,7 +28,7 @@
                                 name="hs-ratings-readonly" value="{{ $i }}" wire:model.live="ratingValue">
 
                             <label for="hs-ratings-readonly-{{ $i }}"
-                                class="peer-checked:text-yellow-500 text-gray-300 pointer-events-none dark:peer-checked:text-yellow-500 dark:text-gray-600 px-2">
+                                class="peer-checked:text-yellow-500 text-gray-300 pointer-events-none dark:peer-checked:text-yellow-500 dark:text-gray-300 px-2">
 
                                 <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16"
                                     height="16" fill="currentColor" viewBox="0 0 16 16">

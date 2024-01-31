@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
+use Livewire\Attributes\Renderless;
+
 
 class EditionsList extends Component
 {
