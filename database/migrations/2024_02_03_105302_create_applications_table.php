@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->ulid()->primary();
-            $table->foreignUlid('user_id')->constrained();
+            $table->foreignUlid('user_id')->constrained()->cascadeOnDelete();
             $table->foreignUlid('edition_id')->constrained();
-            $table->foreignUlid('invoice_id')->nullable()->constrained('invoices'); // Adjust the table name as needed
+            $table->foreignUlid('invoice_id')->nullable()->constrained()->nullOnDelete(); // Adjust the table name as needed
             $table->timestamp('submitted_at')->nullable();
             $table->boolean('approved')->default(false);
-            $table->foreignUlid('approved_by')->nullable()->constrained('users'); // Adjust the table name as needed
+            $table->foreignUlid('approved_by')->nullable()->nullOnDelete(); // Adjust the table name as needed
             $table->boolean('paid_for')->default(false);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();

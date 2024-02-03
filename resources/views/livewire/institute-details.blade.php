@@ -146,19 +146,20 @@
                 <div class="mt-4 max-w-6xl space-y-6 text-[16px] "> {!! $institute->introduction ??
                     ' Foundations for brain architecture in early childhood, Early childhood development, Developing children into sons, Strategic Innovative and effective child development systems and Futuristic systems of education.' !!}
                 </div>
-                <div class="py-5">
+                <div class="">
                     <div class="flex justify-start items-center gap-x-1">
                         @for ($i = 1; $i <= 5; $i++)
                             @if ($i <= $edition->rating)
-                            <x-heroicon-m-star class="w-4 h-4 text-yellow-500" />
+                                <x-heroicon-m-star class="w-4 h-4 text-yellow-500" />
                             @else
-                            <x-lucide-star class="w-4 h-4 text-yellow-500" />
+                                <x-lucide-star class="w-4 h-4 text-yellow-500" />
                             @endif
                         @endfor
                     </div>
 
                     <p class="mt-3 text-sm text-gray-800 dark:text-white">
-                        <span class="font-bold">{{ $edition->rating }}</span> /5 - <span class="hidden">from 12k</span> Participant
+                        <span class="font-bold">{{ $edition->rating }}</span> /5 - <span class="hidden">from 12k</span>
+                        Participant
                         Ratings
                     </p>
 
@@ -185,7 +186,15 @@
                         </svg>
                         <!-- End Star -->
                     </div>
+
                 </div>
+
+                <button type="button" class=" rounded py-4  px-4 bg-lime-500 hover:bg-lime-600 uppercase
+                transition duration-300 ease-in-out text-firefly-900 hover:text-white text-[10px] font-bold  "
+                    data-hs-overlay="#hs-subscription-with-image">
+                    {{ __('Start Application: ') }}
+                    {{ $edition->acronym . ' ' . Carbon\Carbon::parse($edition->startDate)->format('Y') }}
+                </button>
             </div>
 
         </section>
@@ -257,11 +266,13 @@
 
 
                             <div class="text-center w-auto py-5">
-                                <x-button type="button" class=""
-                                    data-hs-overlay="#hs-subscription-with-image">
-                                    <span class="capitalize"> {{ __('Enroll for ') }}</span><span
-                                        class="uppercase">{{ $institute->acronym }}</span>
+                                <x-button type="button" class=" bg-lime-500 hover:bg-lime-600 uppercase
+                                transition duration-300 ease-in-out text-firefly-900 hover:text-white text-sm font-bold" data-hs-overlay="#hs-subscription-with-image">
+                                   {{ __('Start Application: ') }}{{ $edition->acronym . ' ' . Carbon\Carbon::parse($edition->startDate)->format('Y') }}
                                 </x-button>
+                            </div>
+                            <div>
+                                {{ $edition->duration . ', ' . Carbon\Carbon::parse($edition->startDate)->format('Y') }}
                             </div>
 
                             <p class="mt-6 text-xs leading-5 text-gray-600 dark:text-gray-400">

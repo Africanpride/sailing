@@ -1,4 +1,5 @@
-<div  id="newInstituteAlert" style="display: none;"
+<div  id="newInstituteAlert"
+{{-- style="display: none;" --}}
     class="hs-removing:easeOut hs-removing:opacity-0 transition duration-500 relative isolate hidden md:flex items-center gap-x-4
      overflow-hidden bg-gray-50 dark:bg-black py-1 px-6 sm:px-3.5 sm:before:flex-1">
     <svg viewBox="0 0 577 310" aria-hidden="true"
@@ -69,7 +70,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         var newInstituteAlert = sessionStorage.getItem('newInstituteAlert');
         console.log(newInstituteAlert);
@@ -86,4 +87,4 @@
             $("#newInstituteAlert").fadeOut();
         });
     });
-</script>
+</script> --}}

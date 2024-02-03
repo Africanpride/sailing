@@ -18,6 +18,10 @@ class InstituteDetails extends Component
         $this->edition = $institute->editions()->latest()->first();
     }
 
+    public function application() {
+        dd("We are applying");
+    }
+
     // public function instituteAlreadyEnrolled()
     // {
 
