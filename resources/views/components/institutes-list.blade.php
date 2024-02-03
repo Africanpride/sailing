@@ -25,19 +25,20 @@
                 <div class="flex flex-col mx-1 md:mx-0 py-2">
 
                     @foreach ($firstFour as $firstFourInstitutes)
-                        <a class="group flex gap-x-5 text-firefly-800 hover:bg-firefly-200/40 rounded-md p-4 dark:text-firefly-200 dark:hover:bg-gray-950"
+                        <a class="group flex gap-x-5 text-firefly-900  hover:bg-firefly-200/40 rounded-md p-4 dark:text-firefly-200 dark:hover:bg-gray-950"
                             href="{{ route('institutes.show', $firstFourInstitutes->slug) }}">
                             <img src="{{ $firstFourInstitutes->institute_logo }}" alt=""
                                 class="flex-shrink-0 w-14 h-14 mt-1">
                             <div class="grow">
-                                <p class="text-md  text-firefly-800 dark:text-firefly-200 capitalize">
+                                <p class="text-md  text-firefly-900  dark:text-firefly-200 capitalize">
                                     {{ $firstFourInstitutes->name }} <br />
-                                    <span
-                                        class="text-md  text-firefly-500 group-hover:text-firefly-800 dark:group-hover:text-firefly-200 uppercase">
+                                    <span class="text-md text-firefly-500 group-hover:text-firefly-900  dark:group-hover:text-firefly-200 uppercase">
                                         ({{ $firstFourInstitutes->acronym }})
-                                        {{-- <span class="text-gradient__teal">{{ $firstFourInstitutes->duration }},
-                                            {{ now()->format('Y') }}</span> --}}
+                                        @foreach ($firstFourInstitutes->editions as $edition)
+                                            <span class="text-gradient__teal">{{ $edition->duration }}</span>
+                                        @endforeach
                                     </span>
+
                                 </p>
                             </div>
                         </a>
@@ -46,19 +47,19 @@
 
                 <div class="flex flex-col mx-1 md:mx-0 py-2">
                     @foreach ($lastFour as $lastFourInstitutes)
-                        <a class="group flex items-center gap-x-5 text-firefly-800 hover:bg-firefly-200/40 rounded-md p-4 dark:text-firefly-200 dark:hover:bg-gray-950"
+                        <a class="group flex items-center gap-x-5 text-firefly-900  hover:bg-firefly-200/40 rounded-md p-4 dark:text-firefly-200 dark:hover:bg-gray-950"
                             href="{{ route('institutes.show', $lastFourInstitutes->slug) }}">
 
                             <img src="{{ $lastFourInstitutes->institute_logo }}" alt=""
                                 class="flex-shrink-0 w-14 h-14 mt-1">
                             <div class="grow">
-                                <p class="text-md  text-firefly-800 dark:text-firefly-200 capitalize">
+                                <p class="text-md  text-firefly-900  dark:text-firefly-200 capitalize">
                                     {{ $lastFourInstitutes->name }}
-                                    <span
-                                        class="text-md  text-firefly-500 group-hover:text-firefly-800 dark:group-hover:text-firefly-200 uppercase">
+                                    <span class="text-md text-firefly-500 group-hover:text-firefly-900  dark:group-hover:text-firefly-200 uppercase">
                                         ({{ $lastFourInstitutes->acronym }})
-                                        {{-- <span class="text-gradient__teal">{{ $lastFourInstitutes->duration }},
-                                            {{ now()->format('Y') }}</span> --}}
+                                        @foreach ($lastFourInstitutes->editions as $edition)
+                                            <span class="text-gradient__teal">{{ $edition->duration }}</span>
+                                        @endforeach
                                     </span>
                                 </p>
                             </div>

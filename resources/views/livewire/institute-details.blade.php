@@ -58,18 +58,18 @@
                          prose-a:text-firefly-500 bg-white dark:bg-firefly-900 space-y-4  rounded-2xl shadow-2xl">
                         <div class="text-sm font-bold flex justify-between items-center">
                             <div> <span
-                                    class="uppercase ">{{ $institute->acronym }}</span>{{ __(': A Critical Mandate.') }}
+                                    class="uppercase ">{{ $edition->acronym }}</span>{{ __(': A Critical Mandate.') }}
                             </div>
-                            <div class="text-gradient__teal">{{ $institute->duration }}, {{ now()->format('Y') }}</div>
+                            <div class="text-gradient__teal">{{ $edition->duration }}, {{ now()->format('Y') }}</div>
                         </div>
 
                         <div
                             class="hidden justify-between items-center dark:text-gray-200 font-extrabold text-gray-800 text-left text-sm">
                             <h3 class="hidden md:flex  ">
-                                <span class="uppercase ">{{ $institute->acronym }}</span>
+                                <span class="uppercase ">{{ $edition?->acronym }}</span>
                                 : A Critical Mandate.
                             </h3>
-                            <div class="text-gradient__teal">{{ $institute->duration }}, {{ now()->format('Y') }}
+                            <div class="text-gradient__teal">{{ $edition?->duration }}, {{ now()->format('Y') }}
                             </div>
                         </div>
 
@@ -97,16 +97,16 @@
                                 </a>
                             </div>
 
-                            <div x-data="{ progress: {{ $institute->progress }} }" class="w-3/5">
+                            <div x-data="{ progress: {{ $edition->progress }} }" class="w-3/5">
                                 <span x-show="progress > 0">
                                     <div
                                         class="relative flex w-full h-5.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
                                         <div class="flex flex-col justify-center overflow-hidden bg-firefly-800 text-[9px] text-white text-center 	"
-                                            role="progressbar" style="width: {{ $institute->progress }}%"
-                                            aria-valuenow="{{ $institute->progress }}" aria-valuemin="0"
+                                            role="progressbar" style="width: {{ $edition->progress }}%"
+                                            aria-valuenow="{{ $edition->progress }}" aria-valuemin="0"
                                             aria-valuemax="100">
                                             <span class=" text-[9px] whitespace-nowrap text-center px-2">Progress
-                                                {{ $institute->progress }}% </span>
+                                                {{ $edition->progress }}% </span>
                                         </div>
                                     </div>
                                 </span>
@@ -147,44 +147,18 @@
                     ' Foundations for brain architecture in early childhood, Early childhood development, Developing children into sons, Strategic Innovative and effective child development systems and Futuristic systems of education.' !!}
                 </div>
                 <div class="py-5">
-                    <div class="flex space-x-1">
-                        <svg class="h-4 w-4 text-yellow-500 dark:text-white" width="51" height="51"
-                            viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <svg class="h-4 w-4 text-yellow-500 dark:text-white" width="51" height="51"
-                            viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <svg class="h-4 w-4 text-yellow-500 dark:text-white" width="51" height="51"
-                            viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <svg class="h-4 w-4 text-yellow-500 dark:text-white" width="51" height="51"
-                            viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <svg class="h-4 w-4 text-yellow-500 dark:text-gray-200" width="51" height="51"
-                            viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M49.6867 20.0305C50.2889 19.3946 49.9878 18.1228 49.0846 18.1228L33.7306 15.8972C33.4296 15.8972 33.1285 15.8972 32.8275 15.2613L25.9032 0.317944C25.6021 0 25.3011 0 25 0V42.6046C25 42.6046 25.3011 42.6046 25.6021 42.6046L39.7518 49.9173C40.3539 50.2352 41.5581 49.5994 41.2571 48.6455L38.5476 32.4303C38.5476 32.1124 38.5476 31.7944 38.8486 31.4765L49.6867 20.0305Z"
-                                fill="transparent"></path>
-                            <path
-                                d="M0.313299 20.0305C-0.288914 19.3946 0.0122427 18.1228 0.915411 18.1228L16.2694 15.8972C16.5704 15.8972 16.8715 15.8972 17.1725 15.2613L24.0968 0.317944C24.3979 0 24.6989 0 25 0V42.6046C25 42.6046 24.6989 42.6046 24.3979 42.6046L10.2482 49.9173C9.64609 50.2352 8.44187 49.5994 8.74292 48.6455L11.4524 32.4303C11.4524 32.1124 11.4524 31.7944 11.1514 31.4765L0.313299 20.0305Z"
-                                fill="currentColor"></path>
-                        </svg>
+                    <div class="flex justify-start items-center gap-x-1">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $edition->rating)
+                            <x-heroicon-m-star class="w-4 h-4 text-yellow-500" />
+                            @else
+                            <x-lucide-star class="w-4 h-4 text-yellow-500" />
+                            @endif
+                        @endfor
                     </div>
 
                     <p class="mt-3 text-sm text-gray-800 dark:text-white">
-                        <span class="font-bold">4.6</span> /5 - <span class="hidden">from 12k</span> Participant
+                        <span class="font-bold">{{ $edition->rating }}</span> /5 - <span class="hidden">from 12k</span> Participant
                         Ratings
                     </p>
 
@@ -276,7 +250,7 @@
                             </p>
                             <p class="mt-6 flex items-baseline justify-center gap-x-2">
                                 <span class="text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100">$
-                                    {{ $institute->price }}</span>
+                                    {{ $edition->price }}</span>
                                 <span
                                     class="text-sm font-semibold leading-6 tracking-wide text-gray-600 dark:text-gray-400">USD</span>
                             </p>

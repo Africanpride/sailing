@@ -78,9 +78,9 @@
                 </div>
             </div>
         </section>
-        {{-- <section class="">
+        <section class="">
             <div class="lg:max-w-screen-xl lg:py-6 mx-auto py-4 sm:max-w-xl">
-                <div class="grid gap-8 md:grid-cols-2">
+                <div class="grid gap-6 md:grid-cols-1">
                     @forelse ($institutes as $institute)
                         <div
                             class="p-6 flex flex-col text-left items-start bg-gray-100 dark:bg-transparent border border-gray-500/20 rounded-r-2xl relative pl-12 shadow-sm">
@@ -95,7 +95,7 @@
                                     <span>{{ \Carbon\Carbon::parse($institute->endDate)->format('M d, Y') }} </span>
                                 </time>
                             </div>
-                            <a href="{{ route('institute.show', [$institute]) }}">
+                            <a href="{{ route('institutes.show', [$institute]) }}">
 
                                 <img src="{{ $institute->institute_logo }}"
                                     class="w-20 h-20 inline-flex items-center justify-center rounded-full  mb-5 flex-shrink-0"
@@ -104,7 +104,7 @@
 
 
                             <div class="space-y-3">
-                                <a href="{{ route('institute.show', [$institute]) }}"
+                                <a href="{{ route('institutes.show', [$institute]) }}"
                                     class="dark:text-white text-xs md:text-md title-font font-bold mb-3 uppercase">
                                     {{ $institute->name }} <span
                                         class="uppercase">({{ $institute->acronym }})</span></a>
@@ -112,7 +112,7 @@
                                 <div class="leading-normal text-[13px]">{!! $institute->overview !!}</div>
 
                                 <div class="flex justify-between items-center mt-4">
-                                    <a href="{{ route('institute.show', [$institute]) }}"
+                                    <a href="{{ route('institutes.show', [$institute]) }}"
                                         class=" dark:text-yellow-400 text-yellow-500 hidden md:inline-flex items-center">Learn
                                         More
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round"
@@ -121,7 +121,7 @@
                                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                                         </svg>
                                     </a>
-                                    <a href="{{ route('institute.show', [$institute]) }}"
+                                    <a href="{{ route('institutes.show', [$institute]) }}"
                                         class="  text-firefly-100 inline-flex items-center bg-firefly-800
                                             px-3 py-1.5 text-[12px] ">
                                         Register For <span class="uppercase space-x-2 pl-2">
@@ -142,7 +142,7 @@
 
                 </div>
             </div>
-        </section> --}}
+        </section>
 
 
         <div

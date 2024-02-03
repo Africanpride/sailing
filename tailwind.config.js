@@ -53,7 +53,7 @@ export default {
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require("tailwindcss-animate"),
-        require('tailwind-scrollbar')({ nocompatible: true }),
+        require('tailwind-scrollbar'),
 
     ],
 

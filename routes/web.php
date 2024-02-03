@@ -91,7 +91,7 @@ Route::middleware([
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    });
+    })->name('admin-dashboard');
 
 
     // Route::get('/create-edition', function() {
@@ -133,6 +133,11 @@ Route::middleware([
 Route::get('participants', function() {
     return view('admin.participants.index');
 })->name('participants');
+
+Route::get('applications', function() {
+    return view('admin.applications.index');
+})->name('applications');
+
     Route::get('staff', function () {
         $users = User::staff()->paginate(8);
         return view('staff.index');

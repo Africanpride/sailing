@@ -239,8 +239,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function dashboard(): string
     {
-        return $this->isAdmin ? 'admin/dashboard' :  'dashboard';
+        return $this->isAdmin ? route('admin-dashboard') : route('dashboard');
     }
+
 
 
     public function getAvatarUrlAttribute()
@@ -301,7 +302,9 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
-
+public function applications() {
+    return $this->HasMany(Application::class);
+}
 
     public function attendedEditions()
     {

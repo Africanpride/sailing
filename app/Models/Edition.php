@@ -55,9 +55,17 @@ class Edition extends Model implements HasMedia
 
     protected $appends = [
         'progress',
-        'banner'
-
+        'banner',
+        'duration',
     ];
+    function getDurationAttribute(): string
+    {
+        return Carbon::parse($this->startDate)
+            ->format('M d') . ' – ' .
+            Carbon::parse($this->endDate)
+            ->format('M d');
+    }
+
 
     public function institute()
     {
@@ -90,7 +98,7 @@ class Edition extends Model implements HasMedia
 
             return asset('/images/main/shark.jpg');
         }
-   }
+    }
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -144,6 +152,10 @@ class Edition extends Model implements HasMedia
         return 0;
     }
 
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
     public function ratings()
     {
         return $this->morphMany(Rating::class, 'rateable');

@@ -17,14 +17,23 @@ class InstitutesList extends Component
     public $nextInstituteBanner;
     public function __construct()
     {
-
         // Fetch the last 4 objects excluding the one with slug 'costrad'
-        $this->firstFour = Institute::where('slug', '<>', 'costrad')->take(4)->get();
-        $this->lastFour = Institute::where('slug', '<>', 'costrad')->skip(5)->take(4)->get();
-        // $this->nextInstituteBanner = Institute::where('startDate', '>', now())
-        //     ->orderBy('startDate', 'asc')
-        //     ->first();
+        $this->firstFour = Institute::where('slug', '<>', 'costrad')
+            ->with(['editions' => function ($query) {
+                $query->whereYear('startDate', now()->year);
+            }])
+            ->take(4)
+            ->get();
+
+        $this->lastFour = Institute::where('slug', '<>', 'costrad')
+            ->with(['editions' => function ($query) {
+                $query->whereYear('startDate', now()->year);
+            }])
+            ->skip(5)
+            ->take(4)
+            ->get();
     }
+
 
     /**
      * Get the view / contents that represent the component.

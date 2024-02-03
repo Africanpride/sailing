@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
 use Illuminate\Support\Facades\Auth;
@@ -9,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class InstituteDetails extends Component
 {
     public Institute $institute;
+    public Edition $edition;
 
     public function mount(Institute $institute)
     {
         $this->institute = $institute;
+        $this->edition = $institute->editions()->latest()->first();
     }
 
     // public function instituteAlreadyEnrolled()
