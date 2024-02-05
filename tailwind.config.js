@@ -23,6 +23,7 @@ export default {
                 sans: ['Open Sans', 'source sans pro', 'montserrat', 'inter', 'anton', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
+                xs: ['10px', '20px'],
                 sm: ['12px', '20px'],
                 base: ['16px', '20px'],
                 lg: ['16px', '20px'],

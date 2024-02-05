@@ -19,6 +19,8 @@ class mustBeAdmin
         if (Auth::check() && Auth::user()->isAdmin) {
             return $next($request);
         }
-        abort(401, 'Unauthorized action. You are warned.');
+        app('flasher')->addWarning('UNAUTHORIZED REQUEST.', 'Logging Details');
+        // return response()->json(['redirect' => '/'], Response::HTTP_UNAUTHORIZED);
+        return redirect()->route('home');
     }
 }

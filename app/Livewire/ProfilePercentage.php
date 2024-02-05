@@ -10,42 +10,46 @@ class ProfilePercentage extends Component
 
     function calculateProfileCompletionPercentage()
     {
-        $profile = Auth::user()->profile;
-        $filledAttributes = 0;
-        $totalAttributes = count($profile->getAttributes());
+       if(!Auth::check()) {
+        return  0;  // not logged in user redirect to login page.
+       }
+
+       $profile = Auth::user()->profile;
+       $filledAttributes = 0;
+       $totalAttributes = count($profile->getAttributes());
 
 
-        $profileAttributes = [
-            'title',
-            'gender',
-            'dateOfBirth',
-            'marital_status',
-            'address',
-            'city',
-            'country',
-            'state',
-            'zipcode',
-            'country',
-            'telephone',
-            'emergencyContactName',
-            'emergencyContactTelephone',
-            'nationality',
-            'bio',
-            'disabled',
-        ];
+       $profileAttributes = [
+           'title',
+           'gender',
+           'dateOfBirth',
+           'marital_status',
+           'address',
+           'city',
+           'country',
+           'state',
+           'zipcode',
+           'country',
+           'telephone',
+           'emergencyContactName',
+           'emergencyContactTelephone',
+           'nationality',
+           'bio',
+           'disabled',
+       ];
 
 
-        foreach ($profileAttributes as $attribute) {
+       foreach ($profileAttributes as $attribute) {
 
-            if ($profile->{$attribute} !== null && $profile->{$attribute} !== '') {
-                $filledAttributes++;
-            }
-        }
+           if ($profile->{$attribute} !== null && $profile->{$attribute} !== '') {
+               $filledAttributes++;
+           }
+       }
 
 
-        $percentage = ($filledAttributes / count($profileAttributes) * 100);
+       $percentage = ($filledAttributes / count($profileAttributes) * 100);
 
-        return $percentage;
+       return $percentage;
     }
 
     public function render()

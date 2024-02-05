@@ -29,6 +29,22 @@
                     <x-lucide-layout-dashboard class="w-5 h-5 text-current" />
                     {{ __('My Dashboard') }}
                 </a>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                    href="{{ route('profile.show') }}">
+                    <x-lucide-contact class="w-5 h-5 text-current" />
+                    Manage Profile
+                </a>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                    href="{{ route('profile.show') }}">
+                    <x-heroicon-o-folder-arrow-down class="w-5 h-5 text-current" />
+                    <div class="w-full flex items-center justify-between">
+                        <span>My Applications </span>
+                        <span
+                            class="w-5 h-5 bg-gray-200 dark:bg-gray-950 dark:text-white text-[9px] text-center flex justify-center items-center rounded-full">
+                            {{ auth()->user()->applications_count }}
+                        </span>
+                    </div>
+                </a>
                 @can('pendingInvoices')
                     <a class="relative flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                         href="{{ url('invoices') }}">
@@ -51,11 +67,7 @@
                         {{ __('My Invoices') }}
                     </a>
                 @endcan
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                    href="{{ url('profile') }}">
-                    <x-lucide-contact class="w-5 h-5 text-current" />
-                    Manage Profile
-                </a>
+
                 <a id="open_preferences_center"
                     class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                     href="#">

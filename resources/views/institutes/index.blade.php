@@ -78,64 +78,57 @@
                 </div>
             </div>
         </section>
-        <section class="">
+        <section class="p-4 md:p-2">
             <div class="lg:max-w-screen-xl lg:py-6 mx-auto py-4 sm:max-w-xl">
-                <div class="grid gap-6 md:grid-cols-1">
+                <div class="grid gap-4 md:grid-cols-4">
                     @forelse ($institutes as $institute)
-                        <div
-                            class="p-6 flex flex-col text-left items-start bg-gray-100 dark:bg-transparent border border-gray-500/20 rounded-r-2xl relative pl-12 shadow-sm">
-                            <div
-                                class="rotate-180 p-2 [writing-mode:_vertical-lr] absolute left-0 bg-gray-500/20 h-full top-0">
-                                <time datetime="{{ $institute->startDate }}"
-                                    class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900 dark:text-white">
-                                    <span>{{ \Carbon\Carbon::parse($institute->startDate)->format('M d, Y') }}</span>
-                                    <span class="w-px flex-1 bg-gray-900/10 dark:bg-white/10"></span>
-                                    <span> To </span>
-                                    <span class="w-px flex-1 bg-gray-900/10 dark:bg-white/10"></span>
-                                    <span>{{ \Carbon\Carbon::parse($institute->endDate)->format('M d, Y') }} </span>
-                                </time>
+                    <div class="w-full ">
+                        <img src="{{ $institute->featured_image }}" alt=""
+                            class="rounded-t-2xl object-cover  shadow-2xl h-48 w-full ">
+                        <div class="bg-white shadow-2xl rounded-b-3xl space-y-4">
+
+
+                            <div class="w-5/6 m-auto h-[6rem] min-h-[6rem] space-y-4">
+                                <h2 class="text-center text-gray-800 text-[10px] font-bold pt-3 uppercase px-4 ">
+                                    {{ $institute->name }}
+                                </h2>
+                                <p class="text-center text-[12px] text-gray-500  line-clamp-3">{!! $institute->overview !!}
+                                </p>
                             </div>
-                            <a href="{{ route('institutes.show', [$institute]) }}">
-
-                                <img src="{{ $institute->institute_logo }}"
-                                    class="w-20 h-20 inline-flex items-center justify-center rounded-full  mb-5 flex-shrink-0"
-                                    alt="">
-                            </a>
-
-
-                            <div class="space-y-3">
-                                <a href="{{ route('institutes.show', [$institute]) }}"
-                                    class="dark:text-white text-xs md:text-md title-font font-bold mb-3 uppercase">
-                                    {{ $institute->name }} <span
-                                        class="uppercase">({{ $institute->acronym }})</span></a>
-
-                                <div class="leading-normal text-[13px]">{!! $institute->overview !!}</div>
-
-                                <div class="flex justify-between items-center mt-4">
-                                    <a href="{{ route('institutes.show', [$institute]) }}"
-                                        class=" dark:text-yellow-400 text-yellow-500 hidden md:inline-flex items-center">Learn
-                                        More
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"
-                                            viewBox="0 0 24 24">
-                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="{{ route('institutes.show', [$institute]) }}"
-                                        class="  text-firefly-100 inline-flex items-center bg-firefly-800
-                                            px-3 py-1.5 text-[12px] ">
-                                        Register For <span class="uppercase space-x-2 pl-2">
-                                            {{ $institute->acronym . ' ' . now()->format('Y') }}</span>
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"
-                                            viewBox="0 0 24 24">
-                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
+                            <div class="bg-indigo-50 grid grid-cols-4 m-auto md:p-3 mt-4 mx-2 p-3 rounded-2xl w-auto">
+                                <div class="col-span-1 ">
+                                    <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
+                                        alt="music icon">
                                 </div>
+                                <div class="col-span-3 flex flex-row items-center p-3">
+                                    <div>
+                                        <p class="text-gray-800 font-bold lg:text-sm">
+                                            {{ $institute->editions()->latest()->first()->title }}
+                                        </p>
+                                        <p class="text-gray-500 text-sm">
+                                            {{ $institute->editions()->latest()->first()->duration }}
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- <div class="pt-2">
+                          <a href="https://google.com" class="text-indigo-700 underline hover:no-underline  text-sm hover:text-indigo-500 font-bold" target="_blank">Change</a>
+                        </div> --}}
+                            </div>
+                            <div class="text-center">
+                                <a href="{{ route('institutes.show', [$institute]) }}">
+                                    <x-button classs="lg:text-sm text-lg font-bold">Register for
+                                        {{ $institute->editions()->latest()->first()->title }}</x-button>
+                                </a>
                             </div>
 
+                            <div class="text-center m-auto mt-6 w-full h-16">
+                                <a href="{{ route('institutes.show', [$institute]) }}"
+                                    class="text-gray-500 font-bold lg:text-sm hover:text-gray-900
+                                uppercase ">More About
+                                    {{ $institute->editions()->latest()->first()->acronym }}</a>
+                            </div>
                         </div>
+                    </div>
                     @empty
                     @endforelse
 

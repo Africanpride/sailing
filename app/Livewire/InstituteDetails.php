@@ -5,22 +5,64 @@ namespace App\Livewire;
 use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
+use App\Models\Application;
+use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class InstituteDetails extends Component
 {
     public Institute $institute;
     public Edition $edition;
+    public User $user;
 
     public function mount(Institute $institute)
     {
         $this->institute = $institute;
         $this->edition = $institute->editions()->latest()->first();
+
+        if (Auth::check()) {
+            $this->user = Auth::user();
+        }
     }
 
-    public function application() {
-        dd("We are applying");
+    public function application()
+    {
+        // Check if user is logged in
+        if (Auth::check()) {
+            // Check if profile is complete
+            $profilePercentage = new ProfilePercentage();
+            $percentage = $profilePercentage->calculateProfileCompletionPercentage();
+
+            if ($percentage < 90) {
+                app('flasher')->addWarning('Kindly complete profile', 'Profile Incomplete!');
+                $this->redirectRoute('profile.show');
+            } else {
+                // if/else block to check if user is already registered or enrolled
+
+                // Create the application
+                $this->user->applications()->create([
+                    'edition_id' => $this->edition->id,
+                ]);
+
+                app('flasher')->addSuccess('We shall get back to you shortly.', 'Application Received!');
+                $this->redirectRoute('home');
+            }
+        } else {
+            app('flasher')->addWarning('Login/Signup', 'Login Required to Join Institute');
+            $this->redirectRoute('login');
+        }
     }
+
+
+    public function render()
+    {
+        $images = $this->institute->getMedia('banner')->take(6)->skip(1);
+        return view('livewire.institute-details', compact('images'));
+    }
+}
+
 
     // public function instituteAlreadyEnrolled()
     // {
@@ -33,11 +75,3 @@ class InstituteDetails extends Component
     //     }
     //     return false;
     // }
-
-    public function render()
-    {
-        $images = $this->institute->getMedia('banner')->take(6)->skip(1);
-        return view('livewire.institute-details', compact('images'));
-    }
-
-}

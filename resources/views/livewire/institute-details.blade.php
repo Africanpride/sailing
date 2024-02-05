@@ -83,8 +83,8 @@
                         <div class="hidden md:flex justify-between items-center">
                             <div class="not-prose">
 
-                                <a class=" flex items-center gap-2 text-xs text-gray-800 hover:text-gray-500 dark:text-white dark:hover:text-gray-400"
-                                    href="#">
+                                <a
+                                    class=" flex items-center gap-2 text-xs text-gray-800 hover:text-gray-500 dark:text-white dark:hover:text-gray-400">
                                     <svg class="w-4 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z">
@@ -189,7 +189,8 @@
 
                 </div>
 
-                <button type="button" class=" rounded py-4  px-4 bg-lime-500 hover:bg-lime-600 uppercase
+                <button type="button"
+                    class=" rounded py-4  px-4 bg-lime-500 hover:bg-lime-600 uppercase
                 transition duration-300 ease-in-out text-firefly-900 hover:text-white text-[10px] font-bold  "
                     data-hs-overlay="#hs-subscription-with-image">
                     {{ __('Start Application: ') }}
@@ -204,7 +205,7 @@
             <div class="gap-4 grid grid-cols-1 md:gap-3 md:grid-cols-5 pb-4">
 
                 @foreach ($images as $image)
-                    <div class="group rounded-xl overflow-hidden cursor-pointer" href="#">
+                    <div class="group rounded-xl overflow-hidden cursor-pointer">
                         <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
                             <img class="w-full h-full  absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
                                 src="{{ $image->getUrl() }}" style="aspect-ratio: 16 / 7;" alt="Image Description">
@@ -266,9 +267,11 @@
 
 
                             <div class="text-center w-auto py-5">
-                                <x-button type="button" class=" bg-lime-500 hover:bg-lime-600 uppercase
-                                transition duration-300 ease-in-out text-firefly-900 hover:text-white text-sm font-bold" data-hs-overlay="#hs-subscription-with-image">
-                                   {{ __('Start Application: ') }}{{ $edition->acronym . ' ' . Carbon\Carbon::parse($edition->startDate)->format('Y') }}
+                                <x-button type="button"
+                                    class=" bg-lime-500 hover:bg-lime-600 uppercase
+                                transition duration-300 ease-in-out text-firefly-900 hover:text-white text-sm font-bold"
+                                    data-hs-overlay="#hs-subscription-with-image">
+                                    {{ __('Start Application: ') }}{{ $edition->acronym . ' ' . Carbon\Carbon::parse($edition->startDate)->format('Y') }}
                                 </x-button>
                             </div>
                             <div>
@@ -435,7 +438,7 @@
                                 </a>
                                 <button
                                     class=" flex justify-center items-center w-full rounded-md bg-firefly-600 px-3 py-1 text-center text-sm font-semibold text-white shadow-sm hover:bg-firefly-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-firefly-600 dark:bg-firefly-800 dark:hover:bg-firefly-700 dark:focus-visible:outline-firefly-800"
-                                    href="#">
+                                     >
                                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path
@@ -491,7 +494,7 @@
     <div id="hs-subscription-with-image"
         class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
         <div
-            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto">
             <div class="relative flex flex-col bg-white shadow-lg rounded-xl dark:bg-gray-950">
                 <div class="absolute bg-gray-900/50 right-2 rounded-full top-2 z-[10]">
                     <button type="button"
@@ -515,106 +518,115 @@
                     <img class="w-full object-cover rounded-t-xl h-52" src="{{ $institute->featured_image }}"
                         alt="{{ $institute->name }}">
                 </div>
+                <div class="p-4  overflow-y-auto space-y-4">
+                    <div
+                        class="py-3 flex items-center text-sm text-gray-800 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ms-6 dark:text-white dark:after:border-gray-600 uppercase">
+                        {{ $edition->acronym }} - {{ Carbon\Carbon::parse($edition->year)->format('Y') }} Edition
+                    </div>
+                    @auth
+                        <livewire:profile-percentage />
+                    @endauth
 
-                <form method="POST" action="#" accept-charset="UTF-8" class="form-horizontal d-none"
-                    role="form">
-                    <input type="hidden" name="institute" value="{{ $institute->acronym }}">
-                    <input type="hidden" name="institute_id" value="{{ $institute->id }}">
-                    @csrf
+                    <div class="grid md:grid-cols-2 gap-4 ">
+                        <div
+                            class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 cursor-pointer dark:focus:ring-gray-600">
+                            <div class="p-4 md:p-5">
+                                <div class="flex">
+                                    <x-heroicon-o-user-circle
+                                        class=" flex-shrink-0 w-8 h-8 text-gray-800  dark:text-gray-200" />
 
-                    <div class="p-4 sm:p-8 text-center overflow-y-auto space-y-4">
-                        <h3 class="mb-2 text-2xl font-bold text-gray-800 dark:text-gray-200 uppercase">
-                            <span class="px-2">{{ $institute->acronym }} {{ now()->format('Y') }}</span> 🎉
-                        </h3>
-                        <div>
-                            <fieldset class="grid grid-cols-2 gap-4">
 
-                                <div>
-                                    <input type="radio" name="paymentoption" value="fullPayment" id="fullPayment"
-                                        class="peer hidden [&:checked_+_label_svg]:block" checked />
-
-                                    <label for="fullPayment"
-                                        class="block cursor-pointer rounded-lg border border-gray-200 dark:border-gray-700/50 bg-white dark:bg-gray-950 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500">
-                                        <div class="flex items-center justify-between">
-                                            <p class="text-gray-700 dark:text-white text-lg">Full Payment</p>
-
-                                            <svg class="hidden h-5 w-5 text-blue-600"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-
-                                        <p class="mt-1 text-left text-firefly-500">{{ '$' . $institute->price }}</p>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="paymentoption" value="partPayment" id="partPayment"
-                                        class="peer hidden [&:checked_+_label_svg]:block" />
-
-                                    <label for="partPayment"
-                                        class="block cursor-pointer rounded-lg border border-gray-200 dark:border-gray-700/50 bg-white dark:bg-gray-950 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500">
-                                        <div class="flex items-center justify-between">
-                                            <p class="text-gray-700 dark:text-white text-lg">Part Payment</p>
-
-                                            <svg class="hidden h-5 w-5 text-blue-600"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-
-                                        <p class="mt-1 text-firefly-500 text-left">{{ __('Pay in 3 Installments.') }}
+                                    <div class="grow ms-5">
+                                        <h3
+                                            class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
+                                            Step 1: Create Account
+                                        </h3>
+                                        <p class="text-[10px] text-gray-500">
+                                            Create a onetime Account on the website. This account will be used for all
+                                            your activities on this platform.
                                         </p>
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="terms">
-                                <div class="flex items-center">
-                                    <x-checkbox name="terms" id="terms" required />
-
-                                    <div class="ml-2">
-                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' =>
-                                                '<a target="_blank" href="' .
-                                                route('terms.show') .
-                                                '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
-                                                __('Terms of Service') .
-                                                '</a>',
-                                            'privacy_policy' =>
-                                                '<a target="_blank" href="' .
-                                                route('policy.show') .
-                                                '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
-                                                __('Privacy Policy') .
-                                                '</a>',
-                                        ]) !!}
                                     </div>
                                 </div>
-                            </x-label>
+                            </div>
                         </div>
-                        <p class="text-gray-500 text-sm text-left">
-                            {!! __(
-                                'By clicking enroll, you agree to abide by our <a href="/terms" class="capitalize text-firefly-500 font-bold" target="_blank">terms and conditions</a>. An invoice would be made available to you in <span class=" text-yellow-600 font-bold">Ghana Cedis</span> equivalent. Thank you.',
-                            ) !!}
-                        </p>
+                        <!-- End Card -->
+                        <div
+                            class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 cursor-pointer dark:focus:ring-gray-600">
+                            <div class="p-4 md:p-5">
+                                <a href="{{ route('profile.show') }}" class="flex">
+                                    <x-eos-fingerprint
+                                        class=" flex-shrink-0 w-8 h-8 text-gray-800  dark:text-gray-200" />
 
-
-                        <div class="mt-6 grid grid-cols-1 gap-3">
-                            <x-button type="submit" class="w-full">
-                                Proceed To Payment
-                            </x-button>
-
+                                    <div class="grow ms-5">
+                                        <h3
+                                            class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
+                                            Step 2: Complete Profile
+                                        </h3>
+                                        <p class="text-[10px] text-gray-500">
+                                            Complete your profile to start using the platform. This is to enable us
+                                            serve you better.
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+                        <!-- End Card -->
+                        <div class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 cursor-pointer dark:focus:ring-gray-600"
+                            wire:click.prevent="application">
+                            <div class="p-4 md:p-5">
+                                <div class="flex">
+                                    <x-eos-school-o class=" flex-shrink-0 w-8 h-8 text-gray-800  dark:text-gray-200" />
+
+                                    <div class="grow ms-5">
+                                        <h3
+                                            class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
+                                            Step 3: Apply to Institute
+                                        </h3>
+                                        <p class="text-[10px] text-gray-500">
+                                            There are 9 Institutes. With an account created and profile completed
+                                            (once), applying is just a click
+                                            away.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                        <div
+                            class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 cursor-pointer dark:focus:ring-gray-600">
+                            <div class="p-4 md:p-5">
+                                <div class="flex">
+                                    <x-fluentui-payment-16-o
+                                        class=" flex-shrink-0 w-8 h-8 text-gray-800  dark:text-gray-200" />
+
+                                    <div class="grow ms-5">
+                                        <h3
+                                            class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
+                                            Step 4: Complete payment
+                                        </h3>
+                                        <p class="text-[10px] text-gray-500">
+                                            After acceptance, effect payment to reserve your place to complete
+                                            application process.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+
                     </div>
 
-                </form>
+
+                    <div class="mt-8 grid grid-cols-1 gap-3">
+                        <x-button wire:click.prevent="application" class="w-full uppercase">
+                            Apply to {{ $institute->name }}
+                        </x-button>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

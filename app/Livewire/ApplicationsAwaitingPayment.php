@@ -6,8 +6,9 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ApplicantsTable extends Component
+class ApplicationsAwaitingPayment extends Component
 {
+
     use WithPagination;
 
     public $perPage = 5;
@@ -27,27 +28,8 @@ class ApplicantsTable extends Component
 
     public function approveApplication()
     {
-        // fetch user, $edition, $application
-
-        //  Update the status of the application to approved.
-
-
-        // Generate  a PDF and send it to the applicant.
-
-        // Generate invoice  for the payment of the edition fees.
-
-        //  Send an email with the Invoice attached to it.
-
-        // dispatch application-approved notification
-        app('flasher')->AddSuccess('Application Approved', 'Application Approved')
-
-        // redirect  back to applications page.
-        return redirect()->route('applications');
-
-
-        }
-
-
+        dd("saving private ryan");
+    }
     public function rejectApplication($param)
     {
         $user = User::find($param['id']);
@@ -143,14 +125,16 @@ class ApplicantsTable extends Component
 
     public function render()
     {
-        $users = User::searchParticipants($this->search)
-            ->whereHas('applications', function ($query) {
-                $query->where('status', 'pending');
-            })
-            ->with('attendedEditions', 'applications')
-            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-            ->paginate($this->perPage);
 
-        return view('livewire.applicants-table', compact('users'));
+        $unpaidApplicants = User::searchParticipants($this->search)
+        ->whereHas('applications', function ($query) {
+            $query->where('paid_for', false)
+            ->where('status', 'approved');
+        })
+        ->with('attendedEditions', 'applications')
+        ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+        ->paginate($this->perPage);
+
+        return view('livewire.applications-awaiting-payment',compact('unpaidApplicants'));
     }
 }

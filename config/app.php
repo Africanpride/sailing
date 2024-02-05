@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use App\Providers\CostradServiceProvider;
 
 return [
 
@@ -177,6 +178,8 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        // Additional configs for costrad
+        App\Providers\CostradServiceProvider::class
 
 
     ])->toArray(),

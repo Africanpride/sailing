@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\Profile;
+use Attribute;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -97,6 +98,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'isLoggedIn',
         'isAdmin',
+        'applications_count'
 
     ];
 
@@ -109,6 +111,11 @@ class User extends Authenticatable implements MustVerifyEmail
     //     return $this->ban === 1 || $this->ban === true; // Adjust based on your data type
     // }
 
+
+    public function getApplicationsCountAttribute()
+    {
+        return $this->applications()->count();
+    }
     public function publications(): hasMany
     {
         return $this->hasMany(Publication::class);
@@ -153,6 +160,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
         // Output the greeting
         return $greeting;
+    }
+
+    public function scopeSearchParticipants($query, $search)
+    {
+        return $query->where(function ($query) use ($search) {
+            $query->where('first_name', 'like', '%' . $search . '%')
+                ->orWhere('last_name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('phone_number', 'like', '%' . $search . '%');
+        })
+            ->whereHas('applications', function ($query) {
+                $query->where('status', 'pending');
+            });
     }
 
 
@@ -302,16 +322,18 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
-public function applications() {
-    return $this->HasMany(Application::class);
-}
+    public function applications(): HasMany
+    {
+        return $this->HasMany(Application::class, 'user_id', 'id');
+    }
 
     public function attendedEditions()
     {
         return $this->belongsToMany(Edition::class);
     }
 
-    public function ratings() {
+    public function ratings()
+    {
         return $this->morphMany(Rating::class, 'rateable');
     }
 

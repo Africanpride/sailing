@@ -87,7 +87,7 @@
                 <th scope="col" class="px-6 py-3 text-xs leading-4 font-medium  uppercase tracking-wider  text-left">
                     Telephone
                 </th>
-                <th scope="col" class="px-6 py-3 text-xs hidden md:table-cell  leading-4 font-medium  uppercase tracking-wider  text-left">
+                <th scope="col" class="px-6 py-3 text-xs leading-4 font-medium  uppercase tracking-wider  text-left">
                     Ban/Deny Access
                 </th>
             </tr>
@@ -95,7 +95,7 @@
 
         <x-slot name="tableBody">
 
-            @foreach ($users as $user)
+            @foreach ($unpaidApplicants as $user)
             <tr wire:key="{{ $user->id }}">
 
                 <div id="hs-scroll-inside-body-modal-{{ $user->id  }}"
@@ -214,7 +214,7 @@
 
                     </td>
                     <td
-                        class="px-6 py-3 text-sm leading-5 hidden md:table-cell  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-left">
+                        class="px-6 py-3 text-sm leading-5 text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-left">
 
                         <div>
 
@@ -237,7 +237,7 @@
         </x-slot>
 
         <x-slot name="pagination">
-            {!! $users->links() !!}
+            {!! $unpaidApplicants->links() !!}
         </x-slot>
     </x-table>
 

@@ -41,7 +41,7 @@
                     <div class="hidden md:inline-flex">
                         {{-- <div>@auth
                             Welcome!
-                            {{ Auth::user()->firstName }}
+                            {{ Auth::user()?->firstName }}
                         @endauth
                     </div> --}}
                         {{-- <x-heroicon-o-ellipsis-vertical class="w-5 h-5 text-current" /> --}}
@@ -125,28 +125,29 @@
                                     @can('pendingInvoices')
                                         <a class="hs-tooltip-toggle relative inline-block" href="#">
                                             <img class="inline-block h-[1.875rem] w-[1.875rem] rounded-full ring-2 ring-white dark:ring-firefly-900"
-                                                src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}">
+                                                src="{{ Auth::user()?->profile_photo_url }}"
+                                                alt="{{ Auth::user()?->full_name }}">
                                             <span
                                                 class="absolute bottom-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-400"></span>
                                         </a>
                                     @else
                                         <a class="hs-tooltip-toggle relative inline-block" href="#">
                                             <img class="inline-block h-[1.875rem] w-[1.875rem] rounded-full ring-2 ring-white dark:ring-firefly-900"
-                                                src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}">
+                                                src="{{ Auth::user()?->profile_photo_url }}"
+                                                alt="{{ Auth::user()?->full_name }}">
                                             <span
                                                 class="absolute bottom-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-green-400"></span>
                                         </a>
                                     @endcan
                                 </div>
                                 {{-- <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-firefly-900"
-                                    src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}"> --}}
+                                    src="{{ Auth::user()?->profile_photo_url }}" alt="{{ Auth::user()?->full_name }}"> --}}
                             @endauth
                             <span class="text-gray-600 font-medium truncate max-w-[7.5rem] dark:text-gray-400">
-                                {{ Auth::user()->firstName }}
+                                {{ Auth::user()?->firstName }}
                             </span>
                             <svg class="hs-dropdown-open:rotate-180 w-2.5 h-2.5 text-gray-600" width="16"
-                                height="16" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                                height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                             </svg>
@@ -156,17 +157,33 @@
                             <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
                                 <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
-                                    {{ Auth::user()->email }}
+                                    {{ Auth::user()?->email }}
                                 </p>
                             </div>
                             <div class="mt-2 py-2 first:pt-0 last:pb-0">
 
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                    href="{{ url(Auth::user()->dashboard()) }}">
+                                    href="{{ url(Auth::user()?->dashboard()) }}">
 
                                     <x-lucide-layout-dashboard class="w-5 h-5 text-current" />
 
                                     My Dashboard
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                    href="{{ route('profile.show') }}">
+                                    <x-lucide-contact class="w-5 h-5 text-current" />
+                                    Manage Profile
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                    href="{{ route('profile.show') }}">
+                                    <x-heroicon-o-folder-arrow-down class="w-5 h-5 text-current" />
+                                    <div class="w-full flex items-center justify-between">
+                                        <span>My Applications </span>
+                                        <span
+                                            class="w-5 h-5 bg-gray-200 dark:bg-gray-950 dark:text-white text-[9px] text-center flex justify-center items-center rounded-full">
+                                            {{ auth()->user()->applications_count }}
+                                        </span>
+                                    </div>
                                 </a>
                                 @can('pendingInvoices')
                                     <a class="relative flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
@@ -190,35 +207,23 @@
                                         My Invoices
                                     </a>
                                 @endcan
-                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                    href="{{ url('profile') }}">
 
-                                    <x-lucide-contact class="w-5 h-5 text-current" />
-
-                                    Manage Profile
-                                </a>
-
-                                {{-- <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                href="{{ route('calender') }}">
-
-                                <x-lucide-calendar-days class="w-5 h-5 text-current" />
-
-                                <span class=" capitalize">{{ __('Calender') }}</span>
-                            </a> --}}
                                 <a id="open_preferences_center"
                                     class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                     href="#">
                                     <x-lucide-cookie class="w-5 h-5 text-current" />
                                     Manage Cookies
                                 </a>
-                                <form method="POST" action="{{ route('logout') }}" x-data>
-                                    @csrf
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                        href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                        <x-lucide-log-out class="w-5 h-5 text-current" />
-                                        Sign Out
-                                    </a>
-                                </form>
+                                @auth
+                                    <form method="POST" action="{{ route('logout') }}" x-data>
+                                        @csrf
+                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                            href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                            <x-lucide-log-out class="w-5 h-5 text-current" />
+                                            Sign Out
+                                        </a>
+                                    </form>
+                                @endauth
 
                             </div>
                         </div>

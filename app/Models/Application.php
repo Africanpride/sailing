@@ -31,6 +31,7 @@ class Application extends Model
     protected $casts = [
         'status' => ApplicationStatus::class,
         'approved' => 'boolean',
+        'paid_for' => 'boolean',
     ];
 
     protected $attributes = [

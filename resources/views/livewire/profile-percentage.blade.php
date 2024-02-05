@@ -7,10 +7,10 @@
             class="w-full md:max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto md:flex justify-center items-center gap-6 space-y-4 md:space-y-0">
             <div class="inline-block text-sm text-gray-800 dark:text-gray-200">
                 <div>
-                   Profile Details Incomplete. Kindly complete your profile to enable us to serve you better.
+                   Profile Details Incomplete.
                     <span
                         class="decoration-2 inline-flex justify-center items-center gap-x-4 font-semibold text-red-600 text-sm dark:text-red-500">
-                        <a class="flex justify-start items-center gap-1" href="{{ route('profile.show') }}">{{ __('Complete Profile') }}<x-lucide-arrow-right class="w-4 h-4" /></a>
+                        <a class="flex justify-start items-center gap-1 hover:text-red-400" href="{{ route('profile.show') }}">{{ __('Complete Profile') }}<x-lucide-arrow-right class="w-4 h-4" /></a>
                     </span>
                 </div>
             </div>

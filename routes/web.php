@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Edition;
 use App\Models\Institute;
+use App\Models\Application;
 use App\Models\Publication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -127,15 +128,22 @@ Route::middleware([
     'verified',
     config('jetstream.auth_session'),
     'verified',
-    // 'mustBeAdmin',
+    'mustBeAdmin',
 ])->group(function () {
 
 Route::get('participants', function() {
     return view('admin.participants.index');
 })->name('participants');
 
+// Applications with Paid, Unpaid and panding statuses.
 Route::get('applications', function() {
-    return view('admin.applications.index');
+
+    $pendingApplications = Application::where('status', 'pending')->paginate(10);
+    $paidApplications = Application::where('paid_for', true)->paginate(10);
+    $unpaidApplications = Application::where('status', 'approved')->where('paid_for', false)->paginate(10);
+
+    return view('admin.applications.index', compact('pendingApplications','paidApplications','unpaidApplications'));
+
 })->name('applications');
 
     Route::get('staff', function () {
@@ -213,4 +221,4 @@ Route::get('tabs', function () {
     $fdi = Edition::first();
     // dd($fdi->banner);
     return view('tabs', compact('fdi'));
-});
+})->middleware('auth');

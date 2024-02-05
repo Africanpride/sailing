@@ -63,7 +63,7 @@
             <div class="w-auto">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" type="email" class="mt-1 block w-full"
-                    wire:model="user.email" />
+                    wire:model="user.email" disabled />
                 <x-input-error for="email" class="mt-2" />
 
                 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) &&

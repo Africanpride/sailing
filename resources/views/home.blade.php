@@ -59,7 +59,7 @@
 
 
 
-    <section class="max-w-auto  mx-auto h-auto pt-16">
+    <section class="max-w-auto  mx-auto h-auto ">
 
         <div class="  md:py-24 ">
 

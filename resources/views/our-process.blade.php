@@ -203,5 +203,5 @@
 
 
 
-    <livewire:subscribe />
+    <x-subscribe />
 </x-front-layout>

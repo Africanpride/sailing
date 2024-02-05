@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->ulid()->primary();
+            $table->ulid('id')->primary();
             $table->foreignUlid('user_id')->constrained()->cascadeOnDelete();
             $table->foreignUlid('edition_id')->constrained();
             $table->foreignUlid('invoice_id')->nullable()->constrained()->nullOnDelete(); // Adjust the table name as needed
