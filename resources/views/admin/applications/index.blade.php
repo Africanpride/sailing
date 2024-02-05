@@ -28,7 +28,7 @@
 
         <div class="mt-3">
             <div id="tabs-with-badges-1" role="tabpanel" aria-labelledby="tabs-with-badges-item-1">
-                <livewire:applicants-table />
+                <livewire:applications-pending />
             </div>
             <div id="tabs-with-badges-2" class="hidden" role="tabpanel" aria-labelledby="tabs-with-badges-item-2">
                 <livewire:applications-awaiting-payment />

@@ -162,13 +162,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $greeting;
     }
 
-    public function scopeSearchParticipants($query, $search)
+    public static function scopeSearchParticipants($query, $search)
     {
         return $query->where(function ($query) use ($search) {
-            $query->where('first_name', 'like', '%' . $search . '%')
-                ->orWhere('last_name', 'like', '%' . $search . '%')
-                ->orWhere('email', 'like', '%' . $search . '%')
-                ->orWhere('phone_number', 'like', '%' . $search . '%');
+            $query->where('firstName', 'like', '%' . $search . '%')
+                ->orWhere('lastName', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
         })
             ->whereHas('applications', function ($query) {
                 $query->where('status', 'pending');
@@ -329,12 +328,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function attendedEditions()
     {
-        return $this->belongsToMany(Edition::class);
+        return $this->belongsToMany(Edition::class)->withTimestamps();
     }
 
     public function ratings()
     {
         return $this->morphMany(Rating::class, 'rateable');
+    }
+
+    public function editions()
+    {
+        return $this->hasManyThrough(Edition::class, Application::class, 'user_id', 'id', 'id', 'edition_id');
     }
 
 

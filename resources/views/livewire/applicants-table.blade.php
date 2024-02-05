@@ -79,7 +79,7 @@
                 </th>
                 <th scope="col"
                     class="px-6 py-3  uppercase tracking-wider  hidden md:table-cell text-left text-xs leading-4 font-medium ">
-                    Institute
+                    Application Count
                 </th>
                 <th scope="col" class="px-6 py-3 text-xs leading-4 font-medium  uppercase tracking-wider  text-left">
                     Country
@@ -87,7 +87,8 @@
                 <th scope="col" class="px-6 py-3 text-xs leading-4 font-medium  uppercase tracking-wider  text-left">
                     Telephone
                 </th>
-                <th scope="col" class="px-6 py-3 text-xs hidden md:table-cell  leading-4 font-medium  uppercase tracking-wider  text-left">
+                <th scope="col"
+                    class="px-6 py-3 text-xs hidden md:table-cell  leading-4 font-medium  uppercase tracking-wider  text-left">
                     Ban/Deny Access
                 </th>
             </tr>
@@ -96,70 +97,105 @@
         <x-slot name="tableBody">
 
             @foreach ($users as $user)
-            <tr wire:key="{{ $user->id }}">
+                <tr wire:key="{{ $user->id }}">
 
-                <div id="hs-scroll-inside-body-modal-{{ $user->id  }}"
-                    class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto">
-                    <div
-                        class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-3xl sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)]">
-
+                    <div id="hs-scroll-inside-body-modal-{{ $user->id }}"
+                        class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto">
                         <div
-                            class="max-h-full h-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                            <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-                                <h3 class="font-bold text-gray-800 dark:text-white">
-                                    Approve/Reject Application: {{ $user->full_name }}
-                                </h3>
-                                <button type="button"
-                                    class="flex justify-center items-center w-7 h-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:bg-slate-600 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                    data-hs-overlay="#hs-scroll-inside-body-modal-{{ $user->id  }}">
-                                    <span class="sr-only">Close</span>
-                                    <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M18 6 6 18" />
-                                        <path d="m6 6 12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="h-full overflow-y-auto p-4">
-                                <div class="space-y-4">
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">{{ $user->applications()->count() }}</h3>
-                                        <p class="mt-1 text-gray-800 dark:text-gray-400">
-                                            Motivate teams to do their best work. Offer best practices to get users
-                                            going in the right direction. Be bold and offer just enough help to get the
-                                            work started, and then get out of the way. Give accurate information so
-                                            users can make educated decisions. Know your user's struggles and desired
-                                            outcomes and give just enough information to let them get where they need to
-                                            go.
-                                        </p>
+                            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-3xl sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)]">
+
+                            <div
+                                class="max-h-full h-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+                                <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
+                                    <h3 class="font-bold text-gray-800 dark:text-white">
+                                        Approve/Reject Application: {{ $user->full_name }}
+                                    </h3>
+                                    <button type="button"
+                                        class="flex justify-center items-center w-7 h-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:bg-slate-600 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                        data-hs-overlay="#hs-scroll-inside-body-modal-{{ $user->id }}">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M18 6 6 18" />
+                                            <path d="m6 6 12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="h-full overflow-y-auto p-4">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                                                @if ($user->editions->count() > 0)
+                                                    <ul class=" grid grid-cols-1 md:grid-cols-3 gap-3">
+
+                                                        @foreach ($user->editions as $myUnpaidEdition)
+                                                            <li wire:key={{ $myUnpaidEdition->id }}
+                                                                class="relative  p-4 transition duration-300 z-10 before:absolute rounded-xl bg-gray-300/30 hover:bg-gray-200/50 dark:bg-firefly-900 dark:hover:bg-firefly-900/50">
+                                                                <div class="flex absolute top-3 right-3 cursor-pointer ">
+                                                                    <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-default-checkbox">
+
+                                                                  </div>
+                                                                <div class="flex text-left">
+                                                                    <img class="object-cover w-16 h-16 mr-4 rounded-full shadow-md "
+                                                                        src="{{ $myUnpaidEdition->institute_logo }}" alt="{{ $myUnpaidEdition->acronym }}" />
+                                                                    <div class="flex flex-col justify-center">
+                                                                        <p class="text-lg font-bold uppercase">
+                                                                        </p>
+                                                                        <p class="text-sm text-gray-500">
+                                                                        {{ $myUnpaidEdition->title }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+
+                                            </h3>
+                                            <p class="mt-1 text-gray-800 dark:text-gray-400">
+                                                Motivate teams to do their best work. Offer best practices to get users
+                                                going in the right direction. Be bold and offer just enough help to get
+                                                the
+                                                work started, and then get out of the way. Give accurate information so
+                                                users can make educated decisions. Know your user's struggles and
+                                                desired
+                                                outcomes and give just enough information to let them get where they
+                                                need to
+                                                go.
+                                            </p>
+                                        </div>
+
+
                                     </div>
-
-
+                                </div>
+                                <div
+                                    class="flex justify-between items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
+                                    <x-button
+                                        class="bg-gray-500 dark:bg-gray-900 hover:bg-gray-600 dark:hover:bg-gray-950 w-full "
+                                        data-hs-overlay="#hs-scroll-inside-body-modal-{{ $user->id }}">
+                                        Cancel
+                                    </x-button>
+                                    <x-link-button class="w-full" href="{{ route('profile.show') }}">View
+                                        Profile</x-link-button>
+                                    <x-button wire:click.prevent="rejectApplication({{ $user }})"
+                                        class=" bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 w-full ">
+                                        Reject
+                                    </x-button>
+                                    <x-button wire:click.prevent="approveApplication({{ $user }})"
+                                        class="disabled:pointer-events-none dark:focus:outline-none
+                                        dark:focus:ring-1 dark:focus:ring-gray-600 w-full ">
+                                        Approve
+                                    </x-button>
                                 </div>
                             </div>
-                            <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
-                                <x-button
-                                    class="bg-gray-500 dark:bg-gray-900 hover:bg-gray-600 dark:hover:bg-gray-950 "
-                                    data-hs-overlay="#hs-scroll-inside-body-modal-{{ $user->id  }}">
-                                    Cancel
-                                </x-button>
-                                <x-button  wire:click.prevent="rejectApplication({{ $user }})"
-                                    class=" bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Reject
-                                </x-button>
-                                <x-button wire:click.prevent="approveApplication" class="disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Approve
-                                </x-button>
-                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <td data-hs-overlay="#hs-scroll-inside-body-modal-{{ $user->id  }}"
-                class="px-6 py-3 cursor-pointer  w-auto whitespace-no-wrap text-sm  font-medium text-secondary-900 dark:text-white">
-                <div class="flex items-center">
+                    <td data-hs-overlay="#hs-scroll-inside-body-modal-{{ $user->id }}"
+                        class="px-6 py-3 cursor-pointer  w-auto whitespace-no-wrap text-sm  font-medium text-secondary-900 dark:text-white">
+                        <div class="flex items-center">
                             <div class="shrink-0 h-10 w-10">
                                 <img class="h-10 w-10 rounded-full" src="{{ $user->profile_photo_url }}"
                                     alt="User avatar">
@@ -195,11 +231,12 @@
                             <span>{{ $user->email }}</span>
                         </div>
                     </td>
-                    <td class="hidden md:table-cell px-6 py-3 whitespace-no-wrap text-sm leading-5 text-left">
-                        <span
+                    <td class="hidden md:table-cell px-6 py-3 whitespace-no-wrap text-sm leading-5 text-center">
+                        <div
                             class="inline-flex items-center justify-center h-7 w-7 rounded-full ring-2 ring-white bg-gray-800 dark:bg-gray-900 dark:ring-gray-800">
-                            <span class="text-xs font-medium leading-none text-white uppercase">0</span>
-                        </span>
+                            <span
+                                class="text-xs font-medium leading-none text-white uppercase">{{ $user->applications_count }}</span>
+                        </div>
                     </td>
                     <td
                         class="px-6 py-3 text-sm leading-5 text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-left">

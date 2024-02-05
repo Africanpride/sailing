@@ -57,6 +57,7 @@ class Edition extends Model implements HasMedia
         'progress',
         'banner',
         'duration',
+        'institute_logo'
     ];
     function getDurationAttribute(): string
     {
@@ -66,6 +67,10 @@ class Edition extends Model implements HasMedia
             ->format('M d');
     }
 
+    public function getInstituteLogoAttribute()
+    {
+        return 'storage/' . $this->institute->logo;
+    }
 
     public function institute()
     {
@@ -86,7 +91,7 @@ class Edition extends Model implements HasMedia
 
     public function attendees()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     public function getBannerAttribute()

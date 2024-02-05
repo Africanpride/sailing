@@ -43,10 +43,10 @@ scrollbar-thumb-firefly-800 scrollbar-track-gray-300 overflow-y-scroll ">
             <!-- End Navigation -->
         </div>
 
-        <div class="md:col-span-10 w-full overflow-x-hidden">
+        <div class="md:col-span-10 w-full overflow-x-hidden ">
 
             <!-- Content -->
-            <div class="w-full  min-h-screen ">
+            <div class="w-full  min-h-screen  ">
                 <!-- ========== HEADER ========== -->
                 <x-app-header />
                 <!-- Sidebar Toggle -->

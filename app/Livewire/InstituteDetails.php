@@ -41,13 +41,21 @@ class InstituteDetails extends Component
             } else {
                 // if/else block to check if user is already registered or enrolled
 
-                // Create the application
-                $this->user->applications()->create([
-                    'edition_id' => $this->edition->id,
-                ]);
+                // Create the application if none exist for user in current edition
+                if(!$this->user->applications()->where('edition_id', $this->edition->id)->exists())
+                {
 
-                app('flasher')->addSuccess('We shall get back to you shortly.', 'Application Received!');
-                $this->redirectRoute('home');
+                    $this->user->applications()->create([
+                        'edition_id' => $this->edition->id,
+                    ]);
+
+                    app('flasher')->addSuccess('We shall get back to you shortly.', 'Application Received!');
+                    $this->redirectRoute('home');
+                } else {
+                    // Application already exist for user  and edition
+                    app('flasher')->addError('You have already applied for this Institute.',  $this->edition->title );
+                    $this->redirectRoute('home');
+                }
             }
         } else {
             app('flasher')->addWarning('Login/Signup', 'Login Required to Join Institute');

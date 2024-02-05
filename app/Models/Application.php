@@ -42,6 +42,19 @@ class Application extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'ulid';
 
+
+    public static function searchApplicants($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('applicant', true)
+            ->where(function ($query) use ($search) {
+                $query->where('id', 'like', '%' . $search . '%')
+                    ->orWhere('firstName', 'like', '%' . $search . '%')
+                    ->orWhere('lastName', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+            });
+    }
+
     public function edition()
     {
         return $this->belongsTo(Edition::class);
@@ -49,7 +62,7 @@ class Application extends Model
 
     public function applicant()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
     public function invoice()
     {

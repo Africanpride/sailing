@@ -4,15 +4,16 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Application;
 use Livewire\WithPagination;
 
-class ApplicantsTable extends Component
+class ApplicationsPending extends Component
 {
     use WithPagination;
 
     public $perPage = 5;
     public $search = '';
-    public $orderBy = 'id';
+    public $orderBy = 'created_at';
     public $orderAsc = true;
     public $selected = [];
     public $message = 'Delete';
@@ -145,14 +146,20 @@ class ApplicantsTable extends Component
 
     public function render()
     {
-        $users = User::searchParticipants($this->search)
-            ->whereHas('applications', function ($query) {
-                $query->where('status', 'pending');
-            })
-            ->with('attendedEditions', 'applications')
-            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-            ->paginate($this->perPage);
 
-        return view('livewire.applicants-table', compact('users'));
+
+        $applications = Application::where(function ($query) {
+            $query->where('status', 'pending')
+                  ->orWhere('paid_for', false);
+        })
+        ->with('applicant', 'edition')
+        ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+        ->paginate($this->perPage);
+
+
+        // dd($applications);
+
+
+        return view('livewire.applications-pending', compact('applications'));
     }
 }
