@@ -16,8 +16,6 @@ return new class extends Migration
             $table->foreignUlid('user_id')->constrained()->cascadeOnDelete();
             $table->foreignUlid('edition_id')->constrained();
             $table->foreignUlid('invoice_id')->nullable()->constrained()->nullOnDelete(); // Adjust the table name as needed
-            $table->timestamp('submitted_at')->nullable();
-            $table->boolean('approved')->default(false);
             $table->foreignUlid('approved_by')->nullable()->nullOnDelete(); // Adjust the table name as needed
             $table->boolean('paid_for')->default(false);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('invoice_number');
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'paid', 'overdue', 'cancelled'])->default('pending'); // Assuming enum values
+            $table->decimal('amount', 10, 2);
             $table->decimal('total', 10, 2);
             $table->boolean('paid')->default(false);
             $table->foreignUlid('user_id')->nullOnDelete();

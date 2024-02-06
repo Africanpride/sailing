@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54e688c52736708f3ea94e383b4b3724",
+    "content-hash": "668ecdfbf7de367a67f8bfd85c5e9ee4",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -3706,6 +3706,68 @@
             "time": "2024-01-23T15:22:18+00:00"
         },
         {
+            "name": "log1x/laravel-webfonts",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Log1x/laravel-webfonts.git",
+                "reference": "9f73181157766eb06e340bbda2358d01eff0dee5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Log1x/laravel-webfonts/zipball/9f73181157766eb06e340bbda2358d01eff0dee5",
+                "reference": "9f73181157766eb06e340bbda2358d01eff0dee5",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.8",
+                "laravel/prompts": "^0.1.15",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "illuminate/console": "^10.41",
+                "illuminate/http": "^10.41",
+                "illuminate/support": "^10.41",
+                "laravel/pint": "^1.13"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Log1x\\LaravelWebfonts\\WebfontsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Log1x\\LaravelWebfonts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brandon Nifong",
+                    "email": "brandon@tendency.me",
+                    "homepage": "https://github.com/log1x"
+                }
+            ],
+            "description": "Download, install, and preload over 1500 Google fonts locally in your Laravel project",
+            "support": {
+                "issues": "https://github.com/Log1x/laravel-webfonts/issues",
+                "source": "https://github.com/Log1x/laravel-webfonts/tree/v1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Log1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-18T07:47:04+00:00"
+        },
+        {
             "name": "lwwcas/laravel-countries",
             "version": "3.4.6",
             "source": {
@@ -5133,6 +5195,67 @@
                 "source": "https://github.com/antonioribeiro/google2fa/tree/v8.0.1"
             },
             "time": "2022-06-13T21:57:56+00:00"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/predis/predis.git",
+                "reference": "b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/predis/predis/zipball/b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1",
+                "reference": "b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.3",
+                "phpstan/phpstan": "^1.9",
+                "phpunit/phpunit": "^8.0 || ~9.4.4"
+            },
+            "suggest": {
+                "ext-relay": "Faster connection with in-memory caching (>=0.6.2)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Till Krüss",
+                    "homepage": "https://till.im",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A flexible and feature-complete Redis client for PHP.",
+            "homepage": "http://github.com/predis/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "support": {
+                "issues": "https://github.com/predis/predis/issues",
+                "source": "https://github.com/predis/predis/tree/v2.2.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/tillkruss",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-09-13T16:42:03+00:00"
         },
         {
             "name": "psr/cache",

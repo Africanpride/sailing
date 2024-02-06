@@ -5,7 +5,9 @@ use App\Models\Edition;
 use App\Models\Institute;
 use App\Models\Application;
 use App\Models\Publication;
+use App\Mail\ApplicationApproved;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ContactController;
@@ -17,6 +19,8 @@ use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DisplayInstituteController;
+use App\Notifications\ApplicationApprovedNotification;
+use App\Notifications\ApplicationApprovedEmailNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -222,3 +226,10 @@ Route::get('tabs', function () {
     // dd($fdi->banner);
     return view('tabs', compact('fdi'));
 })->middleware('auth');
+
+Route::get('/notification', function () {
+    $applicant = User::find(Auth::user()->id);
+    $edition = $applicant->editions->first();
+
+    return (new ApplicationApproved($edition, $applicant));
+});

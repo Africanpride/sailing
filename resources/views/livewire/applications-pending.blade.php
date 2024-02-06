@@ -96,10 +96,10 @@
         <x-slot name="tableBody">
 
             @foreach ($applications as $application)
-                <tr wire:key="{{ $application->applicant->id }}">
+                <tr wire:key="{{ $application->id }}">
 
 
-                    <td data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->applicant->id }}"
+                    <td data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->id }}"
                         class="px-6 py-3 cursor-pointer  w-auto whitespace-no-wrap text-sm  font-medium text-secondary-900 dark:text-white">
                         <div class="flex items-center">
                             <div class="shrink-0 h-10 w-10">
@@ -188,9 +188,8 @@
 
                     <td
                         class="px-6 py-3 text-sm leading-5  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-center">
-
                         <div>
-                            <div id="hs-scroll-inside-body-modal-{{ $application->applicant->id }}"
+                            <div id="hs-scroll-inside-body-modal-{{ $application->id }}"
                                 class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto">
                                 <div
                                     class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-xl sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)]">
@@ -199,12 +198,22 @@
                                         class="max-h-full h-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                                         <div
                                             class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-                                            <h3 class="font-bold text-gray-800 dark:text-white">
+                                            <div class="flex">
+
+                                                <input type="checkbox" wire:model="scholarship" value="scholarship"
+                                                    class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                                                    >
+                                                <label for="hs-default-checkbox"
+                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400 font-bold">Approve for
+                                                    Scholarship {{ $scholarship }}</label>
+
+                                            </div>
+                                            {{-- <h3 class="font-bold text-gray-800 dark:text-white">
                                                 Approve/Reject Application
-                                            </h3>
+                                            </h3> --}}
                                             <button type="button"
                                                 class="flex justify-center items-center w-7 h-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:bg-slate-600 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                                data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->applicant->id }}">
+                                                data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->id }}">
                                                 <span class="sr-only">Close</span>
                                                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
                                                     width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -221,7 +230,7 @@
                                                 <div class="space-y-3">
                                                     {{-- <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
                                                         @if ($application->applicant->editions->count() > 0)
-                                                            <ul class=" grid grid-cols-1 md:grid-cols-3 gap-3">
+                                                            <ul class=" grid grid-cols-1 md:grid-cols-2 gap-3">
 
                                                                 @foreach ($application->applicant->editions as $myUnpaidEdition)
                                                                     <li wire:key={{ $myUnpaidEdition->id }}
@@ -334,7 +343,7 @@
                                             class="flex justify-between items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
                                             <x-button
                                                 class="bg-gray-500 dark:bg-gray-900 hover:bg-gray-600 dark:hover:bg-gray-950 w-full "
-                                                data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->applicant->id }}">
+                                                data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->id }}">
                                                 Cancel
                                             </x-button>
                                             {{-- <x-link-button class="w-full" href="{{ route('profile.show') }}">View
@@ -356,10 +365,9 @@
 
 
                             <x-link-button class="w-full"
-                                data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->applicant->id }}">Aprove/Reject</x-link-button>
+                                data-hs-overlay="#hs-scroll-inside-body-modal-{{ $application->id }}">Aprove/Reject</x-link-button>
 
                         </div>
-
                     </td>
 
 

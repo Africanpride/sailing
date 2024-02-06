@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'enabled' =>true,
+
     'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
@@ -109,7 +111,12 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'name' => env('MAIL_FROM_NAME', 'COSTrAD Secretariat'),
+    ],
+
+    'reply_to' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'notifications@costrad.org'),
+        'name' => env('MAIL_FROM_NAME', 'COSTrAD Secretariat'),
     ],
 
     /*
@@ -130,5 +137,6 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+
 
 ];

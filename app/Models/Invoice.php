@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use App\Enums\InvoiceStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
@@ -18,6 +19,7 @@ class Invoice extends Model
         'due_date',
         'description',
         'status',
+        'amount',
         'total',
         'paid',
 
@@ -49,5 +51,22 @@ class Invoice extends Model
     public function edition()
     {
         return $this->belongsTo(Edition::class);
+    }
+
+    protected static function generateUniqueInvoiceNumber()
+    {
+        // Logic to generate a unique invoice_number, e.g., combining date and a random string
+        return '0000' . date('Ymd') . '-' . strtoupper(Str::random(8));
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Creating event to generate invoice_number
+        static::creating(function ($invoice) {
+            // Generate a unique invoice_number
+            $invoice->invoice_number = static::generateUniqueInvoiceNumber();
+        });
     }
 }

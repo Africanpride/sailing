@@ -17,11 +17,9 @@ class Application extends Model
         'user_id',
         'edition_id',
         'invoice_id',
-        'approved',
         'approved_by',
         'paid_for',
         'status',
-        'submitted_at',
 
     ];
     protected $dates = [
@@ -30,7 +28,6 @@ class Application extends Model
 
     protected $casts = [
         'status' => ApplicationStatus::class,
-        'approved' => 'boolean',
         'paid_for' => 'boolean',
     ];
 
@@ -66,6 +63,6 @@ class Application extends Model
     }
     public function invoice()
     {
-        return $this->HasOne(Invoice::class);
+        return $this->HasOne(Invoice::class,'application_id');
     }
 }

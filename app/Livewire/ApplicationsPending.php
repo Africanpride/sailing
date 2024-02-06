@@ -3,9 +3,18 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use App\Models\Edition;
+use App\Models\Invoice;
 use Livewire\Component;
 use App\Models\Application;
 use Livewire\WithPagination;
+use App\Enums\ApplicationStatus;
+use App\Enums\InvoiceStatus;
+use App\Mail\ApplicationApproved;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class ApplicationsPending extends Component
 {
@@ -25,35 +34,80 @@ class ApplicationsPending extends Component
     public $selectCheckbox = [];
     public $selectAllVisible = false;
 
+    public $scholarship = false;
 
-    public function approveApplication($user)
+
+    public function approveApplication($application)
     {
         // fetch user, $edition, $application
+        $applicant = User::find($application['user_id']);
+        $edition = Edition::find($application['edition_id']);
 
-        dd($user);
+        // Update the status of the application to approved.
+        // Fetch the application instance
+        $application = Application::findOrFail($application['id']);
 
-        //  Update the status of the application to approved.
+        // Update the status of the application to approved.
+        $application->update([
+            'status' => ApplicationStatus::Approved,
+            'approved' => true,
+            'approved_by' => auth()->user()->id,
+            'updated_at' => now(),
+        ]);
+
+        $invoice = $application->invoice()->create([
+            "amount" => $edition->price,
+            "total" => $edition->price,
+            'user_id' =>  $applicant->id,
+            'edition_id' =>  $edition->id,
+            'due_date' => now(),
+        ]);
 
 
         // Generate  a PDF and send it to the applicant.
+        if (config('mail.enabled')) {
+            try {
+
+                Mail::to($applicant)->queue(new ApplicationApproved($edition, $applicant));
+            } catch (\Exception $e) {
+                session()->flash('error', __(
+                    "
+                    An error occurred while sending an email notification about your application being accepted: :msg",
+                    ['msg' => $e->getMessage()]
+                ));
+                Log::error("Error sending email: " . $e->getMessage());
+            }
+        }
+
+        dd('done...');
+
+        session()->flash('success', 'The application has been successfully approved');
+
 
         // Generate invoice  for the payment of the edition fees.
+        if ($edition->fees > 0 && !$application->invoiced) {
+            Invoice::createInvoiceForEditionFee($edition, $application);
+            $application->update(['invoiced' => true]);
+        }
+        return redirect()->route('admin.dashboard');
 
-        //  Send an email with the Invoice attached to it.
+
+        //  Send an email with the Invoice attached to it requesting for payment
+
+
 
         // dispatch application-approved notification
         app('flasher')->AddSuccess('Application Approved', 'Application Approved');
 
         // redirect  back to applications page.
         return redirect()->route('applications');
+    }
 
 
-        }
-
-
-    public function rejectApplication($param)
+    public function rejectApplication($application)
     {
-        $user = User::find($param['id']);
+        // dd($param['user_id']);
+        $user = User::find($application['user_id']);
         dd("rejecting Application " . $user->full_name);
     }
 
@@ -149,12 +203,12 @@ class ApplicationsPending extends Component
 
 
         $applications = Application::where(function ($query) {
-            $query->where('status', 'pending')
-                  ->orWhere('paid_for', false);
+            $query->where('status', 'pending');
+                // ->where('paid_for', false);
         })
-        ->with('applicant', 'edition')
-        ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-        ->paginate($this->perPage);
+            ->with('applicant', 'edition')
+            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage);
 
 
         // dd($applications);
