@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 
-class ApplicationsPending extends Component
+class ApplicationsRejected extends Component
 {
     use WithPagination;
 
@@ -74,6 +74,7 @@ class ApplicationsPending extends Component
             try {
 
                 Mail::to($applicant)->queue(new ApplicationApproved($edition, $applicant));
+
             } catch (\Exception $e) {
                 session()->flash('error', __(
                     "
@@ -119,7 +120,7 @@ class ApplicationsPending extends Component
         ]);
 
         // dispatch application-approved notification
-        app('flasher')->AddSuccess('Application Rejected', 'Application Rejected');
+        app('flasher')->AddSuccess('Application Rejected', 'Application Rejected Successfully.');
 
         // redirect  back to applications page.
         return redirect()->route('applications');
@@ -246,8 +247,8 @@ class ApplicationsPending extends Component
 
 
         $applications = Application::where(function ($query) {
-            $query->where('status', 'pending');
-            // ->where('paid_for', false);
+            $query->where('status', 'rejected');
+                // ->where('paid_for', false);
         })
             ->with('applicant', 'edition')
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
@@ -257,6 +258,6 @@ class ApplicationsPending extends Component
         // dd($applications);
 
 
-        return view('livewire.applications-pending', compact('applications'));
+        return view('livewire.applications-rejected', compact('applications'));
     }
 }

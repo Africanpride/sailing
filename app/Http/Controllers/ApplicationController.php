@@ -13,7 +13,12 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+        $pendingApplications = Application::where('status', 'pending')->paginate(10);
+        $paidApplications = Application::where('status','approved')->where('paid_for', true)->paginate(10);
+        $unpaidApplications = Application::where('status', 'approved')->where('paid_for', false)->paginate(10);
+        $rejectedApplications = Application::where('status', 'rejected')->where('paid_for', false)->paginate(10);
+
+        return view('admin.applications.index', compact('pendingApplications', 'paidApplications', 'unpaidApplications', 'rejectedApplications'));
     }
 
     /**

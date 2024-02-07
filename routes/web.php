@@ -7,6 +7,8 @@ use App\Models\Application;
 use App\Models\Publication;
 use App\Mail\ApplicationApproved;
 use Illuminate\Support\Facades\DB;
+use Spatie\LaravelPdf\Facades\Pdf;
+use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DisplayInstituteController;
 use App\Notifications\ApplicationApprovedNotification;
 use App\Notifications\ApplicationApprovedEmailNotification;
@@ -140,15 +143,7 @@ Route::get('participants', function() {
 })->name('participants');
 
 // Applications with Paid, Unpaid and panding statuses.
-Route::get('applications', function() {
-
-    $pendingApplications = Application::where('status', 'pending')->paginate(10);
-    $paidApplications = Application::where('paid_for', true)->paginate(10);
-    $unpaidApplications = Application::where('status', 'approved')->where('paid_for', false)->paginate(10);
-
-    return view('admin.applications.index', compact('pendingApplications','paidApplications','unpaidApplications'));
-
-})->name('applications');
+Route::resource('application', ApplicationController::class)->only('index');
 
     Route::get('staff', function () {
         $users = User::staff()->paginate(8);
@@ -228,8 +223,18 @@ Route::get('tabs', function () {
 })->middleware('auth');
 
 Route::get('/notification', function () {
-    $applicant = User::find(Auth::user()->id);
-    $edition = $applicant->editions->first();
 
-    return (new ApplicationApproved($edition, $applicant));
+    return view('invoices.pay');
+    Pdf::view('pdfs.invoice')
+    ->format('a4')
+    ->save('invoice.pdf');
+
+    // $applicant = User::find(Auth::user()->id);
+    // $edition = $applicant->editions->first();
+    // Browsershot::url('http://localhost:8000')->save('example.pdf');
+
+    // return (new ApplicationApproved($edition, $applicant));
+
+    Browsershot::html('<h1>Hello world!!</h1>')->save('example.pdf');
+
 });
