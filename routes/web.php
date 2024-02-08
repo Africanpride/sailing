@@ -20,8 +20,8 @@ use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DisplayInstituteController;
+use App\Http\Controllers\InvoiceReceiptController;
 use App\Notifications\ApplicationApprovedNotification;
 use App\Notifications\ApplicationApprovedEmailNotification;
 
@@ -143,7 +143,16 @@ Route::get('participants', function() {
 })->name('participants');
 
 // Applications with Paid, Unpaid and panding statuses.
-Route::resource('application', ApplicationController::class)->only('index');
+Route::get('applications', function() {
+
+    $pendingApplications = Application::where('status', 'pending')->paginate(10);
+    $paidApplications = Application::where('paid_for', true)->paginate(10);
+    $unpaidApplications = Application::where('status', 'approved')->where('paid_for', false)->paginate(10);
+    $rejectedApplications = Application::where('status', 'rejected')->where('paid_for', false)->paginate(10);
+
+    return view('admin.applications.index', compact('pendingApplications','paidApplications','unpaidApplications','rejectedApplications'));
+
+})->name('applications');
 
     Route::get('staff', function () {
         $users = User::staff()->paginate(8);
@@ -201,9 +210,19 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+
+    Route::get('receipt/{invoice_number}', InvoiceReceiptController::class)->name('receipt');
+
+
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('my-applications', function () {
+        $applications = Application::where('user_id', auth()->user()->id)->with('edition','invoice')->paginate(10);
+        return view('my-applications', compact('applications'));
+    })->name('my-applications');
 
     // User profile
     Route::get('/profile', function () {
@@ -228,12 +247,6 @@ Route::get('/notification', function () {
     Pdf::view('pdfs.invoice')
     ->format('a4')
     ->save('invoice.pdf');
-
-    // $applicant = User::find(Auth::user()->id);
-    // $edition = $applicant->editions->first();
-    // Browsershot::url('http://localhost:8000')->save('example.pdf');
-
-    // return (new ApplicationApproved($edition, $applicant));
 
     Browsershot::html('<h1>Hello world!!</h1>')->save('example.pdf');
 

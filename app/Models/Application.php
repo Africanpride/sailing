@@ -8,6 +8,7 @@ use App\Enums\ApplicationStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Application extends Model
 {
@@ -61,8 +62,8 @@ class Application extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
-    public function invoice()
+    public function invoice(): HasOne
     {
-        return $this->HasOne(Invoice::class,'application_id');
+        return $this->hasOne(Invoice::class, 'application_id');
     }
 }

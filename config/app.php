@@ -18,6 +18,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'businessname' => env('APP_BUSINESSNAME', 'Laravel'),
+    'telephone' => env('APP_TELEPHONE', '+233 50 326 2734'),
     'email' => env('APP_EMAIL', 'webmaster@costrad.org'),
     'openExchange' => env('OPEN_EXCHANGE_RATES_APP_ID'),
 
