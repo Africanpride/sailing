@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Edition;
+use App\Models\Invoice;
 use App\Models\Institute;
 use App\Models\Application;
 use App\Models\Publication;
@@ -20,8 +21,8 @@ use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\DisplayInstituteController;
 use App\Http\Controllers\InvoiceReceiptController;
+use App\Http\Controllers\DisplayInstituteController;
 use App\Notifications\ApplicationApprovedNotification;
 use App\Notifications\ApplicationApprovedEmailNotification;
 
@@ -243,11 +244,19 @@ Route::get('tabs', function () {
 
 Route::get('/notification', function () {
 
-    return view('invoices.pay');
-    Pdf::view('pdfs.invoice')
-    ->format('a4')
-    ->save('invoice.pdf');
 
-    Browsershot::html('<h1>Hello world!!</h1>')->save('example.pdf');
+    // $receipt = Invoice::where('invoice_number', $invoice_number)->where('status', 'paid')->with('invoicee', 'edition')->first();
+
+    // // only invoicee and Admin can see a particular receipt
+    // abort_unless($receipt && $receipt->invoicee->id = auth()->user()->id
+    // || $receipt && auth()->user()->isAdmin, 403,'Page Does Not Exist!');
+
+    return Browsershot::url('http://localhost:8000/receipt/000020240206-MKR3YBXR')
+    ->save('123456.pdf');
+
+    // Browsershot::url('https://example.com')
+    // ->format('A4')
+    // ->save('example.pdf');
+
 
 });

@@ -456,7 +456,7 @@
                                             </div>
                                             <div
                                                 class="flex justify-between items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
-                                                <x-button
+                                                <x-button  onclick="window.print()"
                                                     class="bg-red-500 hover:bg-red-600 w-full flex justify-center items-center gap-2 text-center "
                                                     data-hs-overlay="#invoice-{{ $application->id }}">
                                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg"
@@ -467,7 +467,7 @@
                                                             d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z">
                                                         </path>
                                                     </svg>
-                                                    Generate PDF
+                                                    Print invoice
                                                 </x-button>
                                                 @if ($application->invoice?->status == 'paid')
                                                     <x-link-button class="w-full"

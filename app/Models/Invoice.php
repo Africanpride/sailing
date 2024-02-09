@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use App\Enums\InvoiceStatus;
+use App\Traits\HasExchangeRate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Invoice extends Model
 {
-    use HasFactory, HasUlids;
+    use HasFactory, HasUlids, HasExchangeRate;
     protected $fillable = [
         'user_id',
         'edition_id',
@@ -24,6 +25,7 @@ class Invoice extends Model
         'paid',
 
     ];
+
 
     protected $casts = [
         'date' => 'datetime',
