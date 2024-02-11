@@ -7,6 +7,7 @@ use App\Models\Edition;
 use App\Models\Invoice;
 use Livewire\Component;
 use App\Models\Application;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Unicodeveloper\Paystack\Facades\Paystack;
@@ -58,31 +59,31 @@ class MyApplicationData extends Component
         }
     }
 
-    private function preventDuplicateInstituteTransaction($editionID)
-    {
-        $edition = Edition::find($editionID);
+    // private function preventDuplicateInstituteTransaction($editionID)
+    // {
+    //     $edition = Edition::find($editionID);
 
-        if (!$edition) {
-            app('flasher')->addError('Edition not found.', 'Error');
-            return redirect()->back();
-        }
+    //     if (!$edition) {
+    //         app('flasher')->addError('Edition not found.', 'Error');
+    //         return redirect()->back();
+    //     }
 
-        $user = Auth::user();
+    //     $user = Auth::user();
 
-        if (!$user) {
-            app('flasher')->addError('User not authenticated.', 'Error');
-            return redirect()->back();
-        }
+    //     if (!$user) {
+    //         app('flasher')->addError('User not authenticated.', 'Error');
+    //         return redirect()->back();
+    //     }
 
-        $transaction = Transaction::where('participant_id', $user->id)->where('institute_id', $id)->first();
+    //     $transaction = Transaction::where('participant_id', $user->id)->where('institute_id', $id)->first();
 
-        if ($transaction && $institute->created_at->year == $transaction->created_at->year) {
-            app('flasher')->addWarning('You have already enrolled in this institute.', 'Already Enrolled');
-            return redirect()->route('institute.show', $institute);
-        }
+    //     if ($transaction && $institute->created_at->year == $transaction->created_at->year) {
+    //         app('flasher')->addWarning('You have already enrolled in this institute.', 'Already Enrolled');
+    //         return redirect()->route('institute.show', $institute);
+    //     }
 
-        // Continue with the rest of your logic
-    }
+    //     // Continue with the rest of your logic
+    // }
     public function updatingSearch()
     {
         $this->resetPage();

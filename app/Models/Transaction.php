@@ -23,6 +23,7 @@ class Transaction extends Model
         'transaction_date',
         'description',
         'ipAddress',
+        'paystackTransactionID'
     ];
 
     protected $casts = [
@@ -37,8 +38,8 @@ class Transaction extends Model
         return $this->morphTo();
     }
 
-    protected function latestFormattedAmount() {
-        {
+    protected function latestFormattedAmount()
+    { {
             $latest = self::latest()->first();
 
             if ($latest) {

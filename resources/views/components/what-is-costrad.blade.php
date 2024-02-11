@@ -63,7 +63,7 @@
                 </div>
                 <div class="mt-5">
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white">{{  __('Speed & Accuracy') }}</h3>
-                    <p class="mt-1 text-gray-600 dark:text-gray-400">{{  __('Accellerated learning and Skills Acquisition.') }}</p>
+                    <p class="mt-1 text-gray-600 dark:text-gray-400">{{  __('Accelerated learning and Skills Acquisition.') }}</p>
                 </div>
             </div>
             <!-- End Icon Block -->

@@ -40,6 +40,7 @@ class PaymentController extends Controller
 
 
             $transaction = new Transaction([
+                'paystackTransactionID' => $paymentDetails['data']['id'],
                 'amount' => $paymentDetails['data']['amount'],
                 'currency' => $paymentDetails['data']['currency'], // Assuming GHS currency
                 'reference' => $paymentDetails['data']['reference'], // Assuming payment ID as reference
@@ -72,6 +73,7 @@ class PaymentController extends Controller
 
                 // Create the transaction
                 $transaction = Transaction::create([
+                    'paystackTransactionID' => $paymentDetails['data']['id'],
                     'amount' => $paymentDetails['data']['amount'],
                     'description' => 'Payment for services rendered',
                     'fees' => $paymentDetails['data']['fees'],
