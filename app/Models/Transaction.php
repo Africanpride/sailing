@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 
 class Transaction extends Model
 {
-    use HasFactory, HasUuid;
+    use HasFactory, HasUlids;
     protected $fillable = [
         'amount',
         'currency',
@@ -22,6 +23,10 @@ class Transaction extends Model
         'transaction_date',
         'description',
         'ipAddress',
+    ];
+
+    protected $casts = [
+        'transaction_date' => 'datetime:Y-m-d H:i:s',
     ];
 
     public $incrementing = false;

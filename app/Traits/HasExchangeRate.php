@@ -8,34 +8,28 @@ use Illuminate\Support\Facades\Http;
 
 trait HasExchangeRate
 {
-    public static function getExchangeRate()
+    public static function getCurrentRate(): float
     {
-        $exchange_rate = ExchangeRate::latest()->first(); // get the latest exchange rate from the database
+        $exchange_rate = ExchangeRate::latest()->first();
 
+        // Check if the exchange rate needs to be updated
         if ($exchange_rate == null || Carbon::parse($exchange_rate->updated_at)->diffInHours(Carbon::now()) >= 24) {
-            // fetch exchange rate from API and update database
+            // Fetch exchange rate from API and update database
             $response = Http::get('https://openexchangerates.org/api/latest.json', [
                 'app_id' => config('app.openExchange'),
-                'symbols' => 'GHS'
+                'symbols' => 'GHS',
             ]);
 
             $responseData = $response->json();
             $exchange_rate_value = $responseData['rates']['GHS'];
 
-
             if (!empty($responseData)) {
-
-                $newRate = ExchangeRate::firstOrCreate(['rate' => $exchange_rate_value]);
-
-                // update $exchange_rate variable with the latest value
-                return $newRate->rate;
+                // Update the exchange rate in the database
+                $exchange_rate = ExchangeRate::firstOrCreate(['rate' => $exchange_rate_value]);
             }
-        } elseif ($exchange_rate != null && Carbon::parse($exchange_rate->updated_at)->diffInHours(Carbon::now()) < 24) {
-            return $exchange_rate->rate;
-        } else {
-            return $exchange_rate->rate;
         }
 
-        return $exchange_rate->rate;
+        // Return the exchange rate (either the updated one or the existing one)
+        return $exchange_rate->rate + 0.4;
     }
 }

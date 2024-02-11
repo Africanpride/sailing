@@ -175,7 +175,7 @@
                                     Manage Profile
                                 </a>
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                    href="{{ route('profile.show') }}">
+                                    href="{{ route('my-applications') }}">
                                     <x-heroicon-o-folder-arrow-down class="w-5 h-5 text-current" />
                                     <div class="w-full flex items-center justify-between">
                                         <span>My Applications </span>

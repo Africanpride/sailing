@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('authorization_code')->nullable();
             $table->string('orderID')->nullable();
             $table->timestamp('transaction_date');
-            $table->text('descriptioin')->nullable();
+            $table->text('description')->nullable();
             $table->string('ipAddress');
             $table->timestamps();
         });

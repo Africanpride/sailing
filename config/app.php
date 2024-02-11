@@ -18,6 +18,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'currency' => env('APP_CURRENCY', 'GHS'),
     'businessname' => env('APP_BUSINESSNAME', 'Laravel'),
     'telephone' => env('APP_TELEPHONE', '+233 50 326 2734'),
     'email' => env('APP_EMAIL', 'webmaster@costrad.org'),

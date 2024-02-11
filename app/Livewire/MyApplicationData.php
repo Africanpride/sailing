@@ -3,11 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use App\Models\Edition;
+use App\Models\Invoice;
 use Livewire\Component;
 use App\Models\Application;
-use App\Models\Invoice;
-use Unicodeveloper\Paystack\Facades\Paystack;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Unicodeveloper\Paystack\Facades\Paystack;
 
 class MyApplicationData extends Component
 {
@@ -29,32 +31,58 @@ class MyApplicationData extends Component
     public function payInvoice($applicationInvoice)
     {
         $applicationInvoice = Invoice::where('invoice_number', $applicationInvoice['invoice_number'])->where('status', 'pending')->with('invoicee', 'edition')->first();
-        dd($applicationInvoice->getExchangeRate());
+        // dd($applicationInvoice);
 
         try {
-            $data = array(
-                "amount" => round( $applicationInvoice->getExchangeRate() * 100),
-                "reference" =>  $applicationInvoice->invoicee->id,
+            $payStackData = array(
+                "amount" => round($applicationInvoice->amount * $applicationInvoice->getCurrentRate() * 100),
+                "reference" =>  Paystack::genTranxRef(),
                 "email" => $applicationInvoice->invoicee->email,
                 "currency" => "GHS",
                 "orderID" => $applicationInvoice->invoice_number,
                 "channels" => ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer'],
                 "metadata" => [
-                    "donation" => true,
+                    // "donation" => true,
                     "orderID" => $applicationInvoice->id,
                     "name" => $applicationInvoice->invoicee->full_name,
                     "user_id" => $applicationInvoice->user_id,
                 ]
             );
 
-            // dd("We are here");
-            return Paystack::getAuthorizationUrl($data)->redirectNow();
+            dd("We are here");
+            return Paystack::getAuthorizationUrl($payStackData)->redirectNow();
         } catch (\Exception $e) {
-            dd("Donation stopped...");
-            return Redirect::back()->withMessage(['msg' => 'The paystack token has expired. Please refresh the page and try again.', 'type' => 'error']);
+
+            app('flasher')->AddError('Payment for ' . $applicationInvoice->edition->title . ' Failed!', 'payment Failed' );
+            return redirect()->route('my-applications');
         }
     }
 
+    private function preventDuplicateInstituteTransaction($editionID)
+    {
+        $edition = Edition::find($editionID);
+
+        if (!$edition) {
+            app('flasher')->addError('Edition not found.', 'Error');
+            return redirect()->back();
+        }
+
+        $user = Auth::user();
+
+        if (!$user) {
+            app('flasher')->addError('User not authenticated.', 'Error');
+            return redirect()->back();
+        }
+
+        $transaction = Transaction::where('participant_id', $user->id)->where('institute_id', $id)->first();
+
+        if ($transaction && $institute->created_at->year == $transaction->created_at->year) {
+            app('flasher')->addWarning('You have already enrolled in this institute.', 'Already Enrolled');
+            return redirect()->route('institute.show', $institute);
+        }
+
+        // Continue with the rest of your logic
+    }
     public function updatingSearch()
     {
         $this->resetPage();

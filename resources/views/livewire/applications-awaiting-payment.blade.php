@@ -88,7 +88,7 @@
 
                 <th scope="col"
                     class="px-6 py-3 text-xs   leading-4 font-medium  uppercase tracking-wider  text-left">
-                    Scholarship
+                    Scholarship & Payment Options
                 </th>
             </tr>
         </x-slot>
@@ -196,9 +196,12 @@
 
 
                     <td
-                        class="px-6 py-3 text-sm leading-5  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-center">
+                        class="px-6 py-3 text-sm leading-5  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-center gap-3 grid md:grid-cols-2 " >
 
-                        <x-button class="w-full" data-hs-overlay="#awardScholarship-{{ $application->id }}">Award
+                        <x-button class="w-full bg-green-700 hover:bg-green-600" data-hs-overlay="#awardScholarship-{{ $application->id }}">
+                            Cash Payment
+                            </x-button>
+                        <x-button class="w-full" data-hs-overlay="#awardScholarship-{{ $application->id }}">
                             Scholarship</x-button>
 
 
@@ -284,6 +287,8 @@
                                                 data-hs-overlay="#awardScholarship-{{ $application->id }}">
                                                 Cancel
                                             </x-button>
+                                            <x-button class="w-full" wire:click.prevent="scholarshipDetails" >
+                                                Cash Payment</x-button>
                                             <x-button class="w-full" wire:click.prevent="scholarshipDetails" >Approve Scholarship</x-button>
                                         </div>
                                     </div>
