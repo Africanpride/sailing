@@ -196,104 +196,97 @@
 
 
                     <td
-                        class="px-6 py-3 text-sm leading-5  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-center gap-3 grid md:grid-cols-2 " >
+                        class="px-6 py-3 text-sm leading-5  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-center gap-3 grid md:grid-cols-2 ">
 
-                        <x-button class="w-full bg-green-700 hover:bg-green-600" data-hs-overlay="#awardScholarship-{{ $application->id }}">
+                        <x-button class="w-full bg-green-700 hover:bg-green-600"
+                            data-hs-overlay="#cashOrFree-{{ $application->id }}">
                             Cash Payment
-                            </x-button>
-                        <x-button class="w-full" data-hs-overlay="#awardScholarship-{{ $application->id }}">
+                        </x-button>
+                        <x-button class="w-full" data-hs-overlay="#cashOrFree-{{ $application->id }}">
                             Scholarship</x-button>
 
 
-                            <div id="awardScholarship-{{ $application->id }}"
-                                class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto [--overlay-backdrop:static]"
-                                data-hs-overlay-keyboard="false">
+                        <div id="cashOrFree-{{ $application->id }}"
+                            class="hs-overlay hidden w-full h-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto [--overlay-backdrop:static]"
+                            data-hs-overlay-keyboard="false">
+                            <div
+                                class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
                                 <div
-                                    class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                                    class="flex flex-col w-full bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                                     <div
-                                        class="flex flex-col w-full bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                                        <div
-                                            class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-                                            <h3 class="font-bold text-gray-800 dark:text-white">
-                                                Award Scholarship : <span
-                                                    class="capitalize  ">{{ $application->applicant->full_name }}</span>
-                                            </h3>
-                                            <h3 class="font-bold text-gray-800 dark:text-white">
-                                                Institute : <span
-                                                    class="capitalize  ">{{ $application->edition->title }}</span>
-                                            </h3>
-                                            <button type="button"
-                                                class="flex justify-center items-center w-7 h-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                                data-hs-overlay="#awardScholarship-{{ $application->id }}">
-                                                <span class="sr-only">Close</span>
-                                                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
-                                                    width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path d="M18 6 6 18" />
-                                                    <path d="m6 6 12 12" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="p-4 overflow-y-auto">
-                                            <div>
-                                                <fieldset class="grid md:grid-cols-2 gap-4 w-full ">
+                                        class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
+                                        <h3 class="font-bold text-gray-800 dark:text-white">
+                                            Cash Payment IFO: <span
+                                                class="capitalize  ">{{ $application->applicant->full_name }}</span>
+                                        </h3>
+                                        <h3 class="font-bold text-gray-800 dark:text-white">
+                                            Institute : <span
+                                                class="capitalize  ">{{ $application->edition->title }}</span>
+                                        </h3>
 
-                                                    <div class="flex justify-between items-center w-full">
-                                                        <label for="hs-radio-in-form"
-                                                            class="flex justify-between p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                                                            <div class="text-left">
-                                                                <div
-                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">
-                                                                    Full Scholarship</div>
-                                                                <div
-                                                                    class="text-sm text-firefly-500 ms-3 dark:text-firefly-400">
-                                                                    ${{ $application->edition->price }}</div>
-                                                            </div>
-                                                            <input type="radio" name="hs-radio-in-form"
-                                                                class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                                id="hs-radio-in-form">
-                                                        </label>
-                                                    </div>
-                                                    <div class="flex justify-between items-center w-full">
-                                                        <label for="hs-radio-checked-in-form"
-                                                            class="flex p-3 justify-between w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                                                            <div class="text-left">
-                                                                <div
-                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">
-                                                                    Partial Scholarship</div>
-                                                                <div
-                                                                    class="text-sm text-firefly-500 ms-3 dark:text-firefly-400">
-                                                                    ${{ $application->edition->price }}</div>
-                                                            </div>
-                                                            <input type="radio" name="hs-radio-in-form"
-                                                                class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                                id="hs-radio-checked-in-form" checked>
+                                        <button type="button"
+                                            class="flex justify-center items-center w-7 h-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                            data-hs-overlay="#cashOrFree-{{ $application->id }}">
+                                            <span class="sr-only">Close</span>
+                                            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 6 6 18" />
+                                                <path d="m6 6 12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
 
-                                                        </label>
-                                                    </div>
+                                    <div class="p-4 overflow-y-auto">
+                                        <div>
 
-                                                </fieldset>
-                                                {{-- partial scholarship slider --}}
+                                            <fieldset class="block w-full ">
+                                                <select
+                                                    class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                                    wire:model="paymentOption">
+                                                    <option value="fullPayment">{{ __('Full Payment') }}</option>
+                                                    <option value="partPayment">{{ __('Part Payment') }}</option>
+                                                </select>
+                                            </fieldset>
 
-                                                <div class="py-5">
-                                                    Slider
+
+
+                                            {{-- Cash Payment --}}
+
+                                            <div class="py-5">
+                                                <div>
+                                                    <label for="hs-input-with-leading-and-trailing-icon" class="block text-sm font-medium mb-2 dark:text-white text-left">
+                                                        Amount (GHS)
+                                                    </label>
+                                                    <input type="number"
+
+                                                           wire:model="cashPaymentAmount"
+                                                           id="hs-input-with-leading-and-trailing-icon"
+                                                           class="py-3 px-4 pl-9 pr-16 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-firefly-500 focus:ring-firefly-500 dark:bg-firefly-900 dark:border-gray-700 dark:text-gray-400"
+                                                           placeholder="{{ $application->edition->cedi_equivalent }}"
+                                                           required>
                                                 </div>
                                             </div>
+
+
                                         </div>
-                                        <div
-                                            class="flex justify-between items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
-                                            <x-button class="bg-red-500 hover:bg-red-600 w-full "
-                                                data-hs-overlay="#awardScholarship-{{ $application->id }}">
-                                                Cancel
-                                            </x-button>
-                                            <x-button class="w-full" wire:click.prevent="scholarshipDetails" >
-                                                Cash Payment</x-button>
-                                            <x-button class="w-full" wire:click.prevent="scholarshipDetails" >Approve Scholarship</x-button>
-                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
+                                        <x-button class="bg-red-500 hover:bg-red-600 w-full "
+                                            data-hs-overlay="#cashOrFree-{{ $application->id }}">
+                                            Cancel
+                                        </x-button>
+                                        <x-button class="w-full" wire:click="cashPayment('{{ $application->id }}')">
+                                            Cash Payment
+                                        </x-button>
+                                        <x-button class="w-full" wire:click="scholarshipDetails('{{ $application->id }}')">Approve For
+                                            Scholarship</x-button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
                     </td>

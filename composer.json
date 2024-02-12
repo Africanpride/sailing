@@ -27,6 +27,7 @@
         "log1x/laravel-webfonts": "^1.0",
         "lwwcas/laravel-countries": "^3.4",
         "mallardduck/blade-lucide-icons": "^1.11",
+        "myckhel/laravel-paystack": "^1.1",
         "php-ffmpeg/php-ffmpeg": "^1.2",
         "php-flasher/flasher-laravel": "^1.15",
         "php-flasher/flasher-notyf-laravel": "^1.15",

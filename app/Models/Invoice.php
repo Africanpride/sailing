@@ -29,6 +29,7 @@ class Invoice extends Model
 
     protected $casts = [
         'date' => 'datetime',
+        'paid' => 'boolean',
         'due_date' => 'datetime',
         'status' => InvoiceStatus::class
     ];

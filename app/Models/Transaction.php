@@ -38,6 +38,19 @@ class Transaction extends Model
         return $this->morphTo();
     }
 
+    public static function generateReferenceNumber($length = 24)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $referenceNumber = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $referenceNumber .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $referenceNumber;
+    }
+
+
     protected function latestFormattedAmount()
     { {
             $latest = self::latest()->first();
@@ -50,6 +63,15 @@ class Transaction extends Model
             return 'No records found';
         }
     }
+
+
+
+    public function refund()
+    {
+        return $this->hasOne(Refund::class, 'transaction_id');
+    }
+
+
     //     // Create a transaction for a donation
     // $donation = Donation::find(1);
     // $transaction = $donation->transactions()->create(['amount' => 100.00]);

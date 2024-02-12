@@ -124,10 +124,9 @@ Route::middleware([
         return view('admin.myInstitutes.editions');
     })->name('editions');
 
-    Route::get('/analytics', function() {
+    Route::get('/analytics', function () {
         return view('admin.analytics');
     })->name('analytics');
-
 });
 
 
@@ -141,21 +140,20 @@ Route::middleware([
     'mustBeAdmin',
 ])->group(function () {
 
-Route::get('participants', function() {
-    return view('admin.participants.index');
-})->name('participants');
+    Route::get('participants', function () {
+        return view('admin.participants.index');
+    })->name('participants');
 
-// Applications with Paid, Unpaid and panding statuses.
-Route::get('applications', function() {
+    // Applications with Paid, Unpaid and panding statuses.
+    Route::get('applications', function () {
 
-    $pendingApplications = Application::where('status', 'pending')->paginate(10);
-    $paidApplications = Application::where('paid_for', true)->paginate(10);
-    $unpaidApplications = Application::where('status', 'approved')->where('paid_for', false)->paginate(10);
-    $rejectedApplications = Application::where('status', 'rejected')->where('paid_for', false)->paginate(10);
+        $pendingApplications = Application::where('status', 'pending')->paginate(10);
+        $paidApplications = Application::where('paid_for', true)->paginate(10);
+        $unpaidApplications = Application::where('status', 'approved')->where('paid_for', false)->paginate(10);
+        $rejectedApplications = Application::where('status', 'rejected')->where('paid_for', false)->paginate(10);
 
-    return view('admin.applications.index', compact('pendingApplications','paidApplications','unpaidApplications','rejectedApplications'));
-
-})->name('applications');
+        return view('admin.applications.index', compact('pendingApplications', 'paidApplications', 'unpaidApplications', 'rejectedApplications'));
+    })->name('applications');
 
     Route::get('staff', function () {
         $users = User::staff()->paginate(8);
@@ -223,7 +221,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('my-applications', function () {
-        $applications = Application::where('user_id', auth()->user()->id)->with('edition','invoice')->paginate(10);
+        $applications = Application::where('user_id', auth()->user()->id)->with('edition', 'invoice')->paginate(10);
         return view('my-applications', compact('applications'));
     })->name('my-applications');
 
@@ -247,7 +245,6 @@ Route::get('tabs', function () {
 Route::get('/notification', function () {
 
 
-    $customer = Auth::user() ?? "Guest User";
-    dd($customer);
-
+    $edition = Edition::first();
+    dd(number_format($edition->price * $edition->getCurrentRate(), 2));
 });

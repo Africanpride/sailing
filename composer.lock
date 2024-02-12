@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6afda8f06f3877ebf9ad5a331cef8c0a",
+    "content-hash": "97f507121852bb55939b8b14d7c030c2",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -4342,6 +4342,68 @@
                 "source": "https://github.com/jmespath/jmespath.php/tree/2.7.0"
             },
             "time": "2023-08-25T10:54:48+00:00"
+        },
+        {
+            "name": "myckhel/laravel-paystack",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myckhel/laravel-paystack.git",
+                "reference": "3211e28339adaa0ed6dfde143e3e284699e79981"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myckhel/laravel-paystack/zipball/3211e28339adaa0ed6dfde143e3e284699e79981",
+                "reference": "3211e28339adaa0ed6dfde143e3e284699e79981",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0|^9.0|^10.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Myckhel\\Paystack\\PaystackServiceProvider"
+                    ],
+                    "aliases": {
+                        "Paystack": "Myckhel\\Paystack\\Facades\\Paystack"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Myckhel\\Paystack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "myckhel",
+                    "email": "myckhel1@hotmail.com"
+                }
+            ],
+            "description": "A description for laravel-paystack.",
+            "keywords": [
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/myckhel/laravel-paystack/issues",
+                "source": "https://github.com/myckhel/laravel-paystack/tree/v1.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/myckhel",
+                    "type": "ko_fi"
+                }
+            ],
+            "time": "2023-04-30T18:38:50+00:00"
         },
         {
             "name": "nesbot/carbon",

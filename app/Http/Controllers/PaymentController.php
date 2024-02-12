@@ -25,7 +25,6 @@ class PaymentController extends Controller
         if ($paymentDetails && isset($paymentDetails['data']['metadata']['donation'])) {
             // Run logic for Donation payment. Hope we get more donations ;-)
             // Redirect to institute frontpage URL
-            $transaction = new Transaction();
 
             $donation = Donation::find($paymentDetails['data']['metadata']['donation_id']);
 

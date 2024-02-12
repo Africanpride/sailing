@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Transaction;
+use App\Traits\HasExchangeRate;
 use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ use Spatie\MediaLibrary\MediaCollections\File;
 
 class Edition extends Model implements HasMedia
 {
-    use HasFactory, HasUlids, Sluggable, InteractsWithMedia;
+    use HasFactory, HasUlids, Sluggable, InteractsWithMedia, HasExchangeRate;
     protected $fillable = [
         'institute_id',
         'title',
@@ -57,14 +58,36 @@ class Edition extends Model implements HasMedia
         'progress',
         'banner',
         'duration',
-        'institute_logo'
+        'institute_logo',
+        'cedi_equivalent'
+
     ];
-    function getDurationAttribute(): string
+    public function getDurationAttribute(): string
     {
         return Carbon::parse($this->startDate)
             ->format('M d') . ' – ' .
             Carbon::parse($this->endDate)
             ->format('M d');
+    }
+
+    public function getCediEquivalentAttribute(): float
+    {
+        if (!isset($this->price)) {
+            // Handle missing price gracefully (e.g., return 0 or throw an exception)
+            return 0.00;
+        }
+
+        $exchangeRate = $this->getCurrentRate();
+
+
+        if ($exchangeRate === null) {
+            // Handle missing exchange rate gracefully
+            return 0.00;
+        }
+
+        $cediEquivalent = $this->price * $exchangeRate;
+
+        return number_format($cediEquivalent, 2, '.', ''); // Example formatting with 2 decimal places
     }
 
     public function getInstituteLogoAttribute()

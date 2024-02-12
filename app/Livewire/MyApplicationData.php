@@ -31,8 +31,10 @@ class MyApplicationData extends Component
 
     public function payInvoice($applicationInvoice)
     {
-        $applicationInvoice = Invoice::where('invoice_number', $applicationInvoice['invoice_number'])->where('status', 'pending')->with('invoicee', 'edition')->first();
-        // dd($applicationInvoice);
+        $applicationInvoice = Invoice::where('invoice_number', $applicationInvoice['invoice_number'])
+        ->where('status', 'pending')
+        ->with('invoicee', 'edition')
+        ->first();
 
         try {
             $payStackData = array(
@@ -50,7 +52,7 @@ class MyApplicationData extends Component
                 ]
             );
 
-            dd("We are here");
+            dd($payStackData);
             return Paystack::getAuthorizationUrl($payStackData)->redirectNow();
         } catch (\Exception $e) {
 
