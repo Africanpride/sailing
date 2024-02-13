@@ -274,26 +274,25 @@
                             Share on LinkedIn
                         </a>
                     </div>
+
+                    @auth
+                        @if (Auth::user()->isAdmin)
+                        <div class="block h-3 border-r border-gray-300 mx-3 dark:border-gray-600"></div>
+                        <div class="h-0">
+                            <form action="{{ route('publications.edit', $publication) }}">
+                                @csrf
+                                <button type="submit"
+                                    class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+                                    <x-lucide-edit class="w-4 h-4 text-current" />
+                                   <div> {{ __('Edit Article') }}</div>
+
+                                </button>
+                            </form>
+                        </div>
+                        @endif
+                    @endauth
                 </div>
                 <!-- Button -->
-                @auth
-                    @if (Auth::user()->isAdmin)
-                        <div class="block h-3 border-r border-gray-300 mx-3 dark:border-gray-600"></div>
-                        <form action="{{ route('publications.edit', $publication) }}">
-                            @csrf
-                            <button type="submit"
-                                class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
-                                <x-lucide-edit class="w-4 h-4 text-current" />
-                                {{ __('Edit Article') }}
-                                <span
-                                    class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-black"
-                                    role="tooltip">
-                                    {{ __('Edit Article') }}
-                                </span>
-                            </button>
-                        </form>
-                    @endif
-                @endauth
 
 
 

@@ -126,7 +126,7 @@ class PublicationController extends Controller
             $publication->addMediaFromRequest('featured_image')->toMediaCollection('featured_image');
         }
 
-        return redirect()->route('publications.index');
+        return redirect()->back();
     }
 
 

@@ -380,7 +380,7 @@
                                 developing strategic transformational leaders, in a world characterized by increasing
                                 complexity and confronted by varied challenges, to harness the most strategic
                                 (qualitative
-                                and quantitative) resources within their environment to solve society’s challenges.
+                                and quantitative) resources within their environment to solve societal challenges.
                             </p>
                         </div>
                         <!-- End Title -->

@@ -18,7 +18,8 @@
                 @foreach ($publications as $publication)
                     <!-- End Card Section -->
                     <div
-                        class="bg-gray-200 dark:bg-gray-900 dark:text-gray-100  max-w-3xl mx-auto !rounded-xl relative overflow-hidden">
+                        class="bg-gray-200 dark:bg-gray-900 dark:text-gray-100 h-[150px]  max-w-3xl mx-auto !rounded-xl relative overflow-hidden">
+
                         <div class="bg-firefly-600 px-2 py-1 absolute right-0 bottom-0 rounded-tl-lg text-xs text-white inline-flex justify-center items-center">
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@
                           </svg>
                            <span class="px-1"> {{ $publication->category->title }}</span>
                         </div>
-                        <div class="container grid grid-cols-12 mx-auto ">
+                        <div class="container grid grid-cols-12 mx-auto h-full ">
                             <a href="{{ route('publications.show', $publication ) }}" class="relative grid place-items-center bg-no-repeat bg-cover  bg-gray-700 col-span-full md:col-span-3 md:rounded-l-xl  "
                                 style="background-image: url('{{ ($publication->getFirstMediaUrl('featured_image')) ? $publication->getFirstMediaUrl('featured_image') : $publication->featured_image }}'); background-position: center center; background-size: cover;">
 
@@ -47,7 +48,7 @@
                             </a>
 
                             <div
-                                class="col-span-12 flex flex-col justify-between md:col-span-9 p-4 pb-4 pl-9 pt-6 rounded-r-xl space-y-2 relative">
+                                class="col-span-12 flex flex-col md:col-span-9 p-4 pl-9 pt-4 relative space-y-2">
                                 @hasanyrole(['admin', 'super_admin'])
                                     <div class="absolute top-2 right-3">
                                         <div class="flex justify-end items-center gap-2">
@@ -68,12 +69,12 @@
                                 <div
                                     class="bg-gray-300/90 dark:bg-black rotate-180 p-2 [writing-mode:_vertical-lr] absolute left-0 bottom-0 h-full">
                                     <time datetime="2022-10-10"
-                                        class="flex items-center justify-between gap-4 text-[10px]
+                                        class="flex items-center justify-between gap-4 text-[8px]
                                                         font-bold uppercase  text-gray-900 dark:text-white">
 
-                                        <span>{{ \Carbon\Carbon::parse($publication->updated_at)->format('M jS') }}</span>
+                                        <div>{{ \Carbon\Carbon::parse($publication->updated_at)->format('M jS') }}</div>
                                         <span class="w-px flex-1 bg-gray-900/50 dark:bg-white/10"></span>
-                                        <span>{{ \Carbon\Carbon::parse($publication->created_at)->format('M jS') }}</span>
+                                        <div>{{ \Carbon\Carbon::parse($publication->created_at)->format('M jS') }}</div>
                                     </time>
                                 </div>
 
@@ -81,7 +82,7 @@
                                 </h1>
 
                                 <div>
-                                    <p class=" text-[12px] line-clamp-4 leading-3 ">
+                                    <p class=" text-[12px] line-clamp-5 leading-snug ">
                                         {{ $publication->overview }}
                                         <a href="{{ route('publications.show', [$publication->slug]) }}" rel="noopener noreferrer"
                                             class="inline-flex justify-start items-center   text-sm text-orange-400">
@@ -90,7 +91,7 @@
                                         </a>
                                     </p>
                                 </div>
-                                <div class="overflow-hidden relative">
+                                {{-- <div class="overflow-hidden relative">
                                     <div class="flex justify-between items-center">
 
                                         <div rel="noopener noreferrer"
@@ -108,7 +109,7 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
 

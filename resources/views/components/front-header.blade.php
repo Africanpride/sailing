@@ -31,7 +31,7 @@
           <div id="navbar-collapse-with-animation"
               class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
               <div
-                  class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-6 sm:mt-0 sm:ps-7">
+                  class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-6 sm:mt-0 sm:ps-4">
                   <x-menu url="home">
                       Home
                   </x-menu>
@@ -46,6 +46,26 @@
                   <x-menu url="publications.index">
                       Publications
                   </x-menu>
+
+                  @php
+                      $costrad = App\Models\Institute::find(5);
+                      $url = route('institutes.show', $costrad);
+                    //   dd($url);
+                  @endphp
+
+                  <a href="{{ route('institutes.show', $costrad) }}"
+
+                          class =
+                              'normal-case font-bold dark:text-white hover:text-yellow-700
+                              {{ (url()->current() == $url
+                                  ? ' text-yellow-500 dark:text-yellow-500 hover:dark:text-firefly-400'
+                                  : 'hover:dark:text-firefly-400') }}'  >
+                      {{ __('COSTrAD')}}
+                  </a>
+
+
+
+
 
                   <div class="text-firefly-700 dark:text-firefly-200 flex justify-start items-center gap-2 py-4">
 

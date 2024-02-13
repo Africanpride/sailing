@@ -74,9 +74,9 @@
                         </div>
 
                         <div
-                            class="my-2 text-gray-800 dark:text-gray-200 text-xs md:text-justify line-clamp-6 md:line-clamp-none">
+                            class="my-2 text-gray-800 dark:text-gray-200 text-xs md:text-left line-clamp-6 md:line-clamp-none">
 
-                            <span class="text-xs font-extralight	 ">{!! $institute->overview !!}</span>
+                            <span class="text-sm font-sans	 ">{!! $institute->overview !!}</span>
 
                         </div>
 
@@ -229,7 +229,7 @@
                     <div class=" text-[16px]  text-gray-600 dark:text-gray-300 pb-5">
                         {!! $institute->about !!}
                     </div>
-                    <div class=" flex items-center gap-x-4 py-6">
+                    <div class="  items-center gap-x-4 py-6 hidden">
                         <h4 class="flex-none text-sm font-semibold leading-6 text-firefly-600 dark:text-firefly-400">
                             What’s included
                         </h4>

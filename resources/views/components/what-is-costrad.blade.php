@@ -17,7 +17,7 @@
     <div class="max-w-5xl space-y-4 ">
         <p class=" text-3xl font-bold
          text-slate-800 px-5 text-gradient1">
-           {{  __( "Transform your life and pursue your dreams in our 4-week COSTrAD
+           {{  __( "Transform your life and pursue your dreams in our 5-week COSTrAD
             program. Apply now and don't miss this turning
             point.") }}
         </p>
