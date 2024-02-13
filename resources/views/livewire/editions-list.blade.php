@@ -81,7 +81,33 @@
                     </td>
 
                     <td class="whitespace-nowrap">
-                        <x-images-block />
+
+                        <div class="flex -space-x-2 pl-3 items-center">
+                            @foreach ($edition->paidAttendees->take(7) as $attendee)
+                                <img class="inline-block h-6 w-6  rounded-full ring-2 ring-white"
+                                    src="{{ $attendee->profile_photo_url }}" alt="{{ $attendee->full_name }}">
+                            @endforeach
+                            <div class="hs-dropdown relative inline-flex [--placement:top-left]">
+                                <button id="hs-avatar-group-dropdown"
+                                    class="hs-dropdown-toggle inline-flex items-center justify-center h-8 w-8  rounded-full bg-white border-2 border-white font-medium text-gray-700 shadow-sm align-middle hover:bg-gray-300 focus:outline-none focus:bg-blue-100 focus:text-blue-600  transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:bg-blue-100 dark:focus:text-blue-600 dark:focus:ring-offset-gray-800">
+                                    <span class="font-medium leading-none">{{ $edition->paidAttendees->count() > 0 ? '+' . $edition->paidAttendees->count() : '0'  }}</span>
+                                </button>
+
+                                <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-48 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mb-2 bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                                    aria-labelledby="hs-avatar-group-dropdown">
+                                    @foreach ($edition->paidAttendees->take(7) as $attendee)
+                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                          target="_blank"  href="#">
+                                            {{ $attendee->full_name }}
+                                        </a>
+                                    @endforeach
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- {{ $edition->paidAttendees->count() }} --}}
+                        {{-- <x-images-block /> --}}
 
                     </td>
                     <td class="whitespace-nowrap">
@@ -89,9 +115,9 @@
                         <div class="flex justify-start items-center gap-x-1">
                             @for ($i = 1; $i <= 5; $i++)
                                 @if ($i <= $edition->rating)
-                                <x-heroicon-m-star class="w-4 h-4 text-yellow-500" />
+                                    <x-heroicon-m-star class="w-4 h-4 text-yellow-500" />
                                 @else
-                                <x-lucide-star class="w-4 h-4 text-gray-500" />
+                                    <x-lucide-star class="w-4 h-4 text-gray-500" />
                                 @endif
                             @endfor
                         </div>

@@ -58,7 +58,7 @@
 
                             <!-- Buttons -->
                             <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
-                                <a class="inline-flex justify-center items-center gap-x-3 text-center bg-firefly-600 hover:bg-firefly-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-firefly-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
+                                <a class="inline-flex justify-center items-center gap-x-3 text-center bg-firefly-600 hover:bg-firefly-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-firefly-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
                                     href="{{ url('our-process') }}">
                                     Start the Journey
                                     <svg class="w-3 h-3" width="16" height="16" viewBox="0 0 16 16"
@@ -68,7 +68,7 @@
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                                     </svg>
                                 </a>
-                                <a class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-firefly-500 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:text-white dark:hover:bg-gray-800 dark:hover:border-gray-900 dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800"
+                                <a class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-firefly-500 hover:bg-gray-800 hover:text-white focus:outline-none transition-all text-sm dark:text-white dark:hover:bg-gray-800 dark:hover:border-gray-900  "
                                     href="{{ url('/institutes') }}">
                                     <x-lucide-globe class="w-5 h-5 text-current " />
                                     Our Institutes
@@ -282,7 +282,7 @@
                         </p>
 
                         <div class="mt-5 hidden">
-                            <a class="inline-flex justify-center items-center gap-x-3 text-center bg-firefly-600 hover:bg-firefly-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-firefly-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
+                            <a class="inline-flex justify-center items-center gap-x-3 text-center bg-firefly-600 hover:bg-firefly-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-firefly-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
                                 href="https://github.com/htmlstreamofficial/preline/tree/main/examples/html"
                                 target="_blank">
                                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16"

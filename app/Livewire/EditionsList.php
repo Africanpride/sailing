@@ -13,8 +13,8 @@ class EditionsList extends Component
 
     public function render()
     {
-        $institutes = Institute::all();
+        // $institutes = Institute::all();
         $editions = Edition::with('ratings')->orderBy('startDate', 'asc')->paginate(9);
-        return view('livewire.editions-list', compact('institutes', 'editions'));
+        return view('livewire.editions-list', compact('editions'));
     }
 }

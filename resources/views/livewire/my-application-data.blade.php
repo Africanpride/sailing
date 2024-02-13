@@ -1,65 +1,57 @@
-<div class="">
-
-
-    <div class="  overflow-hidden ">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 ">
-            <div class="w-full md:col-span-6 relative">
-                <div class="absolute top-2 right-2 cursor-pointer">
-                    @if ($search !== '')
-                        <div wire:click="resetFilters"
-                            class="cursor-pointer delay-200 duration-500 bg-red-50 dark:bg-red-500/10 transition-colors dark:hover:bg-red-500/20 hover:bg-red-100 grid h-6 place-items-center rounded-full w-6">
-                            <x-heroicon-o-x-circle class="w-5 h-5 text-red-500" />
-                        </div>
-                    @endif
-                    {{-- {{ ($search !== '') ? 'Not null' : 'null' }} --}}
-                </div>
-
-                <input wire:model.live.debounce.200ms="search" wire:keydown.escape="resetFilters"
-                    wire:keydown.tab="resetFilters" type="text"
-                    placeholder="Search by Start date, ID, Edition ID etc ..."
-                    class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500  dark:border dark:text-gray-400 dark:bg-black ">
-            </div>
-            <div class="w-full md:col-span-2 ">
-                <select wire:model.live="orderBy"
-                    class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border dark:text-gray-400"
-                    id="grid-state">
-                    <option value="edition_id">Edition</option>
-                    <option value="created_at">Date</option>
-                </select>
+<div class="space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4  ">
+        <div class="w-full md:col-span-6 relative">
+            <div class="absolute top-2 right-2 cursor-pointer">
+                @if ($search !== '')
+                    <div wire:click="resetFilters"
+                        class="cursor-pointer delay-200 duration-500 bg-red-50 dark:bg-red-500/10 transition-colors dark:hover:bg-red-500/20 hover:bg-red-100 grid h-6 place-items-center rounded-full w-6">
+                        <x-heroicon-o-x-circle class="w-5 h-5 text-red-500" />
+                    </div>
+                @endif
 
             </div>
-            <div class="w-full md:col-span-2 ">
-                <select wire:model.live="orderAsc"
-                    class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border dark:text-gray-400"
-                    id="grid-state">
-                    <option value="0">Descending</option>
-                    <option value="1">Ascending</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 
-                </div>
+            <input wire:model.live.debounce.200ms="search" wire:keydown.escape="resetFilters"
+                wire:keydown.tab="resetFilters" type="text" placeholder="Search by Start date, ID, Edition ID etc ..."
+                class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500  dark:border dark:text-gray-400 dark:bg-black ">
+        </div>
+        <div class="w-full md:col-span-2 ">
+            <select wire:model.live="orderBy"
+                class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border dark:text-gray-400"
+                id="grid-state">
+                <option value="edition_id">Edition</option>
+                <option value="created_at">Date</option>
+            </select>
+
+        </div>
+        <div class="w-full md:col-span-2 ">
+            <select wire:model.live="orderAsc"
+                class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border dark:text-gray-400"
+                id="grid-state">
+                <option value="0">Descending</option>
+                <option value="1">Ascending</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+
             </div>
-            <div class="w-full md:col-span-2 ">
-                <select wire:model.live="perPage"
-                    class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500
-                     dark:bg-black dark:border dark:text-gray-400"
-                    id="grid-state">
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        </div>
+        <div class="w-full md:col-span-2 ">
+            <select wire:model.live="perPage"
+                class="py px-3 pr-9 block w-full border focus:border-blue-500 focus:ring-blue-500
+                 dark:bg-black dark:border dark:text-gray-400"
+                id="grid-state">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 
-                </div>
             </div>
-
         </div>
 
     </div>
-
-
 
     <x-table :showPagination="true">
         <x-slot name="tableHead">
@@ -91,7 +83,6 @@
 
         <x-slot name="tableBody">
             @if ($myApplications->count() > 0)
-
 
                 @foreach ($myApplications as $application)
                     <tr wire:key="{{ $application->id }}">
@@ -456,7 +447,7 @@
                                             </div>
                                             <div
                                                 class="flex justify-between items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
-                                                <x-button  onclick="window.print()"
+                                                <x-button onclick="window.print()"
                                                     class="bg-red-500 hover:bg-red-600 w-full flex justify-center items-center gap-2 text-center "
                                                     data-hs-overlay="#invoice-{{ $application->id }}">
                                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg"
@@ -523,15 +514,11 @@
                     </tr>
                 @endforeach
 
-
+            @endif
         </x-slot>
-        @endif
 
         <x-slot name="pagination">
             {!! $myApplications->links() !!}
         </x-slot>
     </x-table>
-
-
-
 </div>

@@ -36,6 +36,8 @@ class MyApplicationData extends Component
         ->with('invoicee', 'edition')
         ->first();
 
+        // dd($applicationInvoice->application_id );
+
         try {
             $payStackData = array(
                 "amount" => round($applicationInvoice->amount * $applicationInvoice->getCurrentRate() * 100),
@@ -45,14 +47,17 @@ class MyApplicationData extends Component
                 "orderID" => $applicationInvoice->invoice_number,
                 "channels" => ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer'],
                 "metadata" => [
-                    // "donation" => true,
-                    "orderID" => $applicationInvoice->id,
+                    "edition" => true,
                     "name" => $applicationInvoice->invoicee->full_name,
                     "user_id" => $applicationInvoice->user_id,
+                    "invoice_id" =>$applicationInvoice->id,
+                    "edition_id"=>$applicationInvoice->edition_id,
+                    "application_id"=>$applicationInvoice->application_id,
+
                 ]
             );
 
-            dd($payStackData);
+            // dd($payStackData);
             return Paystack::getAuthorizationUrl($payStackData)->redirectNow();
         } catch (\Exception $e) {
 

@@ -38,15 +38,6 @@
                   <x-menu url='about'>
                       About
                   </x-menu>
-
-                  <x-institutes-list />
-                  <x-menu url="contact">
-                      Contact
-                  </x-menu>
-                  <x-menu url="publications.index">
-                      Publications
-                  </x-menu>
-
                   @php
                       $costrad = App\Models\Institute::find(5);
                       $url = route('institutes.show', $costrad);
@@ -62,6 +53,15 @@
                                   : 'hover:dark:text-firefly-400') }}'  >
                       {{ __('COSTrAD')}}
                   </a>
+                  <x-institutes-list />
+                  <x-menu url="contact">
+                      Contact
+                  </x-menu>
+                  <x-menu url="publications.index">
+                      Publications
+                  </x-menu>
+
+
 
 
 

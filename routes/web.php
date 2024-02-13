@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use App\Models\Institute;
 use App\Models\Application;
 use App\Models\Publication;
+use Illuminate\Support\Number;
 use App\Mail\ApplicationApproved;
 use Illuminate\Support\Facades\DB;
 use Spatie\LaravelPdf\Facades\Pdf;
@@ -20,10 +21,10 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\InvoiceReceiptController;
 use App\Http\Controllers\DisplayInstituteController;
-use App\Http\Controllers\TransactionController;
 use App\Notifications\ApplicationApprovedNotification;
 use App\Notifications\ApplicationApprovedEmailNotification;
 
@@ -244,7 +245,9 @@ Route::get('tabs', function () {
 
 Route::get('/notification', function () {
 
+    $currency = Number::currency(1000, in: 'EUR');
+    return $currency;
 
-    $edition = Edition::first();
-    dd(number_format($edition->price * $edition->getCurrentRate(), 2));
+
+
 });

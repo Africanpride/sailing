@@ -35,7 +35,7 @@
                 <div class="capitalize flex-none text-lg font-semibold dark:text-white">
                     <div class=" text-xl gap-x-2 ">
                         <span class=" text-slate-700 dark:text-slate-200">
-                            {{ 'GHS ' . number_format($this->totalAmountForMonth() / 100, 2, '.', ',') }}
+                            {{ 'GHS ' .  number_format($this->totalAmountForMonth() / 100, 2, '.', ',') }}
                         </span>
 
                     </div>

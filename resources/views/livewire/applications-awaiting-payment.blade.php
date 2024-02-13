@@ -200,7 +200,7 @@
 
                         <x-button class="w-full bg-green-700 hover:bg-green-600"
                             data-hs-overlay="#cashOrFree-{{ $application->id }}">
-                            Cash Payment
+                            Pay Cash
                         </x-button>
                         <x-button class="w-full" data-hs-overlay="#cashOrFree-{{ $application->id }}">
                             Scholarship</x-button>

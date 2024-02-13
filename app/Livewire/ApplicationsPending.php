@@ -84,7 +84,6 @@ class ApplicationsPending extends Component
             }
         }
 
-        dd('done...');
 
         session()->flash('success', 'The application has been successfully approved');
 

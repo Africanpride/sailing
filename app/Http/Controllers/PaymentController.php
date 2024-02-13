@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edition;
 use App\Models\Invoice;
 use App\Models\Donation;
 use App\Models\Institute;
 use App\Models\Transaction;
+use App\Enums\InvoiceStatus;
 use App\Models\ExchangeRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PaymentRequest;
+use App\Models\Application;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
 class PaymentController extends Controller
@@ -21,6 +24,46 @@ class PaymentController extends Controller
     public function handleGatewayCallback()
     {
         $paymentDetails = Paystack::getPaymentData();
+
+        if ($paymentDetails && isset($paymentDetails['data']['metadata']['edition'])) {
+            // Run logic for edition invoice payment.
+            // Redirect to institute frontpage URL
+
+            $invoice = Invoice::find($paymentDetails['data']['metadata']['invoice_id']);
+            $edition = Edition::find($paymentDetails['data']['metadata']['edition_id']);
+            $application = Application::find($paymentDetails['data']['metadata']['application_id']);
+
+            $application->update([ "paid_for" => true ]);
+
+            $application->invoice()->update([
+                'status' => InvoiceStatus::Paid,
+                'paid' => true
+            ]);
+
+
+            // Log transaction. We don't want to rely on only paystack  transactions as a source of truth.
+            $transaction = new Transaction([
+                'paystackTransactionID' => $paymentDetails['data']['id'],
+                'amount' => $paymentDetails['data']['amount'],
+                'currency' => $paymentDetails['data']['currency'],
+                'reference' => $paymentDetails['data']['reference'],
+                'type' => 'edition',
+                'fees' => $paymentDetails['data']['fees'],
+                'authorization_code' => $paymentDetails['data']['authorization']['authorization_code'],
+                'orderID' => $invoice->invoicee->id,
+                'transaction_date' => now(), // Set current date and time
+                'description' => 'Payment for ' . $edition->title, // Optional description
+                'ipAddress' => $paymentDetails['data']['ip_address'],
+
+            ]);
+
+            $application->transactions()->save($transaction);
+
+            //  Redirect and thank you.
+            app('flasher')->addSuccess('Payment made for ' . $invoice->edition->title, 'Payment Successfull!');
+            return redirect()->route('home');
+        }
+
 
         if ($paymentDetails && isset($paymentDetails['data']['metadata']['donation'])) {
             // Run logic for Donation payment. Hope we get more donations ;-)
@@ -61,49 +104,7 @@ class PaymentController extends Controller
         }
 
 
-        try {
-            if ($paymentDetails['status'] == true) {
-                // Get the institute and invoice
-                $institute = Institute::findOrFail($paymentDetails['data']['metadata']['institute_id']);
-                $invoice = Invoice::findOrFail($paymentDetails['data']['metadata']['invoice_id']);
 
-                // Associate the user with the institute
-                $institute->participants()->attach(Auth::user()->id, ['created_at' => now()]);
-
-                // Create the transaction
-                $transaction = Transaction::create([
-                    'paystackTransactionID' => $paymentDetails['data']['id'],
-                    'amount' => $paymentDetails['data']['amount'],
-                    'description' => 'Payment for services rendered',
-                    'fees' => $paymentDetails['data']['fees'],
-                    'participant_id' => Auth::user()->id,
-                    'reference' => $paymentDetails['data']['reference'],
-                    'authorization_code' => $paymentDetails['data']['authorization']['authorization_code'],
-                    'transaction_date' => Carbon::parse($paymentDetails['data']['created_at'])->toDateTimeString(),
-                    'currency' => $paymentDetails['data']['currency'],
-                    'ipAddress' => $paymentDetails['data']['ip_address'],
-                    'institute_id' => $institute->id,
-                ]);
-
-                // Update the invoice
-                $invoice->status = 'paid';
-                $invoice->transaction_id = $transaction->id;
-                $invoice->institute_id = $institute->id;
-                $invoice->totalAmount = $institute->price;
-                $invoice->outstandingAmount = 0.0; // Full payment
-                $invoice->save();
-
-                // Sync the transaction with the invoice through the pivot table
-                $invoice->transactions()->attach($transaction->id, ['participant_id' => Auth::user()->id, 'remarks' => null]);
-
-
-                // Redirect to institute frontpage URL
-                app('flasher')->addSuccess('Payment Complete. Enrollment Successful.', 'Success');
-                return redirect()->route('institute.show', [$institute]);
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->withMessage(['msg' => 'The paystack token has expired. Please refresh the page and try again.', 'type' => 'error']);
-        }
     }
 
 

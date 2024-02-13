@@ -3,16 +3,17 @@
 namespace App\Models;
 
 use App\Models\Transaction;
-use App\Traits\HasExchangeRate;
+use App\Enums\InvoiceStatus;
 use Illuminate\Support\Carbon;
+use App\Traits\HasExchangeRate;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\File;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\MediaCollections\File;
 
 
 class Edition extends Model implements HasMedia
@@ -105,12 +106,28 @@ class Edition extends Model implements HasMedia
         return $this->morphMany(Transaction::class, 'transactionable');
     }
 
+    // Fetch Users Through Invoice model who have invoice status as 'paid' and edition_id as $this->id;
     public function paidAttendees()
     {
-        return $this->belongsToMany(User::class)->whereHas('transactions', function ($query) {
-            $query->where('type', 'edition');
-        });
+        return $this->belongsToMany(User::class, 'invoices')
+            ->wherePivot('status', InvoiceStatus::Paid)
+            ->wherePivot('edition_id', $this->id);
     }
+
+    // public function paidAttendees()
+    // {
+    //     return $this->hasMany(User::class, 'id', 'user_id')->whereHas('invoices', function ($query) {
+    //         $query->where('status', InvoiceStatus::Paid)->where('edition_id', $this->id);
+    //     });
+    // }
+
+
+    // public function paidAttendees()
+    // {
+    //     return $this->belongsToMany(User::class)->whereHas('transactions', function ($query) {
+    //         $query->where('type', 'edition');
+    //     });
+    // }
 
     public function attendees()
     {
@@ -184,10 +201,12 @@ class Edition extends Model implements HasMedia
     {
         return $this->hasMany(Application::class);
     }
+
     public function ratings()
     {
         return $this->morphMany(Rating::class, 'rateable');
     }
+
     public function getRatingAttribute()
     {
         $totalReviews = $this->ratings->count();

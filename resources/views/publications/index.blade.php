@@ -44,7 +44,7 @@
                     <a class="relative rounded-3xl block" style="height: 24em;"
                         href="{{ route('publications.show', [$firstLatest]) }}">
 
-                        <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
+                        <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30 rounded-xl "></div>
 
                         <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
                             style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
@@ -74,7 +74,7 @@
                 <div class="w-full md:w-1/3 ">
                     <a class="relative rounded-3xl block" style="height: 24em;"
                         href="{{ route('publications.show', [$secondLatest]) }}">
-                        <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30"></div>
+                        <div class="absolute inset-0 left-0 h-full bg-black z-20 opacity-30 rounded-xl"></div>
                         <div class="absolute left-0 bottom-0 w-full h-full z-10 rounded-xl"
                             style="background-image: linear-gradient(180deg,transparent,rgba (0,0,0,.7));"></div>
                         <img src="{{ $secondLatest->getFirstMediaUrl('featured_image') ? $secondLatest->getFirstMediaUrl('featured_image') : $secondLatest->featured_image }}"
@@ -112,7 +112,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
                 @forelse ($news as $article)
                     <article
-                        class=" w-full relative shadow
+                        class=" w-full relative shadow md:h-[200px]
                             border-gray-300/10
                         bg-firefly-300/10  dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
                         from-firefly-900 to-firefly-900/80 !text-gray-600
@@ -123,9 +123,10 @@
                                     src="{{ $article->getFirstMediaUrl('featured_image') ? $article->getFirstMediaUrl('featured_image') : $article->featured_image }}" />
                             </a>
 
-                            <div class="md:w-8/12 p-5 pr-10 ">
+                            <div class="md:w-8/12 p-5 pr-10  flex flex-col justify-between">
                                 <a href="{{ route('publications.show', $article) }}">
-                                    <h2 class="dark:text-white leading-normal font-extrabold ">{{ $article->title }}
+                                    <h2 class="dark:text-white font-['anton'] font-extrabold leading-normal text-lg uppercase ">
+                                        {{ $article->title }}
                                     </h2>
                                 </a>
                                 <div class="flex flex-wrap justify-between items-center mt-6">
