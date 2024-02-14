@@ -73,7 +73,7 @@
                             <button
                                 class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-left text-gray-800 transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
                                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
-                                My team has credits. How do we use them?
+                                What is the teaching style and approach used in the program?
                                 <svg class="hs-accordion-active:hidden block w-3 h-3 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                                     width="16" height="16" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -92,8 +92,7 @@
                                 class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two">
                                 <p class="text-gray-800 dark:text-gray-200">
-                                    Once your team signs up for a subscription plan. This is where we sit down, grab
-                                    a cup of coffee and dial in the details.
+                                    Interactive learning: lectures, discussions and hands-on projects.
                                 </p>
                             </div>
                         </div>
