@@ -4,6 +4,10 @@
             <x-branding />
         </x-slot>
 
+        <div class="pb-5 md:hidden">
+            <x-logo />
+        </div>
+
         <x-validation-errors class="mb-4" />
 
         <x-google-sign-in instruction="Signup with Google" />
@@ -24,20 +28,20 @@
                 </div>
             </div>
 
-            <div class="mt-4">
+            <div class="mt-2">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                     required autocomplete="username" />
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="mt-2">
                     <x-label for="password" value="{{ __('Password') }}" />
                     <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
                         autocomplete="new-password" />
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-2">
                     <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
                         name="password_confirmation" required autocomplete="new-password" />
@@ -45,7 +49,7 @@
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
+                <div class="mt-2">
                     <x-label for="terms">
                         <div class="flex items-center">
                             <x-checkbox name="terms" id="terms" required />
@@ -71,7 +75,7 @@
                 </div>
             @endif
 
-            <div class="flex flex-col items-center space-y-3 justify-end mt-4">
+            <div class="flex flex-col items-center space-y-3 justify-end mt-2">
 
                 <button type="submit"
                     class="w-full py-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"

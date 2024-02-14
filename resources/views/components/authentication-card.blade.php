@@ -11,10 +11,10 @@
 
         </div>
         <div
-            class="md:col-span-3 min-h-screen flex flex-col justify-center items-center px-6
+            class="md:col-span-3 min-h-screen flex flex-col justify-center items-center px-3
       bg-gray-100 dark:bg-gray-900">
             <div
-                class="mt-6 overflow-hidden px-6 py-4 rounded-2xl shadow-md sm:max-w-md w-full">
+                class="mt-6 overflow-hidden px-3 py-4 rounded-2xl sm:max-w-md w-full">
                 {{ $slot }}
             </div>
         </div>

@@ -5,8 +5,7 @@
         <div
             class=" w-[126px] blur hidden dark:inline-block absolute inset-0 rounded-full  bg-gradient-to-r from-purple-600 to-pink-600 z-10">
         </div>
-        {{-- <img class="w-[126px] aspect-square absolute inset-0 z-20" src="{{ asset('images/logo/costrad.png') }}"
-            alt="{{ $costrad->name ?? "College of Sustainable Transformation and Development"}}"> --}}
+
 
             <img class="w-[126px] aspect-square absolute inset-0 z-20" src="{{ asset('storage/' . optional($costrad)->logo) }}"
             alt="{{ optional($costrad)->name ?? "College of Sustainable Transformation and Development"}}">
@@ -15,7 +14,7 @@
 
     {{-- Title --}}
     <div class="max-w-5xl space-y-4 ">
-        <p class=" text-3xl font-bold
+        <p class=" md:text-3xl font-bold
          text-slate-800 px-5 text-gradient1">
            {{  __( "Transform your life and pursue your dreams in our 5-week COSTrAD
             program. Apply now and don't miss this turning
@@ -114,9 +113,7 @@
     <!-- End Icon Blocks -->
 
     <div class="mx-auto py-6 text-center w-full">
-        {{-- <a href="#"> <button class="cbutton font-bold">Learn More About
-                costrad</button>
-        </a> --}}
+
         <a href="{{ route('institutes.show', [$costrad->slug]) }}"> <button class="cbutton font-bold">Learn More About
                 costrad</button>
         </a>

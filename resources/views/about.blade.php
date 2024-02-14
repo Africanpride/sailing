@@ -330,10 +330,11 @@
                         <div class="max-w-7xl grid grid-cols-3 md:grid-cols-9 gap-6 md:gap-6 mx-auto my-8">
                             @foreach (App\Models\Institute::all() as $institute)
                                 <div
-                                    class="flex md:flex-col justify-start items-center gap-2 text-center text-white space-y-2 font-extrabold font-['inter'] text-sm md:text-lg">
+                                    class="flex md:flex-col justify-start items-center gap-2 text-center text-white space-y-2 font-extrabold font-['inter'] text-xs md:text-lg">
+
                                     <a class="flex flex-shrink-0 hover:-translate-y-1 items-center justify-center text-center transition"
                                         href="{{ route('institutes.show',[$institute]) }}">
-                                        <img class="w-16 md:w-24" src="{{ $institute->institute_logo }}"
+                                        <img class="w-12 md:w-24" src="{{ $institute->institute_logo }}"
                                             alt="{{ $institute->name }}">
                                     </a>
                                     <div class="uppercase">

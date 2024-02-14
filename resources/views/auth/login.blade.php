@@ -4,6 +4,10 @@
             <x-branding />
         </x-slot>
 
+        <div class="pb-5 md:hidden">
+            <x-logo />
+        </div>
+
         <x-validation-errors class="mb-4" />
 
         @if (session('status'))
@@ -52,7 +56,7 @@
                     </a>
                 @endif
 
-                <x-button class="w-full">
+                <x-button class="w-full py-3">
                     {{ __('Log in') }}
                 </x-button>
 

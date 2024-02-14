@@ -54,7 +54,7 @@
                             <span
                                 class="px-4 py-1 bg-firefly-800  text-gray-200 inline-flex items-center justify-center mb-2">{{ $firstLatest->category->title }}
                             </span>
-                            <h2 class="text-4xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
+                            <h2 class="md:text-3xl font-thin dark:text-white   text-white font-['anton'] leading-tight md:max-w-xl ">
                                 {{ $firstLatest->title }}
                             </h2>
                             <div class="flex mt-3">
@@ -83,7 +83,7 @@
                             <span
                                 class="px-4 py-1 bg-firefly-800  text-gray-200 inline-flex items-center justify-center mb-2">{{ $secondLatest->category->title }}
                             </span>
-                            <h2 class="text-3xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
+                            <h2 class="md:text-2xl font-thin dark:text-white  text-white font-['anton'] leading-tight">
                                 {{ $secondLatest->title }}
                             </h2>
                             <div class="flex mt-3">

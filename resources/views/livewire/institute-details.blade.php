@@ -51,7 +51,7 @@
                 style="background-image: url('{{ $institute->featured_image }}');">
 
                 <div
-                    class="absolute bottom-0 left-0 max-w-screen-2xl  md:left-auto md:mx-0 md:text-left mx-auto p-4 right-0">
+                    class="absolute bottom-0 left-0 max-w-screen-2xl  md:left-auto md:mx-0 md:text-left mx-auto p-2 md:p-4 right-0">
                     <!-- Card -->
                     <div
                         class="prose dark:prose-invert px-6 py-5
@@ -60,7 +60,7 @@
                             <div> <span
                                     class="uppercase ">{{ $edition->acronym }}</span>{{ __(': A Critical Mandate.') }}
                             </div>
-                            <div class="text-gradient__teal">{{ $edition->duration }}, {{ now()->format('Y') }}</div>
+                            <div class="text-gradient__teal txt-xs md:text-sm">{{ $edition->duration }}, {{ now()->format('Y') }}</div>
                         </div>
 
                         <div
@@ -121,7 +121,7 @@
 
         <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto">
             <div
-                class="min-h-[600px] md:min-h-max bg-firefly-500/10 border border-gray-300/10 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:bg-black from-firefly-900 mx-auto p-8 rounded-3xl space-y-5 text-left to-firefly-900 py-16">
+                class="h-auto  md:min-h-max bg-firefly-500/10 border border-gray-300/10 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:bg-black from-firefly-900 mx-auto p-4 md:p-8 rounded-3xl space-y-5 text-left to-firefly-900 py-8 md:py-16">
 
                 <img class="inline-block w-16 md:w-24 rounded-full ring-2 ring-white dark:ring-gray-800"
                     src="{{ $institute->institute_logo }}" alt="{{ $institute->name }}">
@@ -218,11 +218,11 @@
             </div>
         </section>
 
-        <section class="max-w-8xl md:px-8   mx-auto h-auto">
+        <section class="max-w-8xl px-4 md:px-8   mx-auto h-auto">
 
             <div
                 class="dark:ring-gray-700 lg:flex lg:max-w-none lg:mx-0 max-w-2xl mx-auto ring-1 ring-gray-200 rounded-3xl">
-                <div class="p-8 sm:p-10 lg:flex-auto space-y-4">
+                <div class="p-4 md:p-8 sm:p-10 lg:flex-auto space-y-4">
                     <h4 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-50 ">
                         {{ $institute->name }}
                     </h4>
@@ -253,7 +253,7 @@
 
                 <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
                     <div
-                        class="rounded-2xl bg-gray-300/30 dark:bg-blue-900/10 h-full py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                        class="rounded-2xl bg-gray-300/30 dark:bg-blue-900/10 h-auto md:h-full py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                         <div class="mx-auto max-w-xs px-8">
                             <p class="text-base font-bold text-gray-600 dark:text-gray-500">Pay once, own it
                                 forever

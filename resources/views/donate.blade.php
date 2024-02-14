@@ -1,10 +1,10 @@
 <x-front-layout>
 
     <section class="relative z-20 overflow-hidden p-6 pt-24 pb-12 ">
-        <div class="w-full px-4">
+        <div class="w-full">
             <div class="mx-auto mb-[60px] max-w-[920px] text-center md:mb-20 space-y-3">
                 <x-top-title>
-                    COSTrAD: Counting on Your Generous Contribution
+                    Counting on Your Your contribution
                     <x-slot name="icon">
                         <x-lucide-wallet class="dark:text-white  w-5 h-5 " />
                     </x-slot>
@@ -65,7 +65,7 @@
 
                 </div>
                 <!-- End Buttons -->
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid md:grid-cols-2 gap-3">
 
                     <div id="trigger-donation"
                         class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
@@ -199,14 +199,9 @@ value="{{ Auth::user()->email }}" @endauth
                                                 </div>
 
                                                 <!-- Button -->
-                                                <div class=" flex justify-between gap-x-2">
-                                                    <button type="reset"
-                                                        class="py-1 px-3 w-full inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-firefly-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                                                        <x-lucide-x class="w-4 h-4 text-current" />
-                                                        <span>Reset</span>
-                                                    </button>
+                                                <div class="grid md:grid-cols-2 gap-3 w-full">
                                                     <button
-                                                        class=" flex justify-center items-center w-full rounded-md bg-firefly-600 px-3 py-1 text-center text-sm font-semibold text-white shadow-sm hover:bg-firefly-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-firefly-600 dark:bg-firefly-800 dark:hover:bg-firefly-700 dark:focus-visible:outline-firefly-800"
+                                                        class="w-full flex justify-center items-center rounded-md bg-firefly-600 px-3 py-1 text-center text-sm font-semibold text-white shadow-sm hover:bg-firefly-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-firefly-600 dark:bg-firefly-800 dark:hover:bg-firefly-700 dark:focus-visible:outline-firefly-800"
                                                         href="#">
                                                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg"
                                                             width="16" height="16" fill="currentColor"
@@ -218,6 +213,12 @@ value="{{ Auth::user()->email }}" @endauth
                                                         </svg>
                                                         <span class="px-2"> Initiate Donation</span>
                                                     </button>
+                                                    <button type="reset"
+                                                        class="py-1 px-3 w-full inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-firefly-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                                        <x-lucide-x class="w-4 h-4 text-current" />
+                                                        <span>Reset</span>
+                                                    </button>
+
                                                 </div>
                                                 <!-- End Buttons -->
                                             </div>
@@ -229,6 +230,7 @@ value="{{ Auth::user()->email }}" @endauth
                             </div>
                         </div>
                     </div>
+
 
                     <button type="button"
                         class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-gray-200
@@ -254,25 +256,34 @@ value="{{ Auth::user()->email }}" @endauth
             <!-- End Col -->
 
 
-            <div
-                class="min-h-[35vh] bg-center bg-cover bg-no-repeat relative rounded-xl md:min-h-[75vh]"
+            <div class="min-h-[35vh] bg-center bg-cover bg-no-repeat relative rounded-xl md:min-h-[75vh]"
                 style="background-image: url('{{ asset('images/main/donate2.jpg') }}');">
                 <div
                     class="md:absolute bottom-0 left-0 right-0 md:max-w-4xl text-center mx-auto p-6 md:left-auto md:text-left md:mx-0">
                     <!-- Card -->
-                    <div class="px-5 py-4 inline-block bg-white rounded-lg md:p-7 dark:bg-gray-800 space-y-3 text-[13px]">
+                    <div
+                        class="px-5 py-4 inline-block bg-white rounded-lg md:p-7 dark:bg-gray-800 space-y-3 text-[13px]">
                         <div class=" md:block">
-                            <h3 class="text-lg font-bold text-gray-800 sm:text-2xl dark:text-gray-200">Bank Account Details</h3>
+                            <h3 class="text-lg font-bold text-gray-800 sm:text-2xl dark:text-gray-200">Bank Account
+                                Details</h3>
                             <p class="mt-2 text-gray-800 dark:text-gray-200">
-                                <span class="font-bold">Holder:</span>  <span class="text-firefly-500">Kingdom Resources Switzerland.</span> <br />
-                                <span class="font-bold">Bank:</span>  <span class="text-firefly-500">CREDIT SUISSE (Switzerland) Ltd.</span> <br />
-                                <span class="font-bold">Account Number:</span>  <span class="text-firefly-500">1335725-82-8</span> <br />
-                                <span class="font-bold">IBAN:</span>  <span class="text-firefly-500">CH35 0483 5133 5725 8200 8</span> <br />
-                                <span class="font-bold">Currency:</span>  <span class="text-firefly-500">US Dollars</span> <br />
-                                <span class="font-bold">Account Type:</span>  <span class="text-firefly-500"> Current Account</span> <br />
+                                <span class="font-bold">Holder:</span> <span class="text-firefly-500">Kingdom
+                                    Resources Switzerland.</span> <br />
+                                <span class="font-bold">Bank:</span> <span class="text-firefly-500">CREDIT SUISSE
+                                    (Switzerland) Ltd.</span> <br />
+                                <span class="font-bold">Account Number:</span> <span
+                                    class="text-firefly-500">1335725-82-8</span> <br />
+                                <span class="font-bold">IBAN:</span> <span class="text-firefly-500">CH35 0483 5133
+                                    5725 8200 8</span> <br />
+                                <span class="font-bold">Currency:</span> <span class="text-firefly-500">US
+                                    Dollars</span> <br />
+                                <span class="font-bold">Account Type:</span> <span class="text-firefly-500"> Current
+                                    Account</span> <br />
                                 {{-- <span class="font-bold">Account Name:</span>  <span class="text-firefly-500"> LRF USD</span> <br /> --}}
-                                <span class="font-bold">BIC / SWIFT:</span>  <span class="text-firefly-500">CRESCHZZ80A</span> <br />
-                                <span class="font-bold">Clearing number:</span>  <span class="text-firefly-500">4835</span> <br />
+                                <span class="font-bold">BIC / SWIFT:</span> <span
+                                    class="text-firefly-500">CRESCHZZ80A</span> <br />
+                                <span class="font-bold">Clearing number:</span> <span
+                                    class="text-firefly-500">4835</span> <br />
                             </p>
                         </div>
 

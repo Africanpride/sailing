@@ -16,8 +16,8 @@
                         </h3>
                         <p class="mt-2 text-gray-800 dark:text-gray-200 text-xs text-left">
                             {{ __("The College of Sustainable
-                                                        Transformation and Development (COSTrAD) and the various institutes are committed to the
-                                                        restoration, transformation and development of all spheres of society.") }}
+                                                                                    Transformation and Development (COSTrAD) and the various institutes are committed to the
+                                                                                    restoration, transformation and development of all spheres of society.") }}
                         </p>
                     </div>
 
@@ -43,13 +43,18 @@
     <section class="w-full items-center flex flex-col justify-center py-8">
         <div class="hidden md:block">
             <svg width="317" height="120" viewBox="0 0 317 120" fill="none">
-                <path transform="translate(0, -36)" d="M197.32283 25.03412l-0 100.48032" stroke="gray" stroke-opacity="0.2"></path>
-                <path transform="translate(-36, 0)" d="M197.32283 25.03412l-0 100.48032" stroke="url(#pulse-1)" stroke-linecap="round" stroke-width="2"></path>
-                <path d="M197.32283 25.03412-0 20" stroke="gray" style="transform: translate(-36px, 118.724px); transform-origin: 197.323px 35.0341px;" transform-origin="197.3228302001953px 35.034119606018066px"></path>
+                <path transform="translate(0, -36)" d="M197.32283 25.03412l-0 100.48032" stroke="gray"
+                    stroke-opacity="0.2"></path>
+                <path transform="translate(-36, 0)" d="M197.32283 25.03412l-0 100.48032" stroke="url(#pulse-1)"
+                    stroke-linecap="round" stroke-width="2"></path>
+                <path d="M197.32283 25.03412-0 20" stroke="gray"
+                    style="transform: translate(-36px, 118.724px); transform-origin: 197.323px 35.0341px;"
+                    transform-origin="197.3228302001953px 35.034119606018066px"></path>
             </svg>
 
         </div>
-        <h2 class="mt-4 max-w-6xl text-firefly-900 text-lg md:text-5xl tracking-tight font-bold font-inter uppercase prominent-titles">
+        <h2
+            class="mt-4 max-w-6xl text-firefly-900 text-lg md:text-5xl tracking-tight font-bold font-inter uppercase prominent-titles">
             ... doing the seemingly impossible
         </h2>
         <span class="md:text-lg font-bold uppercase text-gray-400 dark:text-white text-center mt-2 px-6 sm:px-0">
@@ -88,7 +93,7 @@
                     <div class="flex flex-col items-start justify-center md:px-8 space-y-6 text-left ">
 
                         <h2
-                            class="uppercase font-['anton'] text-5xl md:text-5xl leading-tight tracking-tight   bg-clip-text bg-gradient-to-l from-firefly-700 to-firefly-900 text-transparent dark:from-yellow-500 dark:to-firefly-700 ">
+                            class="uppercase font-['anton'] text-3xl md:text-5xl leading-tight tracking-tight   bg-clip-text bg-gradient-to-l from-firefly-700 to-firefly-900 text-transparent dark:from-yellow-500 dark:to-firefly-700 ">
                             The Vital Role of Leadership Training Today
                         </h2>
                         <p>
@@ -111,9 +116,9 @@
                         </p> --}}
 
 
-                        <div class=" w-full mx-auto py-8 md:py-6 ">
-                            <a href="{{ url('about') }}">
-                                <button class="cbutton !py-1 font-bold" style="width:50%;">Learn More About
+                        <div class="mx-auto py-6 text-center w-full">
+
+                            <a href="{{ route('about') }}"> <button class="cbutton font-bold">Learn More About
                                     costrad</button>
                             </a>
                         </div>
@@ -139,21 +144,15 @@
 
 
     <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto  ">
-        <div class="{{ $isMobile ? '' : 'kenburns' }} min-h-[55vh] bg-center bg-cover bg-no-repeat relative rounded-3xl md:min-h-[85vh]"
+        <div class="{{ $isMobile ? '' : 'kenburns' }} min-h-[55vh] bg-center bg-cover bg-no-repeat relative rounded-3xl md:min-h-[85vh] flex justify-center items-center md:py-12 "
             style="background-image: url('{{ asset('images/main/quarterglobe.jpg') }}');">
 
-            <div class="bottom-0 left-0 md:left-auto md:mx-0 md:text-left mx-auto p-6 right-0 text-center">
-                <!-- Card -->
-                <div
-                    class="min-h-[35vh]  bg-center bg-cover bg-no-repeat relative  md:min-h-[85vh] h-full text-center flex justify-center items-center  ">
-                    <h1 class=" max-w-6xl md:text-3xl uppercase font-['anton'] text-3xl lg:text-4xl text-gray-100 ">
-                        We invite you to partner with us in developing leaders who have the capacity and vision to
-                        create
-                        lasting and positive change in all domains of life.
-                    </h1>
-
-                </div>
-                <!-- End Card -->
+            <div class="max-w-6xl md:px-6 md:text-3xl md:font-['anton'] px-4 text-2xl text-center text-gray-100 uppercase">
+               <h1>
+                We invite you to partner with us in developing leaders who have the capacity and vision to
+                create
+                lasting and positive change in all domains of life.
+               </h1>
             </div>
         </div>
     </section>
@@ -174,7 +173,7 @@
             class=" min-h-[600px] mx-auto rounded-2xl border  border-gray-300/10 text-center space-y-5 p-4
          bg-firefly-500/10 dark:bg-black py-16 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
          from-firefly-900 to-firefly-900/80">
-            <div class="lg:px-8 max-w-8xl md:my-16 mx-auto px-4 space-y-5 text-center">
+            <div class="lg:px-8 max-w-8xl md:my-16 mx-auto space-y-5 text-center">
                 <h2
                     class="  text-firefly-900 text-3xl sm:text-5xl tracking-tight font-bold  font-['inter'] uppercase prominent-titles">
                     News & Publications</h2>
@@ -187,7 +186,8 @@
                         <a href="{{ route('publications.index') }}">More News & Publications</a></span> </p>
             </div>
 
-            <div class="grid gap-4 md:grid-cols-{{ $latestPublications->count() > 3 ? 4 : 3 }} sm:mx-auto md:max-w-full md:px-8">
+            <div
+                class="grid gap-4 md:grid-cols-{{ $latestPublications->count() > 3 ? 4 : 3 }} sm:mx-auto md:max-w-full md:px-8">
 
                 @if ($latestPublications->count() > 0)
 
@@ -218,5 +218,5 @@
         </div>
     </section>
 
-<x-subscribe />
+    <x-subscribe />
 </x-front-layout>
