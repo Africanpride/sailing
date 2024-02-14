@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 
 class Transaction extends Model
@@ -50,6 +51,15 @@ class Transaction extends Model
         return $referenceNumber;
     }
 
+    public static function totalMonthly()
+    {
+        $currentMonth = Carbon::now()->startOfMonth();
+        $nextMonth = Carbon::now()->endOfMonth();
+
+        $totalAmount = Transaction::whereBetween('transaction_date', [$currentMonth, $nextMonth])
+            ->sum('amount');
+        return $totalAmount;
+    }
 
     protected function latestFormattedAmount()
     { {

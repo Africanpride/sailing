@@ -245,8 +245,9 @@ Route::get('tabs', function () {
 
 Route::get('/notification', function () {
 
-    $currency = Number::currency(1000, in: 'EUR');
-    return $currency;
+    $number = Number::abbreviate(15440.00);
+
+    return $number;
 
 
 

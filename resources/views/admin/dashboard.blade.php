@@ -2,9 +2,9 @@
 
 
     <livewire:admin-dashboard />
-<div class="mx-auto px-4">
-    <livewire:users-table />
-</div>
+    <div class="mx-auto p-4">
+        <livewire:users-table />
+    </div>
 
 
 </x-app-layout>
