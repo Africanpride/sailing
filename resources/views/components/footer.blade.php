@@ -1,6 +1,8 @@
 <footer class="bg-gray-100 dark:bg-firefly-900  border-t border-gray-600/10 md:px-4">
     <div class="flex flex-col md:flex-row md:justify-between items-center space-y-4 px-4">
-        <x-branding />
+<div class="py-4">
+    <x-branding />
+</div>
 
         <div class="">
             <ul
@@ -24,10 +26,10 @@
                 <li>
                     <a href="{{ url('terms') }}">Terms</a>
                 </li>
-
+{{--
                 <li>
                     <a href=" {{ url('accessibility') }}">Accessibility</a>
-                </li>
+                </li> --}}
                 <li>
                     <p id="open_preferences_center" class="cursor-pointer">Cookies</p>
                 </li>
