@@ -22,22 +22,23 @@
                                     src="{{ $latest->getFirstMediaUrl('featured_image') ? $latest->getFirstMediaUrl('featured_image') : $latest->publication_image }}"
                                     class="h-auto w-auto aspect-video rounded-md object-cover" />
                             </a>
-                            <div class="flex flex-col justify-between p-1 sm:flex-1 space-y-2">
+                            <div class="flex flex-col justify-between p-3 sm:flex-1 space-y-2">
                                 <a href="{{ route('publications.show', $latest) }}">
 
                                     <h1 class="text-lg sm:text-md font-bold dark:text-white  text-gray-800">
                                         {{ $latest->title }}
                                     </h1>
                                 </a>
-                                <div class="text-gray-500 dark:text-white text-[11px] line-clamp-4">
-                                    {!! $latest->body !!}
-                                </div>
+                                {{-- <div class="text-gray-500 dark:text-white text-[11px] line-clamp-4">
 
-                                <div>
+                                    {!! $latest->body !!}
+                                </div> --}}
+
+                                {{-- <div>
                                     <a href="{{ route('publications.show', $latest->slug) }}"
                                         class="bg-firefly-700 w-auto px-2 text-white text-sm uppercase">Read
                                         More</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
