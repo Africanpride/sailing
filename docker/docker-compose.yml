@@ -16,7 +16,7 @@ services:
             MYSQL_DATABASE: ${MYSQL_DATABASE:-database}
             MYSQL_USER: ${MYSQL_USER:-database}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD:-Password}
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rooT_Db7_^database_^876passwoRd_*}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootPassword}
             SERVICE_TAGS: dev
             SERVICE_NAME: costraddb
         volumes:
