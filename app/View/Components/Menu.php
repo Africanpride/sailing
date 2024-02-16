@@ -8,12 +8,12 @@ use Illuminate\View\Component;
 
 class Menu extends Component
 {
-    public $url;
 
-    public function __construct($url)
-    {
-        $this->url = $url;
-    }
+
+    public function __construct
+    (
+        public $url = '', public $slug = ''
+    ){}
 
     public function render()
     {

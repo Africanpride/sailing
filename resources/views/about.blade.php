@@ -9,7 +9,7 @@
                         <div class="mx-auto mb-[60px] max-w-[920px] text-center md:mb-16 space-y-3">
 
                             <x-top-title>
-                                COSTrAD: A Leadership Development Initiative
+                                A Leadership Development Initiative
                                 <x-slot name="icon">
                                     <x-lucide-globe class="dark:text-white  w-5 h-5 " />
                                 </x-slot>

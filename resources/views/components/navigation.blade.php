@@ -86,7 +86,7 @@
                             <x-lucide-calendar-days class="w-6 h-6 text-current" />
 
                         </span>
-                        <span class=" capitalize">{{ __('Application Status') }}</span>
+                        <span class=" capitalize">{{ __('New Applications') }}</span>
                     </a>
                 </li>
                 <li>

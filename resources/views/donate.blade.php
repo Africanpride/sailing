@@ -304,7 +304,7 @@ value="{{ Auth::user()->email }}" @endauth
         <div class="border-gray-500/20 gap-4 grid md:border md:gap-8 md:items-center md:p-2 rounded-3xl xl:gap-20">
             <!-- Gradients -->
             <div aria-hidden="true" class="flex absolute left-0 -z-[1]">
-                <div class="bg-purple-200 opacity-20 blur-3xl w-[1036px] h-[300px] dark:bg-purple-900 dark:opacity-20">
+                <div class="bg-purple-200 opacity-20 blur-3xl w-auto h-[300px] dark:bg-purple-900 dark:opacity-20">
                 </div>
             </div>
 

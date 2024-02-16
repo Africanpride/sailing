@@ -301,7 +301,7 @@
                                                                 </svg>
                                                                 <span><strong
                                                                         class="text-black dark:text-white">{{ $application->applicant->attendedEditions->count() }}</strong>
-                                                                    Previous Participation</span>
+                                                                    Previous Institutes</span>
                                                             </div>
                                                             <div class="flex">
                                                                 @if ($application->applicant->attendedEditions->count() > 0)
@@ -340,10 +340,14 @@
                                             {{-- <x-link-button class="w-full" href="{{ route('profile.show') }}">View
                                                 Profile</x-link-button> --}}
                                             <x-button wire:click.prevent="rejectApplication({{ $application }})"
+                                            wire:loading.attr="disabled"
+
                                                 class=" bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 w-full ">
                                                 Reject
                                             </x-button>
                                             <x-button wire:click.prevent="approveApplication({{ $application }})"
+                                            wire:loading.attr="disabled"
+
                                                 class="disabled:pointer-events-none dark:focus:outline-none
                                                 dark:focus:ring-1 dark:focus:ring-gray-600 w-full ">
                                                 Approve

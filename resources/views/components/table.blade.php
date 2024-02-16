@@ -1,6 +1,6 @@
 @props(["showPagination"])
 
-<div class="">
+<div class="py-2">
     <div class=" border dark:border-0 overflow-hidden ">
         <div class="overflow-x-auto">
             <div class="align-middle inline-block min-w-full">

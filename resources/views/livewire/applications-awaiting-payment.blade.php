@@ -244,11 +244,14 @@
                                             <fieldset class="block w-full ">
                                                 <select
                                                     class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                                                    wire:model="paymentOption">
+                                                    wire:model.prevent="paymentOption">
                                                     <option value="fullPayment">{{ __('Full Payment') }}</option>
                                                     <option value="partPayment">{{ __('Part Payment') }}</option>
                                                 </select>
                                             </fieldset>
+                                            <div wire:target="paymentOption">
+                                                The value of paymentOption is {{ $paymentOption }}
+                                            </div>
 
 
 
@@ -257,7 +260,7 @@
                                             <div class="py-5">
                                                 <div>
                                                     <label for="hs-input-with-leading-and-trailing-icon" class="block text-sm font-medium mb-2 dark:text-white text-left">
-                                                        Amount (GHS)
+                                                      {{ $paymentOption == "partPayment" ? 'How much Part Payment' : 'Full Amount' }} : {{ config('app.currency') }}
                                                     </label>
                                                     <input type="number"
 

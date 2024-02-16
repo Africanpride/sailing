@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Enums\InvoiceStatus;
 use Livewire\WithPagination;
 use App\Enums\ScholarshipStatus;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationsAwaitingPayment extends Component
 {
@@ -43,6 +44,9 @@ class ApplicationsAwaitingPayment extends Component
     }
     public function cashPayment($applicationID)
     {
+        if (! Auth::user()->isAdmin) {
+            abort(403);
+        }
         // fetch the application with the parsed application ID
         $application = Application::where('id', $applicationID)
         ->with('applicant', 'invoice', 'edition')
@@ -85,6 +89,10 @@ class ApplicationsAwaitingPayment extends Component
 
     public function awardScholarship($applicationID)
     {
+        if (! Auth::user()->isAdmin) {
+            abort(403);
+        }
+
         $application = Application::where('id', $applicationID)
             ->with('applicant', 'invoice', 'edition')
             ->first();

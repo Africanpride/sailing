@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Publication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontViewController extends Controller
 {
@@ -68,7 +69,14 @@ class FrontViewController extends Controller
 
     public function documentation()
     {
-        return view('documentation');
+        if (Auth::check()) {
+            // User is authenticated, proceed as usual
+            return view('documentation');
+        } else {
+            // User is not authenticated, redirect or display a message
+            return redirect()->route('login');
+        }
+
     }
 
     public function contact()

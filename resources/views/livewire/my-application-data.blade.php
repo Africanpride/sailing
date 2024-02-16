@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-4  ">
         <div class="w-full md:col-span-6 relative">
             <div class="absolute top-2 right-2 cursor-pointer">

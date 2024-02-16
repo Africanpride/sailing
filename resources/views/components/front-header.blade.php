@@ -31,7 +31,7 @@
           <div id="navbar-collapse-with-animation"
               class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
               <div
-                  class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-6 sm:mt-0 sm:ps-4">
+                  class="grid grid-cols-2 gap-2 gap-y-2 mt-5 sm:flex sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-6 sm:mt-0 sm:ps-4">
                   <x-menu url="home">
                       Home
                   </x-menu>
@@ -40,20 +40,17 @@
                   </x-menu>
                   @php
                       $costrad = App\Models\Institute::find(5);
-                      $url = route('institutes.show', $costrad);
+                      $url = 'institutes.show';
+                      $slug = [$costrad->slug];
                     //   dd($url);
                   @endphp
 
-                  <a href="{{ route('institutes.show', $costrad) }}"
+                  <x-menu :$url :$slug>
+                      <span class="normal-case">COSTrAD</span>
+                  </x-menu>
 
-                          class =
-                              'normal-case font-bold dark:text-white hover:text-yellow-700
-                              {{ (url()->current() == $url
-                                  ? ' text-yellow-500 dark:text-yellow-500 hover:dark:text-firefly-400'
-                                  : 'hover:dark:text-firefly-400') }}'  >
-                      {{ __('COSTrAD')}}
-                  </a>
                   <x-institutes-list />
+
                   <x-menu url="contact">
                       Contact
                   </x-menu>
