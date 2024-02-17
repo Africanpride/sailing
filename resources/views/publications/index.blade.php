@@ -115,7 +115,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
 
                 @foreach ($news as $article)
-                    <div class="max-w-md mx-auto bg-white dark:bg-gray-950 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+                    <div class=" mx-auto bg-white dark:bg-gray-950 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
                         <div class="md:flex relative">
                             <div class="md:shrink-0">
                                 <img class="h-48 w-full object-cover md:h-full md:w-48"src="{{ $article->getFirstMediaUrl('featured_image') ? $article->getFirstMediaUrl('featured_image') : $article->featured_image }}"
