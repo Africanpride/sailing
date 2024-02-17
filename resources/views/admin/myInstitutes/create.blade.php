@@ -8,10 +8,10 @@
     <div class="p-4 space-y-4">
 
         <div class="max-w-3xl mx-auto">
-            <x-jet-button type="button"
+            <x-button type="button"
                 onclick="Livewire.dispatch('openModal', { component: 'admin.institute.add-institute' })">
             {{ __('Add New Institute') }}
-            </x-jet-button>
+            </x-button>
         </div>
         <!-- Card Section -->
         <div class="bg-gray-200 dark:bg-gray-900 dark:text-gray-100  max-w-3xl mx-auto !rounded-xl">
