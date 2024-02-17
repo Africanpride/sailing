@@ -170,7 +170,7 @@
                         </div>
                         <div class="relative my-6 mx-2 md:m-2">
                             <img class="inset-0 object-cover object-bottom w-full   h-96 lg:absolute lg:h-full rounded-3xl"
-                                src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                                src="{{ asset('/images/main/labyrinth.jpg') }}"
                                 alt="" />
 
                         </div>

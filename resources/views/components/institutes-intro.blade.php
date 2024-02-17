@@ -2,7 +2,7 @@
 
     {{-- Title --}}
     <div class="max-w-5xl space-y-6 ">
-        <h2 class="mt-4 max-w-5xl text-slate-900 text-3xl sm:text-6xl tracking-tight font-bold  font-['inter'] uppercase prominent-titles">Our
+        <h2 class="mt-4 max-w-5xl text-slate-900 md:text-5xl text-2xl tracking-tight font-bold  font-['inter'] uppercase prominent-titles">Our
             Training Institutes</h2>
         <p class=" md:text-3xl font-bold
          text-slate-800 px-5 dark:text-white ">

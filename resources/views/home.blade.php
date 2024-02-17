@@ -63,17 +63,40 @@
     </section>
 
 
-
     <section class="max-w-auto  mx-auto h-auto ">
 
-        <div class="  md:py-24 ">
+        <div class="py-5 ">
 
             <div class="px-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
                 <div class="grid items-stretch gap-y-10 md:grid-cols-2 md:gap-x-6">
+                    <div class="flex flex-col items-start justify-center md:px-8 space-y-6 text-left ">
+
+                        <h2
+                            class="uppercase font-['anton'] text-3xl md:text-5xl leading-tight tracking-tight   bg-clip-text bg-gradient-to-l from-firefly-700 to-firefly-900 text-transparent dark:from-yellow-500 dark:to-firefly-700 ">
+                            Resilient Leadership: Empowering Through Costrad and Eight Institutes
+                        </h2>
+                        @php
+                            $costrad = App\Models\Institute::whereId(5)->first();
+                        @endphp
+                        <p>
+
+                            In our pursuit of nurturing leaders with "steel backbone" to tackle the prevailing global leadership challenges, we present eight Institutes, interspersed throughout the year, forming a robust foundation. At the heart of these institutes is <span><a href="{{ route('institutes.show', $costrad) }}" class="normal-case text-firefly-500 font-bold">COSTrAD</a></span>, a five-week intensive program strategically designed to equip individuals with the essential tools and resilience required to confront and triumph over the complexities of leadership.
+
+                        </p>
+
+
+
+                        <div class="mx-auto py-3 text-left w-full">
+
+                            <a href="{{ route('about') }}"> <button class="cbutton font-bold">Learn More About
+                                    costrad</button>
+                            </a>
+                        </div>
+                    </div>
                     <div class="relative grid grid-cols-2 gap-4 mt-10 md:mt-0 py-12 h-auto">
                         <div class="overflow-hidden aspect-w-3 aspect-h-4 rounded-2xl">
-                            <img class="object-cover object-top origin-top scale-150 "
-                                src="{{ asset('images/main/leader2.jpg') }}" alt="" />
+                            <img class="object-cover object-top origin-top scale-110 "
+                                src="{{ asset('images/main/lion.jpg') }}" alt="" />
                         </div>
 
                         <div class="relative">
@@ -90,39 +113,8 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col items-start justify-center md:px-8 space-y-6 text-left ">
-
-                        <h2
-                            class="uppercase font-['anton'] text-3xl md:text-5xl leading-tight tracking-tight   bg-clip-text bg-gradient-to-l from-firefly-700 to-firefly-900 text-transparent dark:from-yellow-500 dark:to-firefly-700 ">
-                            The Vital Role of Leadership Training Today
-                        </h2>
-                        <p>
-                            At the <span>College of Systainable Transformation and Development COSTrAD</span>, You would
-                            find more reasons why leadership training is essential and how
-                            leadership impacts family, governance, economy and every aspect of society. We teach you
-                            the necessary skills and qualities to effectively lead and manage people, organizations,
-                            and systems. Leaders must possess strong communication, decision-making, and
-                            problem-solving skills, as well as the ability to inspire and motivate others.
-
-                        </p>
-                        {{-- <p>
-                            Effective leadership involves being able to adapt to changing circumstances and make
-                            difficult decisions when necessary. Through COSTrAD and it's various Institutes,
-                            individuals, business leader and political leaders can gain the knowledge and skills
-                            necessary to navigate complex political and social environments, build strong teams, and
-                            create positive change within their
-                            communities. Do you want to acquire what it takes to make a mark in your area of
-                            operation? Book your seat early as space could fill up quickly.
-                        </p> --}}
 
 
-                        <div class="mx-auto py-6 text-center w-full">
-
-                            <a href="{{ route('about') }}"> <button class="cbutton font-bold">Learn More About
-                                    costrad</button>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -147,13 +139,22 @@
         <div class="{{ $isMobile ? '' : 'kenburns' }} min-h-[55vh] bg-center bg-cover bg-no-repeat relative rounded-3xl md:min-h-[85vh] flex justify-center items-center md:py-12 "
             style="background-image: url('{{ asset('images/main/quarterglobe.jpg') }}');">
 
+           <div class="flex flex-col space-y-6">
             <div class="max-w-6xl md:px-6 md:text-3xl md:font-['anton'] px-4 text-2xl text-center text-gray-100 uppercase">
-               <h1>
-                We invite you to partner with us in developing leaders who have the capacity and vision to
-                create
-                lasting and positive change in all domains of life.
-               </h1>
-            </div>
+                <h1>
+                 We invite you to partner with us in developing leaders who have the capacity and vision to
+                 create
+                 lasting and positive change in all domains of life.
+                </h1>
+             </div>
+             <div class="flex justify-center">
+                 <a href="{{ route('donate') }}">
+                     <button class="cbutton font-bold">
+                      Donate To A Worthy Cause
+                     </button>
+                 </a>
+             </div>
+           </div>
         </div>
     </section>
 
@@ -175,7 +176,7 @@
          from-firefly-900 to-firefly-900/80">
             <div class="lg:px-8 max-w-8xl md:my-16 mx-auto space-y-5 text-center">
                 <h2
-                    class="  text-firefly-900 text-3xl sm:text-5xl tracking-tight font-bold  font-['inter'] uppercase prominent-titles">
+                    class="  text-firefly-900 text-3xl md:text-5xl tracking-tight font-bold  font-['inter'] uppercase prominent-titles">
                     News & Publications</h2>
                 <p class="my-2 md:text-2xl font-bold
                 text-firefly-800 md:px-5 dark:text-white">

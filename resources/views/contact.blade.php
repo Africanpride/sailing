@@ -291,7 +291,7 @@
                                                         Name</label>
 
                                                     <input name="name" value="{{ old('name') }}" type="text"
-                                                        placeholder="Dr. Kwame Prince"
+                                                        placeholder="eg. Dr. Kwame Prince"
                                                         class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-firefly-400 focus:ring-firefly-300 focus:ring-opacity-40 dark:focus:border-firefly-300 focus:outline-none focus:ring" />
                                                 </div>
                                                 <div class="flex justify-start items-center gap-x-2">
@@ -309,7 +309,7 @@
                                                         class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email
                                                         address</label>
                                                     <input name="email" value="{{ old('email') }}" type="email"
-                                                        placeholder="kwame.prince@costrad.org"
+                                                        placeholder="eg. kwame.prince@costrad.org"
                                                         class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-firefly-400 focus:ring-firefly-300 focus:ring-opacity-40 dark:focus:border-firefly-300 focus:outline-none focus:ring" />
                                                 </div>
                                                 <div class="flex justify-start items-center gap-x-2">

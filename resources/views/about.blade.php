@@ -300,7 +300,63 @@
             </div>
         </section>
 
+        <section class="max-w-auto  mx-auto h-auto ">
 
+            <div class="  md:py-8 ">
+
+                <div class="px-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
+                    <div class="grid items-stretch gap-y-10 md:grid-cols-2 md:gap-x-6">
+                        <div class="relative grid grid-cols-2 gap-4 mt-10 md:mt-0 py-12 h-auto">
+                            <div class="overflow-hidden aspect-w-3 aspect-h-4 rounded-2xl">
+                                <img class="object-cover object-top origin-top scale-150 "
+                                    src="{{ asset('images/main/leader2.jpg') }}" alt="" />
+                            </div>
+
+                            <div class="relative">
+                                <div class="h-full overflow-hidden aspect-w-3 aspect-h-4 rounded-2xl">
+                                    <img class="object-cover object-top origin-top scale-110"
+                                        src="{{ asset('images/main/steps.jpg') }}" alt="" />
+                                </div>
+
+                            </div>
+
+                            <div class="absolute -translate-x-1/2 left-[50%]  ">
+                                <img class="w-32 h-32 rotating" src="{{ asset('images/main/round-text-costrad.png') }}"
+                                    alt="" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-start justify-center md:px-8 space-y-6 text-left ">
+
+                            <h2
+                                class="uppercase font-['anton'] text-3xl md:text-5xl leading-tight tracking-tight   bg-clip-text bg-gradient-to-l from-firefly-700 to-firefly-900 text-transparent dark:from-yellow-500 dark:to-firefly-700 ">
+                                The Vital Role of Leadership Training Today
+                            </h2>
+                            <p>
+                                At the <span>College of Sustainable Transformation and Development COSTrAD</span>, You would
+                                find more reasons why leadership training is essential and how
+                                leadership impacts family, governance, economy and every aspect of society. We teach you
+                                the necessary skills and qualities to effectively lead and manage people, organizations,
+                                and systems. Leaders must possess strong communication, decision-making, and
+                                problem-solving skills, as well as the ability to inspire and motivate others.
+
+                            </p>
+
+                            <div class="mx-auto py-6 text-left w-full">
+                                @php
+                                    $costrad = App\Models\Institute::whereId(5)->first();
+                                @endphp
+
+                                <a href="{{ route('institutes.show', $costrad) }}"> <button class="cbutton font-bold">Learn More About
+                                        costrad</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
         <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto ">
 
             <div class="relative overflow-hidden rounded-2xl bg-cover z-10"
@@ -311,10 +367,7 @@
                 <div class="h-auto md:p-8   mx-auto p-4 relative shadow-2xl z-30">
                     <div class=" py-32 space-y-6">
                         <div class="text-center mx-auto">
-                            {{-- <span
-                                class="inline-block text-lg font-medium bg-clip-text bg-gradient-to-l from-firefly-600 to-violet-500 text-transparent dark:from-firefly-400 dark:to-violet-400 uppercase ">
-                                COSTrAD: Our Transformational Vision
-                            </span> --}}
+
 
                             <!-- Title -->
                             <div class="mb-5 max-w-4xl mx-auto">
@@ -344,12 +397,9 @@
                             @endforeach
                         </div>
                         <div class="mx-auto text-center max-w-2xl pt-5">
-                            <a href="{{ route('institutes.index') }}">
-                                <x-button
-                                    class="!mx-auto md:!w-1/3 text-center bg-firefly-800 dark:bg-firefly-900 dark:hover:bg-firefly-800 py-3 text-xl !font-extrabold ">
-                                    {{ __('Institutes') }}
-                                </x-button>
-                            </a>
+                            <a href="{{ route('institutes.index') }}"> <button class="cbutton font-bold">Learn More About The
+                                Institutes</button>
+                        </a>
                         </div>
                     </div>
                 </div>

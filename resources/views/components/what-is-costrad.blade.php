@@ -114,7 +114,8 @@
 
     <div class="mx-auto py-6 text-center w-full">
 
-        <a href="{{ route('institutes.show', [$costrad->slug]) }}"> <button class="cbutton font-bold">Learn More About
+        <a href="{{ route('institutes.show', [$costrad->slug]) }}">
+            <button class="cbutton font-bold">Learn More About
                 costrad</button>
         </a>
     </div>

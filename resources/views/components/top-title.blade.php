@@ -1,6 +1,6 @@
 <div>
 
-    <div class="mx-auto  ">
+    <div class="mx-auto space-y-3 ">
 
         <div
             {{ $attributes->merge([
