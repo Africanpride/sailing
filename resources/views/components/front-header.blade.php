@@ -4,33 +4,18 @@
 
       <nav class="lg:px-8 max-w-[85rem] mx-auto px-4 py-[16px] relative md:flex md:items-center md:justify-between md:px-6 w-full"
           aria-label="Global">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between pr-4 ">
               <x-branding />
-              <div class="md:hidden bg-gray-300/50 dark:bg-gray-950 rounded-full"  data-hs-overlay="#mobile-menu">
+              <div class="md:hidden bg-gray-300/50 dark:bg-gray-950 rounded-full "  data-hs-overlay="#mobile-menu">
                 <button class="navbar-burger flex items-center text-firefly-600 dark:text-white p-3">
                     <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Mobile menu</title>
+
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                     </svg>
                 </button>
             </div>
-              {{-- <div class="flex md:hidden" data-hs-overlay="#mobile-menu">
-                <button class="group">
-                    <div
-                        class=" flex overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-gray-950 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-                        <div
-                            class="flex flex-col justify-between w-[15px] h-[15px] transform transition-all duration-500 origin-center overflow-hidden">
-                            <div
-                                class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:-rotate-45 -translate-x-1">
-                            </div>
-                            <div class="bg-white h-[2px] w-3 rounded transform transition-all duration-500 "></div>
-                            <div
-                                class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:rotate-45 -translate-x-1">
-                            </div>
-                        </div>
-                    </div>
-                </button>
-              </div> --}}
+
+
 
           </div>
 
@@ -122,3 +107,4 @@
 
 
   </header>
+

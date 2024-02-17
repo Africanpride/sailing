@@ -260,6 +260,7 @@
 
     </div>
 
+
     <div id="mobile-menu"
         class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
         <div
@@ -355,68 +356,6 @@
             </div>
         </div>
     </div>
-
-    {{-- <div id="instiutes"
-        class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
-        <div
-            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
-            <div
-                class="flex flex-col bg-white  shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-                    <h3 class="font-bold text-gray-800 dark:text-white">
-                        Institutes
-                    </h3>
-                    <button type="button"
-                        class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                        data-hs-overlay="#instiutes" data-hs-overlay-close>
-                        <span class="sr-only">Close</span>
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div
-                    class="overflow-y-auto scrollbar-thumb-firefly-800 dark:scrollbar-thumb-firefly-900 scrollbar-track-gray-300 h-dvh">
-                    @foreach ($institutes as $institute)
-                        <a class="group flex items-center gap-x-3 text-firefly-900 hover:bg-firefly-200/40 rounded-md p-4 dark:text-firefly-200 dark:hover:bg-gray-950"
-                            href="{{ route('institutes.show', $institute->slug) }}">
-                            <img src="{{ $institute->institute_logo }}" alt=""
-                                class="flex-shrink-0 w-14 h-14 mt-1">
-                            <div class="grow">
-                                <p class="text-md text-firefly-900 dark:text-firefly-200 capitalize">
-                                    {{ $institute->name }} <br />
-                                <div
-                                    class="text-md text-firefly-500 group-hover:text-firefly-900 dark:group-hover:text-firefly-200 uppercase">
-                                    {{ $institute->acronym }}
-
-                                    @if ($institute->editions->isNotEmpty())
-                                        <span class="text-gradient__teal">
-                                            {{ implode(', ', $institute->editions->pluck('duration')->toArray()) }}
-                                        </span>
-                                    @else
-                                        <span class="text-gray-500 dark:text-gray-400">No editions for
-                                            {{ now()->year }}</span>
-                                    @endif
-                                </div>
-                                </p>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-
-                <div class="flex justify-end items-center gap-x-2 py-3 px-4 dark:border-gray-700">
-                    <button type="button"
-                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                        data-hs-overlay="#mobile-menu">
-                        Back to first
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
 
 </div>
