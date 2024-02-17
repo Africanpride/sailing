@@ -85,10 +85,10 @@
                     <div class="w-full ">
                         <img src="{{ $institute->featured_image }}" alt=""
                             class="rounded-t-2xl object-cover  shadow-2xl h-48 w-full ">
-                        <div class="bg-white shadow-2xl rounded-b-3xl space-y-4">
+                        <div class="bg-white shadow-2xl rounded-b-3xl ">
 
 
-                            <div class="w-5/6 m-auto h-[6rem] min-h-[6rem] space-y-4">
+                            <div class="w-5/6 m-auto h-[7rem] min-h-[7rem] space-y-3">
                                 <h2 class="text-center text-gray-800 text-[10px] font-bold pt-3 uppercase px-4 ">
                                     {{ $institute->name }}
                                 </h2>
@@ -98,7 +98,7 @@
                             <div class="bg-indigo-50 grid grid-cols-4 m-auto md:p-3 mt-4 mx-2 p-3 rounded-2xl w-auto">
                                 <div class="col-span-1 ">
                                     <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
-                                        alt="music icon">
+                                        alt="{{ $institute->acronym }}">
                                 </div>
                                 <div class="col-span-3 flex flex-row items-center p-3">
                                     <div>
@@ -110,9 +110,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                {{-- <div class="pt-2">
-                          <a href="https://google.com" class="text-indigo-700 underline hover:no-underline  text-sm hover:text-indigo-500 font-bold" target="_blank">Change</a>
-                        </div> --}}
+
                             </div>
                             <div class="text-center">
                                 <a href="{{ route('institutes.show', [$institute]) }}">

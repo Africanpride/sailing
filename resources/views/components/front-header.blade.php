@@ -1,37 +1,37 @@
   <!-- ========== HEADER ========== -->
   <header
-      class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-firefly-900 dark:border-gray-700 h-auto">
+      class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 md:py-0 dark:bg-firefly-900 dark:border-gray-700 h-auto">
 
-      <nav class="lg:px-8 max-w-[85rem] mx-auto px-4 py-[16px] relative sm:flex sm:items-center sm:justify-between sm:px-6 w-full"
+      <nav class="lg:px-8 max-w-[85rem] mx-auto px-4 py-[16px] relative md:flex md:items-center md:justify-between md:px-6 w-full"
           aria-label="Global">
           <div class="flex items-center justify-between">
               <x-branding />
-              <div class="sm:hidden">
-                  <button type="button"
-                      class="hs-collapse-toggle w-9 h-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
-                      data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
-                      aria-label="Toggle navigation">
-                      <svg class="hs-collapse-open:hidden flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg"
-                          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="3" x2="21" y1="6" y2="6" />
-                          <line x1="3" x2="21" y1="12" y2="12" />
-                          <line x1="3" x2="21" y1="18" y2="18" />
-                      </svg>
-                      <svg class="hs-collapse-open:block hidden flex-shrink-0 w-4 h-4"
-                          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round">
-                          <path d="M18 6 6 18" />
-                          <path d="m6 6 12 12" />
-                      </svg>
+
+              <div data-hs-overlay="#mobile-menu" class="block md:hidden">
+                  <button class="relative group">
+                      <div
+                          class="relative flex overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-gray-950 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                          <div
+                              class="flex flex-col justify-between w-[15px] h-[15px] transform transition-all duration-500 origin-center overflow-hidden">
+                              <div
+                                  class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:-rotate-45 -translate-x-1">
+                              </div>
+                              <div class="bg-white h-[2px] w-3 rounded transform transition-all duration-500 "></div>
+                              <div
+                                  class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:rotate-45 -translate-x-1">
+                              </div>
+                          </div>
+                      </div>
                   </button>
               </div>
           </div>
+
           <div id="navbar-collapse-with-animation"
-              class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+              class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
               <div
-                  class="grid grid-cols-2 gap-2 gap-y-2 mt-5 sm:flex sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-6 sm:mt-0 sm:ps-4">
+                  class="grid grid-cols-2 gap-2 gap-y-2 mt-5 md:flex md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-6 md:mt-0 md:ps-4">
+
+
                   <x-menu url="home">
                       Home
                   </x-menu>
@@ -42,7 +42,7 @@
                       $costrad = App\Models\Institute::find(5);
                       $url = 'institutes.show';
                       $slug = [$costrad->slug];
-                    //   dd($url);
+                      //   dd($url);
                   @endphp
 
                   <x-menu :$url :$slug>
@@ -79,7 +79,7 @@
 
 
                           <a class="inline-flex flex-shrink-0 justify-center items-center h-9 w-9 font-medium rounded-full text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                              href="https://github.com/htmlstreamofficial/preline" target="_blank">
+                              href="https://www.youtube.com" target="_blank">
                               <x-lucide-youtube class="h-6 w-6 text-red-700" />
                           </a>
                           <a class="inline-flex flex-shrink-0 justify-center items-center h-9 w-9 font-medium rounded-full text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -110,4 +110,7 @@
               </div>
           </div>
       </nav>
+
+
+
   </header>

@@ -48,6 +48,7 @@ overflow-y-scroll overflow-x-hidden">
     <x-footer />
     @livewireScripts
     @livewire('wire-elements-modal')
+    <x-all-modals />
 </body>
 
 </html>

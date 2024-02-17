@@ -245,9 +245,14 @@ Route::get('tabs', function () {
 
 Route::get('/notification', function () {
 
-    $number = Number::abbreviate(15440.00);
+    $institutes = Institute::all();
 
-    return $number;
+    $institutes->load(['editions' => function ($query) {
+        $query->where('startDate', '<=', now()->year);
+    }]);
+
+
+    // return $institutes;
 
 
 

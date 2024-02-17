@@ -11,8 +11,7 @@
 
         </div>
         <div
-            class="md:col-span-3 min-h-screen flex flex-col justify-center items-center px-3
-      bg-gray-100 dark:bg-gray-900">
+            class="bg-gray-100 block dark:bg-gray-950 h-dvh md:col-span-3 pt-20 px-3">
             <div
                 class="mt-6 overflow-hidden px-3 py-4 rounded-2xl sm:max-w-md w-full">
                 {{ $slot }}
