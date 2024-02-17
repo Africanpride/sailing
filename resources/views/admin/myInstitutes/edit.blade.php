@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head.tinymce-config />
+    {{-- <x-head.tinymce-config /> --}}
     <x-backend-page-header model-name="Manage Institute " description="Instititues &<br /> College"
         action="
     {!! $institute->name !!}" add-button="false" class="mx-2">
@@ -190,12 +190,12 @@
                                         <div>
                                             <div class="flex justify-start  text-xs text-gray-500 ">
                                                 {{ _('Date: ') }} &ThickSpace;
-                                                <x-jet-label for="startDate"
+                                                <x-label for="startDate"
                                                     value="{{ \Carbon\Carbon::parse($institute->startDate)->toFormattedDateString() ?? 'Start Date' }}"
                                                     class="text-[0.6rem] flex justify-start" />
                                             </div>
 
-                                            <x-jet-input name="startDate" id="startDate" type="text"
+                                            <x-input name="startDate" id="startDate" type="text"
                                                 value="{!! $institute->startDate !!}"
                                                 class="mt-1 block w-full dark:text-white" placeholder="Start Date ..."
                                                 autocomplete="off" />
@@ -209,12 +209,12 @@
                                         <div>
                                             <div class="flex justify-start  text-xs text-gray-500 ">
                                                 {{ _('Date: ') }} &ThickSpace;
-                                                <x-jet-label for="startDate"
+                                                <x-label for="startDate"
                                                     value="{{ \Carbon\Carbon::parse($institute->endDate)->toFormattedDateString() ?? 'Start Date' }}"
                                                     class="text-[0.6rem] flex justify-start" />
                                             </div>
 
-                                            <x-jet-input name="endDate" id="endDate" type="text"
+                                            <x-input name="endDate" id="endDate" type="text"
                                                 value="{!! $institute->endDate !!}"
                                                 class="mt-1 block w-full dark:text-white" placeholder="End Date ..."
                                                 autocomplete="off" />
@@ -300,7 +300,7 @@
                         <div class="grid grid-cols-2 gap-4 py-4">
                             <button type="reset"
                                 class="py-2 px-3 my-3 w-full inline-flex justify-center items-center gap-2  border border-transparent font-semibold bg-slate-500 text-white hover:bg-slate-600 focus:outline-none focus:ring-2  rounded">Cancel</button>
-                            <x-admin.submit-button class="rounded">Submit</x-admin.submit-button>
+                            <x-button class="rounded">Submit</x-button>
                         </div>
 
                     </div>
@@ -310,19 +310,6 @@
 
         </div>
 
-        {{-- <div class=" space-y-4 pb-12 m-8 p-5 border border-gray-300/80 dark:border-gray-800/80 rounded-xl ">
-                <form method="POST" action="{{ route('institutes.update', [$institute->slug]) }}" id=""
-                    accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                    <input type="hidden" name="_method" value="PUT">
-                    @csrf
-
-                    <div class="grid grid-cols-2 gap-4 py-4">
-                        <button type="reset"
-                            class="py-2 px-3 my-3 w-full inline-flex justify-center items-center gap-2  border border-transparent font-semibold bg-slate-500 text-white hover:bg-slate-600 focus:outline-none focus:ring-2  rounded">Cancel</button>
-                        <x-admin.submit-button class="rounded">Submit</x-admin.submit-button>
-                    </div>
-                </form>
-            </div> --}}
 
     </section>
     <script type="text/javascript">
