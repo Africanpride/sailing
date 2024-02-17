@@ -311,7 +311,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class=" overflow-y-auto">
+                <div class="h-auto overflow-y-auto">
                     <div class="p-2 grid grid-cols-2 gap-2">
                         <x-mobile-menu route='home'>
                             Home
