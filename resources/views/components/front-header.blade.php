@@ -6,7 +6,15 @@
           aria-label="Global">
           <div class="flex items-center justify-between">
               <x-branding />
-              <div class="flex md:hidden" data-hs-overlay="#mobile-menu">
+              <div class="md:hidden bg-gray-300/50 dark:bg-gray-950 rounded-full"  data-hs-overlay="#mobile-menu">
+                <button class="navbar-burger flex items-center text-firefly-600 dark:text-white p-3">
+                    <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Mobile menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                    </svg>
+                </button>
+            </div>
+              {{-- <div class="flex md:hidden" data-hs-overlay="#mobile-menu">
                 <button class="group">
                     <div
                         class=" flex overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-gray-950 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
@@ -22,7 +30,7 @@
                         </div>
                     </div>
                 </button>
-              </div>
+              </div> --}}
 
           </div>
 
