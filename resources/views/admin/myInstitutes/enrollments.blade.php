@@ -1,9 +1,9 @@
 <x-app-layout>
-    <x-admin.pageheader model-name="{{ __('Enrollments') }}"
+    <x-backend-page-header model-name="{{ __('Enrollments') }}"
         description="{{ __('Institute Participants & Enrollment Overview') }}" add-button="false"
         class="mx-4 capitalize">
         <x-heroicon-o-finger-print class="w-6 h-6 text-current" />
-    </x-admin.pageheader>
+    </x-backend-page-header>
     <!-- Table Section -->
     <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-8 mx-auto">
         <!-- Card -->
