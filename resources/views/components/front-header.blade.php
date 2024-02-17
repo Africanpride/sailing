@@ -6,8 +6,10 @@
           aria-label="Global">
           <div class="flex items-center justify-between">
               <x-branding />
-
-              <div data-hs-overlay="#mobile-menu" class="block md:hidden">
+<div>
+    Menu
+</div>
+              <div id="mobile-first" data-hs-overlay="#mobile-menu" class="flex md:hidden">
                   <button class="relative group">
                       <div
                           class="relative flex overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-gray-950 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
