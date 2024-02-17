@@ -6,26 +6,24 @@
           aria-label="Global">
           <div class="flex items-center justify-between">
               <x-branding />
-<div>
-    Menu
-</div>
-              <div id="mobile-first" data-hs-overlay="#mobile-menu" class="flex md:hidden">
-                  <button class="relative group">
-                      <div
-                          class="relative flex overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-gray-950 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-                          <div
-                              class="flex flex-col justify-between w-[15px] h-[15px] transform transition-all duration-500 origin-center overflow-hidden">
-                              <div
-                                  class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:-rotate-45 -translate-x-1">
-                              </div>
-                              <div class="bg-white h-[2px] w-3 rounded transform transition-all duration-500 "></div>
-                              <div
-                                  class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:rotate-45 -translate-x-1">
-                              </div>
-                          </div>
-                      </div>
-                  </button>
+              <div class="flex md:hidden" data-hs-overlay="#mobile-menu">
+                <button class="group">
+                    <div
+                        class=" flex overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-gray-950 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                        <div
+                            class="flex flex-col justify-between w-[15px] h-[15px] transform transition-all duration-500 origin-center overflow-hidden">
+                            <div
+                                class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:-rotate-45 -translate-x-1">
+                            </div>
+                            <div class="bg-white h-[2px] w-3 rounded transform transition-all duration-500 "></div>
+                            <div
+                                class="bg-white h-[2px] w-5 transform transition-all duration-500 group-focus:rotate-45 -translate-x-1">
+                            </div>
+                        </div>
+                    </div>
+                </button>
               </div>
+
           </div>
 
           <div id="navbar-collapse-with-animation"
