@@ -4,7 +4,7 @@
 
       <nav class="lg:px-8 max-w-[85rem] mx-auto px-4 py-[16px] relative md:flex md:items-center md:justify-between md:px-6 w-full"
           aria-label="Global">
-          <div class="flex items-center justify-between pr-4 ">
+          <div class="flex items-center justify-between ">
               <x-branding />
               <div class="md:hidden bg-gray-300/50 dark:bg-gray-950 rounded-full "  data-hs-overlay="#mobile-menu">
                 <button class="navbar-burger flex items-center text-firefly-600 dark:text-white p-3">
