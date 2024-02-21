@@ -87,7 +87,7 @@
                             <div class="bg-center bg-cover h-48 rounded-t-2xl"
                                 style="background-image:url('{{ $institute->featured_image }}')"></div>
                             <div class="p-2 border-s-0 shadow-md rounded-b-3xl bg-white dark:bg-gray-950">
-                                <div class="h-auto md:min-h-[160px] p-2 space-y-3 flex flex-col justify-start  ">
+                                <div class="flex flex-col h-auto justify-start min-h-[8rem] p-2 space-y-3  ">
 
                                     <a href="{{ route('institutes.show', $institute) }}" class="text-xs text-gray-600 dark:text-gray-200  uppercase font-semibold tracking-wide">
                                         {{ $institute->name }}
@@ -99,7 +99,7 @@
 
                                 </div>
 
-                                <div class="bg-slate-200/50 dark:bg-slate-900 grid grid-cols-4 m-auto md:p-3 p-3 rounded-2xl w-auto">
+                                <div class="bg-slate-500/10 dark:bg-slate-900 grid grid-cols-4 m-auto md:p-3 p-3 rounded-2xl w-auto">
                                     <div class="col-span-1 ">
                                         <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
                                             alt="{{ $institute->acronym }}">
