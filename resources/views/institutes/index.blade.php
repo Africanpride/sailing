@@ -89,7 +89,7 @@
                             <div class="p-2 border-s-0 shadow-md rounded-b-3xl bg-white dark:bg-gray-950">
                                 <div class="h-auto md:h-[150px] p-2 space-y-3  ">
 
-                                    <a href="{{ route('institutes.show', $institute) }}" class="md:text-md text-gray-600 dark:text-gray-200 text-xs uppercase font-semibold tracking-wide">
+                                    <a href="{{ route('institutes.show', $institute) }}" class="text-xs text-gray-600 dark:text-gray-200  uppercase font-semibold tracking-wide">
                                         {{ $institute->name }}
                                     </a>
 
