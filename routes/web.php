@@ -91,7 +91,6 @@ Route::get('auth/google/callback', [App\Http\Controllers\SocialController::class
 
 
 // ADMINISTRATION ROUTES WITH "ADMIN" PREFIX
-
 Route::middleware([
     'auth:sanctum',
     'verified',
@@ -243,17 +242,13 @@ Route::get('tabs', function () {
     return view('tabs', compact('fdi'));
 })->middleware('auth');
 
-Route::get('/notification', function () {
+Route::get('/note', function () {
 
-    $institutes = Institute::all();
+    $lastInvoiceNumber = Invoice::where('invoice_number', "000020240213-TLGIMXUD")->with('application')->first();
 
-    $institutes->load(['editions' => function ($query) {
-        $query->where('startDate', '<=', now()->year);
-    }]);
+    // Load the 'edition' relationship separately
+    $lastInvoiceNumber->load('edition:acronym');
 
-
-    // return $institutes;
-
-
-
+    dd($lastInvoiceNumber);
 });
+

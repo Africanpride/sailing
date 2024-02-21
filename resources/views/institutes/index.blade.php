@@ -80,22 +80,38 @@
         </section>
         <section class="p-4 md:p-2">
             <div class="lg:max-w-screen-xl lg:py-6 mx-auto py-4 sm:max-w-xl">
-                <div class="grid gap-4 md:grid-cols-4">
+                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     @forelse ($institutes as $institute)
-                    <div class="w-full ">
+                    <div class="w-full h-auto ">
                         <img src="{{ $institute->featured_image }}" alt=""
                             class="rounded-t-2xl object-cover  shadow-2xl h-48 w-full ">
-                        <div class="bg-white shadow-2xl rounded-b-3xl ">
+                        <div class="bg-white shadow-2xl rounded-b-2xl pb-2 ">
 
 
                             <div class="w-5/6 m-auto h-[7rem] min-h-[7rem] space-y-3">
-                                <h2 class="text-center text-gray-800 text-[10px] font-bold pt-3 uppercase px-4 ">
+                                <h2 class="text-center text-gray-800 md:text-[10px] font-bold pt-3 uppercase px-4 ">
                                     {{ $institute->name }}
                                 </h2>
                                 <p class="text-center text-[12px] text-gray-500  line-clamp-3">{!! $institute->overview !!}
                                 </p>
                             </div>
-                            <div class="bg-indigo-50 grid grid-cols-4 m-auto md:p-3 mt-4 mx-2 p-3 rounded-2xl w-auto">
+
+
+
+                            <div class="py-3 text-center">
+                                <a href="{{ route('institutes.show', [$institute]) }}">
+                                    <x-button classs="lg:text-sm text-lg font-bold w-full">Register for
+                                        {{ $institute->editions()->latest()->first()->title }}</x-button>
+                                </a>
+                            </div>
+
+                            {{-- <div class="text-center m-auto mt-6 w-full h-16">
+                                <a href="{{ route('institutes.show', [$institute]) }}"
+                                    class="text-gray-500 font-bold lg:text-sm hover:text-gray-900
+                                uppercase ">More About
+                                    {{ $institute->editions()->latest()->first()->acronym }}</a>
+                            </div> --}}
+                            <div class="bg-indigo-100/50 grid grid-cols-4 m-auto md:p-3 mx-2 p-3 rounded-2xl w-auto">
                                 <div class="col-span-1 ">
                                     <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
                                         alt="{{ $institute->acronym }}">
@@ -111,19 +127,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-                            <div class="text-center">
-                                <a href="{{ route('institutes.show', [$institute]) }}">
-                                    <x-button classs="lg:text-sm text-lg font-bold">Register for
-                                        {{ $institute->editions()->latest()->first()->title }}</x-button>
-                                </a>
-                            </div>
-
-                            <div class="text-center m-auto mt-6 w-full h-16">
-                                <a href="{{ route('institutes.show', [$institute]) }}"
-                                    class="text-gray-500 font-bold lg:text-sm hover:text-gray-900
-                                uppercase ">More About
-                                    {{ $institute->editions()->latest()->first()->acronym }}</a>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <div  id="newInstituteAlert"
 {{-- style="display: none;" --}}
     class="hs-removing:easeOut hs-removing:opacity-0 transition duration-500 relative isolate hidden md:flex items-center gap-x-4
-     overflow-hidden bg-gray-50 dark:bg-black py-1 px-6 sm:px-3.5 sm:before:flex-1">
+     overflow-hidden bg-gray-50 dark:bg-black py-2 px-4 sm:px-3.5 sm:before:flex-1 ">
     <svg viewBox="0 0 577 310" aria-hidden="true"
         class="absolute top-1/2 left-[max(-7rem,calc(50%-52rem))] -z-10 w-[36.0625rem] -translate-y-1/2 transform-gpu blur-2xl">
         <path id="1d77c128-3ec1-4660-a7f6-26c7006705ad" fill="url(#49a52b64-16c6-4eb9-931b-8e24bf34e053)" fill-opacity=".3"
@@ -18,7 +18,7 @@
         class="absolute top-1/2 left-[max(45rem,calc(50%+8rem))] -z-10 w-[36.0625rem] -translate-y-1/2 transform-gpu blur-2xl">
         <use href="#1d77c128-3ec1-4660-a7f6-26c7006705ad" />
     </svg>
-    <div class="flex flex-wrap items-center gap-y-2 gap-x-4">
+    <div class="flex flex-wrap justify-center items-center gap-y-2 gap-x-4">
         <p class="text-sm md:leading-6 text-gray-900 dark:text-white">
             <strong class="font-semibold">{{ $upcomingEdition->title }}
                 {{-- <span
@@ -35,8 +35,8 @@
                 {{ Carbon\Carbon::parse($upcomingEdition->endDate)->format('M d Y') }}</span> for this Special edition.
 
         <div
-            class="hidden sm:flex p-0.5 space-x-0.5 items-center border border-gray-300 rounded-full dark:border-white/20">
-            <a class="py-1 px-4 inline-flex items-center gap-x-3 text-white text-sm font-medium rounded-full bg-gray-800 hover:bg-gray-900 hover:text-white dark:bg-white dark:text-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 capitalize "
+            class="hidden sm:flex px-1 space-x-0.5 items-center border border-gray-300 rounded-full dark:border-white/20">
+            <a class=" px-5 inline-flex items-center gap-x-3 text-white text-xs md:text-sm font-medium rounded-full bg-gray-800 hover:bg-gray-900 hover:text-white dark:bg-white dark:text-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 capitalize "
                 href="{{ route('institutes.show', $upcomingEdition->institute) }}">
                 Registration
             </a>
@@ -46,15 +46,7 @@
             </a>
         </div>
 
-        {{-- <a href="{{ route('institutes.show', $upcomingEdition->institute) }}"
-                class="inline-flex gap-2 justify-center items-center rounded-full bg-firefly-800 ml-2 py px-3 text-[10px] font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"><span>About
-                    <span class="uppercase">({{ $upcomingEdition->acronym }} )</span></span>
-                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a> --}}
+
         </p>
     </div>
     <div class="flex flex-1 justify-end ">

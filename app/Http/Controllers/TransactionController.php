@@ -17,6 +17,10 @@ class TransactionController extends Controller
         return view('admin.transactions.index');
     }
 
+    public function test() {
+        dd( "Hello testing");
+    }
+
     /**
      * Show the form for creating a new resource.
      */

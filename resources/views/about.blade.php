@@ -2,7 +2,7 @@
 
     <div class="space-y-4">
 
-        <section class="relative z-20 overflow-hidden p-4  pt-20 pb-8 md:pt-[120px] md:pb-[70px]">
+        <section class="relative z-20 overflow-hidden p-4  pt-20 pb-8 md:pt-[120px] md:pb-[70px] ">
             <div class="container mx-auto">
                 <div class="-mx-4 flex flex-wrap">
                     <div class="w-full px-4">

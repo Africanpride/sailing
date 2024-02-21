@@ -1,4 +1,4 @@
-    <div class="grid md:grid-cols-8 font-sans text-gray-900 dark:text-gray-100 antialiased dark:bg-firefly-900 overflow-x-hidden">
+    <div class="grid md:grid-cols-8 font-sans text-gray-900 dark:text-gray-100 antialiased dark:bg-firefly-900 overflow-x-hidden h-full">
 
         <div id="login-image"
             class="hidden sm:flex items-center justify-center md:col-span-5 bg-cover bg-no-repeat bg-center"

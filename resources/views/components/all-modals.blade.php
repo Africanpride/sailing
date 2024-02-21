@@ -261,6 +261,7 @@
     </div>
 
 
+
     <div id="mobile-menu"
         class="hs-overlay hidden size-full w-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none  ">
         <div
@@ -332,7 +333,7 @@
 
                         <a href="{{ route('institutes.index') }}">
                             <button type="button"
-                                class="py-3 px-4 flex items-center justify-between gap-x-2 text-xs font-medium cursor-pointer rounded-lg border w-full border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 uppercase ">
+                                class="py-3 px-4 flex items-center justify-between gap-x-2 text-xs font-medium rounded-lg border w-full border-gray-200 bg-firefly-100/45 text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-gray-900 dark:text-white dark:hover:bg-gray-950 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 uppercase  ">
                                 <span>Institutes</span>
                                 <x-lucide-globe-2 class="w-5 h-5 text-current" />
                             </button>
@@ -356,6 +357,5 @@
             </div>
         </div>
     </div>
-
 
 </div>

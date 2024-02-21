@@ -13,6 +13,11 @@
 html {
     scroll-behavior: smooth;
 }
+.start-alone {
+    background-image: url(../../public/images/main/start.svg);
+    background-size: cover;
+}
+
 .filepond--drop-label {
     background-color: gray;
     color: #fff !important;

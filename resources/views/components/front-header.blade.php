@@ -2,25 +2,12 @@
   <header
       class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 md:py-0 dark:bg-firefly-900 dark:border-gray-700 h-auto">
 
-      <nav class="lg:px-8 max-w-[85rem] mx-auto px-4 py-[16px] relative md:flex md:items-center md:justify-between md:px-6 w-full"
+      <nav class=" max-w-[85rem] mx-auto px-4 md:px-6 lg:px-8 py-[10px] relative flex items-center justify-between  w-full"
           aria-label="Global">
-          <div class="flex items-center justify-between ">
-              <x-branding />
-              <div class="md:hidden bg-gray-300/50 dark:bg-gray-950 rounded-full "  data-hs-overlay="#mobile-menu">
-                <button class="navbar-burger flex items-center text-firefly-600 dark:text-white p-3">
-                    <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                    </svg>
-                </button>
-            </div>
-
-
-
-          </div>
+          <x-branding />
 
           <div id="navbar-collapse-with-animation"
-              class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+              class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow lg:block">
               <div
                   class="grid grid-cols-2 gap-2 gap-y-2 mt-5 md:flex md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-6 md:mt-0 md:ps-4">
 
@@ -50,10 +37,6 @@
                   <x-menu url="publications.index">
                       Publications
                   </x-menu>
-
-
-
-
 
 
 
@@ -102,7 +85,17 @@
 
               </div>
           </div>
+
+          <div class="lg:hidden bg-gray-300/50 dark:bg-gray-950 rounded-full "  data-hs-overlay="#mobile-menu">
+            <button class="navbar-burger flex items-center text-firefly-600 dark:text-white p-3">
+                <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                </svg>
+            </button>
+        </div>
       </nav>
+
 
 
 
