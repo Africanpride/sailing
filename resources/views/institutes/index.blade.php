@@ -80,51 +80,45 @@
         </section>
         <section class="p-4 md:p-2">
             <div class="lg:max-w-screen-xl lg:py-6 mx-auto py-4 sm:max-w-xl">
-                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     @forelse ($institutes as $institute)
-                    <div class="w-full h-auto min-h-[500px] ">
-                        <img src="{{ $institute->featured_image }}" alt=""
-                            class="rounded-t-2xl object-cover  shadow-2xl h-48 w-full ">
+                        <div class="text-gray-500 dark:text-white ">
 
-                        <div class="bg-white border border-s-0 rounded-b-3xl  h-72 flex flex-col ">
+                            <div class="bg-center bg-cover h-48 rounded-t-2xl"
+                                style="background-image:url('{{ $institute->featured_image }}')"></div>
+                            <div class="p-2 border-s-0 shadow-md rounded-b-3xl bg-white dark:bg-gray-950">
+                                <div class="h-auto md:h-[150px] p-2 space-y-3  ">
 
+                                    <a href="{{ route('institutes.show', $institute) }}" class="md:text-md text-gray-600 dark:text-gray-200 text-xs uppercase font-semibold tracking-wide">
+                                        {{ $institute->name }}
+                                    </a>
 
-                            <div class="w-5/6 m-auto h-[7rem] min-h-[7rem] space-y-3">
-                                <h2 class="text-center text-gray-800 md:text-[10px] font-bold pt-3 uppercase px-4 ">
-                                    {{ $institute->name }}
-                                </h2>
-                                <p class="text-center text-[12px] text-gray-500  line-clamp-3">{!! $institute->overview !!}
-                                </p>
-                            </div>
-
-
-
-                            <div class="py-3 text-center">
-                                <a href="{{ route('institutes.show', [$institute]) }}">
-                                    <x-button classs="lg:text-sm text-lg font-bold w-full">Register for
-                                        {{ $institute->editions()->latest()->first()->title }}</x-button>
-                                </a>
-                            </div>
-
-                            <div class="bg-gray-200/50 grid grid-cols-4 m-auto md:p-3 mx-2 p-3 rounded-2xl w-auto">
-                                <div class="col-span-1 ">
-                                    <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
-                                        alt="{{ $institute->acronym }}">
-                                </div>
-                                <div class="col-span-3 flex flex-row items-center p-3">
-                                    <div>
-                                        <p class="text-gray-800 font-bold lg:text-sm">
-                                            {{ $institute->editions()->latest()->first()->title }}
-                                        </p>
-                                        <p class="text-gray-500 text-sm">
-                                            {{ $institute->editions()->latest()->first()->duration }}
-                                        </p>
+                                    <div class="mt-1 line-clamp-3 text-sm ">
+                                        {!! $institute->overview !!}
                                     </div>
+
                                 </div>
 
+                                <div class="bg-slate-200/50 dark:bg-slate-900 grid grid-cols-4 m-auto md:p-3 p-3 rounded-2xl w-auto">
+                                    <div class="col-span-1 ">
+                                        <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
+                                            alt="{{ $institute->acronym }}">
+                                    </div>
+                                    <div class="col-span-3 flex flex-row items-center p-3">
+                                        <div>
+                                            <p class="text-gray-800 dark:text-white  font-bold lg:text-sm">
+                                                {{ $institute->editions()->latest()->first()->title }}
+                                            </p>
+                                            <p class="text-gray-500 dark:text-white  text-sm">
+                                                {{ $institute->editions()->latest()->first()->duration }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
+
                     @empty
                     @endforelse
 
@@ -161,7 +155,8 @@
 <script>
     function addCalendar() {
         // Replace the URL below with the URL of the public calendar you want to add
-        const calendarUrl = "https://calendar.google.com/calendar/ical/en.gh%23holiday%40group.v.calendar.google.com/public/basic.ics";
+        const calendarUrl =
+            "https://calendar.google.com/calendar/ical/en.gh%23holiday%40group.v.calendar.google.com/public/basic.ics";
 
         // Replace the text below with the name you want to give to the added calendar
         const calendarName = "Public Calendar";
