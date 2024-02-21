@@ -99,7 +99,7 @@
 
                                 </div>
 
-                                <div class="bg-slate-500/10 dark:bg-slate-900 grid grid-cols-4 m-auto md:p-3 p-3 rounded-2xl w-auto">
+                                <a href="{{ route('institutes.show', $institute) }}" class="bg-slate-500/10 dark:bg-slate-900 grid grid-cols-4 m-auto md:p-3 p-3 rounded-2xl w-auto">
                                     <div class="col-span-1 ">
                                         <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
                                             alt="{{ $institute->acronym }}">
@@ -115,7 +115,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </a>
                             </div>
                         </div>
 
