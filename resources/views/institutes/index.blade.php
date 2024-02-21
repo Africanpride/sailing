@@ -82,10 +82,10 @@
             <div class="lg:max-w-screen-xl lg:py-6 mx-auto py-4 sm:max-w-xl">
                 <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     @forelse ($institutes as $institute)
-                    <div class="w-full h-auto ">
+                    <div class="w-full h-auto min-h-[500px] ">
                         <img src="{{ $institute->featured_image }}" alt=""
                             class="rounded-t-2xl object-cover  shadow-2xl h-48 w-full ">
-                        <div class="bg-white border border-s-0 rounded-b-2xl pb-2 ">
+                        <div class="bg-white border border-s-0 rounded-b-3xl pb-2 ">
 
 
                             <div class="w-5/6 m-auto h-[7rem] min-h-[7rem] space-y-3">
@@ -105,7 +105,7 @@
                                 </a>
                             </div>
 
-                            <div class="bg-firefly-100/50 grid grid-cols-4 m-auto md:p-3 mx-2 p-3 rounded-2xl w-auto">
+                            <div class="bg-gray-200/50 grid grid-cols-4 m-auto md:p-3 mx-2 p-3 rounded-3xl w-auto">
                                 <div class="col-span-1 ">
                                     <img class="w-15 md:w-15 md:h-15" src="{{ $institute->institute_logo }}"
                                         alt="{{ $institute->acronym }}">
