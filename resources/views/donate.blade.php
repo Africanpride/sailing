@@ -4,7 +4,7 @@
         <div class="w-full">
             <div class="mx-auto mb-[60px] max-w-[920px] text-center md:mb-20 space-y-3">
                 <x-top-title>
-                    Counting on Your Your contribution
+                    Counting on Your contribution
                     <x-slot name="icon">
                         <x-lucide-wallet class="dark:text-white  w-5 h-5 " />
                     </x-slot>
