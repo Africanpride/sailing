@@ -18,7 +18,7 @@
     </span>
 
     <div
-        class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-full hidden z-10 top-full right-0 md:w-[1200px] min-w-[15rem] bg-white md:shadow-2xl md:px-4 dark:bg-firefly-900 dark:divide-firefly-700 before:absolute before:-top-5 before:left-0 before:w-full before:h-5 ">
+        class="hs-dropdown-menu transition-[opacity,margin] duration-&lsqb;0.1ms&rsqb; md:duration-&lsqb;150ms&rsqb; hs-dropdown-open:opacity-100 opacity-0 w-full hidden z-10 top-full right-0 md:w-[1200px] min-w-[15rem] bg-white md:shadow-2xl md:px-4 dark:bg-firefly-900 dark:divide-firefly-700 before:absolute before:-top-5 before:left-0 before:w-full before:h-5 ">
         <div class="mt-5 md:mt-0">
             <div class="md:grid  md:grid-cols-3 gap-x-2 ">
 

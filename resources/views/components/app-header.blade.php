@@ -65,7 +65,7 @@
                         </button>
 
                         <div
-                            class="hs-dropdown-menu   transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-auto md:w-80 hidden z-10 bg-white md:shadow rounded-lg py-2 md:p-2 dark:bg-gray-800 dark:divide-gray-700 before:absolute top-full before:-top-5 before:left-0 before:w-full before:h-5">
+                            class="hs-dropdown-menu   transition-[opacity,margin] duration-&lsqb;0.1ms&rsqb; md:duration-&lsqb;150ms&rsqb; hs-dropdown-open:opacity-100 opacity-0 w-auto md:w-80 hidden z-10 bg-white md:shadow rounded-lg py-2 md:p-2 dark:bg-gray-800 dark:divide-gray-700 before:absolute top-full before:-top-5 before:left-0 before:w-full before:h-5">
 
                             <a class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                 href="#">
