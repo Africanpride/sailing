@@ -1,6 +1,6 @@
                       <!-- Dark Mode -->
                       <button type="button"
-                          class="hs-dark-mode-active:hidden block hs-dark-mode rounded-full dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                          class="hs-dark-mode-active:hidden block hs-dark-mode rounded-full dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 relative"
                           data-hs-theme-click-value="dark">
                           <span
                               class="group inline-flex flex-shrink-0 justify-center items-center h-9 w-9 font-medium rounded-full text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800">

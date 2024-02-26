@@ -2,17 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use App\Models\Edition;
 use Livewire\Component;
 use App\Models\Institute;
-use App\Models\Application;
-use App\Models\User;
-use Exception;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
-class InstituteDetails extends Component
+class StartApplication extends Component
+
 {
+
     public Institute $institute;
     public Edition $edition;
     public User $user;
@@ -43,8 +42,7 @@ class InstituteDetails extends Component
                 // if/else block to check if user is already registered or enrolled
 
                 // Create the application if none exist for user in current edition
-                if(!$this->user->applications()->where('edition_id', $this->edition->id)->exists())
-                {
+                if (!$this->user->applications()->where('edition_id', $this->edition->id)->exists()) {
 
                     $this->user->applications()->create([
                         'edition_id' => $this->edition->id,
@@ -54,7 +52,7 @@ class InstituteDetails extends Component
                     $this->redirectRoute('home');
                 } else {
                     // Application already exist for user  and edition
-                    app('flasher')->addError('You have already applied for this Institute.',  $this->edition->title );
+                    app('flasher')->addError('You have already applied for this Institute.',  $this->edition->title);
                     $this->redirectRoute('home');
                 }
             }
@@ -63,24 +61,8 @@ class InstituteDetails extends Component
             $this->redirectRoute('login');
         }
     }
-
-
     public function render()
     {
-        $images = $this->institute->getMedia('banner')->take(6)->skip(1);
-        return view('livewire.institute-details', compact('images'));
+        return view('livewire.start-application');
     }
 }
-
-
-    // public function instituteAlreadyEnrolled()
-    // {
-
-    //     if (Auth::check()) {
-    //         $transaction = Transaction::where('participant_id', Auth::user()->id)->where('institute_id', $this->institute->id)->first();
-    //         if (!is_null($transaction) && ($this->institute->created_at->year === $transaction->created_at->year)) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }

@@ -1,4 +1,6 @@
 <div>
+
+
     {{-- @can('userEnrolled', $institute)
 
         <div x-data="{ showBanner: {{ $this->instituteAlreadyEnrolled() ? 'true' : 'false' }} }" x-show="showBanner"

@@ -1,4 +1,4 @@
-<footer class="bg-gray-100 dark:bg-firefly-900  border-t border-gray-600/10 md:px-4">
+<footer id="footer" class="bg-gray-100 dark:bg-firefly-900  border-t border-gray-600/10 md:px-4 ">
     <div class="flex flex-col md:flex-row md:justify-between items-center space-y-4 px-4">
         <div class="py-4">
             <x-branding />
