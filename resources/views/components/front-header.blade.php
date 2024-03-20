@@ -1,6 +1,6 @@
   <!-- ========== HEADER ========== -->
   <header id="front-header"
-      class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-30 w-full bg-white border-b border-gray-200 text-sm py-3 md:py-0 dark:bg-firefly-900 dark:border-gray-700 h-auto">
+      class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-30 w-full bg-white border-b border-gray-200 text-sm py-3 md:py-0 dark:bg-firefly-900 dark:border-firefly-800/20 h-auto">
 
       <nav class=" max-w-[85rem] mx-auto px-4 md:px-6 lg:px-8 py-[10px] relative flex items-center justify-between  w-full"
           aria-label="Global">
