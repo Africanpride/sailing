@@ -251,4 +251,8 @@ Route::get('/note', function () {
 
     dd($lastInvoiceNumber);
 });
+Route::get('/landing', function () {
+
+return view('landing');
+});
 
