@@ -15,6 +15,7 @@
                   <x-menu url="home">
                       Home
                   </x-menu>
+                  
                   <x-menu url='about'>
                       About
                   </x-menu>

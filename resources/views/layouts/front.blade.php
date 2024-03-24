@@ -36,8 +36,8 @@
 </head>
 
 <body
-    class="bg-white dark:bg-firefly-900  scrollbar-thin relative
-scrollbar-thumb-firefly-800 dark:scrollbar-thumb-firefly-900 scrollbar-track-gray-300
+    class="bg-white dark:bg-firefly-900   relative
+
 overflow-y-scroll overflow-x-hidden">
 
 

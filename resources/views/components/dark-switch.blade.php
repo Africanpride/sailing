@@ -33,28 +33,28 @@
                           </span>
                       </button> --}}
                       <!-- End Dark Mode -->
-
-<button   x-data="{
-        darkMode: $persist(false).as('dark_mode'),
-        toggleDarkMode(){
-            document.documentElement.classList.toggle('dark');
-            if(document.documentElement.classList.contains('dark')){
-                this.darkMode = true;
-                new Audio('/audio/dark.mp3').play()
-            } else {
-                this.darkMode = false;
-                new Audio('/audio/light.mp3').play()
-            }
-        }
-    }"
-    @click="toggleDarkMode()"
-    x-init=" if(document.documentElement.classList.contains('dark')){ darkMode=true; }
-    " class="">
-
-
-<span
-    class="group inline-flex flex-shrink-0 justify-center items-center h-9 w-9 font-medium rounded-full text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800">
-    <x-lucide-sun-moon class="h-5 w-5 dark:text-yellow-500 transition duration-500" />
-</span>
-
-</button>
+                      <button
+                      x-data="{
+                          darkMode: $persist(JSON.parse(localStorage.getItem('dark_mode')) || false),
+                          toggleDarkMode(){
+                              document.documentElement.classList.toggle('dark');
+                              this.darkMode = document.documentElement.classList.contains('dark');
+                              localStorage.setItem('dark_mode', JSON.stringify(this.darkMode));
+                              if (this.darkMode) {
+                                  new Audio('/audio/dark.mp3').play();
+                              } else {
+                                  new Audio('/audio/light.mp3').play();
+                              }
+                          }
+                      }"
+                      @click="toggleDarkMode()"
+                      x-init="darkMode = document.documentElement.classList.contains('dark')"
+                      class=""
+                  >
+                      <span
+                          class="group inline-flex flex-shrink-0 justify-center items-center h-9 w-9 font-medium rounded-full text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800"
+                      >
+                          <x-lucide-sun-moon class="h-5 w-5 dark:text-yellow-500 transition duration-500" />
+                      </span>
+                  </button>
+                  

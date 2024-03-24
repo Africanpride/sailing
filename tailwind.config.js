@@ -43,6 +43,7 @@ export default {
                     700: '#1a608a',
                     800: '#1a5172',
                     900: '#0a1a24',
+                    950: '#051217'
                 },
             },
         },
@@ -56,6 +57,36 @@ export default {
         require('@tailwindcss/typography'),
         require("tailwindcss-animate"),
         require('tailwind-scrollbar'),
+        require("postcss-obfuscator")({
+                enable: true, // Enable plugin
+                length: 5, // Random  name length.
+                classMethod: "random", // 'random', 'simple', 'none' obfuscation method for classes.
+                classPrefix: "", // ClassName prefix.
+                classSuffix: "", // ClassName suffix.
+                classIgnore: [], // Class to ignore from obfuscation.
+                ids: false, //  Obfuscate #IdNames.
+                idMethod: "random", // 'random', 'simple', 'none' obfuscation method for ids .
+                idPrefix: "", // idName Prefix.
+                idSuffix: "", // idName suffix.
+                idIgnore: [], // Ids to ignore from obfuscation.
+                indicatorStart: null, // Identify ids & classes by the preceding string.
+                indicatorEnd: null, // Identify ids & classes by the following string.  
+                jsonsPath: "css-obfuscator", // Path and file name where to save obfuscation data.
+                srcPath: "src", // Source of your files.
+                desPath: "out", // Destination for obfuscated html/js/.. files.Be careful using the same directory as your src(you will lose your original files).
+                extensions: [".html"], // Extesnion of files you want osbfucated ['.html', '.php', '.js', '.svelte'].
+                htmlExcludes: [], // Files and paths to exclude from html obfuscation replacement.
+                cssExcludes: [], // Files and paths to exclude from css obfuscation.
+                fresh: false, // Create new obfuscation data list or use already existed one (to keep production cache or prevent data scrapping).
+                multi: false, // Generate obsfucated data file for each css file.
+                differMulti: false, // Generate different Random names for each file.
+                formatJson: false, // Format obfuscation data JSON file.
+                showConfig: false, // Show config on terminal when runinng.
+                keepData: true, // Keep or delete Data after obfuscation is finished?
+                preRun: () => Promise.resolve(), // do something before the plugin runs.
+                callBack: function () {}, // Callback function to call after obfuscation is done.
+        
+          }),
 
     ],
 

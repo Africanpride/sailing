@@ -29,11 +29,18 @@
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
+    <script>
+        if (typeof(Storage) !== "undefined") {
+            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                document.documentElement.classList.add('dark');
+            }
+        }
+    </script>
+
 </head>
 
 <body
-    class="font-sans text-gray-900 dark:text-gray-100 antialiased dark:bg-firefly-900 overflow-x-hidden scrollbar-thin
-scrollbar-thumb-firefly-800 scrollbar-track-gray-300 overflow-y-scroll ">
+    class="font-sans text-gray-900 dark:text-gray-100 antialiased dark:bg-firefly-900 overflow-x-hidden overflow-y-scroll ">
 
     <x-cookie />
     <div class="grid md:grid-cols-12 gap-2">
