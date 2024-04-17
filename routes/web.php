@@ -258,5 +258,5 @@ return view('landing');
 Route::get('/dash', function () {
 
 return view('dash');
-});
+})->middleware('auth');
 
