@@ -1,6 +1,5 @@
 <div>
 
-
     {{-- @can('userEnrolled', $institute)
 
         <div x-data="{ showBanner: {{ $this->instituteAlreadyEnrolled() ? 'true' : 'false' }} }" x-show="showBanner"
@@ -123,7 +122,7 @@
 
         <section class="max-w-8xl p-4 md:px-8   mx-auto h-auto">
             <div
-                class="h-auto  md:min-h-max bg-firefly-500/10 border border-gray-300/10 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:bg-black from-firefly-900 mx-auto p-4 md:p-8 rounded-3xl space-y-5 text-left to-firefly-900 py-8 md:py-16">
+                class="h-auto  md:min-h-max bg-gray-300/30 border border-gray-300/10 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:bg-black from-firefly-900 mx-auto p-4 md:p-8 rounded-3xl space-y-5 text-left to-firefly-900 py-8 md:py-16">
 
                 <img class="inline-block w-16 md:w-24 rounded-full ring-2 ring-white dark:ring-gray-800"
                     src="{{ $institute->institute_logo }}" alt="{{ $institute->name }}">
