@@ -27,13 +27,13 @@ class UpNext extends Component
         //     ->first();
 
         // Find the first instance of an Edition where startDate is greater than today's date
-        // $this->upcomingEdition = Edition::where('startDate', '>', $this->today)
-        //     ->orderBy('startDate', 'asc')
-        //     ->first();
-
-        $this->upcomingEdition= Edition::where('startDate', '>', now())
-        ->orWhere('acronym','fdi')
-        ->first();
+        $this->upcomingEdition = Edition::where('startDate', '>', now())
+            ->orderBy('startDate', 'asc')
+            ->first();
+            
+            // $this->upcomingEdition= Edition::where('startDate', '>', now())
+            // ->orWhere('acronym','fdi')
+        // ->first();
     }
 
     public $editionTitle = array(

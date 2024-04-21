@@ -1,5 +1,5 @@
 <div class="space-y-2">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-4  ">
+    {{-- <div class="grid grid-cols-1 md:grid-cols-12 gap-4  ">
         <div class="w-full md:col-span-6 relative">
             <div class="absolute top-2 right-2 cursor-pointer">
                 @if ($search !== '')
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 
     <x-table :showPagination="true">
         <x-slot name="tableHead">
@@ -65,10 +65,10 @@
                     </span>
                 </th>
 
-                <th scope="col"
+                {{-- <th scope="col"
                     class="hidden md:table-cell px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-wider dark:text-secondary-400">
                     Applicant Details
-                </th>
+                </th> --}}
                 <th scope="col"
                     class="px-6 py-3 text-xs hidden md:table-cell leading-4 font-medium  uppercase tracking-wider  text-left">
                     Invoice Status
@@ -110,7 +110,7 @@
                             </div>
                         </td>
 
-                        <td
+                        {{-- <td
                             class="hidden md:table-cell px-6 py-3 text-sm  leading-5 text-secondary-500 dark:text-secondary-400 space-y-2">
                             <a href="email:{{ $application->applicant->email }}"
                                 class="flex justify-start items-center gap-x-2 ">
@@ -147,7 +147,7 @@
                                 <span>{{ $application->applicant->profile?->telephone }}</span>
                             </a>
 
-                        </td>
+                        </td> --}}
 
                         <td
                             class="px-6 py-3 text-sm leading-5  hidden md:table-cell  text-secondary-500 dark:text-secondary-400 text-secondary-500 dark:text-secondary-400 text-left">

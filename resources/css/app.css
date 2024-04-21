@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@900&family=Lato:ital,wght@0,400;0,900;1,400;1,900&family=Montserrat:wght@100;400&family=Open+Sans&family=Roboto:wght@300&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Sans+Pro&display=swap");
 
+@import 'fonts' ;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-weight: 400;
 }
 .start-alone {
   background-image: url(../../public/images/main/start.svg);

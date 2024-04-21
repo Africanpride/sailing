@@ -216,9 +216,6 @@ Route::middleware([
 
 
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
     Route::get('my-applications', function () {
         $applications = Application::where('user_id', auth()->user()->id)->with('edition', 'invoice')->paginate(10);
@@ -255,8 +252,9 @@ Route::get('/landing', function () {
 
 return view('landing');
 });
-Route::get('/dash', function () {
+Route::get('/dashboard', function () {
+    $applications = Application::where('user_id', auth()->user()->id)->with('edition', 'invoice')->paginate(10);
 
-return view('dash');
+return view('dashboard', compact('applications'));
 })->middleware('auth');
 
