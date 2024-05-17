@@ -450,7 +450,7 @@
 
 
         <!-- End agenda -->
-        <section class="max-w-8xl p-4 md:p-8   mx-auto">
+        <section class="max-w-8xl p-4 md:p-8   mx-auto hidden">
 
             <div
                 class=" min-h-[500px] mx-auto rounded-2xl border  border-gray-300/10 text-center space-y-5

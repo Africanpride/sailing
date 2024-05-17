@@ -82,7 +82,7 @@
                                         </label>
                                     </span>
                                     <label class="cursor-pointer" for="my-modal-3">
-                                        <div class="dark:text-white">Add New</div>
+                                        <div class="dark:text-white">New Application</div>
                                     </label>
                                 </div>
 

@@ -489,7 +489,7 @@
                                             <path d="M12 9v4" />
                                             <path d="M12 17h.01" />
                                         </svg>
-                                        {{ __('Application Rejected') }}
+                                        {{ __('Rejected') }}
                                     </span>
                                 @else
                                     <span
@@ -503,7 +503,7 @@
                                             <path d="M12 9v4" />
                                             <path d="M12 17h.01" />
                                         </svg>
-                                        {{ __('Awaiting Admission Decision') }}
+                                        {{ __('Pending') }}
                                     </span>
                                 @endif
                             @endif
